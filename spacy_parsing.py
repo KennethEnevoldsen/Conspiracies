@@ -1,8 +1,5 @@
 """
-
 """
-
-import spacy
 
 
 def spacy_preprocess(texts: list,
@@ -43,4 +40,3 @@ def spacy_preprocess(texts: list,
                     (nc.start, nc.end))
         return doc_features
     return [__extract_spacy(doc) for doc in docs]
-

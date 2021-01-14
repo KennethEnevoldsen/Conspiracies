@@ -20,6 +20,7 @@ import spacy
 
 from spacy_parsing import spacy_preprocess
 from utils import forward_pass
+from sentence_parser import sentence_parser
 
 
 def input_to_dataset():
@@ -118,3 +119,4 @@ if __name__ == '__main__':
     sent_ds = sent_ds.map(_forward_pass, batch_size=batch_size)
 
     # extract KG
+    sent_ds = sent_ds.map(sentence_parser)

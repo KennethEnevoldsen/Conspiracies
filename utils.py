@@ -1,8 +1,33 @@
 """
 """
+from collections import defaultdict
+
+import numpy as np
+import torch
 
 import transformers
-import numpy as np
+
+
+def build_graph(matrix):
+    """
+    build a graph of top diagonal with format:
+    idx: [(col, attention_value), ...]
+    idx: [(col, attention_value), ...]
+    ...
+
+    Example:
+    >>> mat = array([[10, 30, 30],
+                     [20, 10, 30],
+                     [20, 20, 10]])
+    >>> build_graph(mat)
+    defaultdict(list, {0: [(1, 30), (2, 30)], 1: [(2, 30)]})
+    """
+    graph = defaultdict(list)
+
+    for idx in range(0, len(matrix)):
+        for col in range(idx+1, len(matrix)):
+            graph[idx].append((col, matrix[idx][col]))
+    return graph
 
 
 def create_mapping(spacy_dict: dict, return_pytorch=False,
@@ -13,8 +38,6 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
     """
 
     tokens = spacy_dict["token"]
-
-    chunk2id = {}
 
     start_chunk = [chunk[0] for chunk in spacy_dict["noun_chunk_token_span"]]
     end_chunk = [chunk[1] for chunk in spacy_dict["noun_chunk_token_span"]]
@@ -55,7 +78,8 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
 
     else:
         outputs = {
-            'input_ids': [tokenizer.cls_token_id] + token_ids + [tokenizer.sep_token_id],
+            'input_ids': [tokenizer.cls_token_id] + token_ids +
+                         [tokenizer.sep_token_id],
             'attention_mask': [1]*(len(token_ids)+2),
             'token_type_ids': [0]*(len(token_ids)+2)
         }
@@ -87,13 +111,15 @@ def forward_pass(texts: list, tokenizer, model, **kwargs):
             "embedding": output[0]}
 
 
-def compress_attention(attention, tokenid2word_mapping, operator=np.mean):
-
+def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
+    """
+    merge token attention to match spacy words
+    """
     new_index = []
 
     prev = -1
     for idx, row in enumerate(attention):
-        token_id = tokenid2word_mapping[idx]
+        token_id = tokenid2word[idx]
         if token_id != prev:
             new_index.append([row])
             prev = token_id
@@ -102,7 +128,7 @@ def compress_attention(attention, tokenid2word_mapping, operator=np.mean):
 
     new_matrix = []
     for row in new_index:
-        new_matrix.append(operator(np.array(row), 0))
+        new_matrix.append(merge_operator(np.array(row), 0))
 
     new_matrix = np.array(new_matrix)
 
@@ -111,7 +137,7 @@ def compress_attention(attention, tokenid2word_mapping, operator=np.mean):
     prev = -1
     new_index = []
     for idx, row in enumerate(attention):
-        token_id = tokenid2word_mapping[idx]
+        token_id = tokenid2word[idx]
         if token_id != prev:
             new_index.append([row])
             prev = token_id
@@ -120,8 +146,57 @@ def compress_attention(attention, tokenid2word_mapping, operator=np.mean):
 
     new_matrix = []
     for row in new_index:
-        new_matrix.append(operator(np.array(row), 0))
+        new_matrix.append(merge_operator(np.array(row), 0))
 
     new_matrix = np.array(new_matrix)
 
     return new_matrix.T
+
+
+def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
+    visited = [False] * (max(graph.keys())+100)
+
+    # Create a queue for BFS
+    queue = []
+
+    # Mark the source node as
+    # visited and enqueue it
+    queue.append((s, [(s, 0)]))
+
+    found_paths = []
+
+    visited[s] = True
+
+    while queue:
+
+        s, path = queue.pop(0)
+
+        # Get all adjacent vertices of the
+        # dequeued vertex s. If a adjacent
+        # has not been visited, then mark it
+        # visited and enqueue it
+        for i, conf in graph[s]:
+            if i == end:
+                found_paths.append(path+[(i, conf)])
+                break
+            if visited[i] == False:
+                queue.append((i, copy(path)+[(i, conf)]))
+                visited[i] = True
+
+    candidate_facts = []
+    for path_pairs in found_paths:
+        if len(path_pairs) < 3:
+            continue
+        path = []
+        cum_conf = 0
+        for (node, conf) in path_pairs:
+            path.append(node)
+            cum_conf += conf
+
+        if path[1] in black_list_relation:
+            continue
+
+        candidate_facts.append((path, cum_conf))
+
+    candidate_facts = sorted(candidate_facts, key=lambda x: x[1], reverse=True)
+    return candidate_facts
