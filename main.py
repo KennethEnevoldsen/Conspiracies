@@ -103,8 +103,10 @@ if __name__ == '__main__':
     # load dataset using HF datasets
     ds = input_to_dataset()
     if batch_size is None:
-        batch_size = len(ds)
-    ds = ds.map(__spacy_preprocess, batched=True, batch_size=batch_size)
+        batch_size_ = len(ds)
+    else:
+        batch_size_ = batch_size
+    ds = ds.map(__spacy_preprocess, batched=True, batch_size=batch_size_)
 
     # write preprocessed for other tasks
     if write_file:
@@ -112,27 +114,13 @@ if __name__ == '__main__':
         # write file append to ndjson
 
     # turn file to sentences
-    sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size)
+    sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size_)
 
     # apply forward pass
     if batch_size is None:
-        batch_size = len(sent_ds)
-    sent_ds = sent_ds.map(_forward_pass, batch_size=batch_size)
+        batch_size_ = len(sent_ds)
+    sent_ds = sent_ds.map(_forward_pass, batch_size=batch_size_)
 
-    import torch
-    attn = torch.Tensor(sent_ds["attention"][0])
-    out = forward_pass(
-        sent_ds["text"][0],
-        model=model,
-        tokenizer=tokenizer)
-    out["attention"][0][0][0][0]
-    attn[0][0][0][1]
-    attn[0][0][0][0]
-    emb = torch.Tensor(sent_ds["embedding"][0])
-    out["embedding"][0][1]
-    emb[0][11]
-    emb[0][12]
-    emb[0][13]
     # extract KG
     parse_sentence_ = partial(
         parse_sentence, spacy_nlp=nlp, tokenizer=tokenizer)

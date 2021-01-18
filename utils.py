@@ -202,3 +202,10 @@ def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
 
     candidate_facts = sorted(candidate_facts, key=lambda x: x[1], reverse=True)
     return candidate_facts
+
+
+
+# def dependency_relation_extractions(tokens, dependencies):
+#     """
+#     """
+#     valid_relations = {"SVO", "SVP", }
