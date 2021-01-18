@@ -5,14 +5,15 @@
 - [ ] apply some kind of coref (not yet)
 - [ ] extract knowledge graph
     - [x] create mapping betweeen bert and spacy
-    - [ ] extract head tail pair
-    - [ ] extract candidate facts
+    - [x] extract head tail pair
+    - [x] extract candidate facts
     - [ ] filter candidate facts
 - [ ] add an argparse
 - [ ] write dataset
     - [ ] add relevant metadata (tokenizer, model, spacy model)
 """
 import os
+from functools import partial
 
 import transformers
 import datasets
@@ -20,7 +21,7 @@ import spacy
 
 from spacy_parsing import spacy_preprocess
 from utils import forward_pass
-from sentence_parser import sentence_parser
+from sentence_parser import parse_sentence
 
 
 def input_to_dataset():
@@ -118,5 +119,22 @@ if __name__ == '__main__':
         batch_size = len(sent_ds)
     sent_ds = sent_ds.map(_forward_pass, batch_size=batch_size)
 
+    import torch
+    attn = torch.Tensor(sent_ds["attention"][0])
+    out = forward_pass(
+        sent_ds["text"][0],
+        model=model,
+        tokenizer=tokenizer)
+    out["attention"][0][0][0][0]
+    attn[0][0][0][1]
+    attn[0][0][0][0]
+    emb = torch.Tensor(sent_ds["embedding"][0])
+    out["embedding"][0][1]
+    emb[0][11]
+    emb[0][12]
+    emb[0][13]
     # extract KG
-    sent_ds = sent_ds.map(sentence_parser)
+    parse_sentence_ = partial(
+        parse_sentence, spacy_nlp=nlp, tokenizer=tokenizer)
+    sent_ds = sent_ds.map(parse_sentence_)
+    sent_ds

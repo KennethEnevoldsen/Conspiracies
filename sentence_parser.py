@@ -2,7 +2,6 @@
 """
 
 from functools import partial
-from itertools import imap
 import torch
 
 from utils import create_mapping, build_graph, merge_token_attention, BFS
@@ -59,7 +58,14 @@ def parse_sentence(spacy_dict, tokenizer, spacy_nlp):
     inputs, tokenid2word, token2id, noun_chunks = \
         create_mapping(spacy_dict, tokenizer=tokenizer)
 
-    agg_attn = aggregate_attentions_heads(spacy_dict["attention"])
+    attn = torch.Tensor(spacy_dict["attention"])
+    agg_attn = aggregate_attentions_heads(attn)
+
+    # fix size of attention matrix
+    agg_attn = torch.squeeze(agg_attn, 0)
+    agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]
+    agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
+
     merged_attn = merge_token_attention(agg_attn, tokenid2word)
     # make graph
     attn_graph = build_graph(merged_attn)
@@ -82,7 +88,7 @@ def parse_sentence(spacy_dict, tokenizer, spacy_nlp):
         tokenid2word), black_list_relation, ) for pair in tail_head_pairs]
 
     # beam search
-    for output in imap(bfs, params):
+    for output in map(bfs, params):
         if len(output):
             all_relation_pairs += [(o, id2token) for o in output]
 
@@ -91,7 +97,7 @@ def parse_sentence(spacy_dict, tokenizer, spacy_nlp):
 
     filter_relation_sets_ = partial(filter_relation_sets, spacy_nlp=spacy_nlp)
 
-    for triplet in imap(filter_relation_sets_, all_relation_pairs):
+    for triplet in map(filter_relation_sets_, all_relation_pairs):
         if len(triplet) > 0:
             triplet_text.append(triplet)
     return triplet_text

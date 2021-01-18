@@ -37,11 +37,13 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
     Creates mapping from token to id, token to tokenizer id
     """
 
-    tokens = spacy_dict["token"]
+    tokens = spacy_dict["spacy_token"]
 
-    start_chunk = [chunk[0] for chunk in spacy_dict["noun_chunk_token_span"]]
-    end_chunk = [chunk[1] for chunk in spacy_dict["noun_chunk_token_span"]]
-    noun_chunks = spacy_dict["noun_chunk"]
+    start_chunk = [chunk[0]
+                   for chunk in spacy_dict["spacy_noun_chunk_token_span"]]
+    end_chunk = [chunk[1]
+                 for chunk in spacy_dict["spacy_noun_chunk_token_span"]]
+    noun_chunks = spacy_dict["spacy_noun_chunk"]
 
     sentence_mapping = []
     token2id = {}
@@ -107,7 +109,7 @@ def forward_pass(texts: list, tokenizer, model, **kwargs):
     input_.to(model.device)
     output = model(**input_, output_attentions=True)
     # output[0].shape # batch, seq. length, embedding size
-    return {"attention": output.attentions[-1],
+    return {"attention": output.attentions,
             "embedding": output[0]}
 
 
