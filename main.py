@@ -15,6 +15,8 @@
 import os
 from functools import partial
 
+import torch
+
 import transformers
 import datasets
 import spacy
@@ -83,22 +85,34 @@ def doc_to_sent(batch):
 
 
 def _forward_pass(batch):
-    return forward_pass(
+    res = forward_pass(
         batch["text"],
+        device=device,
         model=model,
         tokenizer=tokenizer,
         padding="max_length", max_length=128, truncation=True)
+
+    batch["embedding"] = res["embedding"].numpy()
+    batch["attention"] = res["attention"][attention_layer].numpy()
+    return batch
+
+
+def batch(iterable, n=1):
+    l_ = len(iterable)
+    for ndx in range(0, l_, n):
+        yield iterable[ndx:min(ndx + n, l_)]
 
 
 if __name__ == '__main__':
     batch_size = None
     write_file = False
-    # load tokenizers models and spacy pipe
-    tokenizer = transformers.AutoTokenizer.from_pretrained(
-        "Maltehb/-l-ctra-danish-electra-small-cased")
-    model = transformers.ElectraModel.from_pretrained(
-        "Maltehb/-l-ctra-danish-electra-small-cased")
+    model_parallel = True
+    device = "cuda"
+    attention_layer = -1
+
+    # laod spacy pipeline
     nlp = spacy.load('da_core_news_lg', disable=["textcat"])
+    # spacy.require_gpu()
 
     # load dataset using HF datasets
     ds = input_to_dataset()
@@ -116,10 +130,20 @@ if __name__ == '__main__':
     # turn file to sentences
     sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size_)
 
+    # load tokenizers and transformer models
+    tokenizer = transformers.AutoTokenizer.from_pretrained(
+        "Maltehb/-l-ctra-danish-electra-small-cased")
+    model = transformers.ElectraModel.from_pretrained(
+        "Maltehb/-l-ctra-danish-electra-small-cased")
+    # enable GPU
+    if model_parallel:
+        model = torch.nn.DataParallel(model)
+    model.to(device)
+
     # apply forward pass
     if batch_size is None:
         batch_size_ = len(sent_ds)
-    sent_ds = sent_ds.map(_forward_pass, batch_size=batch_size_)
+    sent_ds = sent_ds.map(_forward_pass, batch_size=1024, batched=True)
 
     # extract KG
     parse_sentence_ = partial(

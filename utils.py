@@ -94,7 +94,7 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
     return outputs, tokenid2word_mapping, token2id, noun_chunks
 
 
-def forward_pass(texts: list, tokenizer, model, **kwargs):
+def forward_pass(texts: list, tokenizer, model, device=None, **kwargs):
     """
     moves data to model device so model should be placed in the
     desired device
@@ -105,12 +105,18 @@ def forward_pass(texts: list, tokenizer, model, **kwargs):
         "Maltehb/-l-ctra-danish-electra-small-cased")
     >>> res = forward_pass(["dette er en eksempel texts"], tokenizer, model)
     """
-    input_ = tokenizer(texts, return_tensors="pt", **kwargs)
-    input_.to(model.device)
-    output = model(**input_, output_attentions=True)
-    # output[0].shape # batch, seq. length, embedding size
-    return {"attention": output.attentions,
-            "embedding": output[0]}
+    if device is None:
+        device = model.device
+
+    with torch.no_grad():
+        input_ = tokenizer(texts, return_tensors="pt", **kwargs)
+        input_.to(device)
+        output = model(**input_, output_attentions=True)
+
+        # output[0].shape # batch, seq. length, embedding size
+        res = {"attention": [t.to("cpu") for t in output.attentions],
+            "embedding": output[0].to("cpu")}
+    return res
 
 
 def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
@@ -204,8 +210,18 @@ def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
     return candidate_facts
 
 
-
 # def dependency_relation_extractions(tokens, dependencies):
 #     """
 #     """
-#     valid_relations = {"SVO", "SVP", }
+#     valid_relations = {("nsubj", "verb", "dobj"),
+#                        ("nsubj", "verb", "(no obj)", "prep"),
+#                        }
+#     # constructed using loop
+#     sub_valid_relations = {("nsubj")}
+
+#     # for each relation
+
+#     if relation in valid_relations:
+#         yield relation
+#     elif relation not in sub_valid_relations:
+#         continue # take the next example

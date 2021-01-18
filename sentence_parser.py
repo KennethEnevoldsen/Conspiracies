@@ -14,14 +14,14 @@ def bfs(args):
 
 
 def aggregate_attentions_heads(
-        attention, layer: int = -1, aggregate_fun=torch.mean, head_dim=1):
+        attention, aggregate_fun=torch.mean, head_dim=1):
     """
     attention: all layers of attention from the model
     layer: the layer you wish to reduce by applying the aggregate_fun to
     aggregate_fun: the aggregation function
     head_dim: which dimension is the head dim which you want to aggregate over
     """
-    return aggregate_fun(attention[layer], dim=head_dim)
+    return aggregate_fun(attention, dim=head_dim)
 
 
 def filter_relation_sets(params, spacy_nlp):
@@ -62,7 +62,7 @@ def parse_sentence(spacy_dict, tokenizer, spacy_nlp):
     agg_attn = aggregate_attentions_heads(attn)
 
     # fix size of attention matrix
-    agg_attn = torch.squeeze(agg_attn, 0)
+    agg_attn = torch.squeeze(agg_attn, head_dim=1)
     agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]
     agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
 
