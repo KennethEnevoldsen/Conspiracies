@@ -89,35 +89,45 @@ def __tokenizer(batch):
     return tokenizer(batch["text"], truncation=True, max_length=512)
 
 
-def forward_pass(texts: list, tokenizer, model, device=None, **kwargs):
+def forward_pass(ds, model, batch_size=1024):
     """
-    moves data to model device so model should be placed in the
-    desired device
-
-    >>> tokenizer = transformers.AutoTokenizer.from_pretrained(
-                       "Maltehb/-l-ctra-danish-electra-small-cased")
-    >>> model = transformers.ElectraModel.from_pretrained(
-        "Maltehb/-l-ctra-danish-electra-small-cased")
-    >>> res = forward_pass(["dette er en eksempel texts"], tokenizer, model)
+    does the forward pass on the dataset
     """
-    if device is None:
-        device = model.device
+    model.eval()
+    if model_parallel:
+        model = torch.nn.DataParallel(model)
+    model.to(device)
 
+    ds = ds.map(__tokenizer, batched=True)
+    ds.set_format(format="pt", columns=['attention_mask', 'input_ids'])
+
+    # on the fly padding
+
+    def collate_fn(examples):
+        return tokenizer.pad(examples, return_tensors='pt')
+    dataloader = torch.utils.data.DataLoader(
+        ds, collate_fn=collate_fn, batch_size=batch_size)
+
+    # do forward pass
+    forward_batches = []
     with torch.no_grad():
-        input_ = tokenizer(texts, return_tensors="pt", **kwargs)
-        input_.to(device)
-        output = model(**input_, output_attentions=True)
+        for i, batch in enumerate(dataloader):
+            batch.to(device)
+            outputs = model(**batch, output_attentions=True)
+            forward_batch = {
+                "attention_weights": [a.to("cpu") for a in outputs.attentions],
+                "embedding": outputs[0].to("cpu")}
+            forward_batches.append(forward_batch)
+    ds.reset_format()
+    return ds, forward_batches
 
-        # output[0].shape # batch, seq. length, embedding size
-        res = {"attention": [t.to("cpu") for t in output.attentions],
-               "embedding": output[0].to("cpu")}
-    return res
 
-
-def batch(iterable, n=1):
-    l_ = len(iterable)
-    for ndx in range(0, l_, n):
-        yield iterable[ndx:min(ndx + n, l_)]
+def unwrap_attention_from_batch(forward_batches, attention_layer=-1):
+    for fb in forward_batches:
+        attn = fb["attention_weights"][attention_layer]
+        b_size = attn.shape[0]
+        for i in range(b_size):
+            yield attn[i]
 
 
 if __name__ == '__main__':
@@ -155,32 +165,15 @@ if __name__ == '__main__':
         "Maltehb/-l-ctra-danish-electra-small-cased")
     model = transformers.ElectraModel.from_pretrained(
         "Maltehb/-l-ctra-danish-electra-small-cased")
-    # enable GPU
-    if model_parallel:
-        model = torch.nn.DataParallel(model)
-    model.to(device)
 
-    ds = ds.map(__tokenizer, batched=True)
-    ds.set_format(format="pt", columns=['attention_mask', 'input_ids'])
-
-    def collate_fn(examples):
-        return tokenizer.pad(examples, return_tensors='pt')
-    dataloader = torch.utils.data.DataLoader(
-        ds, collate_fn=collate_fn, batch_size=1024)
-
-    # do forward pass
-    with torch.no_grad():
-        forward_batch = {"attention_weights": [], "embedding": []}
-
-        for i, batch in enumerate(dataloader):
-            batch.to(device)
-            outputs = model(**batch, output_attentions=True)
-            forward_batch["attention_weights"] = [a.to("cpu") for a in outputs.attentions]
-            forward_batch["embedding"] = outputs[0]
-
+    sent_ds, forward_batches = forward_pass(ds, model)
+    attn = unwrap_attention_from_batch(forward_batches)
 
     # extract KG
-    parse_sentence_ = partial(
-        parse_sentence, spacy_nlp=nlp, tokenizer=tokenizer)
-    sent_ds = sent_ds.map(parse_sentence_)
-    sent_ds
+    results = []
+    for spacy_dict, attn in zip(sent_ds, attn):
+        i = 10
+        forward_batches[0]["embedding"].shape
+        res = parse_sentence(spacy_dict=spacy_dict, attention=attn,
+                             tokenizer=tokenizer, spacy_nlp=nlp)
+        results.append(res)

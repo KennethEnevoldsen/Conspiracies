@@ -50,7 +50,7 @@ def check_relations_validity(relations):
     return True
 
 
-def parse_sentence(spacy_dict, tokenizer, spacy_nlp):
+def parse_sentence(spacy_dict, attention, tokenizer, spacy_nlp):
     """
     one or all sentence?
     """
@@ -58,8 +58,7 @@ def parse_sentence(spacy_dict, tokenizer, spacy_nlp):
     inputs, tokenid2word, token2id, noun_chunks = \
         create_mapping(spacy_dict, tokenizer=tokenizer)
 
-    attn = torch.Tensor(spacy_dict["attention"])
-    agg_attn = aggregate_attentions_heads(attn)
+    agg_attn = aggregate_attentions_heads(attention)
 
     # fix size of attention matrix
     agg_attn = torch.squeeze(agg_attn, head_dim=1)
