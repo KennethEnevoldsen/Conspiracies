@@ -129,14 +129,14 @@ def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
     for idx, row in enumerate(attention):
         token_id = tokenid2word[idx]
         if token_id != prev:
-            new_index.append([row])
+            new_index.append(row)
             prev = token_id
         else:
             new_index[-1].append(row)
 
     new_matrix = []
     for row in new_index:
-        new_matrix.append(merge_operator(np.array(row), 0))
+        new_matrix.append(merge_operator(row.numpy(), 0))
 
     new_matrix = np.array(new_matrix)
 

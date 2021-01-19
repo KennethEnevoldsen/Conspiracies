@@ -58,10 +58,9 @@ def parse_sentence(spacy_dict, attention, tokenizer, spacy_nlp):
     inputs, tokenid2word, token2id, noun_chunks = \
         create_mapping(spacy_dict, tokenizer=tokenizer)
 
-    agg_attn = aggregate_attentions_heads(attention)
+    agg_attn = aggregate_attentions_heads(attention, head_dim=0)
 
-    # fix size of attention matrix
-    agg_attn = torch.squeeze(agg_attn, head_dim=1)
+    # fix size of attention matrix (remove padding)
     agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]
     agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
 
