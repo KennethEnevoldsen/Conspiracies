@@ -40,7 +40,7 @@ def input_to_dataset():
 
 
 def __spacy_preprocess(batch):
-    preprocessed = spacy_preprocess(batch["text"], nlp=nlp)
+    preprocessed = spacy_preprocess(batch["text"], nlp=nlp, n_process=spacy_n_process)
     d = {}
     for doc in preprocessed:
         for key in doc.keys():
@@ -109,6 +109,7 @@ if __name__ == '__main__':
     model_parallel = True
     device = "cuda"
     attention_layer = -1
+    spacy_n_process = 8
 
     # laod spacy pipeline
     nlp = spacy.load('da_core_news_lg', disable=["textcat"])
@@ -121,10 +122,12 @@ if __name__ == '__main__':
     else:
         batch_size_ = batch_size
     ds = ds.map(__spacy_preprocess, batched=True, batch_size=batch_size_)
+    ds
 
     # write preprocessed for other tasks
     if write_file:
-        pass
+        ds.set_format("numpy")
+        ds.export("ds.tfrecord")
         # write file append to ndjson
 
     # turn file to sentences
@@ -142,7 +145,7 @@ if __name__ == '__main__':
 
     # apply forward pass
     if batch_size is None:
-        batch_size_ = len(sent_ds)
+        batch_size_ = 1024
     sent_ds = sent_ds.map(_forward_pass, batch_size=1024, batched=True)
 
     # extract KG
@@ -150,3 +153,4 @@ if __name__ == '__main__':
         parse_sentence, spacy_nlp=nlp, tokenizer=tokenizer)
     sent_ds = sent_ds.map(parse_sentence_)
     sent_ds
+

@@ -11,10 +11,10 @@ invalid_relations = [
     'år', 'måned', 'dag', 'dagligt',
 ]
 
-with open('data/adjectives.txt', 'r') as f:
+with open('adjectives.txt', 'r') as f:
     adjectives = [line.strip().lower() for line in f]
 
-with open('data/adverbs.txt', 'r') as f:
+with open('adverbs.txt', 'r') as f:
     adverbs = [line.strip().lower() for line in f]
 
 invalid_relations = invalid_relations + adjectives + adverbs
