@@ -40,7 +40,8 @@ def input_to_dataset():
 
 
 def __spacy_preprocess(batch):
-    preprocessed = spacy_preprocess(batch["text"], nlp=nlp, n_process=spacy_n_process)
+    preprocessed = spacy_preprocess(
+        batch["text"], nlp=nlp, n_process=spacy_n_process)
     d = {}
     for doc in preprocessed:
         for key in doc.keys():
@@ -84,17 +85,33 @@ def doc_to_sent(batch):
     return d
 
 
-def _forward_pass(batch):
-    res = forward_pass(
-        batch["text"],
-        device=device,
-        model=model,
-        tokenizer=tokenizer,
-        padding="max_length", max_length=128, truncation=True)
+def __tokenizer(batch):
+    return tokenizer(batch["text"], truncation=True, max_length=512)
 
-    batch["embedding"] = res["embedding"].numpy()
-    batch["attention"] = res["attention"][attention_layer].numpy()
-    return batch
+
+def forward_pass(texts: list, tokenizer, model, device=None, **kwargs):
+    """
+    moves data to model device so model should be placed in the
+    desired device
+
+    >>> tokenizer = transformers.AutoTokenizer.from_pretrained(
+                       "Maltehb/-l-ctra-danish-electra-small-cased")
+    >>> model = transformers.ElectraModel.from_pretrained(
+        "Maltehb/-l-ctra-danish-electra-small-cased")
+    >>> res = forward_pass(["dette er en eksempel texts"], tokenizer, model)
+    """
+    if device is None:
+        device = model.device
+
+    with torch.no_grad():
+        input_ = tokenizer(texts, return_tensors="pt", **kwargs)
+        input_.to(device)
+        output = model(**input_, output_attentions=True)
+
+        # output[0].shape # batch, seq. length, embedding size
+        res = {"attention": [t.to("cpu") for t in output.attentions],
+               "embedding": output[0].to("cpu")}
+    return res
 
 
 def batch(iterable, n=1):
@@ -122,13 +139,13 @@ if __name__ == '__main__':
     else:
         batch_size_ = batch_size
     ds = ds.map(__spacy_preprocess, batched=True, batch_size=batch_size_)
-    ds
 
     # write preprocessed for other tasks
     if write_file:
-        ds.set_format("numpy")
-        ds.export("ds.tfrecord")
-        # write file append to ndjson
+        ds.set_format("pandas")
+        df = ds[0:len(ds)]
+        df.to_json("ds.ndjson", orient="records", lines=True)
+        ds.reset_format()
 
     # turn file to sentences
     sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size_)
@@ -143,14 +160,27 @@ if __name__ == '__main__':
         model = torch.nn.DataParallel(model)
     model.to(device)
 
-    # apply forward pass
-    if batch_size is None:
-        batch_size_ = 1024
-    sent_ds = sent_ds.map(_forward_pass, batch_size=1024, batched=True)
+    ds = ds.map(__tokenizer, batched=True)
+    ds.set_format(format="pt", columns=['attention_mask', 'input_ids'])
+
+    def collate_fn(examples):
+        return tokenizer.pad(examples, return_tensors='pt')
+    dataloader = torch.utils.data.DataLoader(
+        ds, collate_fn=collate_fn, batch_size=1024)
+
+    # do forward pass
+    with torch.no_grad():
+        forward_batch = {"attention_weights": [], "embedding": []}
+
+        for i, batch in enumerate(dataloader):
+            batch.to(device)
+            outputs = model(**batch, output_attentions=True)
+            forward_batch["attention_weights"] = [a.to("cpu") for a in outputs.attentions]
+            forward_batch["embedding"] = outputs[0]
+
 
     # extract KG
     parse_sentence_ = partial(
         parse_sentence, spacy_nlp=nlp, tokenizer=tokenizer)
     sent_ds = sent_ds.map(parse_sentence_)
     sent_ds
-
