@@ -1,6 +1,7 @@
 """
 """
 from collections import defaultdict
+from copy import copy
 
 import numpy as np
 import torch
@@ -36,13 +37,16 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
     """
     Creates mapping from token to id, token to tokenizer id
     """
+    if spacy_dict["text"] == '© Scanpix)\n':
+        print("the fcuk")
 
     tokens = spacy_dict["spacy_token"]
 
-    start_chunk = [chunk[0]
-                   for chunk in spacy_dict["spacy_noun_chunk_token_span"]]
-    end_chunk = [chunk[1]
-                 for chunk in spacy_dict["spacy_noun_chunk_token_span"]]
+    if len(spacy_dict["spacy_noun_chunk_token_span"]) == 0:
+        start_chunk, end_chunk = {}, {}
+    else:
+        start_chunk, end_chunk = zip(*spacy_dict["spacy_noun_chunk_token_span"])
+        start_chunk, end_chunk = set(start_chunk), set(end_chunk)
     noun_chunks = spacy_dict["spacy_noun_chunk"]
 
     sentence_mapping = []
@@ -94,49 +98,25 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
     return outputs, tokenid2word_mapping, token2id, noun_chunks
 
 
-def forward_pass(texts: list, tokenizer, model, device=None, **kwargs):
-    """
-    moves data to model device so model should be placed in the
-    desired device
-
-    >>> tokenizer = transformers.AutoTokenizer.from_pretrained(
-                       "Maltehb/-l-ctra-danish-electra-small-cased")
-    >>> model = transformers.ElectraModel.from_pretrained(
-        "Maltehb/-l-ctra-danish-electra-small-cased")
-    >>> res = forward_pass(["dette er en eksempel texts"], tokenizer, model)
-    """
-    if device is None:
-        device = model.device
-
-    with torch.no_grad():
-        input_ = tokenizer(texts, return_tensors="pt", **kwargs)
-        input_.to(device)
-        output = model(**input_, output_attentions=True)
-
-        # output[0].shape # batch, seq. length, embedding size
-        res = {"attention": [t.to("cpu") for t in output.attentions],
-            "embedding": output[0].to("cpu")}
-    return res
-
-
 def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
     """
     merge token attention to match spacy words
     """
     new_index = []
+    attention = attention.numpy()
 
     prev = -1
     for idx, row in enumerate(attention):
         token_id = tokenid2word[idx]
         if token_id != prev:
-            new_index.append(row)
+            new_index.append([row])
             prev = token_id
         else:
             new_index[-1].append(row)
 
     new_matrix = []
     for row in new_index:
-        new_matrix.append(merge_operator(row.numpy(), 0))
+        new_matrix.append(merge_operator(np.array(row), 0))
 
     new_matrix = np.array(new_matrix)
 
@@ -187,7 +167,7 @@ def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
             if i == end:
                 found_paths.append(path+[(i, conf)])
                 break
-            if visited[i] == False:
+            if visited[i] is False:
                 queue.append((i, copy(path)+[(i, conf)]))
                 visited[i] = True
 

@@ -22,7 +22,7 @@ import datasets
 import spacy
 
 from spacy_parsing import spacy_preprocess
-from utils import forward_pass
+
 from sentence_parser import parse_sentence
 
 
@@ -64,20 +64,49 @@ def doc_to_sent(batch):
         max_sent = max(batch["spacy_sent_id"][doc])
         i = 0
         start_idx = 0
+        start_nc = 0
         while i < max_sent:
             i += 1
             end_idx = batch["spacy_sent_id"][doc].index(i)
 
+            # add noun_chunks to sent
+            # identify sentence belonging to noun chunk
+            nc_span = batch["spacy_noun_chunk_token_span"][doc]
+            idx = start_nc
+            while True:
+                span = nc_span[idx]
+                if span[0] >= end_idx:
+                    end_nc = idx-1
+                    break
+                idx += 1
+
+            # extract and append noun chunk
+            nc_tok_span = nc_span[start_nc: end_nc]
+            # set span to match new sentence (rather than doc)
+            nc_tok_span = [[span[0]-start_idx, span[1]-start_idx]
+                           for span in nc_tok_span]
+            if min([i[0] for i in nc_tok_span]) < 0:
+                print("we got a problem")
+            nc = batch["spacy_noun_chunk"][doc][start_nc: end_nc]
+            d["spacy_noun_chunk_token_span"].append(nc_tok_span)
+            d["spacy_noun_chunk"].append(nc)
+            start_nc = end_nc
+
             for k in d.keys():
+                if k.startswith("spacy_noun_chunk"):
+                    continue
                 # if in spacy add the sentence
-                if k.startswith("spacy"):
+                elif k.startswith("spacy"):
                     d[k].append(batch[k][doc][start_idx:end_idx])
                 # if in text add the sentence using idx
                 elif k == "text":
-                    start = batch["spacy_token_character_span"][doc][start_idx][0]
-                    end = batch["spacy_token_character_span"][doc][end_idx - 1][1]
+                    token_span = batch["spacy_token_character_span"][doc]
+                    start = token_span[start_idx][0]
+                    end = token_span[end_idx - 1][1]
                     sent = batch[k][doc][start:end]
                     d[k].append(sent)
+                    if sent == '(Foto: pool':
+                        print("the fcuk")
                 # add all metadata to all derived sentences
                 else:
                     d[k].append(batch[k][doc])
@@ -144,6 +173,7 @@ if __name__ == '__main__':
 
     # load dataset using HF datasets
     ds = input_to_dataset()
+
     if batch_size is None:
         batch_size_ = len(ds)
     else:
@@ -152,10 +182,7 @@ if __name__ == '__main__':
 
     # write preprocessed for other tasks
     if write_file:
-        ds.set_format("pandas")
-        df = ds[0:len(ds)]
-        df.to_json("ds.ndjson", orient="records", lines=True)
-        ds.reset_format()
+        ds.save_to_disk("preprocessed")
 
     # turn file to sentences
     sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size_)
@@ -166,14 +193,13 @@ if __name__ == '__main__':
     model = transformers.ElectraModel.from_pretrained(
         "Maltehb/-l-ctra-danish-electra-small-cased")
 
-    sent_ds, forward_batches = forward_pass(ds, model)
-    attn = unwrap_attention_from_batch(forward_batches)
+    sent_ds, forward_batches = forward_pass(sent_ds, model)
+    attentions = unwrap_attention_from_batch(forward_batches)
 
     # extract KG
     results = []
-    for spacy_dict, attn in zip(sent_ds, attn):
-        i = 10
-        forward_batches[0]["embedding"].shape
+    for spacy_dict, attn in zip(sent_ds, attentions):
         res = parse_sentence(spacy_dict=spacy_dict, attention=attn,
                              tokenizer=tokenizer, spacy_nlp=nlp)
+        print("\n---", res)
         results.append(res)

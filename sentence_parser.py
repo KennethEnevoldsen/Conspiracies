@@ -61,9 +61,12 @@ def parse_sentence(spacy_dict, attention, tokenizer, spacy_nlp):
     agg_attn = aggregate_attentions_heads(attention, head_dim=0)
 
     # fix size of attention matrix (remove padding)
-    agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]
+    agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]  # remove padding
     agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
+    agg_attn = agg_attn[1:-1, 1:-1]  # remove eos and bos tokens
 
+    assert agg_attn.shape[0] == len(
+        tokenid2word), "attention matrix and tokenid2word does not have the same length"
     merged_attn = merge_token_attention(agg_attn, tokenid2word)
     # make graph
     attn_graph = build_graph(merged_attn)
@@ -75,17 +78,15 @@ def parse_sentence(spacy_dict, attention, tokenizer, spacy_nlp):
             if head != tail:
                 tail_head_pairs.append((token2id[head], token2id[tail]))
 
-    # black list relation?
+    # beam search
     black_list_relation = set([token2id[n] for n in noun_chunks])
 
-    # what do you do?
     all_relation_pairs = []
     id2token = {value: key for key, value in token2id.items()}
 
     params = [(pair[0], pair[1], attn_graph, max(
         tokenid2word), black_list_relation, ) for pair in tail_head_pairs]
 
-    # beam search
     for output in map(bfs, params):
         if len(output):
             all_relation_pairs += [(o, id2token) for o in output]
