@@ -76,7 +76,7 @@ def doc_to_sent(batch):
             while True:
                 span = nc_span[idx]
                 if span[0] >= end_idx:
-                    end_nc = idx-1
+                    end_nc = idx - 1
                     break
                 idx += 1
 
@@ -85,12 +85,10 @@ def doc_to_sent(batch):
             # set span to match new sentence (rather than doc)
             nc_tok_span = [[span[0]-start_idx, span[1]-start_idx]
                            for span in nc_tok_span]
-            if min([i[0] for i in nc_tok_span]) < 0:
-                print("we got a problem")
             nc = batch["spacy_noun_chunk"][doc][start_nc: end_nc]
             d["spacy_noun_chunk_token_span"].append(nc_tok_span)
             d["spacy_noun_chunk"].append(nc)
-            start_nc = end_nc
+            start_nc = end_nc + 1
 
             for k in d.keys():
                 if k.startswith("spacy_noun_chunk"):
@@ -105,8 +103,6 @@ def doc_to_sent(batch):
                     end = token_span[end_idx - 1][1]
                     sent = batch[k][doc][start:end]
                     d[k].append(sent)
-                    if sent == '(Foto: pool':
-                        print("the fcuk")
                 # add all metadata to all derived sentences
                 else:
                     d[k].append(batch[k][doc])

@@ -9,8 +9,8 @@ from constants import invalid_relations_set
 
 
 def bfs(args):
-    s, end, graph, max_size, black_list_relation = args
-    return BFS(s, end, graph, max_size, black_list_relation)
+    s, end, graph, max_size, black_list_relation, id2token = args
+    return BFS(s, end, graph, max_size, black_list_relation, id2token)
 
 
 def aggregate_attentions_heads(
@@ -30,16 +30,23 @@ def filter_relation_sets(params, spacy_nlp):
     triplet_idx = triplet[0]
     confidence = triplet[1]
     head, tail = triplet_idx[0], triplet_idx[-1]
-    if head in id2token and tail in id2token:
+    if head in id2token and tail in id2token:  # should never not be the case
         head = id2token[head]
         tail = id2token[tail]
+
+
+        # what exactly does this part do?
         relations = [spacy_nlp(id2token[idx])[
             0].lemma_ for idx in triplet_idx[1:-1] if idx in id2token]
+
         if (len(relations) > 0 and
                 check_relations_validity(relations) and
                 head.lower() not in invalid_relations_set and
                 (tail.lower() not in invalid_relations_set)):
             return {'h': head, 't': tail, 'r': relations, 'c': confidence}
+    else:
+        raise Exception("Head or tail not in id2token.\
+             Please check if a bug is present")
     return {}
 
 
@@ -85,7 +92,7 @@ def parse_sentence(spacy_dict, attention, tokenizer, spacy_nlp):
     id2token = {value: key for key, value in token2id.items()}
 
     params = [(pair[0], pair[1], attn_graph, max(
-        tokenid2word), black_list_relation, ) for pair in tail_head_pairs]
+        tokenid2word), black_list_relation, id2token) for pair in tail_head_pairs]
 
     for output in map(bfs, params):
         if len(output):

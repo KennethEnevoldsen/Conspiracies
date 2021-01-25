@@ -37,15 +37,13 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
     """
     Creates mapping from token to id, token to tokenizer id
     """
-    if spacy_dict["text"] == '© Scanpix)\n':
-        print("the fcuk")
-
     tokens = spacy_dict["spacy_token"]
 
     if len(spacy_dict["spacy_noun_chunk_token_span"]) == 0:
         start_chunk, end_chunk = {}, {}
     else:
-        start_chunk, end_chunk = zip(*spacy_dict["spacy_noun_chunk_token_span"])
+        start_chunk, end_chunk = zip(
+            *spacy_dict["spacy_noun_chunk_token_span"])
         start_chunk, end_chunk = set(start_chunk), set(end_chunk)
     noun_chunks = spacy_dict["spacy_noun_chunk"]
 
@@ -141,7 +139,7 @@ def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
     return new_matrix.T
 
 
-def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
+def BFS(s, end, graph, max_size=-1, black_list_relation=[], id2token=None):
     visited = [False] * (max(graph.keys())+100)
 
     # Create a queue for BFS
@@ -173,7 +171,7 @@ def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
 
     candidate_facts = []
     for path_pairs in found_paths:
-        if len(path_pairs) < 3:
+        if len(path_pairs) < 3:  # if it only head and tail
             continue
         path = []
         cum_conf = 0
