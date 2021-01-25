@@ -13,7 +13,7 @@
     - [ ] add relevant metadata (tokenizer, model, spacy model)
 """
 import os
-from functools import partial
+import ndjson
 
 import torch
 
@@ -22,7 +22,7 @@ import datasets
 import spacy
 
 from spacy_parsing import spacy_preprocess
-
+from utils import create_run_name
 from sentence_parser import parse_sentence
 
 
@@ -159,10 +159,12 @@ if __name__ == '__main__':
     batch_size = None
     write_file = False
     model_parallel = True
-    device = "cuda"
     attention_layer = -1
-    spacy_n_process = 8
+    spacy_n_process = 1
+    device = None
 
+    if device is None:
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
     # laod spacy pipeline
     nlp = spacy.load('da_core_news_lg', disable=["textcat"])
     # spacy.require_gpu()
@@ -199,3 +201,7 @@ if __name__ == '__main__':
                              tokenizer=tokenizer, spacy_nlp=nlp)
         print("\n---", res)
         results.append(res)
+
+    save_path = os.path.join("results", create_run_name(suffix=".ndjson"))
+    with open(save_path, "w") as f:
+        ndjson.dump(results, f)
