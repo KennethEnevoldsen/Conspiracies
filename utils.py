@@ -5,8 +5,6 @@ from copy import copy
 
 import numpy as np
 
-
-import torch
 import transformers
 
 
@@ -37,6 +35,9 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
                        "Maltehb/-l-ctra-danish-electra-small-cased")):
     """
     Creates mapping from token to id, token to tokenizer id
+
+    Example:
+    create_mapping()
     """
     tokens = spacy_dict["spacy_token"]
 
@@ -74,27 +75,8 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
         tokenid2word_mapping += [token2id[token]]*len(subtoken_ids)
         token_ids += subtoken_ids
 
-    tokenizer_name = str(tokenizer.__str__)
-    if 'GPT2' in tokenizer_name:
-        outputs = {
-            'input_ids': token_ids,
-            'attention_mask': [1]*(len(token_ids)),
-        }
+    return tokenid2word_mapping, token2id, noun_chunks
 
-    else:
-        outputs = {
-            'input_ids': [tokenizer.cls_token_id] + token_ids +
-                         [tokenizer.sep_token_id],
-            'attention_mask': [1]*(len(token_ids)+2),
-            'token_type_ids': [0]*(len(token_ids)+2)
-        }
-
-    if return_pytorch:
-        for key, value in outputs.items():
-            outputs[key] = torch.from_numpy(
-                np.array(value)).long().unsqueeze(0)
-
-    return outputs, tokenid2word_mapping, token2id, noun_chunks
 
 
 def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):

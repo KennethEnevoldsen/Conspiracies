@@ -24,7 +24,7 @@ def aggregate_attentions_heads(
     return aggregate_fun(attention, dim=head_dim)
 
 
-def filter_relation_sets(params, spacy_nlp):
+def filter_relation_sets(params, spacy_nlp, threshold):
     triplet, id2token = params
 
     triplet_idx = triplet[0]
@@ -34,12 +34,12 @@ def filter_relation_sets(params, spacy_nlp):
         head = id2token[head]
         tail = id2token[tail]
 
-
         # what exactly does this part do?
         relations = [spacy_nlp(id2token[idx])[
             0].lemma_ for idx in triplet_idx[1:-1] if idx in id2token]
 
         if (len(relations) > 0 and
+                confidence > threshold and
                 check_relations_validity(relations) and
                 head.lower() not in invalid_relations_set and
                 (tail.lower() not in invalid_relations_set)):
@@ -57,12 +57,16 @@ def check_relations_validity(relations):
     return True
 
 
-def parse_sentence(spacy_dict, attention, tokenizer, spacy_nlp):
+def parse_sentence(spacy_dict: dict,
+                   attention,
+                   tokenizer,
+                   spacy_nlp,
+                   threshold: float):
     """
     one or all sentence?
     """
 
-    inputs, tokenid2word, token2id, noun_chunks = \
+    tokenid2word, token2id, noun_chunks = \
         create_mapping(spacy_dict, tokenizer=tokenizer)
 
     agg_attn = aggregate_attentions_heads(attention, head_dim=0)
@@ -101,7 +105,8 @@ def parse_sentence(spacy_dict, attention, tokenizer, spacy_nlp):
     # filter
     triplet_text = []
 
-    filter_relation_sets_ = partial(filter_relation_sets, spacy_nlp=spacy_nlp)
+    filter_relation_sets_ = partial(
+        filter_relation_sets, spacy_nlp=spacy_nlp, threshold=threshold)
 
     for triplet in map(filter_relation_sets_, all_relation_pairs):
         if len(triplet) > 0:

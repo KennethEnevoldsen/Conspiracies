@@ -162,6 +162,11 @@ if __name__ == '__main__':
     attention_layer = -1
     spacy_n_process = 1
     device = None
+    model_name = "Maltehb/-l-ctra-danish-electra-small-cased"
+    threshold = 0.005
+    # confidence threshold is 0.003 in the public example and 0.005 in the
+    # paper
+    save_results = False
 
     if device is None:
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -186,10 +191,8 @@ if __name__ == '__main__':
     sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size_)
 
     # load tokenizers and transformer models
-    tokenizer = transformers.AutoTokenizer.from_pretrained(
-        "Maltehb/-l-ctra-danish-electra-small-cased")
-    model = transformers.ElectraModel.from_pretrained(
-        "Maltehb/-l-ctra-danish-electra-small-cased")
+    tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
+    model = transformers.ElectraModel.from_pretrained(model_name)
 
     sent_ds, forward_batches = forward_pass(sent_ds, model)
     attentions = unwrap_attention_from_batch(forward_batches)
@@ -198,10 +201,13 @@ if __name__ == '__main__':
     results = []
     for spacy_dict, attn in zip(sent_ds, attentions):
         res = parse_sentence(spacy_dict=spacy_dict, attention=attn,
-                             tokenizer=tokenizer, spacy_nlp=nlp)
-        print("\n---", res)
+                             tokenizer=tokenizer, spacy_nlp=nlp,
+                             threshold=threshold)
         results.append(res)
 
-    save_path = os.path.join("results", create_run_name(suffix=".ndjson"))
-    with open(save_path, "w") as f:
-        ndjson.dump(results, f)
+    if save_results:
+        params = f"_threshold{threshold}"
+        save_path = os.path.join("results",
+                                 create_run_name(suffix=params+".ndjson"))
+        with open(save_path, "w") as f:
+            ndjson.dump(results, f)
