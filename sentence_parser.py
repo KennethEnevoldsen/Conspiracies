@@ -9,8 +9,8 @@ from constants import invalid_relations_set
 
 
 def bfs(args):
-    s, end, graph, max_size, black_list_relation, id2token = args
-    return BFS(s, end, graph, max_size, black_list_relation, id2token)
+    s, end, graph, max_size, black_list_relation = args
+    return BFS(s, end, graph, max_size, black_list_relation)
 
 
 def aggregate_attentions_heads(
@@ -25,21 +25,24 @@ def aggregate_attentions_heads(
 
 
 def filter_relation_sets(params, spacy_nlp, threshold):
-    triplet, id2token = params
+    triplet, id2token, id2tags = params
 
     triplet_idx = triplet[0]
     confidence = triplet[1]
     head, tail = triplet_idx[0], triplet_idx[-1]
+
+    assert head in id2token and (tail in id2token), \
+        "head or tail not in id2token something must have gone wrong"
+
     if head in id2token and tail in id2token:  # should never not be the case
         head = id2token[head]
         tail = id2token[tail]
 
-        # what exactly does this part do?
-        relations = [spacy_nlp(id2token[idx])[
-            0].lemma_ for idx in triplet_idx[1:-1] if idx in id2token]
+        # lemmatize relation set
+        relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]]
 
         if (len(relations) > 0 and
-                confidence > threshold and
+                confidence >= threshold and
                 check_relations_validity(relations) and
                 head.lower() not in invalid_relations_set and
                 (tail.lower() not in invalid_relations_set)):
@@ -66,7 +69,10 @@ def parse_sentence(spacy_dict: dict,
     one or all sentence?
     """
 
-    tokenid2word, token2id, noun_chunks = \
+    if len(spacy_dict["spacy_noun_chunk_token_span"]) == 0:
+        return []
+
+    tokenid2wordpiece, token2id, id2tags, noun_chunks = \
         create_mapping(spacy_dict, tokenizer=tokenizer)
 
     agg_attn = aggregate_attentions_heads(attention, head_dim=0)
@@ -76,13 +82,14 @@ def parse_sentence(spacy_dict: dict,
     agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
     agg_attn = agg_attn[1:-1, 1:-1]  # remove eos and bos tokens
 
-    assert agg_attn.shape[0] == len(
-        tokenid2word), "attention matrix and tokenid2word does not have the same length"
-    merged_attn = merge_token_attention(agg_attn, tokenid2word)
-    # make graph
+    assert agg_attn.shape[0] == len(tokenid2wordpiece), \
+        "attention matrix and tokenid2wordpiece does not have the same length"
+
+    merged_attn = merge_token_attention(agg_attn, tokenid2wordpiece)
+
     attn_graph = build_graph(merged_attn)
 
-    # head tail pair
+    # create head tail pair
     tail_head_pairs = []
     for head in noun_chunks:
         for tail in noun_chunks:
@@ -92,15 +99,14 @@ def parse_sentence(spacy_dict: dict,
     # beam search
     black_list_relation = set([token2id[n] for n in noun_chunks])
 
-    all_relation_pairs = []
-    id2token = {value: key for key, value in token2id.items()}
-
     params = [(pair[0], pair[1], attn_graph, max(
-        tokenid2word), black_list_relation, id2token) for pair in tail_head_pairs]
+        tokenid2wordpiece), black_list_relation) for pair in tail_head_pairs]
 
+
+    all_relation_pairs = []
     for output in map(bfs, params):
         if len(output):
-            all_relation_pairs += [(o, id2token) for o in output]
+            all_relation_pairs += [(o, id2token, id2tags) for o in output]
 
     # filter
     triplet_text = []

@@ -40,6 +40,11 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
     create_mapping()
     """
     tokens = spacy_dict["spacy_token"]
+    lemmas = spacy_dict["spacy_lemma"]
+    pos = spacy_dict["spacy_pos"]
+    ner = spacy_dict["spacy_ner"]
+    dependency = spacy_dict["spacy_dep"]
+    zip_ = zip(tokens, lemmas, pos, ner, dependency)
 
     if len(spacy_dict["spacy_noun_chunk_token_span"]) == 0:
         start_chunk, end_chunk = {}, {}
@@ -51,20 +56,30 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
 
     sentence_mapping = []
     token2id = {}
+    id2tags = {}
     mode = 0  # 1 in chunk, 0 not in chunk
     chunk_id = 0
-    for idx, token in enumerate(tokens):
+    for idx, z in enumerate(zip_):
+        token, lemma, pos_, ner_, dep = z
         if idx in start_chunk:
             mode = 1
+            id_ = len(token2id)
+            
             sentence_mapping.append(noun_chunks[chunk_id])
-            token2id[sentence_mapping[-1]] = len(token2id)
+            token2id[sentence_mapping[-1]] = id_
+            id2tags[id_] = {"lemma": None,
+                            "pos": None, "ner": None, "dependency": None}
             chunk_id += 1
         elif idx in end_chunk:
             mode = 0
 
         if mode == 0:
+
+            id_ = len(token2id)
             sentence_mapping.append(token)
-            token2id[sentence_mapping[-1]] = len(token2id)
+            token2id[sentence_mapping[-1]] = id_
+            id2tags[id_] = {"lemma": lemma,
+                            "pos": pos_, "ner": ner_, "dependency": dep}
 
     token_ids = []
     tokenid2word_mapping = []
@@ -75,8 +90,7 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
         tokenid2word_mapping += [token2id[token]]*len(subtoken_ids)
         token_ids += subtoken_ids
 
-    return tokenid2word_mapping, token2id, noun_chunks
-
+    return tokenid2word_mapping, token2id, id2tags, noun_chunks
 
 
 def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
@@ -122,7 +136,7 @@ def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
     return new_matrix.T
 
 
-def BFS(s, end, graph, max_size=-1, black_list_relation=[], id2token=None):
+def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
     visited = [False] * (max(graph.keys())+100)
 
     # Create a queue for BFS

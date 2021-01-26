@@ -2,5 +2,3 @@
 *.pyc
 __pycache__/
 
-__pycache__/sentence_parser.cpython-38.pyc
-__pycache__/utils.cpython-38.pyc

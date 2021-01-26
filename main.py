@@ -14,6 +14,7 @@
 """
 import os
 import ndjson
+from collections import Counter
 
 import torch
 
@@ -26,10 +27,10 @@ from utils import create_run_name
 from sentence_parser import parse_sentence
 
 
-def input_to_dataset():
+def input_to_dataset(folder="data"):
     def __gen_from_folder():
-        for path in os.listdir("data"):
-            with open(os.path.join("data", path), "r") as f:
+        for path in os.listdir(folder):
+            with open(os.path.join(folder, path), "r") as f:
                 yield path, f.read()
     d = {"text": [], "filename": []}
     for fn, text in __gen_from_folder():
@@ -155,6 +156,35 @@ def unwrap_attention_from_batch(forward_batches, attention_layer=-1):
             yield attn[i]
 
 
+def relation_count_filter(results, n: int):
+    """
+    filter relations based on count. Removed all relations
+    with a count less than n
+    """
+    counter = {}
+    for sent_res, sent_id in results:
+        for r in sent_res:
+            key = (r["h"], r["r"], r["t"])
+            if key in counter:
+                counter[key]["count"] += 1
+                counter[key]["confidence"] += [r["c"]]
+                counter[key]["sentence_id"] += [sent_id]
+            else:
+                counter[key]["count"] = 1
+                counter[key]["confidence"] = [r["c"]]
+                counter[key]["sentence_id"] = [sent_id]
+
+    for k in counter.keys():
+        output = {}
+        if counter[k]["count"] < n:
+            continue
+        output = counter[k]
+        output["head"] = k[0]
+        output["relation"] = k[1]
+        output["tail"] = k[2]
+        yield output
+
+
 if __name__ == '__main__':
     batch_size = None
     write_file = False
@@ -164,6 +194,7 @@ if __name__ == '__main__':
     device = None
     model_name = "Maltehb/-l-ctra-danish-electra-small-cased"
     threshold = 0.005
+    min_count = 2
     # confidence threshold is 0.003 in the public example and 0.005 in the
     # paper
     save_results = False
@@ -176,6 +207,8 @@ if __name__ == '__main__':
 
     # load dataset using HF datasets
     ds = input_to_dataset()
+    # ds = datasets.Dataset.from_dict({"text": ["Jeg har lyst til at pande dig en, med denne pande",
+    #                                           "Dette er en sætning og i en sætning kan ord optræde flere gange"]})
 
     if batch_size is None:
         batch_size_ = len(ds)
@@ -199,11 +232,14 @@ if __name__ == '__main__':
 
     # extract KG
     results = []
-    for spacy_dict, attn in zip(sent_ds, attentions):
+    for sent_id, _zip in enumerate(zip(sent_ds, attentions)):
+        spacy_dict, attn = _zip
         res = parse_sentence(spacy_dict=spacy_dict, attention=attn,
                              tokenizer=tokenizer, spacy_nlp=nlp,
                              threshold=threshold)
-        results.append(res)
+        results.append((res, sent_id))
+
+    results = list(relation_count_filter(results))
 
     if save_results:
         params = f"_threshold{threshold}"
