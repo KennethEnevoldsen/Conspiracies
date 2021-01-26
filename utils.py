@@ -6,6 +6,22 @@ from copy import copy
 import numpy as np
 
 
+def is_a_range(L):
+    """
+    checks if a list is equal to a range
+
+    Examples:
+    >>> is_a_range([2, 3, 4])
+    True
+    >>> is_a_range([2, 4, 5])
+    False
+    """
+    for i, j in zip(range(L[0], L[-1]), L):
+        if i != j:
+            return False
+    return True
+
+
 def build_graph(matrix):
     """
     build a graph of top diagonal with format:

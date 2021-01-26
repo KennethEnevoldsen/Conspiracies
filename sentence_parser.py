@@ -5,6 +5,7 @@ from functools import partial
 import torch
 
 from utils import create_mapping, build_graph, merge_token_attention, BFS
+from utils import is_a_range as is_continous
 from constants import invalid_relations_set
 
 
@@ -24,11 +25,21 @@ def aggregate_attentions_heads(
     return aggregate_fun(attention, dim=head_dim)
 
 
-def filter_relation_sets(params, threshold):
-    triplet, id2token, id2tags = params
+def filter_invalid_triplets(relation_set, id2token, id2tags, threshold):
+    """
+    relation_set (tuple): consist of a triplet and a confidence.
+    The triplet (head, tail, relation), in the form of a path through it
+    attention matrix
 
-    triplet_idx = triplet[0]
-    confidence = triplet[1]
+
+    1) confidence should be above threshold
+    2) length of relation should be > 0
+    3) relation should be an cont. sequence (to be implemented yet)
+    3)
+    """
+
+    triplet_idx = relation_set[0]
+    confidence = relation_set[1]
     head, tail = triplet_idx[0], triplet_idx[-1]
 
     assert head in id2token and (tail in id2token), \
@@ -37,18 +48,22 @@ def filter_relation_sets(params, threshold):
     head = id2token[head]
     tail = id2token[tail]
 
-    # lemmatize relation set
-    for idx in triplet_idx[1:-1]:
-        if idx not in id2tags:
-            raise Exception("thsi should not be the case")
+    # lemmatize relations
     relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]]
 
-    if (len(relations) > 0 and
-            confidence >= threshold and
+    if not len(relation) > 1:
+        raise Exception("an example relation bigger than 1")  # should happen
+    if not is_continous(triplet_idx[1:-1]]):
+        raise Exception("an example of a non cont. relation")
+
+    if (confidence >= threshold and
+            len(relations) > 0 and
+            is_continous(triplet_idx[1:-1]]) and
             check_relations_validity(relations) and
             head.lower() not in invalid_relations_set and
             (tail.lower() not in invalid_relations_set)):
-        return {'h': head, 't': tail, 'r': relations, 'c': confidence}
+        return {'head': head, 'tail': tail, 'relation': relations,
+                'confidence': confidence}
     else:
         raise Exception("Head or tail not in id2token.\
              Please check if a bug is present")
@@ -85,7 +100,7 @@ def parse_sentence(
 
     print(noun_chunks)
 
-    tokenid2wordpiece, token2id, id2tags, noun_chunks = \
+    tokenid2wordpiece, token2id, id2tags, noun_chunks=
         create_mapping(tokens,
                        noun_chunks,
                        noun_chunk_token_span,
@@ -95,47 +110,49 @@ def parse_sentence(
                        dependencies,
                        tokenizer)
 
-    agg_attn = aggregate_attentions_heads(attention, head_dim=0)
+    agg_attn=aggregate_attentions_heads(attention, head_dim = 0)
 
     # fix size of attention matrix (remove padding)
-    agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]  # remove padding
-    agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
-    agg_attn = agg_attn[1:-1, 1:-1]  # remove eos and bos tokens
+    agg_attn = agg_attn[agg_attn.sum(dim = 0) != 0, :]  # remove padding
+    agg_attn = agg_attn[:, agg_attn.sum(dim = 0) != 0]
+    agg_attn=agg_attn[1: -1, 1: -1]  # remove eos and bos tokens
 
     assert agg_attn.shape[0] == len(tokenid2wordpiece), \
         "attention matrix and tokenid2wordpiece does not have the same length"
 
-    merged_attn = merge_token_attention(agg_attn, tokenid2wordpiece)
+    merged_attn=merge_token_attention(agg_attn, tokenid2wordpiece)
 
-    attn_graph = build_graph(merged_attn)
+    attn_graph=build_graph(merged_attn)
 
     # create head tail pair
-    tail_head_pairs = []
+    tail_head_pairs=[]
     for head in noun_chunks:
         for tail in noun_chunks:
             if head != tail:
                 tail_head_pairs.append((token2id[head], token2id[tail]))
 
     # beam search
-    black_list_relation = set([token2id[n] for n in noun_chunks])
+    black_list_relation=set([token2id[n] for n in noun_chunks])
 
-    params = [(pair[0], pair[1], attn_graph, max(
+    params=[(pair[0], pair[1], attn_graph, max(
         tokenid2wordpiece), black_list_relation) for pair in tail_head_pairs]
 
-    all_relation_pairs = []
-    id2token = {value: key for key, value in token2id.items()}
+    all_relation_pairs=[]
+    id2token={value: key for key, value in token2id.items()}
 
     for output in map(bfs, params):
         if len(output):
-            all_relation_pairs += [(o, id2token, id2tags) for o in output]
+            all_relation_pairs.append(output)
 
     # filter
-    triplet_text = []
+    triplets=[]
 
-    filter_relation_sets_ = partial(
-        filter_relation_sets, threshold=threshold)
+    filter_triplets=partial(filter_invalid_triplets,
+                              id2token= id2token,
+                              id2tags= id2tags,
+                              threshold = threshold)
 
-    for triplet in map(filter_relation_sets_, all_relation_pairs):
-        if len(triplet) > 0:
-            triplet_text.append(triplet)
-    return triplet_text
+    for triplet in map(filter_triplets, all_relation_pairs):
+        if len(triplet):
+            triplets.append(triplet)
+    return triplets

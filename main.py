@@ -171,19 +171,24 @@ def relation_count_filter(results, n: int):
     filter relations based on count. Removed all relations
     with a count less than n
     """
-    raise NotImplementedError("not finalized")
     counter = {}
-    for sent_res, sent_id in results:
-        for r in sent_res:
-            key = (r["h"], r["r"], r["t"])
+    for result in results:
+        triplets = result["triplets"]
+        sent_id = result["sentence_number"]
+        document_id = result["document_id"]
+
+        for triplet in triplets:
+            key = (triplet["head"], triplet["relation"], triplet["tail"])
             if key in counter:
                 counter[key]["count"] += 1
-                counter[key]["confidence"] += [r["c"]]
-                counter[key]["sentence_id"] += [sent_id]
+                counter[key]["confidence"] += [triplet["confidence"]]
+                counter[key]["sentence_number"] += [sent_id]
+                counter[key]["document_id"] += [document_id]
             else:
                 counter[key]["count"] = 1
-                counter[key]["confidence"] = [r["c"]]
-                counter[key]["sentence_id"] = [sent_id]
+                counter[key]["confidence"] = [triplet["confidence"]]
+                counter[key]["sentence_number"] = [sent_id]
+                counter[key]["document_id"] = [document_id]
 
     for k in counter.keys():
         output = {}
@@ -232,9 +237,6 @@ if __name__ == '__main__':
     # turn file to sentences
     sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size_)
 
-    for d in sent_ds:
-        print(d["text"], "___", d["spacy_noun_chunk"])
-
     # load tokenizers and transformer models
     tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
     model = transformers.ElectraModel.from_pretrained(model_name)
@@ -242,9 +244,9 @@ if __name__ == '__main__':
     sent_ds, forward_batches = forward_pass(sent_ds, model)
     attentions = unwrap_attention_from_batch(forward_batches)
 
-
     # extract KG
     results = []
+    sent_n = 0
     for spacy_dict, attn in zip(sent_ds, attentions):
         triplets = parse_sentence_wrapper(spacy_dict=spacy_dict,
                                           attention=attn,
@@ -252,7 +254,7 @@ if __name__ == '__main__':
                                           threshold=threshold)
 
         results.append({"triplets": triplets,
-                        "sent_id": spacy_dict["sent_id"],
+                        "sentence_number": sent_n,
                         "document_id": spacy_dict["document_id"]})
 
     results = list(relation_count_filter(results))
