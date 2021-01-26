@@ -24,7 +24,7 @@ def aggregate_attentions_heads(
     return aggregate_fun(attention, dim=head_dim)
 
 
-def filter_relation_sets(params, spacy_nlp, threshold):
+def filter_relation_sets(params, threshold):
     triplet, id2token, id2tags = params
 
     triplet_idx = triplet[0]
@@ -34,19 +34,21 @@ def filter_relation_sets(params, spacy_nlp, threshold):
     assert head in id2token and (tail in id2token), \
         "head or tail not in id2token something must have gone wrong"
 
-    if head in id2token and tail in id2token:  # should never not be the case
-        head = id2token[head]
-        tail = id2token[tail]
+    head = id2token[head]
+    tail = id2token[tail]
 
-        # lemmatize relation set
-        relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]]
+    # lemmatize relation set
+    for idx in triplet_idx[1:-1]:
+        if idx not in id2tags:
+            raise Exception("thsi should not be the case")
+    relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]]
 
-        if (len(relations) > 0 and
-                confidence >= threshold and
-                check_relations_validity(relations) and
-                head.lower() not in invalid_relations_set and
-                (tail.lower() not in invalid_relations_set)):
-            return {'h': head, 't': tail, 'r': relations, 'c': confidence}
+    if (len(relations) > 0 and
+            confidence >= threshold and
+            check_relations_validity(relations) and
+            head.lower() not in invalid_relations_set and
+            (tail.lower() not in invalid_relations_set)):
+        return {'h': head, 't': tail, 'r': relations, 'c': confidence}
     else:
         raise Exception("Head or tail not in id2token.\
              Please check if a bug is present")
@@ -60,20 +62,38 @@ def check_relations_validity(relations):
     return True
 
 
-def parse_sentence(spacy_dict: dict,
-                   attention,
-                   tokenizer,
-                   spacy_nlp,
-                   threshold: float):
-    """
-    one or all sentence?
-    """
+def parse_sentence(
+        tokens: list,
+        noun_chunks: list,
+        noun_chunk_token_span: list,
+        lemmas: list,
+        pos: list,
+        ner: list,
+        dependencies: list,
+        attention,
+        tokenizer,
+        threshold: float
+):
 
-    if len(spacy_dict["spacy_noun_chunk_token_span"]) == 0:
+    if len({len(tokens), len(lemmas), len(dependencies)}) > 1:
+        raise ValueError(f"tokens, lemmas, ner, pos, and dependencies should have the same\
+            length it is currently {len(tokens)}, {len(lemmas)}, {len(ner)}, \
+                 {len(pos)}, and {len(dependencies)}, respectively")
+
+    if len(noun_chunks) == 0:
         return []
 
+    print(noun_chunks)
+
     tokenid2wordpiece, token2id, id2tags, noun_chunks = \
-        create_mapping(spacy_dict, tokenizer=tokenizer)
+        create_mapping(tokens,
+                       noun_chunks,
+                       noun_chunk_token_span,
+                       lemmas,
+                       pos,
+                       ner,
+                       dependencies,
+                       tokenizer)
 
     agg_attn = aggregate_attentions_heads(attention, head_dim=0)
 
@@ -102,8 +122,9 @@ def parse_sentence(spacy_dict: dict,
     params = [(pair[0], pair[1], attn_graph, max(
         tokenid2wordpiece), black_list_relation) for pair in tail_head_pairs]
 
-
     all_relation_pairs = []
+    id2token = {value: key for key, value in token2id.items()}
+
     for output in map(bfs, params):
         if len(output):
             all_relation_pairs += [(o, id2token, id2tags) for o in output]
@@ -112,7 +133,7 @@ def parse_sentence(spacy_dict: dict,
     triplet_text = []
 
     filter_relation_sets_ = partial(
-        filter_relation_sets, spacy_nlp=spacy_nlp, threshold=threshold)
+        filter_relation_sets, threshold=threshold)
 
     for triplet in map(filter_relation_sets_, all_relation_pairs):
         if len(triplet) > 0:

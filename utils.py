@@ -5,8 +5,6 @@ from copy import copy
 
 import numpy as np
 
-import transformers
-
 
 def build_graph(matrix):
     """
@@ -30,29 +28,27 @@ def build_graph(matrix):
     return graph
 
 
-def create_mapping(spacy_dict: dict, return_pytorch=False,
-                   tokenizer=transformers.AutoTokenizer.from_pretrained(
-                       "Maltehb/-l-ctra-danish-electra-small-cased")):
+def create_mapping(
+        tokens,
+        noun_chunks,
+        noun_chunk_token_span,
+        lemmas,
+        pos,
+        ner,
+        dependencies,
+        tokenizer):
     """
+    tokenizer: a huggingface tokenizer
     Creates mapping from token to id, token to tokenizer id
 
     Example:
     create_mapping()
     """
-    tokens = spacy_dict["spacy_token"]
-    lemmas = spacy_dict["spacy_lemma"]
-    pos = spacy_dict["spacy_pos"]
-    ner = spacy_dict["spacy_ner"]
-    dependency = spacy_dict["spacy_dep"]
-    zip_ = zip(tokens, lemmas, pos, ner, dependency)
 
-    if len(spacy_dict["spacy_noun_chunk_token_span"]) == 0:
-        start_chunk, end_chunk = {}, {}
-    else:
-        start_chunk, end_chunk = zip(
-            *spacy_dict["spacy_noun_chunk_token_span"])
-        start_chunk, end_chunk = set(start_chunk), set(end_chunk)
-    noun_chunks = spacy_dict["spacy_noun_chunk"]
+    zip_ = zip(tokens, lemmas, pos, ner, dependencies)
+
+    start_chunk, end_chunk = zip(*noun_chunk_token_span)
+    start_chunk, end_chunk = set(start_chunk), set(end_chunk)
 
     sentence_mapping = []
     token2id = {}
@@ -64,22 +60,22 @@ def create_mapping(spacy_dict: dict, return_pytorch=False,
         if idx in start_chunk:
             mode = 1
             id_ = len(token2id)
-            
+
             sentence_mapping.append(noun_chunks[chunk_id])
             token2id[sentence_mapping[-1]] = id_
-            id2tags[id_] = {"lemma": None,
-                            "pos": None, "ner": None, "dependency": None}
             chunk_id += 1
         elif idx in end_chunk:
             mode = 0
 
         if mode == 0:
+            sentence_mapping.append(token)
 
             id_ = len(token2id)
-            sentence_mapping.append(token)
             token2id[sentence_mapping[-1]] = id_
             id2tags[id_] = {"lemma": lemma,
-                            "pos": pos_, "ner": ner_, "dependency": dep}
+                            "pos": pos_,
+                            "ner": ner_,
+                            "dependency": dep}
 
     token_ids = []
     tokenid2word_mapping = []
@@ -181,7 +177,6 @@ def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
 
         candidate_facts.append((path, cum_conf))
 
-    candidate_facts = sorted(candidate_facts, key=lambda x: x[1], reverse=True)
     return candidate_facts
 
 
@@ -192,7 +187,7 @@ def create_run_name(custom_name: str = None,
                     suffix: str = ""):
     """
     custom_name (str|None): custom name of the run, typically with a date
-    added if it is none it will use the slug 
+    added if it is none it will use the slug
 
     Example:
     >>> run_name = create_run_name(date=True, date_format="%Y-%m-%d", \

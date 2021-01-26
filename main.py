@@ -1,20 +1,7 @@
 """
-- [x] load dataset (and/or create)
-- [x] apply spacy pipeline
-- [x] apply forward pass using DaBERT (save embedding + attention)
-- [ ] apply some kind of coref (not yet)
-- [ ] extract knowledge graph
-    - [x] create mapping betweeen bert and spacy
-    - [x] extract head tail pair
-    - [x] extract candidate facts
-    - [ ] filter candidate facts
-- [ ] add an argparse
-- [ ] write dataset
-    - [ ] add relevant metadata (tokenizer, model, spacy model)
 """
 import os
 import ndjson
-from collections import Counter
 
 import torch
 
@@ -27,15 +14,38 @@ from utils import create_run_name
 from sentence_parser import parse_sentence
 
 
+def parse_sentence_wrapper(
+        spacy_dict: dict,
+        attention,
+        tokenizer,
+        threshold: float):
+    print(spacy_dict["text"])
+
+    triplet = parse_sentence(
+        tokens=spacy_dict["spacy_token"],
+        lemmas=spacy_dict["spacy_lemma"],
+        ner=spacy_dict["spacy_ner"],
+        pos=spacy_dict["spacy_pos"],
+        dependencies=spacy_dict["spacy_dep"],
+        noun_chunk_token_span=spacy_dict["spacy_noun_chunk_token_span"],
+        noun_chunks=spacy_dict["spacy_noun_chunk"],
+        attention=attention,
+        tokenizer=tokenizer,
+        threshold=threshold
+
+    )
+    return triplet
+
+
 def input_to_dataset(folder="data"):
     def __gen_from_folder():
         for path in os.listdir(folder):
             with open(os.path.join(folder, path), "r") as f:
                 yield path, f.read()
-    d = {"text": [], "filename": []}
+    d = {"text": [], "document_id": []}
     for fn, text in __gen_from_folder():
         d["text"].append(text)
-        d["filename"].append(fn)
+        d["document_id"].append(fn)
 
     return datasets.Dataset.from_dict(d)
 
@@ -77,7 +87,7 @@ def doc_to_sent(batch):
             while True:
                 span = nc_span[idx]
                 if span[0] >= end_idx:
-                    end_nc = idx - 1
+                    end_nc = idx
                     break
                 idx += 1
 
@@ -89,7 +99,7 @@ def doc_to_sent(batch):
             nc = batch["spacy_noun_chunk"][doc][start_nc: end_nc]
             d["spacy_noun_chunk_token_span"].append(nc_tok_span)
             d["spacy_noun_chunk"].append(nc)
-            start_nc = end_nc + 1
+            start_nc = end_nc
 
             for k in d.keys():
                 if k.startswith("spacy_noun_chunk"):
@@ -161,6 +171,7 @@ def relation_count_filter(results, n: int):
     filter relations based on count. Removed all relations
     with a count less than n
     """
+    raise NotImplementedError("not finalized")
     counter = {}
     for sent_res, sent_id in results:
         for r in sent_res:
@@ -207,8 +218,6 @@ if __name__ == '__main__':
 
     # load dataset using HF datasets
     ds = input_to_dataset()
-    # ds = datasets.Dataset.from_dict({"text": ["Jeg har lyst til at pande dig en, med denne pande",
-    #                                           "Dette er en sætning og i en sætning kan ord optræde flere gange"]})
 
     if batch_size is None:
         batch_size_ = len(ds)
@@ -223,6 +232,9 @@ if __name__ == '__main__':
     # turn file to sentences
     sent_ds = ds.map(doc_to_sent, batched=True, batch_size=batch_size_)
 
+    for d in sent_ds:
+        print(d["text"], "___", d["spacy_noun_chunk"])
+
     # load tokenizers and transformer models
     tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
     model = transformers.ElectraModel.from_pretrained(model_name)
@@ -230,14 +242,18 @@ if __name__ == '__main__':
     sent_ds, forward_batches = forward_pass(sent_ds, model)
     attentions = unwrap_attention_from_batch(forward_batches)
 
+
     # extract KG
     results = []
-    for sent_id, _zip in enumerate(zip(sent_ds, attentions)):
-        spacy_dict, attn = _zip
-        res = parse_sentence(spacy_dict=spacy_dict, attention=attn,
-                             tokenizer=tokenizer, spacy_nlp=nlp,
-                             threshold=threshold)
-        results.append((res, sent_id))
+    for spacy_dict, attn in zip(sent_ds, attentions):
+        triplets = parse_sentence_wrapper(spacy_dict=spacy_dict,
+                                          attention=attn,
+                                          tokenizer=tokenizer,
+                                          threshold=threshold)
+
+        results.append({"triplets": triplets,
+                        "sent_id": spacy_dict["sent_id"],
+                        "document_id": spacy_dict["document_id"]})
 
     results = list(relation_count_filter(results))
 
