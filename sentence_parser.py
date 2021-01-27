@@ -51,22 +51,19 @@ def filter_invalid_triplets(relation_set, id2token, id2tags, threshold):
     # lemmatize relations
     relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]]
 
-    if not len(relation) > 1:
-        raise Exception("an example relation bigger than 1")  # should happen
-    if not is_continous(triplet_idx[1:-1]]):
-        raise Exception("an example of a non cont. relation")
+    if len(relations) > 1:
+        print("an example relation bigger than 1")  # should happen
+    if not is_continous(triplet_idx[1:-1]):
+        print("an example of a non cont. relation")
 
     if (confidence >= threshold and
             len(relations) > 0 and
-            is_continous(triplet_idx[1:-1]]) and
+            is_continous(triplet_idx[1:-1]) and
             check_relations_validity(relations) and
             head.lower() not in invalid_relations_set and
             (tail.lower() not in invalid_relations_set)):
         return {'head': head, 'tail': tail, 'relation': relations,
                 'confidence': confidence}
-    else:
-        raise Exception("Head or tail not in id2token.\
-             Please check if a bug is present")
     return {}
 
 
@@ -89,6 +86,8 @@ def parse_sentence(
         tokenizer,
         threshold: float
 ):
+"""
+"""
 
     if len({len(tokens), len(lemmas), len(dependencies)}) > 1:
         raise ValueError(f"tokens, lemmas, ner, pos, and dependencies should have the same\
@@ -100,7 +99,7 @@ def parse_sentence(
 
     print(noun_chunks)
 
-    tokenid2wordpiece, token2id, id2tags, noun_chunks=
+    tokenid2wordpiece, token2id, id2tags, noun_chunks = \
         create_mapping(tokens,
                        noun_chunks,
                        noun_chunk_token_span,
@@ -110,47 +109,47 @@ def parse_sentence(
                        dependencies,
                        tokenizer)
 
-    agg_attn=aggregate_attentions_heads(attention, head_dim = 0)
+    agg_attn = aggregate_attentions_heads(attention, head_dim=0)
 
     # fix size of attention matrix (remove padding)
-    agg_attn = agg_attn[agg_attn.sum(dim = 0) != 0, :]  # remove padding
-    agg_attn = agg_attn[:, agg_attn.sum(dim = 0) != 0]
-    agg_attn=agg_attn[1: -1, 1: -1]  # remove eos and bos tokens
+    agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]  # remove padding
+    agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
+    agg_attn = agg_attn[1: -1, 1: -1]  # remove eos and bos tokens
 
     assert agg_attn.shape[0] == len(tokenid2wordpiece), \
         "attention matrix and tokenid2wordpiece does not have the same length"
 
-    merged_attn=merge_token_attention(agg_attn, tokenid2wordpiece)
+    merged_attn = merge_token_attention(agg_attn, tokenid2wordpiece)
 
-    attn_graph=build_graph(merged_attn)
+    attn_graph = build_graph(merged_attn)
 
     # create head tail pair
-    tail_head_pairs=[]
+    tail_head_pairs = []
     for head in noun_chunks:
         for tail in noun_chunks:
             if head != tail:
                 tail_head_pairs.append((token2id[head], token2id[tail]))
 
     # beam search
-    black_list_relation=set([token2id[n] for n in noun_chunks])
+    black_list_relation = set([token2id[n] for n in noun_chunks])
 
-    params=[(pair[0], pair[1], attn_graph, max(
+    params = [(pair[0], pair[1], attn_graph, max(
         tokenid2wordpiece), black_list_relation) for pair in tail_head_pairs]
 
-    all_relation_pairs=[]
-    id2token={value: key for key, value in token2id.items()}
+    all_relation_pairs = []
+    id2token = {value: key for key, value in token2id.items()}
 
     for output in map(bfs, params):
         if len(output):
-            all_relation_pairs.append(output)
+            all_relation_pairs += output
 
     # filter
-    triplets=[]
+    triplets = []
 
-    filter_triplets=partial(filter_invalid_triplets,
-                              id2token= id2token,
-                              id2tags= id2tags,
-                              threshold = threshold)
+    filter_triplets = partial(filter_invalid_triplets,
+                              id2token=id2token,
+                              id2tags=id2tags,
+                              threshold=threshold)
 
     for triplet in map(filter_triplets, all_relation_pairs):
         if len(triplet):

@@ -44,6 +44,43 @@ def build_graph(matrix):
     return graph
 
 
+def load_example():
+    """
+    laod an example for testing functions
+    """
+    import transformers
+    model_name = "Maltehb/-l-ctra-danish-electra-small-cased"
+    tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
+    tokens = ['På', 'de', 'seks', 'dage', ',', 'der', 'er', 'gået', 'siden',
+              'angrebet', 'mod', 'Kongressen', ',', 'er', 'der', 'blevet',
+              'rejst', 'over', '170', 'sager', 'mod', 'personer', ',', 'hvor',
+              'flere', 'end', '70', 'allerede', 'er', 'blevet', 'sigtet', '.']
+    noun_chunks = ['de seks dage', 'der', 'angrebet', 'Kongressen',
+                   '170 sager', 'personer']
+    noun_chunk_token_span = [[1, 4], [5, 6], [9, 10], [11, 12], [18, 20],
+                             [21, 22]]
+    lemmas = ['På', 'de', 'seks', 'dag', ',', 'der', 'være', 'gå', 'side',
+              'angribe', 'mod', 'Kongressen', ',', 'være', 'der', 'blive',
+              'rejse', 'over', '170', 'sag', 'mod', 'person', ',', 'hvor',
+              'flere', 'ende', '70', 'allerede', 'være', 'blive', 'sigte',
+              '.']
+    pos = ['ADP', 'DET', 'NUM', 'NOUN', 'PUNCT', 'PRON', 'AUX', 'VERB', 'ADP',
+           'NOUN', 'ADP', 'NOUN', 'PUNCT', 'AUX', 'ADV', 'AUX', 'VERB', 'ADP',
+           'NUM', 'NOUN', 'ADP', 'NOUN', 'PUNCT', 'ADV', 'ADJ', 'ADP', 'NUM',
+           'ADV', 'AUX', 'AUX', 'VERB', 'PUNCT']
+    ner = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+           '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+    dependencies = ['case', 'det', 'nummod', 'obl', 'punct', 'nsubj', 'aux',
+                    'acl:relcl', 'case', 'obl', 'case', 'nmod', 'punct', 'aux',
+                    'expl', 'aux', 'ROOT', 'case', 'nummod', 'obl', 'case',
+                    'nmod', 'punct', 'advmod', 'nsubj', 'case', 'nummod',
+                    'advmod', 'aux', 'aux', 'acl:relcl', 'punct']
+    return {"tokenizer": tokenizer, "pos": pos, "ner": ner, "tokens": tokens,
+            "dependencies": dependencies, "lemmas": lemmas,
+            "noun_chunks": noun_chunks,
+            "noun_chunk_token_span": noun_chunk_token_span}
+
+
 def create_mapping(
         tokens,
         noun_chunks,
@@ -55,14 +92,15 @@ def create_mapping(
         tokenizer):
     """
     tokenizer: a huggingface tokenizer
-    Creates mapping from token to id, token to tokenizer id
+    Creates mappings from token id to its tokens as its tags.
+    it also creates a mapping from a token to the tokenizer id
 
     Example:
-    create_mapping()
+    >>> mappings = create_mapping(**load_example())
     """
+    zip_ = list(zip(tokens, lemmas, pos, ner, dependencies))
 
-    zip_ = zip(tokens, lemmas, pos, ner, dependencies)
-
+    # start_chunk = {s: e for s, e in noun_chunk_token_span}
     start_chunk, end_chunk = zip(*noun_chunk_token_span)
     start_chunk, end_chunk = set(start_chunk), set(end_chunk)
 
@@ -71,6 +109,7 @@ def create_mapping(
     id2tags = {}
     mode = 0  # 1 in chunk, 0 not in chunk
     chunk_id = 0
+    while 
     for idx, z in enumerate(zip_):
         token, lemma, pos_, ner_, dep = z
         if idx in start_chunk:
@@ -93,14 +132,12 @@ def create_mapping(
                             "ner": ner_,
                             "dependency": dep}
 
-    token_ids = []
     tokenid2word_mapping = []
 
     for token in sentence_mapping:
         subtoken_ids = tokenizer(str(token),
                                  add_special_tokens=False)['input_ids']
         tokenid2word_mapping += [token2id[token]]*len(subtoken_ids)
-        token_ids += subtoken_ids
 
     return tokenid2word_mapping, token2id, id2tags, noun_chunks
 
