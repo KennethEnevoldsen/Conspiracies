@@ -67,7 +67,7 @@ def doc_to_sent(batch):
     """
     Split a preprocessed document into sentences
     """
-    d = {}
+    d = {"sent_id": []}
     for key in batch.keys():
         d[key] = []
 
@@ -115,6 +115,8 @@ def doc_to_sent(batch):
                     sent = batch[k][doc][start:end]
                     d[k].append(sent)
                 # add all metadata to all derived sentences
+                elif k == "sent_id":
+                    d[k].append(i)
                 else:
                     d[k].append(batch[k][doc])
             start_idx = end_idx
@@ -246,7 +248,6 @@ if __name__ == '__main__':
 
     # extract KG
     results = []
-    sent_n = 0
     for spacy_dict, attn in zip(sent_ds, attentions):
         triplets = parse_sentence_wrapper(spacy_dict=spacy_dict,
                                           attention=attn,
@@ -254,7 +255,7 @@ if __name__ == '__main__':
                                           threshold=threshold)
 
         results.append({"triplets": triplets,
-                        "sentence_number": sent_n,
+                        "sentence_number": spacy_dict["sent_id"],
                         "document_id": spacy_dict["document_id"]})
 
     results = list(relation_count_filter(results))

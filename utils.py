@@ -44,11 +44,13 @@ def build_graph(matrix):
     return graph
 
 
-def load_example():
+def load_example(attention=False):
     """
     laod an example for testing functions
     """
     import transformers
+    import numpy as np
+    import torch
     model_name = "Maltehb/-l-ctra-danish-electra-small-cased"
     tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
     tokens = ['På', 'de', 'seks', 'dage', ',', 'der', 'er', 'gået', 'siden',
@@ -75,10 +77,18 @@ def load_example():
                     'expl', 'aux', 'ROOT', 'case', 'nummod', 'obl', 'case',
                     'nmod', 'punct', 'advmod', 'nsubj', 'case', 'nummod',
                     'advmod', 'aux', 'aux', 'acl:relcl', 'punct']
-    return {"tokenizer": tokenizer, "pos": pos, "ner": ner, "tokens": tokens,
-            "dependencies": dependencies, "lemmas": lemmas,
-            "noun_chunks": noun_chunks,
-            "noun_chunk_token_span": noun_chunk_token_span}
+    example = {"tokenizer": tokenizer, "pos": pos, "ner": ner,
+               "tokens": tokens,
+               "dependencies": dependencies,
+               "lemmas": lemmas,
+               "noun_chunks": noun_chunks,
+               "noun_chunk_token_span": noun_chunk_token_span}
+    if attention:
+        if attention is True:
+            attention = np.load("example_attn.npy")
+            attention = torch.Tensor(attention)
+        example["attention"] = attention
+    return example
 
 
 def create_mapping(
@@ -96,50 +106,64 @@ def create_mapping(
     it also creates a mapping from a token to the tokenizer id
 
     Example:
-    >>> mappings = create_mapping(**load_example())
+    >>> mappings = create_mapping(**load_example(no_attention=True))
     """
-    zip_ = list(zip(tokens, lemmas, pos, ner, dependencies))
 
-    # start_chunk = {s: e for s, e in noun_chunk_token_span}
-    start_chunk, end_chunk = zip(*noun_chunk_token_span)
-    start_chunk, end_chunk = set(start_chunk), set(end_chunk)
+    start_chunk = {s: e for s, e in noun_chunk_token_span}
 
     sentence_mapping = []
     token2id = {}
     id2tags = {}
-    mode = 0  # 1 in chunk, 0 not in chunk
-    chunk_id = 0
-    while 
-    for idx, z in enumerate(zip_):
-        token, lemma, pos_, ner_, dep = z
-        if idx in start_chunk:
-            mode = 1
-            id_ = len(token2id)
 
+    i = 0
+    chunk_id = 0
+    while i < len(tokens):
+        id_ = len(token2id)
+        if i in start_chunk:
             sentence_mapping.append(noun_chunks[chunk_id])
             token2id[sentence_mapping[-1]] = id_
             chunk_id += 1
-        elif idx in end_chunk:
-            mode = 0
-
-        if mode == 0:
-            sentence_mapping.append(token)
-
-            id_ = len(token2id)
+            end_chunk = start_chunk[i]
+            id2tags[id_] = {"lemma": lemmas[i:end_chunk],
+                            "pos": pos[i:end_chunk],
+                            "ner": ner[i:end_chunk],
+                            "dependency": dependencies[i:end_chunk]}
+            i = end_chunk
+        else:  # if not in chunk
+            sentence_mapping.append(tokens[i])
             token2id[sentence_mapping[-1]] = id_
-            id2tags[id_] = {"lemma": lemma,
-                            "pos": pos_,
-                            "ner": ner_,
-                            "dependency": dep}
+            id2tags[id_] = {"lemma": lemmas[i],
+                            "pos": pos[i],
+                            "ner": ner[i],
+                            "dependency": dependencies[i]}
+            i += 1
 
-    tokenid2word_mapping = []
+    wordpiece2token = create_wordpiece_token_mapping(
+        sentence_mapping, token2id, tokenizer)
 
-    for token in sentence_mapping:
-        subtoken_ids = tokenizer(str(token),
+    return wordpiece2token, token2id, id2tags, noun_chunks
+
+
+def create_wordpiece_token_mapping(tokens: list, token2id: dict, tokenizer):
+    """
+    tokens: a list of tokens to map to tokenizer
+    token2id: a mapping between token and its id
+    tokenizer: a huggingface tokenizer
+
+    create a mapping from wordpieces to tokens id in the form of a list
+    e.g.
+    [0, 1, 1, 1, 2]
+    indicate that there are three tokens (0, 1, 2) and token 1 consist of three
+    wordpieces
+    note: this only works under the assumption that the word pieces
+    are trained using similar tokens. (e.g. split by whitespace)
+    """
+    wordpiece2token = []
+    for token in tokens:
+        subtoken_ids = tokenizer(token,
                                  add_special_tokens=False)['input_ids']
-        tokenid2word_mapping += [token2id[token]]*len(subtoken_ids)
-
-    return tokenid2word_mapping, token2id, id2tags, noun_chunks
+        wordpiece2token += [token2id[token]]*len(subtoken_ids)
+    return wordpiece2token
 
 
 def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):

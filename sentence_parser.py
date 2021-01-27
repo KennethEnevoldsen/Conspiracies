@@ -75,19 +75,22 @@ def check_relations_validity(relations):
 
 
 def parse_sentence(
-        tokens: list,
-        noun_chunks: list,
-        noun_chunk_token_span: list,
-        lemmas: list,
-        pos: list,
-        ner: list,
-        dependencies: list,
-        attention,
-        tokenizer,
-        threshold: float
+    tokens: list,
+    noun_chunks: list,
+    noun_chunk_token_span: list,
+    lemmas: list,
+    pos: list,
+    ner: list,
+    dependencies: list,
+    attention,
+    tokenizer,
+    threshold: float
 ):
-"""
-"""
+    """
+    Example:
+    >>> from utils import load_example
+    >>> parse_sentence(**load_example(attention=True), threshold=0.005)
+    """
 
     if len({len(tokens), len(lemmas), len(dependencies)}) > 1:
         raise ValueError(f"tokens, lemmas, ner, pos, and dependencies should have the same\
@@ -99,7 +102,7 @@ def parse_sentence(
 
     print(noun_chunks)
 
-    tokenid2wordpiece, token2id, id2tags, noun_chunks = \
+    wordpiece2token, token2id, id2tags, noun_chunks = \
         create_mapping(tokens,
                        noun_chunks,
                        noun_chunk_token_span,
@@ -116,10 +119,10 @@ def parse_sentence(
     agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
     agg_attn = agg_attn[1: -1, 1: -1]  # remove eos and bos tokens
 
-    assert agg_attn.shape[0] == len(tokenid2wordpiece), \
-        "attention matrix and tokenid2wordpiece does not have the same length"
+    assert agg_attn.shape[0] == len(wordpiece2token), \
+        "attention matrix and wordpiece2token does not have the same length"
 
-    merged_attn = merge_token_attention(agg_attn, tokenid2wordpiece)
+    merged_attn = merge_token_attention(agg_attn, wordpiece2token)
 
     attn_graph = build_graph(merged_attn)
 
