@@ -31,7 +31,9 @@ def parse_sentence_wrapper(
         noun_chunks=spacy_dict["spacy_noun_chunk"],
         attention=attention,
         tokenizer=tokenizer,
-        threshold=threshold
+        threshold=threshold,
+        invalid_pos=invalid_pos,
+        invalid_dep=invalid_dep
 
     )
     return triplet
@@ -213,6 +215,9 @@ if __name__ == '__main__':
     model_name = "Maltehb/-l-ctra-danish-electra-small-cased"
     threshold = 0.005
     min_count = 2
+    invalid_pos = {"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
+                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"},
+    invalid_dep = {}
     # confidence threshold is 0.003 in the public example and 0.005 in the
     # paper
     save_results = False

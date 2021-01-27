@@ -25,7 +25,28 @@ def aggregate_attentions_heads(
     return aggregate_fun(attention, dim=head_dim)
 
 
-def filter_invalid_triplets(relation_set, id2token, id2tags, threshold):
+def is_relation_valid(i: int, id2tags: dict,
+                      invalid_pos={"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
+                                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"},
+                      invalid_dep={}
+                      ):
+    """
+    i: id of the token
+    checks if a relation is valid
+    """
+    pos = id2tags[i]["pos"]
+    dep = id2tags[i]["dep"]
+
+    # if list then it is a noun chunk
+    if (isinstance(pos, list) or
+            (pos in invalid_pos) or
+            (dep in invalid_dep)):
+        return False
+    return True
+
+
+def filter_invalid_triplets(relation_set, id2token, id2tags, threshold,
+                            invalid_pos, invalid_dep):
     """
     relation_set (tuple): consist of a triplet and a confidence.
     The triplet (head, tail, relation), in the form of a path through it
@@ -35,7 +56,7 @@ def filter_invalid_triplets(relation_set, id2token, id2tags, threshold):
     1) confidence should be above threshold
     2) length of relation should be > 0
     3) relation should be an cont. sequence (to be implemented yet)
-    3)
+    3) ...
     """
 
     triplet_idx = relation_set[0]
@@ -48,13 +69,26 @@ def filter_invalid_triplets(relation_set, id2token, id2tags, threshold):
     head = id2token[head]
     tail = id2token[tail]
 
-    # lemmatize relations
-    relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]]
+    is_valid = partial(is_relation_valid, id2tags=id2tags,
+                       invalid_pos=invalid_pos, invalid_dep=invalid_dep)
+
+    # lemmatize relations and discard invalid relations
+    relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]
+                 if is_valid(idx)]
 
     if len(relations) > 1:
         print("an example relation bigger than 1")  # should happen
     if not is_continous(triplet_idx[1:-1]):
         print("an example of a non cont. relation")
+
+    # filter punct
+
+    # filter conjunctions
+    # pronouns
+    # units
+    # numbers
+    # adjectives
+    # adverbs
 
     if (confidence >= threshold and
             len(relations) > 0 and
@@ -67,13 +101,6 @@ def filter_invalid_triplets(relation_set, id2token, id2tags, threshold):
     return {}
 
 
-def check_relations_validity(relations):
-    for rel in relations:
-        if rel.lower() in invalid_relations_set or rel.isnumeric():
-            return False
-    return True
-
-
 def parse_sentence(
     tokens: list,
     noun_chunks: list,
@@ -84,7 +111,9 @@ def parse_sentence(
     dependencies: list,
     attention,
     tokenizer,
-    threshold: float
+    threshold: float,
+    invalid_pos: set,
+    invalid_dep: set
 ):
     """
     Example:
@@ -137,7 +166,7 @@ def parse_sentence(
     black_list_relation = set([token2id[n] for n in noun_chunks])
 
     params = [(pair[0], pair[1], attn_graph, max(
-        tokenid2wordpiece), black_list_relation) for pair in tail_head_pairs]
+        wordpiece2token), black_list_relation) for pair in tail_head_pairs]
 
     all_relation_pairs = []
     id2token = {value: key for key, value in token2id.items()}
@@ -152,7 +181,9 @@ def parse_sentence(
     filter_triplets = partial(filter_invalid_triplets,
                               id2token=id2token,
                               id2tags=id2tags,
-                              threshold=threshold)
+                              threshold=threshold,
+                              invalid_pos=invalid_pos,
+                              invalid_dep=invalid_dep)
 
     for triplet in map(filter_triplets, all_relation_pairs):
         if len(triplet):
