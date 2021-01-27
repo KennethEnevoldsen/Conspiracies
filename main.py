@@ -263,7 +263,7 @@ if __name__ == '__main__':
                         "sentence_number": spacy_dict["sent_id"],
                         "document_id": spacy_dict["document_id"]})
 
-    results = list(relation_count_filter(results))
+    results = list(relation_count_filter(results, n=min_count))
 
     if save_results:
         params = f"_threshold{threshold}"

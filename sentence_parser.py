@@ -2,27 +2,20 @@
 """
 
 from functools import partial
-import torch
 
-from utils import create_mapping, build_graph, merge_token_attention, BFS
+from utils import (
+    create_wordpiece_token_mapping,
+    build_graph,
+    merge_token_attention,
+    aggregate_attentions_heads,
+    BFS
+)
 from utils import is_a_range as is_continous
-from constants import invalid_relations_set
 
 
 def bfs(args):
     s, end, graph, max_size, black_list_relation = args
     return BFS(s, end, graph, max_size, black_list_relation)
-
-
-def aggregate_attentions_heads(
-        attention, aggregate_fun=torch.mean, head_dim=1):
-    """
-    attention: all layers of attention from the model
-    layer: the layer you wish to reduce by applying the aggregate_fun to
-    aggregate_fun: the aggregation function
-    head_dim: which dimension is the head dim which you want to aggregate over
-    """
-    return aggregate_fun(attention, dim=head_dim)
 
 
 def is_relation_valid(i: int, id2tags: dict,
@@ -35,7 +28,7 @@ def is_relation_valid(i: int, id2tags: dict,
     checks if a relation is valid
     """
     pos = id2tags[i]["pos"]
-    dep = id2tags[i]["dep"]
+    dep = id2tags[i]["dependency"]
 
     # if list then it is a noun chunk
     if (isinstance(pos, list) or
@@ -45,18 +38,71 @@ def is_relation_valid(i: int, id2tags: dict,
     return True
 
 
+def create_mapping(
+        tokens,
+        noun_chunks,
+        noun_chunk_token_span,
+        lemmas,
+        pos,
+        ner,
+        dependencies,
+        tokenizer):
+    """
+    tokenizer: a huggingface tokenizer
+    Creates mappings from token id to its tokens as its tags.
+    it also creates a mapping from a token to the tokenizer id
+
+    Example:
+    >>> mappings = create_mapping(**load_example(no_attention=True))
+    """
+
+    start_chunk = {s: e for s, e in noun_chunk_token_span}
+
+    sentence_mapping = []
+    token2id = {}
+    id2tags = {}
+
+    i = 0
+    chunk_id = 0
+    while i < len(tokens):
+        id_ = len(token2id)
+        if i in start_chunk:
+            sentence_mapping.append(noun_chunks[chunk_id])
+            token2id[sentence_mapping[-1]] = id_
+            chunk_id += 1
+            end_chunk = start_chunk[i]
+            id2tags[id_] = {"lemma": lemmas[i:end_chunk],
+                            "pos": pos[i:end_chunk],
+                            "ner": ner[i:end_chunk],
+                            "dependency": dependencies[i:end_chunk]}
+            i = end_chunk
+        else:  # if not in chunk
+            sentence_mapping.append(tokens[i])
+            token2id[sentence_mapping[-1]] = id_
+            id2tags[id_] = {"lemma": lemmas[i],
+                            "pos": pos[i],
+                            "ner": ner[i],
+                            "dependency": dependencies[i]}
+            i += 1
+
+    wordpiece2token = create_wordpiece_token_mapping(
+        sentence_mapping, token2id, tokenizer)
+
+    return wordpiece2token, token2id, id2tags, noun_chunks
+
+
 def filter_invalid_triplets(relation_set, id2token, id2tags, threshold,
                             invalid_pos, invalid_dep):
     """
     relation_set (tuple): consist of a triplet and a confidence.
     The triplet (head, tail, relation), in the form of a path through it
-    attention matrix
+    attention matrix from head through relation to tail
 
-
+    this functions filters the follows
+    0) removed invalid pos and dependency-tag based on id2tags
     1) confidence should be above threshold
     2) length of relation should be > 0
     3) relation should be an cont. sequence (to be implemented yet)
-    3) ...
     """
 
     triplet_idx = relation_set[0]
@@ -81,21 +127,9 @@ def filter_invalid_triplets(relation_set, id2token, id2tags, threshold,
     if not is_continous(triplet_idx[1:-1]):
         print("an example of a non cont. relation")
 
-    # filter punct
-
-    # filter conjunctions
-    # pronouns
-    # units
-    # numbers
-    # adjectives
-    # adverbs
-
     if (confidence >= threshold and
             len(relations) > 0 and
-            is_continous(triplet_idx[1:-1]) and
-            check_relations_validity(relations) and
-            head.lower() not in invalid_relations_set and
-            (tail.lower() not in invalid_relations_set)):
+            is_continous(triplet_idx[1:-1])):
         return {'head': head, 'tail': tail, 'relation': relations,
                 'confidence': confidence}
     return {}

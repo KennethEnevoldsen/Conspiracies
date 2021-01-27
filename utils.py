@@ -1,9 +1,11 @@
 """
+utility script for parsing sentence for belief graphs
 """
 from collections import defaultdict
 from copy import copy
 
 import numpy as np
+import torch
 
 
 def is_a_range(L):
@@ -77,71 +79,23 @@ def load_example(attention=False):
                     'expl', 'aux', 'ROOT', 'case', 'nummod', 'obl', 'case',
                     'nmod', 'punct', 'advmod', 'nsubj', 'case', 'nummod',
                     'advmod', 'aux', 'aux', 'acl:relcl', 'punct']
+    invalid_pos = {"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
+                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"},
+    invalid_dep = {}
     example = {"tokenizer": tokenizer, "pos": pos, "ner": ner,
                "tokens": tokens,
                "dependencies": dependencies,
                "lemmas": lemmas,
                "noun_chunks": noun_chunks,
-               "noun_chunk_token_span": noun_chunk_token_span}
+               "noun_chunk_token_span": noun_chunk_token_span,
+               "invalid_pos": invalid_pos,
+               "invalid_dep": invalid_dep}
     if attention:
         if attention is True:
             attention = np.load("example_attn.npy")
             attention = torch.Tensor(attention)
         example["attention"] = attention
     return example
-
-
-def create_mapping(
-        tokens,
-        noun_chunks,
-        noun_chunk_token_span,
-        lemmas,
-        pos,
-        ner,
-        dependencies,
-        tokenizer):
-    """
-    tokenizer: a huggingface tokenizer
-    Creates mappings from token id to its tokens as its tags.
-    it also creates a mapping from a token to the tokenizer id
-
-    Example:
-    >>> mappings = create_mapping(**load_example(no_attention=True))
-    """
-
-    start_chunk = {s: e for s, e in noun_chunk_token_span}
-
-    sentence_mapping = []
-    token2id = {}
-    id2tags = {}
-
-    i = 0
-    chunk_id = 0
-    while i < len(tokens):
-        id_ = len(token2id)
-        if i in start_chunk:
-            sentence_mapping.append(noun_chunks[chunk_id])
-            token2id[sentence_mapping[-1]] = id_
-            chunk_id += 1
-            end_chunk = start_chunk[i]
-            id2tags[id_] = {"lemma": lemmas[i:end_chunk],
-                            "pos": pos[i:end_chunk],
-                            "ner": ner[i:end_chunk],
-                            "dependency": dependencies[i:end_chunk]}
-            i = end_chunk
-        else:  # if not in chunk
-            sentence_mapping.append(tokens[i])
-            token2id[sentence_mapping[-1]] = id_
-            id2tags[id_] = {"lemma": lemmas[i],
-                            "pos": pos[i],
-                            "ner": ner[i],
-                            "dependency": dependencies[i]}
-            i += 1
-
-    wordpiece2token = create_wordpiece_token_mapping(
-        sentence_mapping, token2id, tokenizer)
-
-    return wordpiece2token, token2id, id2tags, noun_chunks
 
 
 def create_wordpiece_token_mapping(tokens: list, token2id: dict, tokenizer):
@@ -207,6 +161,17 @@ def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
     new_matrix = np.array(new_matrix)
 
     return new_matrix.T
+
+
+def aggregate_attentions_heads(
+        attention, aggregate_fun=torch.mean, head_dim=1):
+    """
+    attention: all layers of attention from the model
+    layer: the layer you wish to reduce by applying the aggregate_fun to
+    aggregate_fun: the aggregation function
+    head_dim: which dimension is the head dim which you want to aggregate over
+    """
+    return aggregate_fun(attention, dim=head_dim)
 
 
 def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
@@ -288,19 +253,3 @@ def create_run_name(custom_name: str = None,
 
     name += suffix
     return name
-
-# def dependency_relation_extractions(tokens, dependencies):
-#     """
-#     """
-#     valid_relations = {("nsubj", "verb", "dobj"),
-#                        ("nsubj", "verb", "(no obj)", "prep"),
-#                        }
-#     # constructed using loop
-#     sub_valid_relations = {("nsubj")}
-
-#     # for each relation
-
-#     if relation in valid_relations:
-#         yield relation
-#     elif relation not in sub_valid_relations:
-#         continue # take the next example
