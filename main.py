@@ -182,17 +182,18 @@ def relation_count_filter(results, n: int):
         document_id = result["document_id"]
 
         for triplet in triplets:
-            key = (triplet["head"], triplet["relation"], triplet["tail"])
+            key = (triplet["head"],
+                   "___".join(triplet["relation"]), triplet["tail"])
             if key in counter:
                 counter[key]["count"] += 1
                 counter[key]["confidence"] += [triplet["confidence"]]
                 counter[key]["sentence_number"] += [sent_id]
                 counter[key]["document_id"] += [document_id]
             else:
-                counter[key]["count"] = 1
-                counter[key]["confidence"] = [triplet["confidence"]]
-                counter[key]["sentence_number"] = [sent_id]
-                counter[key]["document_id"] = [document_id]
+                counter[key] = {"count": 1,
+                                "confidence": [triplet["confidence"]],
+                                "sentence_number": [sent_id],
+                                "document_id": [document_id]}
 
     for k in counter.keys():
         output = {}
@@ -214,9 +215,9 @@ if __name__ == '__main__':
     device = None
     model_name = "Maltehb/-l-ctra-danish-electra-small-cased"
     threshold = 0.005
-    min_count = 2
+    min_count = 2  # set to 10 in the paper, but is highly corpus specific
     invalid_pos = {"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
-                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"},
+                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"}
     invalid_dep = {}
     # confidence threshold is 0.003 in the public example and 0.005 in the
     # paper

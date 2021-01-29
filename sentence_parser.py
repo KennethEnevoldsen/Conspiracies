@@ -8,6 +8,7 @@ from utils import (
     build_graph,
     merge_token_attention,
     aggregate_attentions_heads,
+    trim_attention_matrix,
     BFS
 )
 from utils import is_a_range as is_continous
@@ -130,7 +131,8 @@ def filter_invalid_triplets(relation_set, id2token, id2tags, threshold,
     if (confidence >= threshold and
             len(relations) > 0 and
             is_continous(triplet_idx[1:-1])):
-        return {'head': head, 'tail': tail, 'relation': relations,
+        print("coo")
+        return {'head': head, 'relation': relations, 'tail': tail,
                 'confidence': confidence}
     return {}
 
@@ -177,10 +179,8 @@ def parse_sentence(
 
     agg_attn = aggregate_attentions_heads(attention, head_dim=0)
 
-    # fix size of attention matrix (remove padding)
-    agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]  # remove padding
-    agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
-    agg_attn = agg_attn[1: -1, 1: -1]  # remove eos and bos tokens
+    agg_attn = trim_attention_matrix(
+        emove_padding=True, remove_eos=True, remove_bos=True)
 
     assert agg_attn.shape[0] == len(wordpiece2token), \
         "attention matrix and wordpiece2token does not have the same length"
@@ -221,5 +221,6 @@ def parse_sentence(
 
     for triplet in map(filter_triplets, all_relation_pairs):
         if len(triplet):
+            all_relation_pairs[0]
             triplets.append(triplet)
     return triplets
