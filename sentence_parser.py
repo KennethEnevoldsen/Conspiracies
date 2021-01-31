@@ -5,7 +5,7 @@ from functools import partial
 
 from utils import (
     create_wordpiece_token_mapping,
-    build_graph,
+    matrix_to_graph,
     merge_token_attention,
     aggregate_attentions_heads,
     trim_attention_matrix,
@@ -187,7 +187,7 @@ def parse_sentence(
 
     merged_attn = merge_token_attention(agg_attn, wordpiece2token)
 
-    attn_graph = build_graph(merged_attn)
+    attn_graph = matrix_to_graph(merged_attn)
 
     # create head tail pair
     tail_head_pairs = []

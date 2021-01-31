@@ -1,7 +1,8 @@
 """
 utility script for parsing sentence for belief graphs
 """
-from collections import defaultdict
+from collections import defaultdict, Hashable
+from functools import partial
 from copy import copy
 
 import numpy as np
@@ -24,7 +25,7 @@ def is_a_range(L):
     return True
 
 
-def build_graph(matrix):
+def matrix_to_graph(matrix):
     """
     build a graph of top diagonal with format:
     idx: [(col, attention_value), ...]
@@ -184,78 +185,178 @@ def trim_attention_matrix(remove_padding: bool = True,
         agg_attn = agg_attn[agg_attn.sum(dim=0) != 0, :]
         agg_attn = agg_attn[:, agg_attn.sum(dim=0) != 0]
     start_idx = 1 if remove_eos else 0
-    
+
     if remove_eos:
         return agg_attn[start_idx: -1, start_idx: -1]
     else:
         return agg_attn[start_idx:, start_idx:]
 
 
-
-def BFS(head, tail, graph, beam_size=2):
+def beam_search(head: int,
+                tail: int,
+                graph: dict,
+                n_beams: int = 6,
+                alpha: float = 0,
+                max_length=None,
+                min_length: int = 3,
+                num_return_paths=1,
+                aggregate_method="mult"):
     """
-    WIP 
-    s = start = head
-    end = tail
-    graph = network
-    max_size (not implemented)
+    head: the start of the search
+    tail: the desired end of the search
+    graph: a graph (network) to search through
+    n_beams: the number of beam to use. If None implements a BFS (breatdth
+    first search)
+    alpha (0<alpha<1): The length normalization. The sum of p's (entries in
+    the graph) is multiplied by a normalization constant which is 1/n where n
+    is the number p's (i.e. length of the sequence). If alpha==1 this is the
+    mean if alpha==0 there is no length normalization.
+    max_length: max length of a path, stop beam if path length prematurely
+    if path is longer than max length
+    min_length: minimum length of a path
+    (typically path less than 3 is irrelevant as it is only head and tail)
+    num_return_paths (int|None): return best path if None returns all found
+    paths
+    aggregate_method ("mult"|"sum"): the method in which the weight should be
+    aggregated if sum the weight are summed and then normalized otherwise they
+    are multiplied (using log addition) and then normalized
 
-    PAPER:
-    START: head is added to beam
-    implement beam_size (paper beam size = 6) (also yield n candidates)
-    average [penalize] longer fact strings to prevent cumbersome long facts
-    (currently no "long" facts)
-    
+    this function is implemented in a BFS style fashion.
 
+    Example:
+    matrix = np.array([[0.07, 0.27, 0.3 , 0.76, 0.01],
+                        [0.24, 0.39, 0.14, 0.57, 0.16],
+                        [0.12, 0.11, 0.14, 0.43, 0.13],
+                        [0.66, 0.13, 0.48, 1.  , 0.48],
+                        [0.48, 0.32, 0.37, 0.23, 0.59]])
+    graph = matrix_to_graph(matrix)
+    beam_search(head=0, tail=4, graph=graph, n_beams=2, alpha=1)
 
     """
-
-    visited = [False] * (max(graph.keys())+100)
 
     # Create a queue for BFS
     queue = []
-
-    # Mark the source node as
-    # visited and enqueue it
-    queue.append((s, [(s, 0)]))
+    queue.append((head, [(head, 0)]))
 
     found_paths = []
 
-    visited[s] = True
-
+    # starting search
     while queue:
+        head_, path = queue.pop(0)
+        node_sorted = sorted(graph[head_], key=lambda x: x[1], reverse=True)
 
-        s, path = queue.pop(0)
+        for node, conf in node_sorted[0:n_beams]:
+            if node == tail:
+                path += [(node, conf)]
+                # disregard path if too short
+                if min_length and len(path) >= min_length:
+                    found_paths.append(path)
+                continue
+            else:
+                # stop prematurely if length to long
+                if max_length and len(path) >= max_length:
+                    continue
+                queue.append((node, copy(path)+[(node, conf)]))
 
-        # Get all adjacent vertices of the
-        # dequeued vertex s. If a adjacent
-        # has not been visited, then mark it
-        # visited and enqueue it
-        for i, conf in graph[s]:
-            if i == end:
-                found_paths.append(path+[(i, conf)])
-                break
-            if visited[i] is False:
-                queue.append((i, copy(path)+[(i, conf)]))
-                visited[i] = True
+    candidate_facts = aggregate_and_normalize(found_paths, alpha)
+    candidate_facts = sorted(candidate_facts, key=lambda x: x[1])
+    return candidate_facts[0:num_return_paths]
 
+
+def aggregate_and_normalize(found_paths, alpha, aggregate_method="mult"):
     candidate_facts = []
-    for path_pairs in found_paths:
-        if len(path_pairs) < 3:  # if it only head and tail
-            continue
-        path = []
-        cum_conf = 0
-        for (node, conf) in path_pairs:
-            path.append(node)
-            cum_conf += conf
+    for fp in found_paths:
+        path, conf = zip(*fp)
 
-        if path[1] in black_list_relation:
-            continue
+        # aggregate
+        if aggregate_method == "mult":
+            conf = np.log(conf[1:])
+            agg_conf = np.exp(conf.sum())
+        elif aggregate_method == "sum":
+            conf = conf[1:]
+            agg_conf = conf.sum()
 
-        candidate_facts.append((path, cum_conf))
+        # length normalize
+        norm_conf = agg_conf * 1/len(conf)**alpha
 
+        candidate_facts.append((path, norm_conf))
     return candidate_facts
 
+
+def beam_search2(head: int,
+                 tail: int,
+                 graph: dict,
+                 n_beams: int = 6,
+                 alpha: float = 0,
+                 max_length=None,
+                 min_length: int = 3,
+                 num_return_paths=1):
+    """
+    head: the start of the search
+    tail: the desired end of the search
+    graph: a graph (network) to search through
+    n_beams: the number of beam to use. If None implements a BFS (breatdth
+    first search)
+    alpha (0<alpha<1): The length normalization. The sum of p's (entries in
+    the graph) is multiplied by a normalization constant which is 1/n where n
+    is the number p's (i.e. length of the sequence). If alpha==1 this is the
+    mean if alpha==0 there is no length normalization.
+    max_length: max length of a path, stop beam if path length prematurely
+    if path is longer than max length
+    min_length: minimum length of a path
+    (typically path less than 3 is irrelevant as it is only head and tail)
+    num_return_paths (int|None): return best path if None returns all found
+    paths
+
+    this function is implemented in a DFS style fashion and uses a cache to
+    prevent calling the same path multiple times.
+
+    Example:
+    matrix = np.array([[0.07, 0.27, 0.3 , 0.76, 0.01],
+                        [0.24, 0.39, 0.14, 0.57, 0.16],
+                        [0.12, 0.11, 0.14, 0.43, 0.13],
+                        [0.66, 0.13, 0.48, 1.  , 0.48],
+                        [0.48, 0.32, 0.37, 0.23, 0.59]])
+    graph = matrix_to_graph(matrix)
+    beam_search(head=0, tail=4, graph=graph, n_beams=2, alpha=1)
+
+    """
+
+    # cache = {}
+
+    # def memoize(func):
+    #     def inner(node, conf, n):
+    #         if (node, conf) not in cache:
+    #             cache[(node, conf)] = func(node, conf, n)
+    #         return cache[(node, conf)]
+    #     return inner
+
+    # @memoize
+    def dfs(node, conf, n):
+        # stop prematurely if length too long
+        if max_length and n > max_length:
+            return []
+        if node == tail:
+            return [[(node, conf)]]
+
+        node_sorted = sorted(graph[node], key=lambda x: x[1], reverse=True)
+
+        found_paths = []
+        for node_, conf_ in node_sorted[0:n_beams]:
+            paths = dfs(node_, conf_, n+1)
+            for path in paths:
+                found_path = [(node, conf)] + path
+                found_paths.append(found_path)
+        return found_paths
+
+    found_paths = dfs(head, 0, 1)
+
+    if min_length:
+        found_paths = filter(lambda x: len(x) >= min_length, found_paths)
+
+    candidate_facts = aggregate_and_normalize(found_paths, alpha)
+    candidate_facts = sorted(candidate_facts, key=lambda x: x[1])
+    return candidate_facts[0:num_return_paths]
 
 
 def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
