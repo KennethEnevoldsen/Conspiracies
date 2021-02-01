@@ -3,6 +3,8 @@
 library(tidyverse)
 library(visNetwork)
 library(optparse)
+library(webshot)
+library(stringr)
 
 option_list <- list(
   make_option(c("-f", "--file"), type="character", default=NULL,
@@ -44,4 +46,12 @@ p <-  visNetwork(nodes, edges, width= 1200, height = 1200) %>%
   # Add psysics: more negative = more space between nodes
   visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant=-100, damping = 2))
 
+# To html
 visSave(p, file = opt$n, background = "white")
+cat("\nHTML saved. Trying to save PNG ...\n")
+# To PNG
+webshot(opt$n, delay=1, zoom=3, 
+        file=str_replace(opt$n, ".html", ".png"),
+        vwidth=900,vheight=900)
+cat("Done!\n")
+
