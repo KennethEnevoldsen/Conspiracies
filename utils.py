@@ -5,6 +5,8 @@ from collections import defaultdict, Hashable
 from functools import partial
 from copy import copy
 
+import os
+import pandas as pd
 import numpy as np
 import torch
 
@@ -314,3 +316,17 @@ def create_run_name(custom_name: str = None,
 
     name += suffix
     return name
+
+
+
+
+def plot_network(relations_csv: str,
+                 filename: str,
+                 n_edges: int = 0):
+    """
+    Plot network with visNetwork
+    keep n_edges < ~ 150-200
+    """
+    os.system(f"Rscript --vanilla plot_network.R -f {relations_csv} -n {filename} -e {n_edges}")
+    print(f"Network graph saved to {filename}")
+    return None
