@@ -1,8 +1,25 @@
-pacman::p_load(ndjson, networkD3, tidyverse, visNetwork)
+# Example use from terminal:
+# Rscript plot_network.R test.csv "plotting_test.html"
+library(tidyverse)
+library(visNetwork)
+library(optparse)
 
-df <- read_csv("test.csv")
+option_list <- list(
+  make_option(c("-f", "--file"), type="character", default=NULL,
+                help="Filename of relations csv", metavar="character"),
+  make_option(c("-n", "--name"), type="character", default=NULL,
+              help="Filename to save to", metavar="character"),
+  make_option(c("-e", "--edges"), type="integer", default=0,
+              help="Number of edges to display (default all)", metavar="integer")
+)
 
-df <- df[1:100,]
+opt = parse_args(OptionParser(option_list=option_list))
+
+
+df <- read_csv(opt$f)
+
+# Subset if specified
+if(opt$e > 0) df <- df[1:opt$e,]
 
 # Make df of nodes with unique id for each node
 nodes <- data.frame(label = unique(c(df$h, df$t)),
@@ -27,4 +44,4 @@ p <-  visNetwork(nodes, edges, width= 1200, height = 1200) %>%
   # Add psysics: more negative = more space between nodes
   visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant=-100, damping = 2))
 
-visSave(p, file = "network.html", background = "white")
+visSave(p, file = opt$n, background = "white")
