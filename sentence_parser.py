@@ -5,18 +5,13 @@ from functools import partial
 
 from utils import (
     create_wordpiece_token_mapping,
-    matrix_to_graph,
+    attn_to_graph,
     merge_token_attention,
     aggregate_attentions_heads,
     trim_attention_matrix,
-    BFS
+    beam_search
 )
 from utils import is_a_range as is_continous
-
-
-def bfs(args):
-    s, end, graph, max_size, black_list_relation = args
-    return BFS(s, end, graph, max_size, black_list_relation)
 
 
 def is_relation_valid(i: int, id2tags: dict,
@@ -93,7 +88,8 @@ def create_mapping(
 
 
 def filter_invalid_triplets(relation_set, id2token, id2tags, threshold,
-                            invalid_pos, invalid_dep):
+                            invalid_pos, invalid_dep,
+                            lemmatize_relations=True):
     """
     relation_set (tuple): consist of a triplet and a confidence.
     The triplet (head, tail, relation), in the form of a path through it
@@ -120,18 +116,14 @@ def filter_invalid_triplets(relation_set, id2token, id2tags, threshold,
                        invalid_pos=invalid_pos, invalid_dep=invalid_dep)
 
     # lemmatize relations and discard invalid relations
-    relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]
-                 if is_valid(idx)]
+    if lemmatize_relations:
+        relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]
+                     if is_valid(idx)]
+    else:
+        relations = [id2token[idx] for idx in triplet_idx[1:-1]
+                     if is_valid(idx)]
 
-    if len(relations) > 1:
-        print("an example relation bigger than 1")  # should happen
-    if not is_continous(triplet_idx[1:-1]):
-        print("an example of a non cont. relation")
-
-    if (confidence >= threshold and
-            len(relations) > 0 and
-            is_continous(triplet_idx[1:-1])):
-        print("coo")
+    if (confidence >= threshold and len(relations) > 0):
         return {'head': head, 'relation': relations, 'tail': tail,
                 'confidence': confidence}
     return {}
@@ -149,7 +141,14 @@ def parse_sentence(
     tokenizer,
     threshold: float,
     invalid_pos: set,
-    invalid_dep: set
+    invalid_dep: set,
+    num_return_paths: int = 1,
+    aggregate_method: str = "mult",
+    n_beams: int = 6,
+    max_length=None,
+    min_length: int = 3,
+    alpha: float = 1,
+    lemmatize_relations: bool = False
 ):
     """
     Example:
@@ -165,8 +164,6 @@ def parse_sentence(
     if len(noun_chunks) == 0:
         return []
 
-    print(noun_chunks)
-
     wordpiece2token, token2id, id2tags, noun_chunks = \
         create_mapping(tokens,
                        noun_chunks,
@@ -179,15 +176,19 @@ def parse_sentence(
 
     agg_attn = aggregate_attentions_heads(attention, head_dim=0)
 
-    agg_attn = trim_attention_matrix(
-        emove_padding=True, remove_eos=True, remove_bos=True)
+    agg_attn = trim_attention_matrix(agg_attn,
+                                     remove_padding=True,
+                                     remove_eos=True,
+                                     remove_bos=True)
 
     assert agg_attn.shape[0] == len(wordpiece2token), \
         "attention matrix and wordpiece2token does not have the same length"
 
     merged_attn = merge_token_attention(agg_attn, wordpiece2token)
 
-    attn_graph = matrix_to_graph(merged_attn)
+    # make a forward and backward attention graph
+    backward_attn_graph, forward_attn_graph = \
+        attn_to_graph(merged_attn)
 
     # create head tail pair
     tail_head_pairs = []
@@ -197,19 +198,25 @@ def parse_sentence(
                 tail_head_pairs.append((token2id[head], token2id[tail]))
 
     # beam search
-    black_list_relation = set([token2id[n] for n in noun_chunks])
-
-    params = [(pair[0], pair[1], attn_graph, max(
-        wordpiece2token), black_list_relation) for pair in tail_head_pairs]
+    def beam_search_(args):
+        head, tail = args
+        graph = forward_attn_graph if head < tail else backward_attn_graph
+        return beam_search(head, tail,
+                           graph=graph,
+                           n_beams=n_beams,
+                           alpha=alpha,
+                           max_length=max_length,
+                           min_length=min_length,
+                           num_return_paths=num_return_paths,
+                           aggregate_method=aggregate_method)
 
     all_relation_pairs = []
-    id2token = {value: key for key, value in token2id.items()}
-
-    for output in map(bfs, params):
+    for output in map(beam_search_, tail_head_pairs):
         if len(output):
             all_relation_pairs += output
 
     # filter
+    id2token = {value: key for key, value in token2id.items()}
     triplets = []
 
     filter_triplets = partial(filter_invalid_triplets,
@@ -217,10 +224,16 @@ def parse_sentence(
                               id2tags=id2tags,
                               threshold=threshold,
                               invalid_pos=invalid_pos,
-                              invalid_dep=invalid_dep)
+                              invalid_dep=invalid_dep,
+                              lemmatize_relations=lemmatize_relations)
 
     for triplet in map(filter_triplets, all_relation_pairs):
         if len(triplet):
             all_relation_pairs[0]
             triplets.append(triplet)
     return triplets
+
+
+if __name__ == "__main__":
+    from utils import load_example
+    parse_sentence(**load_example(attention=True), threshold=0.005)

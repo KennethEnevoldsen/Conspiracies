@@ -1,12 +1,9 @@
 """
 utility script for parsing sentence for belief graphs
 """
-from collections import defaultdict, Hashable
-from functools import partial
-from copy import copy
+from collections import defaultdict
 
 import os
-import pandas as pd
 import numpy as np
 import torch
 
@@ -20,36 +17,60 @@ def is_a_range(L):
     True
     >>> is_a_range([2, 4, 5])
     False
+    >>> is_a_range(L=[1, 3, 2])
+    False
     """
-    for i, j in zip(range(L[0], L[-1]), L):
+    L_ = range(L[0], L[-1]+1)
+    if len(L_) != len(L):
+        return False
+    for i, j in zip(L_, L):
         if i != j:
             return False
     return True
 
 
-def matrix_to_graph(matrix):
+def attn_to_graph(matrix):
     """
-    build a graph of top diagonal with format:
+    build a forward (buttom diagonal) and backward (upper diagonal)
+    graph with format:
     idx: [(col, attention_value), ...]
     idx: [(col, attention_value), ...]
     ...
 
     Example:
-    >>> mat = array([[10, 30, 30],
+    >>> mat = np.array([[10, 30, 30],
                      [20, 10, 30],
                      [20, 20, 10]])
-    >>> build_graph(mat)
-    defaultdict(list, {0: [(1, 30), (2, 30)], 1: [(2, 30)]})
+    >>> attn_to_graph(mat)
+    (defaultdict(list, {0: [(1, 30), (2, 30)], 1: [(2, 30)]}),
+    defaultdict(list, {2: [(0, 20), (1, 20)], 1: [(0, 20)]}))
     """
-    graph = defaultdict(list)
+    backward_graph = defaultdict(list)
+    for idx in reversed(range(0, len(matrix))):
+        for col in range(0, idx):
+            backward_graph[idx].append((col, matrix[idx][col]))
 
+    forward_graph = defaultdict(list)
     for idx in range(0, len(matrix)):
         for col in range(idx+1, len(matrix)):
-            graph[idx].append((col, matrix[idx][col]))
-    return graph
+            forward_graph[idx].append((col, matrix[idx][col]))
+
+    return backward_graph, forward_graph
 
 
-def load_example(attention=False):
+def load_dict_in_memory(d: dict):
+    """
+    loads a dictionary into memory.
+
+    a utility function
+    load_dict_in_memory(load_example(True, True))
+    """
+
+    for key, item in d.items():
+        exec("global " + key + "; " + key + " = item")
+
+
+def load_example(attention=False, add_beam_params=False):
     """
     laod an example for testing functions
     """
@@ -98,6 +119,13 @@ def load_example(attention=False):
             attention = np.load("example_attn.npy")
             attention = torch.Tensor(attention)
         example["attention"] = attention
+    if add_beam_params:
+        example["alpha"] = 1
+        example["n_beams"] = 3
+        example["num_return_paths"] = 1
+        example["aggregate_method"] = "mult"
+        example["max_length"] = None
+        example["min_length"] = 3
     return example
 
 
@@ -177,7 +205,8 @@ def aggregate_attentions_heads(
     return aggregate_fun(attention, dim=head_dim)
 
 
-def trim_attention_matrix(remove_padding: bool = True,
+def trim_attention_matrix(agg_attn,
+                          remove_padding: bool = True,
                           remove_eos: bool = True,
                           remove_bos: bool = True):
     """
@@ -232,9 +261,11 @@ def beam_search(head: int,
                         [0.66, 0.13, 0.48, 1.  , 0.48],
                         [0.48, 0.32, 0.37, 0.23, 0.59]])
     graph = matrix_to_graph(matrix)
-    beam_search(head=0, tail=4, graph=graph, n_beams=2, alpha=1)
+    beam_search(head=0, tail=4, graph=graph, n_beams=2, alpha=1,
+                num_return_paths=None)
 
     """
+    visited = set()
 
     # Create a queue for BFS
     queue = []
@@ -245,23 +276,31 @@ def beam_search(head: int,
     # starting search
     while queue:
         head_, path = queue.pop(0)
+        print("\t"*(len(path)-1), head_, end=" ")
         node_sorted = sorted(graph[head_], key=lambda x: x[1], reverse=True)
 
+        print("going to: ", [i[0] for i in node_sorted[0:n_beams]])
         for node, conf in node_sorted[0:n_beams]:
             if node == tail:
-                path += [(node, conf)]
+                print("added to paths")
+                path_ = path + [(node, conf)]
                 # disregard path if too short
-                if min_length and len(path) >= min_length:
-                    found_paths.append(path)
-                continue
+                if min_length and len(path_) >= min_length:
+                    found_paths.append(path_)
             else:
                 # stop beam prematurely if length to long
-                if max_length and len(path) >= max_length:
+                if max_length and len(path) >= max_length - 1:
                     continue
-                queue.append((node, copy(path)+[(node, conf)]))
+                if node not in visited:
+                    queue.append((node, path+[(node, conf)]))
+                    visited.add(node)
 
     candidate_facts = aggregate_and_normalize(found_paths, alpha)
     candidate_facts = sorted(candidate_facts, key=lambda x: x[1])
+
+    if num_return_paths and num_return_paths >= len(candidate_facts):
+        num_return_paths = len(candidate_facts)-1
+
     return candidate_facts[0:num_return_paths]
 
 
@@ -318,8 +357,6 @@ def create_run_name(custom_name: str = None,
     return name
 
 
-
-
 def plot_network(relations_csv: str,
                  filename: str,
                  n_edges: int = 0):
@@ -327,6 +364,8 @@ def plot_network(relations_csv: str,
     Plot network with visNetwork
     keep n_edges < ~ 150-200
     """
-    os.system(f"Rscript --vanilla plot_network.R -f {relations_csv} -n {filename} -e {n_edges}")
+    os.system(
+        "Rscript --vanilla plot_network.R -f " +
+        f"{relations_csv} -n {filename} -e {n_edges}")
     print(f"Network graph saved to {filename}")
     return None
