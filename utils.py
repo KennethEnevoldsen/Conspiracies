@@ -253,7 +253,7 @@ def beam_search(head: int,
                     found_paths.append(path)
                 continue
             else:
-                # stop prematurely if length to long
+                # stop beam prematurely if length to long
                 if max_length and len(path) >= max_length:
                     continue
                 queue.append((node, copy(path)+[(node, conf)]))
@@ -280,70 +280,6 @@ def aggregate_and_normalize(found_paths, alpha, aggregate_method="mult"):
         norm_conf = agg_conf * 1/len(conf)**alpha
 
         candidate_facts.append((path, norm_conf))
-    return candidate_facts
-
-
-def BFS(s, end, graph, max_size=-1, black_list_relation=[]):
-    """
-    s = start = head
-    end = tail
-    graph = network
-    max_size (not implemented)
-
-    PAPER:
-    START: head is added to beam
-    implement beam_size (paper beam size = 6) (also yield n candidates)
-    average [penalize] longer fact strings to prevent cumbersome long facts
-    (currently no "long" facts)
-
-
-
-    """
-
-    visited = [False] * (max(graph.keys())+100)
-
-    # Create a queue for BFS
-    queue = []
-
-    # Mark the source node as
-    # visited and enqueue it
-    queue.append((s, [(s, 0)]))
-
-    found_paths = []
-
-    visited[s] = True
-
-    while queue:
-
-        s, path = queue.pop(0)
-
-        # Get all adjacent vertices of the
-        # dequeued vertex s. If a adjacent
-        # has not been visited, then mark it
-        # visited and enqueue it
-        for i, conf in graph[s]:
-            if i == end:
-                found_paths.append(path+[(i, conf)])
-                break
-            if visited[i] is False:
-                queue.append((i, copy(path)+[(i, conf)]))
-                visited[i] = True
-
-    candidate_facts = []
-    for path_pairs in found_paths:
-        if len(path_pairs) < 3:  # if it only head and tail
-            continue
-        path = []
-        cum_conf = 0
-        for (node, conf) in path_pairs:
-            path.append(node)
-            cum_conf += conf
-
-        if path[1] in black_list_relation:
-            continue
-
-        candidate_facts.append((path, cum_conf))
-
     return candidate_facts
 
 
