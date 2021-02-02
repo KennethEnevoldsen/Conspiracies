@@ -83,7 +83,7 @@ class NounChunkTokenIDConverter():
 
         # if it is a noun chunk
         if isinstance(tok_id, (list, tuple)):
-            return convert_nc_to_str(nc_tok_id, tag)
+            return self.convert_nc_to_str(nc_tok_id, tag)
 
         return self.tags[tag][tok_id] if self.is_tok_id_valid(tok_id) else None
 
@@ -118,13 +118,13 @@ def triplet_to_str(triplet: Union[list, tuple],
     head, relation, tail = triplet[0], triplet[1:-1], triplet[-1]
 
     tag = "lemma" if lemmatize_head else "token"
-    head = nc_converter.convert(head, tag=tag)
+    head = nc_converter.convert_nc_to_str(head, tag=tag)
 
     tag = "lemma" if lemmatize_tail else "token"
-    tail = nc_converter.convert(tail, tag=tag)
+    tail = nc_converter.convert_nc_to_str(tail, tag=tag)
 
     tag = "lemma" if lemmatize_relations else "token"
-    relation = " ".join([nc_converter.convert(i, tag=tag) for i in relation])
+    relation = " ".join([nc_converter.convert_to_str(i, tag=tag) for i in relation])
 
     # if head, tail or relation is invalid None will have been returned
     if (head is None) or (tail is None) or (relation is None):
@@ -152,7 +152,7 @@ def filter_triplets(relation_set: tuple, threshold: float,
     # check is relation is continuous
     if continuous and (not is_continous(triplet[1:-1])):
         return ()
-    if confidence >= threshold and len(relations) > 0:
+    if confidence >= threshold and len(triplet[1:-1]) > 0:
         return (triplet, confidence)
     return ()
 
@@ -280,4 +280,8 @@ def parse_sentence(
 
 if __name__ == "__main__":
     from utils import load_example
-    parse_sentence(**load_example(attention=True), threshold=0.005)
+    d = load_example(attention=True)
+    r = parse_sentence(**d, threshold=0.005)
+    " ".join(d["tokens"])
+    d["noun_chunks"]
+    r
