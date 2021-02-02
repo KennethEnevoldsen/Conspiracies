@@ -1,5 +1,6 @@
 """
 """
+from typing import Union
 
 from functools import partial
 
@@ -12,26 +13,6 @@ from utils import (
     beam_search
 )
 from utils import is_a_range as is_continous
-
-
-def is_relation_valid(i: int, id2tags: dict,
-                      invalid_pos={"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
-                                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"},
-                      invalid_dep={}
-                      ):
-    """
-    i: id of the token
-    checks if a relation is valid
-    """
-    pos = id2tags[i]["pos"]
-    dep = id2tags[i]["dependency"]
-
-    # if list then it is a noun chunk
-    if (isinstance(pos, list) or
-            (pos in invalid_pos) or
-            (dep in invalid_dep)):
-        return False
-    return True
 
 
 def create_mapping(
@@ -48,85 +29,136 @@ def create_mapping(
     Creates mappings from token id to its tokens as its tags.
     it also creates a mapping from a token to the tokenizer id
 
+    wordpiece2token: wordpiece -> Noun chunk merged tokens
+
+
     Example:
-    >>> mappings = create_mapping(**load_example(no_attention=True))
+    from utils import load_example
+    mappings = create_mapping(**load_example())
     """
 
     start_chunk = {s: e for s, e in noun_chunk_token_span}
 
-    sentence_mapping = []
-    token2id = {}
-    id2tags = {}
+    nc_tokens = []  # noun chunk merged token list
+    nc_tokens_id2tokens_id = {}
+    noun_chunk_w_id = []  # noun chunk with id
 
     i = 0
     chunk_id = 0
     while i < len(tokens):
-        id_ = len(token2id)
+        id_ = len(nc_tokens)
         if i in start_chunk:
-            sentence_mapping.append(noun_chunks[chunk_id])
-            token2id[sentence_mapping[-1]] = id_
+            nc_tokens.append(noun_chunks[chunk_id])
+            nc_tokens_id2tokens_id[id_] = noun_chunk_token_span[chunk_id]
+            noun_chunk_w_id.append((noun_chunks[chunk_id], id_))
             chunk_id += 1
-            end_chunk = start_chunk[i]
-            id2tags[id_] = {"lemma": lemmas[i:end_chunk],
-                            "pos": pos[i:end_chunk],
-                            "ner": ner[i:end_chunk],
-                            "dependency": dependencies[i:end_chunk]}
-            i = end_chunk
+            i = start_chunk[i]  # end chunk
         else:  # if not in chunk
-            sentence_mapping.append(tokens[i])
-            token2id[sentence_mapping[-1]] = id_
-            id2tags[id_] = {"lemma": lemmas[i],
-                            "pos": pos[i],
-                            "ner": ner[i],
-                            "dependency": dependencies[i]}
+            nc_tokens.append(tokens[i])
+            nc_tokens_id2tokens_id[id_] = i
             i += 1
 
     wordpiece2token = create_wordpiece_token_mapping(
-        sentence_mapping, token2id, tokenizer)
+        tokens=nc_tokens, tokenizer=tokenizer)
 
-    return wordpiece2token, token2id, id2tags, noun_chunks
+    return wordpiece2token, nc_tokens_id2tokens_id, noun_chunk_w_id
 
 
-def filter_invalid_triplets(relation_set, id2token, id2tags, threshold,
-                            invalid_pos, invalid_dep,
-                            lemmatize_relations=True):
+class NounChunkTokenIDConverter():
+    def __init__(self,
+                 nc_tokens_id2tokens_id, tokens,
+                 lemmas, pos, dependencies, ner
+                 ):
+        self.tags = {
+            "token": tokens,
+            "lemma": lemmas,
+            "pos": pos,
+            "dependencies": dependencies,
+            "ner": ner}
+        self.nc_tokens_id2tokens_id = nc_tokens_id2tokens_id
+        self.invalid = {}
+
+    def add_invalid(self, invalid: set,
+                    tag: str = "pos"):
+        self.invalid[tag] = invalid
+
+    def convert_to_str(self, nc_tok_id, tag="token"):
+        tok_id = self.nc_tokens_id2tokens_id[nc_tok_id]
+
+        # if it is a noun chunk
+        if isinstance(tok_id, (list, tuple)):
+            return convert_nc_to_str(nc_tok_id, tag)
+
+        return self.tags[tag][tok_id] if self.is_tok_id_valid(tok_id) else None
+
+    def is_tok_id_valid(self, tok_id):
+        if self.invalid:
+            for k in self.invalid.keys():
+                if self.tags[k][tok_id] in self.invalid[k]:
+                    return False
+        return True
+
+    def convert_nc_to_str(self, nc_tok_id, tag="token"):
+        tok_id = self.nc_tokens_id2tokens_id[nc_tok_id]
+
+        if self.invalid:
+            r = [self.tags[k][tok_id] for i in range(tok_id[0], tok_id[1])]
+            if len(r) == 0:
+                return None
+            return " ".join(r)
+        return " ".join(self.tags[tag][tok_id[0]: tok_id[1]])
+
+
+def triplet_to_str(triplet: Union[list, tuple],
+                   nc_converter,
+                   lemmatize_relations: bool = False,
+                   lemmatize_head: bool = False,
+                   lemmatize_tail: bool = False,
+                   invalid_pos: set = set(),
+                   invalid_dep: set = set(),
+                   ):
+    """
+    """
+    head, relation, tail = triplet[0], triplet[1:-1], triplet[-1]
+
+    tag = "lemma" if lemmatize_head else "token"
+    head = nc_converter.convert(head, tag=tag)
+
+    tag = "lemma" if lemmatize_tail else "token"
+    tail = nc_converter.convert(tail, tag=tag)
+
+    tag = "lemma" if lemmatize_relations else "token"
+    relation = " ".join([nc_converter.convert(i, tag=tag) for i in relation])
+
+    # if head, tail or relation is invalid None will have been returned
+    if (head is None) or (tail is None) or (relation is None):
+        return None
+    return head, relation, tail
+
+
+def filter_triplets(relation_set: tuple, threshold: float,
+                    continuous: bool = True):
     """
     relation_set (tuple): consist of a triplet and a confidence.
     The triplet (head, tail, relation), in the form of a path through it
     attention matrix from head through relation to tail
+    continuous: checks if the relation is cont.
 
     this functions filters the follows
-    0) removed invalid pos and dependency-tag based on id2tags
-    1) confidence should be above threshold
-    2) length of relation should be > 0
-    3) relation should be an cont. sequence (to be implemented yet)
+    1) relation should be an cont. sequence (to be implemented yet)
+    2) confidence should be above threshold
+    3) length of relation should be > 0
     """
 
-    triplet_idx = relation_set[0]
+    triplet = relation_set[0]
     confidence = relation_set[1]
-    head, tail = triplet_idx[0], triplet_idx[-1]
 
-    assert head in id2token and (tail in id2token), \
-        "head or tail not in id2token something must have gone wrong"
-
-    head = id2token[head]
-    tail = id2token[tail]
-
-    is_valid = partial(is_relation_valid, id2tags=id2tags,
-                       invalid_pos=invalid_pos, invalid_dep=invalid_dep)
-
-    # lemmatize relations and discard invalid relations
-    if lemmatize_relations:
-        relations = [id2tags[idx]["lemma"] for idx in triplet_idx[1:-1]
-                     if is_valid(idx)]
-    else:
-        relations = [id2token[idx] for idx in triplet_idx[1:-1]
-                     if is_valid(idx)]
-
-    if (confidence >= threshold and len(relations) > 0):
-        return {'head': head, 'relation': relations, 'tail': tail,
-                'confidence': confidence}
-    return {}
+    # check is relation is continuous
+    if continuous and (not is_continous(triplet[1:-1])):
+        return ()
+    if confidence >= threshold and len(relations) > 0:
+        return (triplet, confidence)
+    return ()
 
 
 def parse_sentence(
@@ -148,7 +180,11 @@ def parse_sentence(
     max_length=None,
     min_length: int = 3,
     alpha: float = 1,
-    lemmatize_relations: bool = False
+    lemmatize_relations: bool = False,
+    filter_non_continous=True,
+    lemmatize_head=False,
+    lemmatize_tail=False
+
 ):
     """
     Example:
@@ -164,13 +200,10 @@ def parse_sentence(
     if len(noun_chunks) == 0:
         return []
 
-    wordpiece2token, token2id, id2tags, noun_chunks = \
+    wordpiece2token_id, nc_tokens_id2tokens_id, noun_chunk_w_id = \
         create_mapping(tokens,
                        noun_chunks,
                        noun_chunk_token_span,
-                       lemmas,
-                       pos,
-                       ner,
                        dependencies,
                        tokenizer)
 
@@ -181,10 +214,10 @@ def parse_sentence(
                                      remove_eos=True,
                                      remove_bos=True)
 
-    assert agg_attn.shape[0] == len(wordpiece2token), \
+    assert agg_attn.shape[0] == len(wordpiece2token_id), \
         "attention matrix and wordpiece2token does not have the same length"
 
-    merged_attn = merge_token_attention(agg_attn, wordpiece2token)
+    merged_attn = merge_token_attention(agg_attn, wordpiece2token_id)
 
     # make a forward and backward attention graph
     backward_attn_graph, forward_attn_graph = \
@@ -192,10 +225,10 @@ def parse_sentence(
 
     # create head tail pair
     tail_head_pairs = []
-    for head in noun_chunks:
-        for tail in noun_chunks:
-            if head != tail:
-                tail_head_pairs.append((token2id[head], token2id[tail]))
+    for head, h_idx in noun_chunk_w_id:
+        for tail, t_idx in noun_chunk_w_id:
+            if h_idx != t_idx:
+                tail_head_pairs.append((h_idx, t_idx))
 
     # beam search
     def beam_search_(args):
@@ -216,20 +249,36 @@ def parse_sentence(
             all_relation_pairs += output
 
     # filter
-    id2token = {value: key for key, value in token2id.items()}
+    nc_converter = NounChunkTokenIDConverter(nc_tokens_id2tokens_id, tokens,
+                                             lemmas, pos, dependencies, ner)
+    if invalid_pos:
+        nc_converter.add_invalid(invalid_pos, tag="pos")
+    if invalid_dep:
+        nc_converter.add_invalid(invalid_dep, tag="dependencies")
+
+    def __filter_to_str(relation_set):
+        relation_set = filter_triplets(relation_set=relation_set,
+                                       threshold=threshold,
+                                       continuous=filter_non_continous)
+        if not relation_set:
+            return {}
+        triplet, conf = relation_set
+        triplet = triplet_to_str(triplet,
+                                 nc_converter,
+                                 lemmatize_relations=lemmatize_relations,
+                                 lemmatize_head=lemmatize_head,
+                                 lemmatize_tail=lemmatize_tail
+                                 )
+        if not triplet:
+            return {}
+        return {"head": triplet[0],
+                "relation": triplet[1],
+                "tail": triplet[2],
+                "confidence": conf}
+
     triplets = []
-
-    filter_triplets = partial(filter_invalid_triplets,
-                              id2token=id2token,
-                              id2tags=id2tags,
-                              threshold=threshold,
-                              invalid_pos=invalid_pos,
-                              invalid_dep=invalid_dep,
-                              lemmatize_relations=lemmatize_relations)
-
-    for triplet in map(filter_triplets, all_relation_pairs):
-        if len(triplet):
-            all_relation_pairs[0]
+    for triplet in map(__filter_to_str, all_relation_pairs):
+        if triplet:
             triplets.append(triplet)
     return triplets
 

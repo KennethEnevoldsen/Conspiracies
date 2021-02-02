@@ -70,7 +70,8 @@ def load_dict_in_memory(d: dict):
         exec("global " + key + "; " + key + " = item")
 
 
-def load_example(attention=False, add_beam_params=False):
+def load_example(attention=False, add_beam_params=False,
+                 include_invalid_pos_dep=False):
     """
     laod an example for testing functions
     """
@@ -103,17 +104,12 @@ def load_example(attention=False, add_beam_params=False):
                     'expl', 'aux', 'ROOT', 'case', 'nummod', 'obl', 'case',
                     'nmod', 'punct', 'advmod', 'nsubj', 'case', 'nummod',
                     'advmod', 'aux', 'aux', 'acl:relcl', 'punct']
-    invalid_pos = {"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
-                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"},
-    invalid_dep = {}
     example = {"tokenizer": tokenizer, "pos": pos, "ner": ner,
                "tokens": tokens,
                "dependencies": dependencies,
                "lemmas": lemmas,
                "noun_chunks": noun_chunks,
-               "noun_chunk_token_span": noun_chunk_token_span,
-               "invalid_pos": invalid_pos,
-               "invalid_dep": invalid_dep}
+               "noun_chunk_token_span": noun_chunk_token_span}
     if attention:
         if attention is True:
             attention = np.load("example_attn.npy")
@@ -126,10 +122,14 @@ def load_example(attention=False, add_beam_params=False):
         example["aggregate_method"] = "mult"
         example["max_length"] = None
         example["min_length"] = 3
+    if include_invalid_pos_dep:
+        example["invalid_pos"] = {"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
+                                  "CONJ", "PROPN", "NOUN", "PRON", "SYM"},
+        example["invalid_dep"] = {}
     return example
 
 
-def create_wordpiece_token_mapping(tokens: list, token2id: dict, tokenizer):
+def create_wordpiece_token_mapping(tokens: list, tokenizer):
     """
     tokens: a list of tokens to map to tokenizer
     token2id: a mapping between token and its id
@@ -144,10 +144,10 @@ def create_wordpiece_token_mapping(tokens: list, token2id: dict, tokenizer):
     are trained using similar tokens. (e.g. split by whitespace)
     """
     wordpiece2token = []
-    for token in tokens:
+    for i, token in enumerate(tokens):
         subtoken_ids = tokenizer(token,
                                  add_special_tokens=False)['input_ids']
-        wordpiece2token += [token2id[token]]*len(subtoken_ids)
+        wordpiece2token += [i]*len(subtoken_ids)
     return wordpiece2token
 
 
