@@ -19,10 +19,6 @@ def create_mapping(
         tokens,
         noun_chunks,
         noun_chunk_token_span,
-        lemmas,
-        pos,
-        ner,
-        dependencies,
         tokenizer):
     """
     tokenizer: a huggingface tokenizer
@@ -172,8 +168,8 @@ def parse_sentence(
     attention,
     tokenizer,
     threshold: float,
-    invalid_pos: set,
-    invalid_dep: set,
+    invalid_pos: set = {},
+    invalid_dep: set = {},
     num_return_paths: int = 1,
     aggregate_method: str = "mult",
     n_beams: int = 6,
@@ -204,7 +200,6 @@ def parse_sentence(
         create_mapping(tokens,
                        noun_chunks,
                        noun_chunk_token_span,
-                       dependencies,
                        tokenizer)
 
     agg_attn = aggregate_attentions_heads(attention, head_dim=0)

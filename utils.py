@@ -276,13 +276,10 @@ def beam_search(head: int,
     # starting search
     while queue:
         head_, path = queue.pop(0)
-        print("\t"*(len(path)-1), head_, end=" ")
         node_sorted = sorted(graph[head_], key=lambda x: x[1], reverse=True)
 
-        print("going to: ", [i[0] for i in node_sorted[0:n_beams]])
         for node, conf in node_sorted[0:n_beams]:
             if node == tail:
-                print("added to paths")
                 path_ = path + [(node, conf)]
                 # disregard path if too short
                 if min_length and len(path_) >= min_length:
