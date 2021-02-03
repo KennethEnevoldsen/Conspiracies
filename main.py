@@ -183,7 +183,7 @@ def relation_count_filter(results, n: int):
 
         for triplet in triplets:
             key = (triplet["head"],
-                   "___".join(triplet["relation"]), triplet["tail"])
+                   triplet["relation"], triplet["tail"])
             if key in counter:
                 counter[key]["count"] += 1
                 counter[key]["confidence"] += [triplet["confidence"]]
@@ -214,14 +214,14 @@ if __name__ == '__main__':
     spacy_n_process = 1
     device = None
     model_name = "Maltehb/-l-ctra-danish-electra-small-cased"
-    threshold = 0.005
-    min_count = 2  # set to 10 in the paper, but is highly corpus specific
-    invalid_pos = {"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
-                   "CONJ", "PROPN", "NOUN", "PRON", "SYM"}
+    threshold = 0.000  # 0.005
+    min_count = 1  # set to 10 in the paper, but is highly corpus specific
+    invalid_pos = {}  # {"NUM", "ADJ", "PUNCT", "ADV", "CCONJ",
+    #    "CONJ", "PROPN", "NOUN", "PRON", "SYM"}
     invalid_dep = {}
     # confidence threshold is 0.003 in the public example and 0.005 in the
     # paper
-    save_results = False
+    save_results = True
 
     if device is None:
         device = 'cuda' if torch.cuda.is_available() else 'cpu'

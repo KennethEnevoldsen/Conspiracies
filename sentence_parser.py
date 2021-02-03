@@ -2,8 +2,6 @@
 """
 from typing import Union
 
-from functools import partial
-
 from utils import (
     create_wordpiece_token_mapping,
     attn_to_graph,
@@ -98,7 +96,9 @@ class NounChunkTokenIDConverter():
         tok_id = self.nc_tokens_id2tokens_id[nc_tok_id]
 
         if self.invalid:
-            r = [self.tags[k][tok_id] for i in range(tok_id[0], tok_id[1])]
+            r = [self.tags[tag][i]
+                 for i in range(tok_id[0], tok_id[1])
+                 if self.is_tok_id_valid(i)]
             if len(r) == 0:
                 return None
             return " ".join(r)
@@ -124,10 +124,16 @@ def triplet_to_str(triplet: Union[list, tuple],
     tail = nc_converter.convert_nc_to_str(tail, tag=tag)
 
     tag = "lemma" if lemmatize_relations else "token"
-    relation = " ".join([nc_converter.convert_to_str(i, tag=tag) for i in relation])
+    relation = [nc_converter.convert_to_str(i, tag=tag)
+                for i in relation]
+    relation = list(filter(lambda x: x, relation))
+    if len(relation):
+        relation = " ".join(relation)
+    else:
+        return None
 
     # if head, tail or relation is invalid None will have been returned
-    if (head is None) or (tail is None) or (relation is None):
+    if (head is None) or (tail is None):
         return None
     return head, relation, tail
 

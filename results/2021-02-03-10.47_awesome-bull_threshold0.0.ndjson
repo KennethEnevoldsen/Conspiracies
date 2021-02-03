@@ -1,0 +1,583 @@
+{"count": 1, "confidence": [0.0010782674653455615], "sentence_number": [1], "document_id": ["dr_test_artikel.txt"], "head": "FBI", "relation": "angreb", "tail": "Kongressen"}
+{"count": 1, "confidence": [0.0015388595638796687], "sentence_number": [1], "document_id": ["dr_test_artikel.txt"], "head": "Kongressen", "relation": "angreb", "tail": "FBI"}
+{"count": 2, "confidence": [0.0029612805228680372, 0.007847080007195473], "sentence_number": [2, 35], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "Jeg", "relation": ",", "tail": "folk"}
+{"count": 2, "confidence": [0.003901679767295718, 0.003467695089057088], "sentence_number": [2, 35], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "folk", "relation": ",", "tail": "Jeg"}
+{"count": 1, "confidence": [0.0009782525012269616], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "De amerikanske myndigheder", "relation": "i", "tail": "fuld gang"}
+{"count": 1, "confidence": [0.0014727432280778885], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "fuld gang", "relation": "i", "tail": "De amerikanske myndigheder"}
+{"count": 1, "confidence": [0.00022376560082193464], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "fuld gang", "relation": "en enorm unders\u00f8gelse", "tail": "angrebet"}
+{"count": 1, "confidence": [8.589652861701325e-05], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "fuld gang", "relation": "af", "tail": "Kongressen"}
+{"count": 1, "confidence": [0.00010446515079820529], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "en enorm unders\u00f8gelse", "relation": "i", "tail": "De amerikanske myndigheder"}
+{"count": 1, "confidence": [0.00044097157660871744], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "en enorm unders\u00f8gelse", "relation": "angrebet", "tail": "Kongressen"}
+{"count": 1, "confidence": [0.0004167844890616834], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "angrebet", "relation": "en enorm unders\u00f8gelse", "tail": "fuld gang"}
+{"count": 1, "confidence": [0.0007608518935739994], "sentence_number": [3], "document_id": ["dr_test_artikel.txt"], "head": "Kongressen", "relation": "af", "tail": "en enorm unders\u00f8gelse"}
+{"count": 2, "confidence": [7.959114736877382e-05, 0.00012160228652646765], "sentence_number": [4, 8], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "de seks dage", "relation": "der", "tail": "angrebet"}
+{"count": 2, "confidence": [0.00026577411335892975, 0.0004705076280515641], "sentence_number": [4, 8], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "der", "relation": "er", "tail": "angrebet"}
+{"count": 1, "confidence": [7.232584903249517e-05], "sentence_number": [4], "document_id": ["dr_test_artikel.txt"], "head": "der", "relation": "siden", "tail": "Kongressen"}
+{"count": 2, "confidence": [0.00042927011963911355, 0.0003900608280673623], "sentence_number": [4, 8], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "angrebet", "relation": "er", "tail": "der"}
+{"count": 1, "confidence": [3.0977753340266645e-06], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "rigtige bomber", "relation": "myndighederne n\u00e6rmest", "tail": "noget"}
+{"count": 1, "confidence": [0.00044312264071777463], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "politim\u00e6nd", "relation": "blev", "tail": "t\u00e5regas"}
+{"count": 1, "confidence": [6.404523446690291e-06], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "politim\u00e6nd", "relation": "myndighederne n\u00e6rmest", "tail": "noget"}
+{"count": 1, "confidence": [4.966286360286176e-05], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "t\u00e5regas", "relation": "blev", "tail": "rigtige bomber"}
+{"count": 1, "confidence": [0.0009488245705142617], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "t\u00e5regas", "relation": "med", "tail": "politim\u00e6nd"}
+{"count": 1, "confidence": [0.00013359513832256198], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "myndighederne", "relation": "ja", "tail": "t\u00e5regas"}
+{"count": 1, "confidence": [0.000423440127633512], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "myndighederne", "relation": "n\u00e6rmest", "tail": "noget"}
+{"count": 1, "confidence": [9.98646137304604e-05], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "noget", "relation": "ja", "tail": "t\u00e5regas"}
+{"count": 1, "confidence": [0.0007925329846329987], "sentence_number": [6], "document_id": ["dr_test_artikel.txt"], "head": "noget", "relation": "n\u00e6rmest", "tail": "myndighederne"}
+{"count": 1, "confidence": [2.265737930429168e-05], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": "kort", "tail": "Washingtons"}
+{"count": 2, "confidence": [0.0003415945975575596, 0.0004101295489817858], "sentence_number": [7, 22], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "Washingtons", "relation": "FBI-chef", "tail": "Steven D'Antuono"}
+{"count": 1, "confidence": [0.00019242965208832175], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "Steven D'Antuono", "relation": ",", "tail": "Washingtons"}
+{"count": 2, "confidence": [0.00012192847498226911, 6.544149073306471e-05], "sentence_number": [7, 22], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "Steven D'Antuono", "relation": ",", "tail": "statsanklager"}
+{"count": 2, "confidence": [1.9817849533865228e-05, 4.292171070119366e-05], "sentence_number": [7, 22], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "statsanklager", "relation": "Steven D'Antuono", "tail": "Washingtons"}
+{"count": 2, "confidence": [0.0002861992106772959, 0.00015823819558136165], "sentence_number": [7, 22], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "statsanklager", "relation": "og", "tail": "Steven D'Antuono"}
+{"count": 1, "confidence": [0.0001029201375786215], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "statsanklager", "relation": "Michael Sherwin", "tail": "g\u00e5r"}
+{"count": 1, "confidence": [7.803533662809059e-05], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "statsanklager", "relation": "Michael Sherwin", "tail": "aftes"}
+{"count": 1, "confidence": [6.088786540203728e-05], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "statsanklager", "relation": "g\u00e5r", "tail": "pressem\u00f8de"}
+{"count": 1, "confidence": [7.865450606914237e-05], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": "statsanklager", "tail": "Steven D'Antuono"}
+{"count": 1, "confidence": [0.0007301461882889271], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": "g\u00e5r", "tail": "aftes"}
+{"count": 1, "confidence": [8.089026232482865e-05], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": "aftes", "tail": "pressem\u00f8de"}
+{"count": 1, "confidence": [0.0002905692672356963], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "g\u00e5r", "relation": "Michael Sherwin", "tail": "statsanklager"}
+{"count": 1, "confidence": [0.0014478351222351193], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "g\u00e5r", "relation": "aftes", "tail": "pressem\u00f8de"}
+{"count": 1, "confidence": [0.00019783133757300675], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "aftes", "relation": "Michael Sherwin", "tail": "statsanklager"}
+{"count": 1, "confidence": [0.0016836950089782476], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "aftes", "relation": "g\u00e5r", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [0.000195818385691382], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "aftes", "relation": "pressem\u00f8de", "tail": "efterforskningen"}
+{"count": 1, "confidence": [0.00011392730812076479], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "pressem\u00f8de", "relation": "aftes", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [0.0013350439257919788], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "pressem\u00f8de", "relation": "aftes", "tail": "g\u00e5r"}
+{"count": 1, "confidence": [0.0002554717939347029], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "pressem\u00f8de", "relation": "efterforskningen", "tail": "uges"}
+{"count": 1, "confidence": [0.00013149145524948835], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "efterforskningen", "relation": "pressem\u00f8de", "tail": "aftes"}
+{"count": 1, "confidence": [0.0033567706122994423], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "efterforskningen", "relation": "sidste", "tail": "uges"}
+{"count": 1, "confidence": [0.00018825386359822005], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "efterforskningen", "relation": "sidste", "tail": "Kongressen"}
+{"count": 1, "confidence": [3.180187923135236e-05], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "uges", "relation": "om", "tail": "aftes"}
+{"count": 1, "confidence": [0.00025017946609295905], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "uges", "relation": "efterforskningen", "tail": "pressem\u00f8de"}
+{"count": 1, "confidence": [0.005905113648623228], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "uges", "relation": "af", "tail": "efterforskningen"}
+{"count": 1, "confidence": [0.0019007781520485878], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "uges", "relation": "p\u00e5", "tail": "Kongressen"}
+{"count": 1, "confidence": [0.00020512219634838402], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "uges", "relation": "p\u00e5", "tail": "USA"}
+{"count": 1, "confidence": [0.0002582484157755971], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "Kongressen", "relation": "sidste", "tail": "efterforskningen"}
+{"count": 1, "confidence": [0.0009001978323794901], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "Kongressen", "relation": "p\u00e5", "tail": "uges"}
+{"count": 1, "confidence": [0.00019378044817131013], "sentence_number": [7], "document_id": ["dr_test_artikel.txt"], "head": "USA", "relation": "p\u00e5", "tail": "uges"}
+{"count": 1, "confidence": [0.0006966196233406663], "sentence_number": [8], "document_id": ["dr_test_artikel.txt"], "head": "angrebet", "relation": "har", "tail": "FBI"}
+{"count": 1, "confidence": [7.675140659557655e-05], "sentence_number": [8], "document_id": ["dr_test_artikel.txt"], "head": "angrebet", "relation": "har", "tail": "statsanklageren"}
+{"count": 1, "confidence": [0.00022776078549213707], "sentence_number": [8], "document_id": ["dr_test_artikel.txt"], "head": "FBI", "relation": "har", "tail": "angrebet"}
+{"count": 1, "confidence": [6.868531636428088e-05], "sentence_number": [8], "document_id": ["dr_test_artikel.txt"], "head": "statsanklageren", "relation": "har", "tail": "angrebet"}
+{"count": 1, "confidence": [0.00035532432957552373], "sentence_number": [8], "document_id": ["dr_test_artikel.txt"], "head": "statsanklageren", "relation": "over", "tail": "170 sager"}
+{"count": 1, "confidence": [0.0006543596973642707], "sentence_number": [8], "document_id": ["dr_test_artikel.txt"], "head": "170 sager", "relation": "over", "tail": "statsanklageren"}
+{"count": 1, "confidence": [0.00040135320159606636], "sentence_number": [9], "document_id": ["dr_test_artikel.txt"], "head": "tip", "relation": "over", "tail": "De"}
+{"count": 1, "confidence": [0.0022881398908793926], "sentence_number": [9], "document_id": ["dr_test_artikel.txt"], "head": "tip", "relation": "og", "tail": "videoer"}
+{"count": 1, "confidence": [0.003046552650630474], "sentence_number": [9], "document_id": ["dr_test_artikel.txt"], "head": "videoer", "relation": "og", "tail": "tip"}
+{"count": 1, "confidence": [0.0007001052726991475], "sentence_number": [9], "document_id": ["dr_test_artikel.txt"], "head": "folk", "relation": "og", "tail": "tip"}
+{"count": 1, "confidence": [0.00657741678878665], "sentence_number": [10], "document_id": ["dr_test_artikel.txt"], "head": "dette", "relation": "blot", "tail": "begyndelsen"}
+{"count": 1, "confidence": [0.008229427970945835], "sentence_number": [10], "document_id": ["dr_test_artikel.txt"], "head": "begyndelsen", "relation": "er", "tail": "dette"}
+{"count": 1, "confidence": [0.00012553368287626654], "sentence_number": [12], "document_id": ["dr_test_artikel.txt"], "head": "politiker", "relation": "QAnon-folk", "tail": "Anholdelser"}
+{"count": 1, "confidence": [0.00030164941563270986], "sentence_number": [12], "document_id": ["dr_test_artikel.txt"], "head": "politiker", "relation": "70-\u00e5rig", "tail": "kongres-opt\u00f8jer"}
+{"count": 1, "confidence": [0.0002897310769185424], "sentence_number": [12], "document_id": ["dr_test_artikel.txt"], "head": "kongres-opt\u00f8jer", "relation": "70-\u00e5rig", "tail": "politiker"}
+{"count": 1, "confidence": [0.0004617516533471644], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "Jeg", "relation": "at", "tail": "st\u00f8rrelsen"}
+{"count": 1, "confidence": [4.043259347478549e-06], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "Jeg", "relation": "Justitsministeriets historie", "tail": "statsanklageren"}
+{"count": 1, "confidence": [0.000663265585899353], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "st\u00f8rrelsen", "relation": ",", "tail": "Jeg"}
+{"count": 1, "confidence": [0.0007263881852850318], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "st\u00f8rrelsen", "relation": "skalaen", "tail": "denne unders\u00f8gelse"}
+{"count": 1, "confidence": [0.00015545058704447], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "skalaen", "relation": "st\u00f8rrelsen", "tail": "Jeg"}
+{"count": 1, "confidence": [0.00014339036715682596], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "skalaen", "relation": "denne unders\u00f8gelse", "tail": "fortilf\u00e6lde"}
+{"count": 1, "confidence": [0.0009423979208804667], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "denne unders\u00f8gelse", "relation": "skalaen", "tail": "st\u00f8rrelsen"}
+{"count": 1, "confidence": [0.0006025178008712828], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "denne unders\u00f8gelse", "relation": "er", "tail": "fortilf\u00e6lde"}
+{"count": 1, "confidence": [0.0008522210991941392], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "fortilf\u00e6lde", "relation": "er", "tail": "denne unders\u00f8gelse"}
+{"count": 1, "confidence": [2.9426126275211573e-05], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "FBI's historie", "relation": "ikke", "tail": "fortilf\u00e6lde"}
+{"count": 1, "confidence": [0.00027935963589698076], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "FBI's historie", "relation": ",", "tail": "Justitsministeriets"}
+{"count": 1, "confidence": [0.0002813542087096721], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "Justitsministeriets", "relation": "i", "tail": "FBI's historie"}
+{"count": 1, "confidence": [7.171690231189132e-05], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "Justitsministeriets", "relation": ",", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [0.00013053200382273644], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": ",", "tail": "Justitsministeriets"}
+{"count": 1, "confidence": [8.727041858946905e-05], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": ",", "tail": "et podie"}
+{"count": 1, "confidence": [0.0005932360072620213], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "statsanklageren", "relation": ",", "tail": "et podie"}
+{"count": 1, "confidence": [4.5572553062811494e-05], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "et podie", "relation": ",", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [0.00029684932087548077], "sentence_number": [13], "document_id": ["dr_test_artikel.txt"], "head": "et podie", "relation": ",", "tail": "statsanklageren"}
+{"count": 1, "confidence": [0.00010250647756038234], "sentence_number": [14], "document_id": ["dr_test_artikel.txt"], "head": "Capitol-bygningen", "relation": "dybest", "tail": "\u00e9t stort gerningssted"}
+{"count": 1, "confidence": [0.00013020452752243727], "sentence_number": [14], "document_id": ["dr_test_artikel.txt"], "head": "\u00e9t stort gerningssted", "relation": "dybest", "tail": "Capitol-bygningen"}
+{"count": 1, "confidence": [0.00014442502288147807], "sentence_number": [15], "document_id": ["dr_test_artikel.txt"], "head": "enorme \" unders\u00f8gelse", "relation": "at", "tail": "Myndighederne"}
+{"count": 1, "confidence": [0.0002028508073029419], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "Det", "relation": "tage dage", "tail": "uger"}
+{"count": 1, "confidence": [9.853261144598946e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "Det", "relation": "m\u00e5neder", "tail": "det"}
+{"count": 1, "confidence": [0.00011665305646602064], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "dage", "relation": "at", "tail": "Det"}
+{"count": 1, "confidence": [0.005825757049024105], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "dage", "relation": "og", "tail": "m\u00e5neder"}
+{"count": 1, "confidence": [3.778872633120045e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "uger", "relation": "at", "tail": "Det"}
+{"count": 1, "confidence": [0.00014076640945859253], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "uger", "relation": "m\u00e5neder ,", "tail": "det"}
+{"count": 1, "confidence": [0.005845536012202501], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "m\u00e5neder", "relation": "uger", "tail": "dage"}
+{"count": 1, "confidence": [0.001435049925930798], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "m\u00e5neder", "relation": ",", "tail": "det"}
+{"count": 1, "confidence": [2.9242610253277235e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "m\u00e5neder", "relation": "det", "tail": "den voldsomme episode"}
+{"count": 1, "confidence": [0.0019482770003378391], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": "lyder", "tail": "m\u00e5neder"}
+{"count": 1, "confidence": [8.063385757850483e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": "den voldsomme episode", "tail": "sidste uge"}
+{"count": 1, "confidence": [9.681582741905004e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "den voldsomme episode", "relation": "lyder", "tail": "m\u00e5neder"}
+{"count": 1, "confidence": [0.0003426257462706417], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "sidste uge", "relation": "den voldsomme episode", "tail": "det"}
+{"count": 1, "confidence": [0.0026672626845538616], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "sig", "relation": ",", "tail": "videoer"}
+{"count": 1, "confidence": [3.3591146348044276e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "sig", "relation": "florerede", "tail": "Trump-st\u00f8tter"}
+{"count": 1, "confidence": [0.001418975880369544], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "videoer", "relation": "mens", "tail": "sig"}
+{"count": 1, "confidence": [0.00037584415986202657], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "videoer", "relation": "florerede", "tail": "Trump-st\u00f8tter"}
+{"count": 1, "confidence": [9.737436630530283e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "videoer", "relation": "af", "tail": "konspirationsteorikere"}
+{"count": 1, "confidence": [0.0008631174569018185], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "Trump-st\u00f8tter", "relation": "florerede", "tail": "videoer"}
+{"count": 1, "confidence": [4.8130768846021965e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "Trump-st\u00f8tter", "relation": "konspirationsteorikere", "tail": "der"}
+{"count": 1, "confidence": [6.539027526741847e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "konspirationsteorikere", "relation": "der", "tail": "Kongressen"}
+{"count": 1, "confidence": [0.00010300685244146734], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "der", "relation": "konspirationsteorikere", "tail": "Trump-st\u00f8tter"}
+{"count": 1, "confidence": [0.00022099545458331704], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "der", "relation": "Kongressen", "tail": "strips"}
+{"count": 1, "confidence": [0.00012066495401086286], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "der", "relation": "Kongressen", "tail": "slagv\u00e5ben"}
+{"count": 1, "confidence": [4.8855439672479406e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "Kongressen", "relation": "der", "tail": "konspirationsteorikere"}
+{"count": 1, "confidence": [0.0003622992953751236], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "Kongressen", "relation": "med", "tail": "slagv\u00e5ben"}
+{"count": 1, "confidence": [4.3951386032858863e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "strips", "relation": "Kongressen", "tail": "der"}
+{"count": 1, "confidence": [2.8430646125343628e-05], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "slagv\u00e5ben", "relation": "Kongressen", "tail": "der"}
+{"count": 1, "confidence": [0.0003427672490943223], "sentence_number": [16], "document_id": ["dr_test_artikel.txt"], "head": "slagv\u00e5ben", "relation": "og", "tail": "Kongressen"}
+{"count": 1, "confidence": [0.0011487164301797748], "sentence_number": [17], "document_id": ["dr_test_artikel.txt"], "head": "Fem personer", "relation": "d\u00f8de", "tail": "opt\u00f8jerne"}
+{"count": 1, "confidence": [0.0009700746741145849], "sentence_number": [17], "document_id": ["dr_test_artikel.txt"], "head": "opt\u00f8jerne", "relation": "under", "tail": "Fem personer"}
+{"count": 1, "confidence": [0.0012368593597784638], "sentence_number": [19], "document_id": ["dr_test_artikel.txt"], "head": "Kriminalitet", "relation": "'", "tail": "en ufattelig skala"}
+{"count": 1, "confidence": [0.0016460055485367775], "sentence_number": [19], "document_id": ["dr_test_artikel.txt"], "head": "en ufattelig skala", "relation": "p\u00e5", "tail": "Kriminalitet"}
+{"count": 1, "confidence": [0.0006277771317400038], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "Flere gange", "relation": "pressem\u00f8det", "tail": "g\u00e5r"}
+{"count": 1, "confidence": [0.00020294127170927823], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "Flere gange", "relation": "i", "tail": "det"}
+{"count": 1, "confidence": [0.0005120338755659759], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "pressem\u00f8det", "relation": "g\u00e5r", "tail": "det"}
+{"count": 1, "confidence": [1.665818611703192e-05], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "pressem\u00f8det", "relation": "myndighederne ikke", "tail": "noget"}
+{"count": 1, "confidence": [0.0005623653414659202], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "g\u00e5r", "relation": "pressem\u00f8det", "tail": "Flere gange"}
+{"count": 1, "confidence": [1.1329506378388032e-05], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "g\u00e5r", "relation": "myndighederne ikke", "tail": "noget"}
+{"count": 1, "confidence": [7.487920811399817e-05], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": "i", "tail": "Flere gange"}
+{"count": 1, "confidence": [0.00020145279995631427], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": "i", "tail": "pressem\u00f8det"}
+{"count": 1, "confidence": [0.0004026978276669979], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": ",", "tail": "myndighederne"}
+{"count": 1, "confidence": [0.00039439063402824104], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "myndighederne", "relation": ",", "tail": "det"}
+{"count": 1, "confidence": [0.000920584425330162], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "myndighederne", "relation": "ikke", "tail": "noget"}
+{"count": 1, "confidence": [0.0014701877953484654], "sentence_number": [20], "document_id": ["dr_test_artikel.txt"], "head": "noget", "relation": "ikke", "tail": "myndighederne"}
+{"count": 1, "confidence": [0.0012962340842932463], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "listen", "relation": "forskellige typer", "tail": "lovovertr\u00e6delser"}
+{"count": 1, "confidence": [5.595361290033907e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "forskellige typer", "relation": ",", "tail": "statsanklager"}
+{"count": 1, "confidence": [0.003927849233150482], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "lovovertr\u00e6delser", "relation": "forskellige typer", "tail": "listen"}
+{"count": 1, "confidence": [9.284281259169802e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "lovovertr\u00e6delser", "relation": ",", "tail": "statsanklager"}
+{"count": 1, "confidence": [1.6089018875694212e-06], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": "- Fra", "tail": "ulovlig indtr\u00e6ngen"}
+{"count": 1, "confidence": [0.00010464094521012157], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "ulovlig indtr\u00e6ngen", "relation": "\n", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [0.0011027971049770713], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "ulovlig indtr\u00e6ngen", "relation": ",", "tail": "tyveri"}
+{"count": 1, "confidence": [7.23824996384792e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "ulovlig indtr\u00e6ngen", "relation": "til", "tail": "post"}
+{"count": 1, "confidence": [0.002914446871727705], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "tyveri", "relation": ",", "tail": "ulovlig indtr\u00e6ngen"}
+{"count": 1, "confidence": [0.00014507726882584393], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "tyveri", "relation": ",", "tail": "tyveri"}
+{"count": 1, "confidence": [0.0015935105038806796], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "post", "relation": ",", "tail": "tyveri"}
+{"count": 1, "confidence": [0.00010436955199111253], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "post", "relation": "til", "tail": "digitale enheder"}
+{"count": 1, "confidence": [0.0005626603960990906], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "tyveri", "relation": "post", "tail": "tyveri"}
+{"count": 1, "confidence": [0.0024188391398638487], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "tyveri", "relation": ",", "tail": "post"}
+{"count": 1, "confidence": [0.00011270627146586776], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "tyveri", "relation": "inde", "tail": "bygningen"}
+{"count": 1, "confidence": [8.053875111121064e-06], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "tyveri", "relation": "lokale betjente ,", "tail": "overfald"}
+{"count": 1, "confidence": [0.00011896018258994445], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "digitale enheder", "relation": "post", "tail": "tyveri"}
+{"count": 1, "confidence": [0.0011658527655526996], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "digitale enheder", "relation": "i", "tail": "bygningen"}
+{"count": 1, "confidence": [0.00025393665418960154], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "bygningen", "relation": "inde", "tail": "tyveri"}
+{"count": 1, "confidence": [0.007621028460562229], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "bygningen", "relation": "inde", "tail": "digitale enheder"}
+{"count": 1, "confidence": [0.0002378961944486946], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "overfald", "relation": "bygningen", "tail": "digitale enheder"}
+{"count": 1, "confidence": [0.0019360524602234364], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "overfald", "relation": ",", "tail": "bygningen"}
+{"count": 1, "confidence": [0.001333480584435165], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "lokale betjente", "relation": ",", "tail": "overfald"}
+{"count": 1, "confidence": [0.0002110574278049171], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "overfald", "relation": "p\u00e5", "tail": "overfald"}
+{"count": 1, "confidence": [0.0025874823331832886], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "overfald", "relation": ",", "tail": "lokale betjente"}
+{"count": 1, "confidence": [9.295958231329374e-07], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "overfald", "relation": "mord og", "tail": "manddrab"}
+{"count": 1, "confidence": [0.00012135343422414735], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "f\u00f8derale betjente", "relation": "p\u00e5", "tail": "lokale betjente"}
+{"count": 1, "confidence": [0.0008679835009388626], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "f\u00f8derale betjente", "relation": ",", "tail": "potentielt tyveri"}
+{"count": 1, "confidence": [0.0016940763453021646], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "potentielt tyveri", "relation": "til", "tail": "f\u00f8derale betjente"}
+{"count": 1, "confidence": [0.00010459534678375348], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "potentielt tyveri", "relation": "af", "tail": "mord"}
+{"count": 1, "confidence": [0.00013204185233917087], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "statshemmeligheder", "relation": "til", "tail": "f\u00f8derale betjente"}
+{"count": 1, "confidence": [0.00237105181440711], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "statshemmeligheder", "relation": ",", "tail": "mord"}
+{"count": 1, "confidence": [5.0791059038601816e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "statshemmeligheder", "relation": "og", "tail": "manddrab"}
+{"count": 1, "confidence": [3.0682840588269755e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "statshemmeligheder", "relation": "og", "tail": "en unders\u00f8gelse"}
+{"count": 1, "confidence": [5.749883712269366e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "mord", "relation": "af", "tail": "potentielt tyveri"}
+{"count": 1, "confidence": [0.002312025986611843], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "mord", "relation": ",", "tail": "statshemmeligheder"}
+{"count": 1, "confidence": [0.00010531802399782464], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "mord", "relation": "manddrab", "tail": "en unders\u00f8gelse"}
+{"count": 1, "confidence": [2.7524805773282424e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "mord", "relation": "en unders\u00f8gelse", "tail": "un\u00f8dig magtanvendelse"}
+{"count": 1, "confidence": [7.95771848061122e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "manddrab", "relation": "og", "tail": "statshemmeligheder"}
+{"count": 1, "confidence": [0.0026623073499649763], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "manddrab", "relation": "endda", "tail": "en unders\u00f8gelse"}
+{"count": 1, "confidence": [4.340264786151238e-05], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "manddrab", "relation": "om", "tail": "un\u00f8dig magtanvendelse"}
+{"count": 1, "confidence": [0.00211610971018672], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "en unders\u00f8gelse", "relation": "og", "tail": "manddrab"}
+{"count": 1, "confidence": [0.00034892125404439867], "sentence_number": [21], "document_id": ["dr_test_artikel.txt"], "head": "un\u00f8dig magtanvendelse", "relation": "\n", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [5.869332380825654e-05], "sentence_number": [22], "document_id": ["dr_test_artikel.txt"], "head": "Washingtons", "relation": ",", "tail": "statsanklager"}
+{"count": 1, "confidence": [0.00035959845990873873], "sentence_number": [22], "document_id": ["dr_test_artikel.txt"], "head": "Steven D'Antuono", "relation": "FBI-chef", "tail": "Washingtons"}
+{"count": 1, "confidence": [4.251057362125721e-06], "sentence_number": [22], "document_id": ["dr_test_artikel.txt"], "head": "Steven D'Antuono", "relation": "og statsanklager", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [2.947357643279247e-06], "sentence_number": [22], "document_id": ["dr_test_artikel.txt"], "head": "Steven D'Antuono", "relation": "og statsanklager", "tail": "pressem\u00f8det"}
+{"count": 1, "confidence": [0.00012167071690782905], "sentence_number": [22], "document_id": ["dr_test_artikel.txt"], "head": "statsanklager", "relation": "Michael Sherwin", "tail": "pressem\u00f8det"}
+{"count": 1, "confidence": [6.233070598682389e-05], "sentence_number": [22], "document_id": ["dr_test_artikel.txt"], "head": "pressem\u00f8det", "relation": "statsanklager", "tail": "Steven D'Antuono"}
+{"count": 1, "confidence": [0.00028559035854414105], "sentence_number": [22], "document_id": ["dr_test_artikel.txt"], "head": "pressem\u00f8det", "relation": "Michael Sherwin", "tail": "statsanklager"}
+{"count": 1, "confidence": [8.709175017429516e-05], "sentence_number": [25], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": "og", "tail": "nogle flere lovovertr\u00e6delser"}
+{"count": 1, "confidence": [0.00013508008851204067], "sentence_number": [25], "document_id": ["dr_test_artikel.txt"], "head": "nogle flere lovovertr\u00e6delser", "relation": "og", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [0.0002790707512758672], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "OGS\u00c5:'Selfie", "relation": "'", "tail": "MAGA-hat"}
+{"count": 1, "confidence": [0.00027524190954864025], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "MAGA-hat", "relation": "'", "tail": "OGS\u00c5:'Selfie"}
+{"count": 1, "confidence": [3.147493043798022e-05], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "kongresbygning \n FBI", "relation": "suspenderet", "tail": "MAGA-hat"}
+{"count": 1, "confidence": [0.00027365394635125995], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "kongresbygning \n FBI", "relation": "lige", "tail": "flere sager"}
+{"count": 1, "confidence": [0.0002817397762555629], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "flere sager", "relation": "lige", "tail": "kongresbygning \n FBI"}
+{"count": 1, "confidence": [5.5788710596971214e-05], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "flere sager", "relation": "konspiration", "tail": "opildning"}
+{"count": 1, "confidence": [6.04011014123292e-06], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "flere sager", "relation": "om opildning", "tail": "opr\u00f8r"}
+{"count": 1, "confidence": [9.297287761000916e-05], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "konspiration", "relation": "og", "tail": "opildning"}
+{"count": 1, "confidence": [0.00013095184112899005], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "konspiration", "relation": "og", "tail": "opr\u00f8r"}
+{"count": 1, "confidence": [3.584639489417896e-05], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "opildning", "relation": "konspiration", "tail": "flere sager"}
+{"count": 1, "confidence": [0.00018033872765954584], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "opildning", "relation": "og", "tail": "konspiration"}
+{"count": 1, "confidence": [0.00017531932098791003], "sentence_number": [29], "document_id": ["dr_test_artikel.txt"], "head": "opr\u00f8r", "relation": "og", "tail": "konspiration"}
+{"count": 1, "confidence": [0.0005502389394678175], "sentence_number": [30], "document_id": ["dr_test_artikel.txt"], "head": "der", "relation": "til", "tail": "20 \u00e5rs"}
+{"count": 1, "confidence": [0.0006575867882929742], "sentence_number": [30], "document_id": ["dr_test_artikel.txt"], "head": "20 \u00e5rs", "relation": "give", "tail": "der"}
+{"count": 1, "confidence": [0.0018944016192108393], "sentence_number": [30], "document_id": ["dr_test_artikel.txt"], "head": "20 \u00e5rs", "relation": "efter", "tail": "amerikansk lov"}
+{"count": 1, "confidence": [0.0015372262569144368], "sentence_number": [30], "document_id": ["dr_test_artikel.txt"], "head": "amerikansk lov", "relation": "efter", "tail": "20 \u00e5rs"}
+{"count": 1, "confidence": [0.0001790910173440352], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "folk", "relation": "og", "tail": "sociale medier"}
+{"count": 1, "confidence": [0.001045192126184702], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "folk", "relation": ",", "tail": "politiet"}
+{"count": 1, "confidence": [0.0005170298391021788], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "politiet", "relation": ",", "tail": "folk"}
+{"count": 1, "confidence": [0.00203979155048728], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "politiet", "relation": "var", "tail": "reel , \u00e5ben kamp"}
+{"count": 1, "confidence": [0.0029278802685439587], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "reel , \u00e5ben kamp", "relation": "var", "tail": "politiet"}
+{"count": 1, "confidence": [0.00018676942272577435], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "reel , \u00e5ben kamp", "relation": "i", "tail": "Capitol-bygningen"}
+{"count": 1, "confidence": [0.00018986927170772105], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "Capitol-bygningen", "relation": "reel , \u00e5ben kamp", "tail": "politiet"}
+{"count": 1, "confidence": [0.00020738440798595548], "sentence_number": [32], "document_id": ["dr_test_artikel.txt"], "head": "Capitol-bygningen", "relation": "i", "tail": "reel , \u00e5ben kamp"}
+{"count": 1, "confidence": [0.0006817345274612308], "sentence_number": [33], "document_id": ["dr_test_artikel.txt"], "head": "T\u00e5regas", "relation": "blev", "tail": "politiet"}
+{"count": 1, "confidence": [0.0004246567841619253], "sentence_number": [33], "document_id": ["dr_test_artikel.txt"], "head": "politiet", "relation": "brugt", "tail": "T\u00e5regas"}
+{"count": 2, "confidence": [0.005837313365191221, 0.010115540586411953], "sentence_number": [33, 33], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "politiet", "relation": "af", "tail": "politiet"}
+{"count": 1, "confidence": [0.00029962626285851], "sentence_number": [34], "document_id": ["dr_test_artikel.txt"], "head": "en del", "relation": "om", "tail": "hvad"}
+{"count": 1, "confidence": [6.010109549000238e-06], "sentence_number": [34], "document_id": ["dr_test_artikel.txt"], "head": "en del", "relation": "derinde ,", "tail": "det"}
+{"count": 1, "confidence": [0.0009572631679475307], "sentence_number": [34], "document_id": ["dr_test_artikel.txt"], "head": "misforst\u00e5elser", "relation": ",", "tail": "hvad"}
+{"count": 1, "confidence": [0.0003150021657347679], "sentence_number": [34], "document_id": ["dr_test_artikel.txt"], "head": "hvad", "relation": "om", "tail": "en del"}
+{"count": 1, "confidence": [0.001963547198101878], "sentence_number": [34], "document_id": ["dr_test_artikel.txt"], "head": "hvad", "relation": ",", "tail": "misforst\u00e5elser"}
+{"count": 2, "confidence": [0.000218038767343387, 0.0006884476752020419], "sentence_number": [34, 45], "document_id": ["dr_test_artikel.txt", "dr_test_artikel.txt"], "head": "hvad", "relation": ",", "tail": "det"}
+{"count": 1, "confidence": [0.0008747277897782624], "sentence_number": [34], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": "vil", "tail": "de n\u00e6ste dage"}
+{"count": 1, "confidence": [0.00034486394724808633], "sentence_number": [34], "document_id": ["dr_test_artikel.txt"], "head": "de n\u00e6ste dage", "relation": "blive", "tail": "det"}
+{"count": 1, "confidence": [0.00019218673696741462], "sentence_number": [35], "document_id": ["dr_test_artikel.txt"], "head": "folk", "relation": "over", "tail": "den fuldkommen frygtelige konfrontation"}
+{"count": 1, "confidence": [2.5939902116078883e-05], "sentence_number": [35], "document_id": ["dr_test_artikel.txt"], "head": "den fuldkommen frygtelige konfrontation", "relation": "chokerede", "tail": "Jeg"}
+{"count": 1, "confidence": [0.00014083355199545622], "sentence_number": [35], "document_id": ["dr_test_artikel.txt"], "head": "den fuldkommen frygtelige konfrontation", "relation": "chokerede", "tail": "folk"}
+{"count": 1, "confidence": [0.0003140068147331476], "sentence_number": [35], "document_id": ["dr_test_artikel.txt"], "head": "der", "relation": "forklarer", "tail": "statsanklageren"}
+{"count": 1, "confidence": [0.0001066248441929929], "sentence_number": [35], "document_id": ["dr_test_artikel.txt"], "head": "statsanklageren", "relation": ",", "tail": "der"}
+{"count": 1, "confidence": [6.330448377411813e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "Michael Sherwin", "relation": "Steven D'Antuono", "tail": "de voldsomme omst\u00e6ndigheder"}
+{"count": 1, "confidence": [8.185741899069399e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "Steven D'Antuono", "relation": "de voldsomme omst\u00e6ndigheder", "tail": "angrebet"}
+{"count": 1, "confidence": [2.5029567041201517e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "de voldsomme omst\u00e6ndigheder", "relation": "Steven D'Antuono", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [4.541229282040149e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "de voldsomme omst\u00e6ndigheder", "relation": "fortalte om", "tail": "deres arbejde"}
+{"count": 1, "confidence": [3.3718115446390584e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "angrebet", "relation": "Steven D'Antuono", "tail": "Michael Sherwin"}
+{"count": 1, "confidence": [8.476297080051154e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "angrebet", "relation": "de voldsomme omst\u00e6ndigheder", "tail": "Steven D'Antuono"}
+{"count": 1, "confidence": [6.650298776852045e-07], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "angrebet", "relation": "Donald Trump en tale", "tail": "Alamo"}
+{"count": 1, "confidence": [4.0631490113203955e-07], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "angrebet", "relation": "Donald Trump en tale", "tail": "Texas"}
+{"count": 1, "confidence": [0.0005752107826992869], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "deres arbejde", "relation": "fortalte", "tail": "angrebet"}
+{"count": 1, "confidence": [4.2348434969123145e-06], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "deres arbejde", "relation": "retsforf\u00f8lge de", "tail": "pr\u00e6sident"}
+{"count": 1, "confidence": [3.937305518775247e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "deres arbejde", "relation": "skyldige", "tail": "Donald Trump"}
+{"count": 1, "confidence": [7.487500261049718e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "pr\u00e6sident", "relation": "en tale", "tail": "Alamo"}
+{"count": 1, "confidence": [0.00012255953333806247], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "Donald Trump", "relation": "en tale", "tail": "Alamo"}
+{"count": 1, "confidence": [7.488056871807203e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "Donald Trump", "relation": "en tale", "tail": "Texas"}
+{"count": 1, "confidence": [0.0002593160606920719], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "en tale", "relation": "Alamo", "tail": "Texas"}
+{"count": 1, "confidence": [6.405009480658919e-05], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "Alamo", "relation": "en tale", "tail": "pr\u00e6sident"}
+{"count": 1, "confidence": [0.00016746677283663303], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "Alamo", "relation": "en tale", "tail": "Donald Trump"}
+{"count": 1, "confidence": [0.00023628768394701183], "sentence_number": [37], "document_id": ["dr_test_artikel.txt"], "head": "Texas", "relation": "Alamo", "tail": "en tale"}
+{"count": 1, "confidence": [0.007605175022035837], "sentence_number": [39], "document_id": ["dr_test_artikel.txt"], "head": "Det", "relation": "er", "tail": "tid"}
+{"count": 1, "confidence": [0.004884407855570316], "sentence_number": [39], "document_id": ["dr_test_artikel.txt"], "head": "tid", "relation": "er", "tail": "Det"}
+{"count": 1, "confidence": [0.00018874570378102362], "sentence_number": [39], "document_id": ["dr_test_artikel.txt"], "head": "tid", "relation": ",", "tail": "nationen"}
+{"count": 1, "confidence": [1.2410531780915335e-05], "sentence_number": [39], "document_id": ["dr_test_artikel.txt"], "head": "tid", "relation": "skal heles", "tail": "han"}
+{"count": 1, "confidence": [0.00024827930610626936], "sentence_number": [39], "document_id": ["dr_test_artikel.txt"], "head": "nationen", "relation": ",", "tail": "tid"}
+{"count": 1, "confidence": [0.00021615791774820536], "sentence_number": [39], "document_id": ["dr_test_artikel.txt"], "head": "nationen", "relation": "skal", "tail": "han"}
+{"count": 1, "confidence": [0.0003358478716108948], "sentence_number": [39], "document_id": ["dr_test_artikel.txt"], "head": "han", "relation": "heles", "tail": "nationen"}
+{"count": 1, "confidence": [4.451370538542203e-06], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "Pr\u00e6sident Donald Trump", "relation": "USA og", "tail": "Alamo"}
+{"count": 1, "confidence": [5.5128045156986145e-06], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "Pr\u00e6sident Donald Trump", "relation": "USA og", "tail": "staten Texas"}
+{"count": 1, "confidence": [0.0004710749490186572], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "muren", "relation": "gr\u00e6nsen", "tail": "USA"}
+{"count": 1, "confidence": [0.0008403194369748235], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "gr\u00e6nsen", "relation": "muren", "tail": "Pr\u00e6sident Donald Trump"}
+{"count": 1, "confidence": [0.0030713900923728943], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "gr\u00e6nsen", "relation": "og", "tail": "Mexico"}
+{"count": 1, "confidence": [0.0001836269220802933], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "gr\u00e6nsen", "relation": "USA", "tail": "Alamo"}
+{"count": 1, "confidence": [3.4229571610921994e-05], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "USA", "relation": "p\u00e5", "tail": "Pr\u00e6sident Donald Trump"}
+{"count": 1, "confidence": [0.000929460278712213], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "USA", "relation": "gr\u00e6nsen", "tail": "muren"}
+{"count": 1, "confidence": [0.0005776119651272893], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "USA", "relation": "og", "tail": "Alamo"}
+{"count": 1, "confidence": [0.00011839553189929575], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "USA", "relation": "Alamo", "tail": "staten Texas"}
+{"count": 1, "confidence": [0.00026138577959500253], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "Mexico", "relation": "gr\u00e6nsen", "tail": "muren"}
+{"count": 1, "confidence": [0.0013578899670392275], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "Mexico", "relation": "USA", "tail": "gr\u00e6nsen"}
+{"count": 1, "confidence": [0.0003077375586144626], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "Mexico", "relation": "Alamo", "tail": "staten Texas"}
+{"count": 1, "confidence": [0.00014681386528536677], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "Alamo", "relation": "og", "tail": "gr\u00e6nsen"}
+{"count": 1, "confidence": [0.0007047004182823002], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "Alamo", "relation": "og", "tail": "USA"}
+{"count": 1, "confidence": [0.0002706014784052968], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "staten Texas", "relation": "Alamo", "tail": "USA"}
+{"count": 1, "confidence": [0.0008216884452849627], "sentence_number": [40], "document_id": ["dr_test_artikel.txt"], "head": "staten Texas", "relation": "Alamo", "tail": "Mexico"}
+{"count": 1, "confidence": [0.0031217068899422884], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "h\u00e5rde ord", "relation": "med", "tail": "vejen"}
+{"count": 1, "confidence": [0.00021583453053608537], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "h\u00e5rde ord", "relation": "p\u00e5", "tail": "deres fors\u00f8g"}
+{"count": 1, "confidence": [0.0001771976676536724], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "vejen", "relation": "h\u00e5rde ord", "tail": "Demokraterne"}
+{"count": 1, "confidence": [0.0030175705906003714], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "vejen", "relation": "med", "tail": "h\u00e5rde ord"}
+{"count": 1, "confidence": [0.00012201816571177915], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "deres fors\u00f8g", "relation": "vejen", "tail": "h\u00e5rde ord"}
+{"count": 1, "confidence": [0.0003806150343734771], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "deres fors\u00f8g", "relation": "vippe", "tail": "ham"}
+{"count": 1, "confidence": [0.00011774436279665679], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "deres fors\u00f8g", "relation": "at", "tail": "pinden"}
+{"count": 1, "confidence": [0.0004567005962599069], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "ham", "relation": "at", "tail": "deres fors\u00f8g"}
+{"count": 1, "confidence": [0.0002815168700180948], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "pinden", "relation": "b\u00e5de", "tail": "den 25. tilf\u00f8jelse"}
+{"count": 1, "confidence": [0.00010220737749477848], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "den 25. tilf\u00f8jelse", "relation": "pinden", "tail": "ham"}
+{"count": 1, "confidence": [0.0004948737332597375], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "den 25. tilf\u00f8jelse", "relation": "b\u00e5de", "tail": "pinden"}
+{"count": 1, "confidence": [0.00014559524424839765], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "den 25. tilf\u00f8jelse", "relation": "forfatningen", "tail": "en ny rigsretssag"}
+{"count": 1, "confidence": [0.00022538407938554883], "sentence_number": [42], "document_id": ["dr_test_artikel.txt"], "head": "en ny rigsretssag", "relation": "forfatningen", "tail": "den 25. tilf\u00f8jelse"}
+{"count": 1, "confidence": [0.002964791376143694], "sentence_number": [43], "document_id": ["dr_test_artikel.txt"], "head": "Ytringsfriheden", "relation": "er", "tail": "angreb"}
+{"count": 1, "confidence": [0.0017198092537000775], "sentence_number": [43], "document_id": ["dr_test_artikel.txt"], "head": "angreb", "relation": "er", "tail": "Ytringsfriheden"}
+{"count": 1, "confidence": [0.00027876882813870907], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "Den 25. tilf\u00f8jelse", "relation": "forfatningen", "tail": "ingen risiko"}
+{"count": 1, "confidence": [0.00022424838971346617], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "ingen risiko", "relation": "til", "tail": "Den 25. tilf\u00f8jelse"}
+{"count": 1, "confidence": [0.000250756653258577], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "ingen risiko", "relation": ",", "tail": "den"}
+{"count": 1, "confidence": [0.00016181686078198254], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "mig", "relation": "til", "tail": "Den 25. tilf\u00f8jelse"}
+{"count": 1, "confidence": [0.0005603660829365253], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "mig", "relation": "for", "tail": "forfatningen"}
+{"count": 1, "confidence": [0.0011576861143112183], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "mig", "relation": ",", "tail": "den"}
+{"count": 1, "confidence": [0.003678196342661977], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "den", "relation": "men", "tail": "mig"}
+{"count": 1, "confidence": [8.262605115305632e-05], "sentence_number": [44], "document_id": ["dr_test_artikel.txt"], "head": "den", "relation": "tilbage", "tail": "Joe Biden"}
+{"count": 1, "confidence": [4.7972305765142664e-05], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "hvad", "relation": "det", "tail": "Trump"}
+{"count": 1, "confidence": [8.221731695812196e-05], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "du", "relation": "p\u00e5", "tail": "man"}
+{"count": 1, "confidence": [0.0009218723862431943], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "du", "relation": ",", "tail": "det"}
+{"count": 1, "confidence": [3.293981838699741e-06], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "du", "relation": "Trump ,", "tail": "han"}
+{"count": 1, "confidence": [0.001255936804227531], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": ",", "tail": "du"}
+{"count": 1, "confidence": [0.0001429332623956725], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "det", "relation": ",", "tail": "han"}
+{"count": 1, "confidence": [0.00037637181230820715], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "Trump", "relation": ",", "tail": "du"}
+{"count": 1, "confidence": [0.0007508204434998333], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "Trump", "relation": ",", "tail": "han"}
+{"count": 1, "confidence": [0.00026353413704782724], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "han", "relation": "Trump", "tail": "det"}
+{"count": 1, "confidence": [0.0017170003848150373], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "han", "relation": "inden", "tail": "Trump"}
+{"count": 1, "confidence": [0.00018492439994588494], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "han", "relation": "til", "tail": "rigsretssagen"}
+{"count": 1, "confidence": [8.314102160511538e-05], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "han", "relation": "rigsretssagen", "tail": "\u2019"}
+{"count": 1, "confidence": [0.00014188494242262095], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "han", "relation": "til", "tail": "svindel"}
+{"count": 1, "confidence": [0.0009795057121664286], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "rigsretssagen", "relation": "\u2019", "tail": "svindel"}
+{"count": 1, "confidence": [0.00019508408149704337], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "rigsretssagen", "relation": "\u2019", "tail": "\u2019 og en \u2019 heksejagt \u2019"}
+{"count": 1, "confidence": [0.0013538898201659322], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "svindel", "relation": "\u2019", "tail": "rigsretssagen"}
+{"count": 1, "confidence": [0.00016928641707636416], "sentence_number": [45], "document_id": ["dr_test_artikel.txt"], "head": "\u2019 og en \u2019 heksejagt \u2019", "relation": "\u2019", "tail": "rigsretssagen"}
+{"count": 1, "confidence": [0.0006324128480628133], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "modemagasin", "relation": "\n\n", "tail": "Vogues"}
+{"count": 1, "confidence": [0.0011411015875637531], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "Vogues", "relation": "\n\n", "tail": "modemagasin"}
+{"count": 1, "confidence": [6.176895840326324e-05], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "Vogues", "relation": "forside", "tail": "et par"}
+{"count": 1, "confidence": [0.00016217851953115314], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris", "relation": "forside", "tail": "Vogues"}
+{"count": 1, "confidence": [0.0007693663355894387], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris", "relation": "et par", "tail": "sneakers"}
+{"count": 1, "confidence": [0.00010689649207051843], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris", "relation": "et par", "tail": "hvilken"}
+{"count": 1, "confidence": [0.00025296137512971956], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "et par", "relation": "sneakers viser", "tail": "hvilken"}
+{"count": 1, "confidence": [9.95966765913181e-05], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "et par", "relation": ",", "tail": "tid"}
+{"count": 1, "confidence": [9.042818419402465e-05], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "et par", "relation": ",", "tail": "vi"}
+{"count": 1, "confidence": [0.002053043805062771], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "sneakers", "relation": "i", "tail": "Kamala Harris"}
+{"count": 2, "confidence": [0.0048943934962153435, 0.0009958220180124044], "sentence_number": [2, 3], "document_id": ["dr_test_artikel2.txt", "dr_test_artikel2.txt"], "head": "sneakers", "relation": "viser", "tail": "hvilken"}
+{"count": 1, "confidence": [0.00010718190605985001], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "hvilken", "relation": "viser", "tail": "et par"}
+{"count": 1, "confidence": [0.00238167610950768], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "hvilken", "relation": "viser", "tail": "sneakers"}
+{"count": 1, "confidence": [0.0001062898154486902], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "tid", "relation": "viser", "tail": "et par"}
+{"count": 1, "confidence": [0.00120236084330827], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "tid", "relation": "hvilken", "tail": "sneakers"}
+{"count": 1, "confidence": [0.00023901255917735398], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "tid", "relation": "lever", "tail": "redakt\u00f8r"}
+{"count": 1, "confidence": [0.0001150045427493751], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "vi", "relation": "i", "tail": "redakt\u00f8r"}
+{"count": 1, "confidence": [3.348106110934168e-05], "sentence_number": [2], "document_id": ["dr_test_artikel2.txt"], "head": "vi", "relation": "redakt\u00f8r", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [3.161385393468663e-05], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "at", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [9.672952728578821e-05], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "Kamala Harris", "tail": "sneakers"}
+{"count": 1, "confidence": [7.729401113465428e-05], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "sneakers", "relation": "Kamala Harris", "tail": "forsidebillede"}
+{"count": 1, "confidence": [0.0003585148951970041], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "sneakers", "relation": "viser", "tail": "tid"}
+{"count": 1, "confidence": [0.00010608181037241593], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "sneakers", "relation": "hvilken", "tail": "vi"}
+{"count": 1, "confidence": [3.4491295082261786e-05], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "hvilken", "relation": "Kamala Harris", "tail": "forsidebillede"}
+{"count": 1, "confidence": [0.00026539378450252116], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "hvilken", "relation": "sneakers", "tail": "Kamala Harris"}
+{"count": 1, "confidence": [0.001947047421708703], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "hvilken", "relation": ",", "tail": "sneakers"}
+{"count": 1, "confidence": [0.0021461008582264185], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "hvilken", "relation": "befinder", "tail": "os"}
+{"count": 1, "confidence": [8.220736344810575e-05], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "tid", "relation": "viser", "tail": "Kamala Harris"}
+{"count": 1, "confidence": [0.000457110843854025], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "tid", "relation": ",", "tail": "sneakers"}
+{"count": 1, "confidence": [0.004502551630139351], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "tid", "relation": "vi", "tail": "os"}
+{"count": 1, "confidence": [0.00020737707382068038], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "vi", "relation": "hvilken", "tail": "sneakers"}
+{"count": 1, "confidence": [0.0004776416171807796], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "os", "relation": "vi", "tail": "hvilken"}
+{"count": 1, "confidence": [0.0021472249645739794], "sentence_number": [3], "document_id": ["dr_test_artikel2.txt"], "head": "os", "relation": "vi", "tail": "tid"}
+{"count": 1, "confidence": [0.0004639011749532074], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "Februars", "relation": "af", "tail": "det amerikanske Vogue"}
+{"count": 1, "confidence": [0.0005734208971261978], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "det amerikanske Vogue", "relation": "af", "tail": "Februars"}
+{"count": 1, "confidence": [0.00011066863226005808], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "det amerikanske Vogue", "relation": "har", "tail": "de seneste dage"}
+{"count": 1, "confidence": [6.29071582807228e-05], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "de seneste dage", "relation": "af", "tail": "Februars"}
+{"count": 1, "confidence": [0.0005237218574620783], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "de seneste dage", "relation": "har", "tail": "det amerikanske Vogue"}
+{"count": 1, "confidence": [1.2348809832474217e-05], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "de seneste dage", "relation": ", allerede", "tail": "magasinet"}
+{"count": 1, "confidence": [5.189803778193891e-05], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "voldsom kritik", "relation": "de seneste dage", "tail": "det amerikanske Vogue"}
+{"count": 1, "confidence": [9.6377611043863e-05], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "voldsom kritik", "relation": "allerede", "tail": "magasinet"}
+{"count": 1, "confidence": [6.979855970712379e-05], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "flere sider", "relation": "de seneste dage", "tail": "det amerikanske Vogue"}
+{"count": 1, "confidence": [0.00013708800543099642], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "flere sider", "relation": "voldsom kritik", "tail": "de seneste dage"}
+{"count": 1, "confidence": [0.0001635058579267934], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "flere sider", "relation": "allerede", "tail": "magasinet"}
+{"count": 1, "confidence": [0.0001245247112819925], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "magasinet", "relation": "allerede", "tail": "flere sider"}
+{"count": 1, "confidence": [0.0003564677608665079], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "magasinet", "relation": "har", "tail": "butikkernes"}
+{"count": 1, "confidence": [0.0006477521965280175], "sentence_number": [5], "document_id": ["dr_test_artikel2.txt"], "head": "butikkernes", "relation": "har", "tail": "magasinet"}
+{"count": 1, "confidence": [0.0001464755623601377], "sentence_number": [6], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "forsidebilledet", "tail": "den kommende udgave"}
+{"count": 1, "confidence": [0.00034698302624747157], "sentence_number": [6], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebilledet", "relation": "i", "tail": "s\u00f8ndags"}
+{"count": 1, "confidence": [0.00018180081679020077], "sentence_number": [6], "document_id": ["dr_test_artikel2.txt"], "head": "den kommende udgave", "relation": "forsidebilledet", "tail": "Vogue"}
+{"count": 1, "confidence": [4.353663098299876e-05], "sentence_number": [6], "document_id": ["dr_test_artikel2.txt"], "head": "s\u00f8ndags", "relation": "for", "tail": "Vogue"}
+{"count": 1, "confidence": [0.0007247750763781369], "sentence_number": [6], "document_id": ["dr_test_artikel2.txt"], "head": "s\u00f8ndags", "relation": "i", "tail": "forsidebilledet"}
+{"count": 1, "confidence": [8.91814367302383e-06], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "man", "relation": "den kommende amerikanske vicepr\u00e6sident ,", "tail": "Kamala Harris"}
+{"count": 1, "confidence": [1.7573564340030619e-06], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "man", "relation": "den kommende amerikanske vicepr\u00e6sident ,", "tail": "et par"}
+{"count": 1, "confidence": [9.175416198559105e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris", "relation": "den kommende amerikanske vicepr\u00e6sident", "tail": "man"}
+{"count": 1, "confidence": [0.00013904644583817571], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris", "relation": ",", "tail": "et par"}
+{"count": 1, "confidence": [0.00014038781228009611], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "et par", "relation": "Converse-sneakers", "tail": "en hvid t-shirt"}
+{"count": 1, "confidence": [9.343732381239533e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "et par", "relation": ",", "tail": "blazer"}
+{"count": 1, "confidence": [8.383890963159502e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "Converse-sneakers", "relation": "st\u00e5", "tail": "Kamala Harris"}
+{"count": 1, "confidence": [9.802573913475499e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "Converse-sneakers", "relation": "en hvid t-shirt", "tail": "blazer"}
+{"count": 1, "confidence": [0.0001327565114479512], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "en hvid t-shirt", "relation": "Converse-sneakers", "tail": "et par"}
+{"count": 1, "confidence": [0.00014377869956661016], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "en hvid t-shirt", "relation": "blazer", "tail": "et par sorte"}
+{"count": 1, "confidence": [0.00012625045201275498], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "en hvid t-shirt", "relation": "blazer", "tail": "jeans"}
+{"count": 1, "confidence": [3.2841431675478816e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "blazer", "relation": "en hvid t-shirt", "tail": "et par"}
+{"count": 1, "confidence": [6.960445898585021e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "blazer", "relation": "en hvid t-shirt", "tail": "Converse-sneakers"}
+{"count": 1, "confidence": [0.0006551233818754554], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "blazer", "relation": "et par sorte", "tail": "jeans"}
+{"count": 1, "confidence": [4.6553806896554306e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "et par sorte", "relation": "en hvid t-shirt", "tail": "Converse-sneakers"}
+{"count": 1, "confidence": [0.00015183002687990665], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "et par sorte", "relation": "blazer", "tail": "en hvid t-shirt"}
+{"count": 1, "confidence": [9.237648919224739e-05], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "jeans", "relation": "blazer", "tail": "en hvid t-shirt"}
+{"count": 1, "confidence": [0.0015962162287905812], "sentence_number": [7], "document_id": ["dr_test_artikel2.txt"], "head": "jeans", "relation": "og", "tail": "blazer"}
+{"count": 1, "confidence": [0.000492348859552294], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "havde", "tail": "det billede"}
+{"count": 1, "confidence": [1.3156607868343901e-06], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "et andet ,", "tail": "vicepr\u00e6sidenten"}
+{"count": 1, "confidence": [0.0011971468338742852], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "det billede", "relation": "valgt", "tail": "Vogue"}
+{"count": 1, "confidence": [0.00011393079330446199], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "et andet", "relation": "valgt", "tail": "Vogue"}
+{"count": 1, "confidence": [0.00020983978174626827], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "et andet", "relation": ",", "tail": "vicepr\u00e6sidenten"}
+{"count": 1, "confidence": [4.08832092944067e-05], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "et andet", "relation": "vicepr\u00e6sidenten", "tail": "et lysebl\u00e5 Michael Kors-s\u00e6t"}
+{"count": 1, "confidence": [0.0006015202379785478], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "vicepr\u00e6sidenten", "relation": ",", "tail": "et andet"}
+{"count": 1, "confidence": [0.00036330873263068497], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "vicepr\u00e6sidenten", "relation": "i", "tail": "et lysebl\u00e5 Michael Kors-s\u00e6t"}
+{"count": 1, "confidence": [0.0004584378038998693], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "et lysebl\u00e5 Michael Kors-s\u00e6t", "relation": "i", "tail": "vicepr\u00e6sidenten"}
+{"count": 1, "confidence": [2.9898872526246123e-05], "sentence_number": [8], "document_id": ["dr_test_artikel2.txt"], "head": "som", "relation": "et lysebl\u00e5 Michael Kors-s\u00e6t", "tail": "vicepr\u00e6sidenten"}
+{"count": 1, "confidence": [0.002152767963707447], "sentence_number": [10], "document_id": ["dr_test_artikel2.txt"], "head": "respekt", "relation": "nok", "tail": "den kommende vicepr\u00e6sident"}
+{"count": 1, "confidence": [0.004220770206302404], "sentence_number": [10], "document_id": ["dr_test_artikel2.txt"], "head": "den kommende vicepr\u00e6sident", "relation": "for", "tail": "respekt"}
+{"count": 1, "confidence": [0.0002059661492239684], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "andet", "relation": "at", "tail": "det mere afslappede billede"}
+{"count": 1, "confidence": [6.146624097406554e-06], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "andet", "relation": "v\u00e6lge det mere afslappede billede", "tail": "lyss\u00e6tningen"}
+{"count": 1, "confidence": [0.00011528059258125722], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "det mere afslappede billede", "relation": "at", "tail": "andet"}
+{"count": 1, "confidence": [4.1388251702301204e-05], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "det mere afslappede billede", "relation": "ogs\u00e5", "tail": "lyss\u00e6tningen"}
+{"count": 1, "confidence": [6.055194899090566e-05], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "lyss\u00e6tningen", "relation": "ogs\u00e5", "tail": "det mere afslappede billede"}
+{"count": 1, "confidence": [0.00025468706735409796], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "lyss\u00e6tningen", "relation": ",", "tail": "kritikerne"}
+{"count": 1, "confidence": [6.287806900218129e-05], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "lyss\u00e6tningen", "relation": "if\u00f8lge", "tail": "Kamala Harris"}
+{"count": 1, "confidence": [0.00031158403726294637], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "kritikerne", "relation": "som", "tail": "lyss\u00e6tningen"}
+{"count": 1, "confidence": [1.5519365357855957e-05], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris", "relation": "til at", "tail": "lys"}
+{"count": 1, "confidence": [3.1478113669436425e-05], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "lys", "relation": "til", "tail": "kritikerne"}
+{"count": 1, "confidence": [0.00011141213326482102], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "lys", "relation": "at", "tail": "Kamala Harris"}
+{"count": 1, "confidence": [0.0003537510638125241], "sentence_number": [11], "document_id": ["dr_test_artikel2.txt"], "head": "lys", "relation": ",", "tail": "hun"}
+{"count": 1, "confidence": [0.0013977548805996776], "sentence_number": [12], "document_id": ["dr_test_artikel2.txt"], "head": "intet", "relation": "med", "tail": "forsidebilledet"}
+{"count": 1, "confidence": [0.0020146549213677645], "sentence_number": [12], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebilledet", "relation": "med", "tail": "intet"}
+{"count": 1, "confidence": [0.00022561592049896717], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "Det", "relation": "chefredakt\u00f8ren", "tail": "Vogue"}
+{"count": 1, "confidence": [2.201306294106568e-05], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "Det", "relation": "for Vogue", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [0.0001414177822880447], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "chefredakt\u00f8ren", "relation": "Vogue", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [0.00013519416097551584], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "chefredakt\u00f8ren", "tail": "Det"}
+{"count": 1, "confidence": [2.0228311768732965e-05], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "Anna Wintour", "relation": "Vogue", "tail": "Det"}
+{"count": 1, "confidence": [5.410687663243152e-05], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "Anna Wintour", "relation": "Vogue", "tail": "chefredakt\u00f8ren"}
+{"count": 1, "confidence": [3.6998215364292264e-05], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "en podcast", "relation": "der", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [8.18982589407824e-05], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "en podcast", "relation": "New York Times", "tail": "valget"}
+{"count": 1, "confidence": [0.00014639693836215883], "sentence_number": [13], "document_id": ["dr_test_artikel2.txt"], "head": "valget", "relation": "New York Times", "tail": "en podcast"}
+{"count": 1, "confidence": [0.0003840814169961959], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "de to billeder", "relation": "ankom", "tail": "Vogue"}
+{"count": 1, "confidence": [2.826605850714259e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "de to billeder", "relation": "Vogue", "tail": "vi"}
+{"count": 1, "confidence": [0.00011096421803813428], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "de to billeder", "relation": "vi", "tail": "alle en meget , meget st\u00e6rk f\u00f8lelse"}
+{"count": 1, "confidence": [0.0013624747516587377], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "ankom", "tail": "de to billeder"}
+{"count": 1, "confidence": [0.00020819249039050192], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": ",", "tail": "vi"}
+{"count": 1, "confidence": [0.00010709403431974351], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "vi", "tail": "alle en meget , meget st\u00e6rk f\u00f8lelse"}
+{"count": 1, "confidence": [0.00040701398393139243], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "vi", "relation": "havde", "tail": "Vogue"}
+{"count": 1, "confidence": [0.00012736022472381592], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "alle en meget , meget st\u00e6rk f\u00f8lelse", "relation": "vi", "tail": "Vogue"}
+{"count": 1, "confidence": [0.00011359989002812654], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "alle en meget , meget st\u00e6rk f\u00f8lelse", "relation": ",", "tail": "det mindre formelle portr\u00e6t"}
+{"count": 1, "confidence": [2.1804458810947835e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "det mindre formelle portr\u00e6t", "relation": "af", "tail": "vi"}
+{"count": 1, "confidence": [0.00018670577264856547], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "det mindre formelle portr\u00e6t", "relation": "af", "tail": "alle en meget , meget st\u00e6rk f\u00f8lelse"}
+{"count": 1, "confidence": [3.535536234267056e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "det mindre formelle portr\u00e6t", "relation": "den kommende vicepr\u00e6sident", "tail": "det \u00f8jeblik"}
+{"count": 1, "confidence": [3.492766700219363e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "det \u00f8jeblik", "relation": "den kommende vicepr\u00e6sident", "tail": "det mindre formelle portr\u00e6t"}
+{"count": 1, "confidence": [6.9554487708956e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "det \u00f8jeblik", "relation": "lever", "tail": "vi alle"}
+{"count": 1, "confidence": [6.617319013457745e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "vi", "relation": "reflekterede", "tail": "den kommende vicepr\u00e6sident"}
+{"count": 1, "confidence": [0.00018699702923186123], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "vi", "relation": ",", "tail": "vi alle"}
+{"count": 1, "confidence": [0.0002363593375775963], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "vi alle", "relation": "i", "tail": "vi"}
+{"count": 1, "confidence": [0.0002799895009957254], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "vi alle", "relation": "i", "tail": "en r\u00e6dselsfuld pandemi"}
+{"count": 1, "confidence": [0.00017894299526233226], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "en r\u00e6dselsfuld pandemi", "relation": "i", "tail": "vi alle"}
+{"count": 1, "confidence": [0.0003771766787394881], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "en r\u00e6dselsfuld pandemi", "relation": ",", "tail": "liv"}
+{"count": 1, "confidence": [0.0001641613052925095], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "en r\u00e6dselsfuld pandemi", "relation": "tager", "tail": "hvert"}
+{"count": 1, "confidence": [6.326114817056805e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "en r\u00e6dselsfuld pandemi", "relation": "der", "tail": "minut"}
+{"count": 1, "confidence": [0.0012788546737283468], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "der", "relation": "tager", "tail": "hvert"}
+{"count": 1, "confidence": [0.00020182595471851528], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "liv", "relation": "der", "tail": "en r\u00e6dselsfuld pandemi"}
+{"count": 1, "confidence": [0.007347877137362957], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "liv", "relation": "eneste", "tail": "minut"}
+{"count": 1, "confidence": [9.485499322181568e-05], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "liv", "relation": "eneste", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [0.00015836623788345605], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "hvert", "relation": "der", "tail": "en r\u00e6dselsfuld pandemi"}
+{"count": 1, "confidence": [0.0022037364542484283], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "hvert", "relation": "tager", "tail": "der"}
+{"count": 1, "confidence": [0.00011471074685687199], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "hvert", "relation": ",", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [0.0006784831057302654], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "minut", "relation": "eneste", "tail": "der"}
+{"count": 1, "confidence": [0.0075380513444542885], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "minut", "relation": "eneste", "tail": "liv"}
+{"count": 1, "confidence": [0.00010543369717197493], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "minut", "relation": ",", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [0.00026658587739802897], "sentence_number": [14], "document_id": ["dr_test_artikel2.txt"], "head": "Anna Wintour", "relation": "siger", "tail": "minut"}
+{"count": 1, "confidence": [0.0005271041882224381], "sentence_number": [15], "document_id": ["dr_test_artikel2.txt"], "head": "Hun", "relation": ",", "tail": "Vogue"}
+{"count": 1, "confidence": [0.0007715309038758278], "sentence_number": [15], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "at", "tail": "Hun"}
+{"count": 1, "confidence": [4.3368803744670004e-05], "sentence_number": [15], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "at", "tail": "det tragiske \u00f8jeblik"}
+{"count": 1, "confidence": [0.00011636394629022107], "sentence_number": [15], "document_id": ["dr_test_artikel2.txt"], "head": "det tragiske \u00f8jeblik", "relation": "at", "tail": "Vogue"}
+{"count": 1, "confidence": [0.00021923112217336893], "sentence_number": [15], "document_id": ["dr_test_artikel2.txt"], "head": "det tragiske \u00f8jeblik", "relation": "verdenshistorien", "tail": "et mindre formelt billede"}
+{"count": 1, "confidence": [0.0001845852966653183], "sentence_number": [15], "document_id": ["dr_test_artikel2.txt"], "head": "et mindre formelt billede", "relation": "verdenshistorien", "tail": "det tragiske \u00f8jeblik"}
+{"count": 1, "confidence": [0.0009118123562075198], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "virkeligheden", "relation": ",", "tail": "hvad"}
+{"count": 1, "confidence": [5.610520747723058e-05], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "virkeligheden", "relation": ",", "tail": "Biden-Harris-kampagnen"}
+{"count": 1, "confidence": [0.0018469510832801461], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "hvad", "relation": ",", "tail": "virkeligheden"}
+{"count": 1, "confidence": [0.0004842100024688989], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "hvad", "relation": ",", "tail": "hvad"}
+{"count": 1, "confidence": [7.782159809721634e-05], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "hvad", "relation": "Biden-Harris-kampagnen", "tail": "de"}
+{"count": 1, "confidence": [7.013238064246252e-05], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "Biden-Harris-kampagnen", "relation": ",", "tail": "virkeligheden"}
+{"count": 1, "confidence": [0.0001197791425511241], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "hvad", "relation": "som", "tail": "jeg"}
+{"count": 1, "confidence": [0.0025492992717772722], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "jeg", "relation": ",", "tail": "de"}
+{"count": 1, "confidence": [0.0021822904236614704], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "de", "relation": "tror", "tail": "jeg"}
+{"count": 1, "confidence": [7.318566349567845e-05], "sentence_number": [16], "document_id": ["dr_test_artikel2.txt"], "head": "de", "relation": ",", "tail": "chefredakt\u00f8ren"}
+{"count": 2, "confidence": [0.008546367287635803, 0.0068558622151613235], "sentence_number": [18, 26], "document_id": ["dr_test_artikel2.txt", "dr_test_artikel2.txt"], "head": "Der", "relation": "ingen formel", "tail": "aftale"}
+{"count": 1, "confidence": [0.0020395806059241295], "sentence_number": [18], "document_id": ["dr_test_artikel2.txt"], "head": "Der", "relation": "ingen formel", "tail": "billede"}
+{"count": 1, "confidence": [0.004762757103890181], "sentence_number": [18], "document_id": ["dr_test_artikel2.txt"], "head": "ingen formel", "relation": "om", "tail": "billede"}
+{"count": 1, "confidence": [0.007653834298253059], "sentence_number": [18], "document_id": ["dr_test_artikel2.txt"], "head": "aftale", "relation": "var", "tail": "Der"}
+{"count": 1, "confidence": [0.0013723260490223765], "sentence_number": [18], "document_id": ["dr_test_artikel2.txt"], "head": "billede", "relation": "var", "tail": "Der"}
+{"count": 1, "confidence": [0.005544664338231087], "sentence_number": [18], "document_id": ["dr_test_artikel2.txt"], "head": "billede", "relation": "om", "tail": "ingen formel"}
+{"count": 1, "confidence": [0.00015271877055056393], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "hun", "relation": ",", "tail": "Vogue"}
+{"count": 1, "confidence": [0.00022500565683003515], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "at", "tail": "hun"}
+{"count": 1, "confidence": [0.0006671010050922632], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "reaktionerne", "relation": ",", "tail": "hun"}
+{"count": 1, "confidence": [0.0009053151006810367], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "hun", "relation": ",", "tail": "reaktionerne"}
+{"count": 1, "confidence": [0.0002674198185559362], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "hun", "relation": ",", "tail": "det"}
+{"count": 1, "confidence": [0.0003476494166534394], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "det", "relation": ",", "tail": "hun"}
+{"count": 1, "confidence": [0.0011054737260565162], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "det", "relation": "har", "tail": "form\u00e5let"}
+{"count": 1, "confidence": [0.0010882571805268526], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "form\u00e5let", "relation": "har", "tail": "det"}
+{"count": 1, "confidence": [0.00048707713722251356], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "form\u00e5let", "relation": "nedg\u00f8re", "tail": "vicepr\u00e6sidenten"}
+{"count": 1, "confidence": [0.0013159274822100997], "sentence_number": [19], "document_id": ["dr_test_artikel2.txt"], "head": "vicepr\u00e6sidenten", "relation": "nedg\u00f8re", "tail": "form\u00e5let"}
+{"count": 1, "confidence": [0.00041392593023677665], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "Flere amerikanske medier", "relation": "\u2013 blandt", "tail": "andet"}
+{"count": 1, "confidence": [1.835562822331364e-05], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "Flere amerikanske medier", "relation": "\u2013 blandt", "tail": "Associated Press"}
+{"count": 1, "confidence": [8.720178933193286e-05], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "Flere amerikanske medier", "relation": "har i", "tail": "de seneste dage"}
+{"count": 1, "confidence": [0.0019419791642576456], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "andet", "relation": "\u2013", "tail": "Flere amerikanske medier"}
+{"count": 1, "confidence": [0.00018076522974297404], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "andet", "relation": "har", "tail": "de seneste dage"}
+{"count": 1, "confidence": [0.0001114609040087089], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "Associated Press", "relation": "blandt", "tail": "Flere amerikanske medier"}
+{"count": 1, "confidence": [2.73866438268063e-06], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "Associated Press", "relation": "beskrevet ,", "tail": "Kamala Harris'"}
+{"count": 1, "confidence": [0.00014917719818186015], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "de seneste dage", "relation": "har", "tail": "Associated Press"}
+{"count": 1, "confidence": [7.2600414569024e-05], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "de seneste dage", "relation": "at", "tail": "Kamala Harris'"}
+{"count": 1, "confidence": [3.670549631351605e-05], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris'", "relation": ",", "tail": "de seneste dage"}
+{"count": 1, "confidence": [0.00018733141769189388], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris'", "relation": "har", "tail": "forsiden"}
+{"count": 1, "confidence": [0.0005815917393192649], "sentence_number": [20], "document_id": ["dr_test_artikel2.txt"], "head": "forsiden", "relation": "har", "tail": "Kamala Harris'"}
+{"count": 1, "confidence": [0.0015197438187897205], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "en kilde", "relation": "medierne", "tail": "staben"}
+{"count": 1, "confidence": [3.5215642128605396e-05], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "medierne", "relation": ",", "tail": "en aftale"}
+{"count": 1, "confidence": [0.0008276410517282784], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "staben", "relation": "medierne", "tail": "en kilde"}
+{"count": 1, "confidence": [0.00012273206084500998], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "staben", "relation": "at", "tail": "en aftale"}
+{"count": 1, "confidence": [0.00022742337023373693], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "en aftale", "relation": "at", "tail": "staben"}
+{"count": 1, "confidence": [0.00014296475274022669], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "en aftale", "relation": ",", "tail": "billedet"}
+{"count": 1, "confidence": [0.00011809939314844087], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "at", "tail": "billedet"}
+{"count": 1, "confidence": [0.00024029563064686954], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "billedet", "relation": ",", "tail": "Vogue"}
+{"count": 1, "confidence": [5.292395508149639e-05], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "Michael Kors-s\u00e6ttet", "relation": "skulle", "tail": "forsidebillede"}
+{"count": 1, "confidence": [7.422963972203434e-05], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "skulle", "tail": "billedet"}
+{"count": 1, "confidence": [0.00012423137377481908], "sentence_number": [21], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "skulle", "tail": "Michael Kors-s\u00e6ttet"}
+{"count": 1, "confidence": [5.936049637966789e-05], "sentence_number": [24], "document_id": ["dr_test_artikel2.txt"], "head": "OGS\u00c5:'De", "relation": "ud", "tail": "Billeder"}
+{"count": 1, "confidence": [7.237739919219166e-05], "sentence_number": [24], "document_id": ["dr_test_artikel2.txt"], "head": "d\u00f8dssyge", "relation": "'", "tail": "Billeder"}
+{"count": 1, "confidence": [3.895960981026292e-05], "sentence_number": [24], "document_id": ["dr_test_artikel2.txt"], "head": "Billeder", "relation": "ud", "tail": "OGS\u00c5:'De"}
+{"count": 1, "confidence": [0.00018797219672705978], "sentence_number": [24], "document_id": ["dr_test_artikel2.txt"], "head": "Billeder", "relation": "'", "tail": "d\u00f8dssyge"}
+{"count": 1, "confidence": [7.703681330895051e-05], "sentence_number": [25], "document_id": ["dr_test_artikel2.txt"], "head": "Det", "relation": "Anna Wintour", "tail": "podcasten"}
+{"count": 1, "confidence": [0.0003185165987815708], "sentence_number": [25], "document_id": ["dr_test_artikel2.txt"], "head": "Anna Wintour", "relation": "i", "tail": "podcasten"}
+{"count": 1, "confidence": [6.122347986092791e-05], "sentence_number": [25], "document_id": ["dr_test_artikel2.txt"], "head": "podcasten", "relation": "Anna Wintour", "tail": "Det"}
+{"count": 1, "confidence": [0.0005215468117967248], "sentence_number": [25], "document_id": ["dr_test_artikel2.txt"], "head": "podcasten", "relation": "i", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [0.0012529646046459675], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "Der", "relation": "ingen formel", "tail": "valget"}
+{"count": 1, "confidence": [0.0024582277983427048], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "ingen formel", "relation": "om", "tail": "valget"}
+{"count": 1, "confidence": [0.00645478256046772], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "aftale", "relation": "ingen formel", "tail": "Der"}
+{"count": 1, "confidence": [0.000947417167481035], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "aftale", "relation": "af", "tail": "forsidebillede"}
+{"count": 1, "confidence": [0.0011049557942897081], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "valget", "relation": "ingen formel", "tail": "Der"}
+{"count": 1, "confidence": [0.0031704935245215893], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "valget", "relation": "om", "tail": "ingen formel"}
+{"count": 1, "confidence": [0.00012424321903381497], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "valget", "relation": ",", "tail": "chefredakt\u00f8ren"}
+{"count": 1, "confidence": [0.00015964392514433712], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "om", "tail": "Der"}
+{"count": 1, "confidence": [0.000165487639605999], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "om", "tail": "ingen formel"}
+{"count": 1, "confidence": [0.0006639772327616811], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "af", "tail": "aftale"}
+{"count": 1, "confidence": [0.00018043076852336526], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "siger", "tail": "chefredakt\u00f8ren"}
+{"count": 1, "confidence": [9.301492536906153e-05], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "forsidebillede", "relation": "chefredakt\u00f8ren", "tail": "Vogue"}
+{"count": 1, "confidence": [0.00039153313264250755], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "chefredakt\u00f8ren", "relation": "siger", "tail": "forsidebillede"}
+{"count": 1, "confidence": [3.9198686863528565e-05], "sentence_number": [26], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "chefredakt\u00f8ren", "tail": "forsidebillede"}
+{"count": 1, "confidence": [0.00017473560001235455], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "Kritikken", "relation": "lyss\u00e6tningen", "tail": "der"}
+{"count": 1, "confidence": [0.0004160305252298713], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "lyss\u00e6tningen", "relation": "der", "tail": "nogles \u00f8jne"}
+{"count": 1, "confidence": [0.000649003719445318], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "der", "relation": "lyss\u00e6tningen", "tail": "Kritikken"}
+{"count": 1, "confidence": [0.00018806687148753554], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "nogles \u00f8jne", "relation": "lyss\u00e6tningen", "tail": "Kritikken"}
+{"count": 1, "confidence": [0.000335000193445012], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "nogles \u00f8jne", "relation": "der", "tail": "lyss\u00e6tningen"}
+{"count": 1, "confidence": [0.00024311424931511283], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "nogles \u00f8jne", "relation": "har", "tail": "Kamala Harris"}
+{"count": 1, "confidence": [4.6639444917673245e-05], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "nogles \u00f8jne", "relation": "Kamala Harris", "tail": "Anna Wintour"}
+{"count": 1, "confidence": [0.00013978702190797776], "sentence_number": [27], "document_id": ["dr_test_artikel2.txt"], "head": "Kamala Harris", "relation": "har", "tail": "nogles \u00f8jne"}
+{"count": 1, "confidence": [0.0001091243393602781], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "august", "relation": ",", "tail": "den farvede gymnast"}
+{"count": 1, "confidence": [0.0001929772988660261], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "sidste \u00e5r", "relation": ",", "tail": "den farvede gymnast"}
+{"count": 1, "confidence": [6.074031989555806e-05], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "sidste \u00e5r", "relation": "den farvede gymnast", "tail": "Simone Biles"}
+{"count": 1, "confidence": [0.0002789853315334767], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "den farvede gymnast", "relation": "da", "tail": "august"}
+{"count": 1, "confidence": [0.00034915757714770734], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "den farvede gymnast", "relation": "da", "tail": "sidste \u00e5r"}
+{"count": 1, "confidence": [0.00014733916032128036], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "den farvede gymnast", "relation": "Simone Biles", "tail": "forsiden"}
+{"count": 1, "confidence": [0.001547879888676107], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "Simone Biles", "relation": "p\u00e5", "tail": "forsiden"}
+{"count": 1, "confidence": [3.614215165725909e-05], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "forsiden", "relation": "den farvede gymnast", "tail": "sidste \u00e5r"}
+{"count": 1, "confidence": [0.00024802383268252015], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "forsiden", "relation": "Simone Biles", "tail": "den farvede gymnast"}
+{"count": 1, "confidence": [0.0015262056840583682], "sentence_number": [28], "document_id": ["dr_test_artikel2.txt"], "head": "forsiden", "relation": "p\u00e5", "tail": "Simone Biles"}
+{"count": 1, "confidence": [0.0007324505131691694], "sentence_number": [30], "document_id": ["dr_test_artikel2.txt"], "head": "De", "relation": "d\u00f8dssyge", "tail": "begge to"}
+{"count": 1, "confidence": [0.001476912759244442], "sentence_number": [30], "document_id": ["dr_test_artikel2.txt"], "head": "d\u00f8dssyge", "relation": ",", "tail": "begge to"}
+{"count": 1, "confidence": [0.0003937591100111604], "sentence_number": [30], "document_id": ["dr_test_artikel2.txt"], "head": "begge to", "relation": "ud", "tail": "De"}
+{"count": 1, "confidence": [0.003310498083010316], "sentence_number": [30], "document_id": ["dr_test_artikel2.txt"], "head": "begge to", "relation": "ud", "tail": "d\u00f8dssyge"}
+{"count": 1, "confidence": [0.0035441310610622168], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "De", "relation": ",", "tail": "der"}
+{"count": 1, "confidence": [0.0001039766357280314], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "De", "relation": "der", "tail": "et forretningsmagasin"}
+{"count": 1, "confidence": [0.0005130669451318681], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "noget", "relation": "der", "tail": "et forretningsmagasin"}
+{"count": 1, "confidence": [0.005728402175009251], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "der", "relation": ",", "tail": "De"}
+{"count": 1, "confidence": [0.001670887810178101], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "der", "relation": "i", "tail": "et forretningsmagasin"}
+{"count": 1, "confidence": [5.375451655709185e-05], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "der", "relation": "et forretningsmagasin", "tail": "som"}
+{"count": 1, "confidence": [0.0017450291197746992], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "et forretningsmagasin", "relation": "i", "tail": "der"}
+{"count": 1, "confidence": [0.00014797451149206609], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "et forretningsmagasin", "relation": "som", "tail": "noget"}
+{"count": 1, "confidence": [9.970938845071942e-05], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "som", "relation": "et forretningsmagasin", "tail": "noget"}
+{"count": 1, "confidence": [6.620910426136106e-05], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "som", "relation": "et forretningsmagasin", "tail": "der"}
+{"count": 1, "confidence": [0.0023653400130569935], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "som", "relation": "har", "tail": "noget"}
+{"count": 1, "confidence": [0.0031532226130366325], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "noget", "relation": "har", "tail": "som"}
+{"count": 1, "confidence": [0.005262801889330149], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "noget", "relation": "fascinerede", "tail": "sig"}
+{"count": 1, "confidence": [7.732733502052724e-05], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "noget", "relation": "sig ,", "tail": "som"}
+{"count": 1, "confidence": [1.6620912598834064e-05], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "noget", "relation": "sig ,", "tail": "de"}
+{"count": 1, "confidence": [8.978301048045978e-05], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "sig", "relation": "noget", "tail": "som"}
+{"count": 1, "confidence": [0.0049996464513242245], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "sig", "relation": "ved", "tail": "noget"}
+{"count": 1, "confidence": [0.0009688856662251055], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "sig", "relation": ",", "tail": "de"}
+{"count": 1, "confidence": [0.0002783849195111543], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "som", "relation": "ved", "tail": "noget"}
+{"count": 1, "confidence": [0.0002289821713929996], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "de", "relation": ",", "tail": "noget"}
+{"count": 1, "confidence": [0.0030068811029195786], "sentence_number": [32], "document_id": ["dr_test_artikel2.txt"], "head": "de", "relation": ",", "tail": "sig"}
+{"count": 1, "confidence": [0.004846105817705393], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "Det", "relation": "ikke", "tail": "noget"}
+{"count": 1, "confidence": [0.002335685770958662], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "Det", "relation": "ikke", "tail": "som"}
+{"count": 1, "confidence": [0.0039239367470145226], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "noget", "relation": "ikke", "tail": "Det"}
+{"count": 1, "confidence": [0.0008726514060981572], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "noget", "relation": ",", "tail": "Vogue"}
+{"count": 1, "confidence": [0.0012354487553238869], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "som", "relation": "ikke", "tail": "Det"}
+{"count": 1, "confidence": [0.00012192045687697828], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "som", "relation": "st\u00e5r", "tail": "modefotografen"}
+{"count": 1, "confidence": [0.00016001310723368078], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": ",", "tail": "Det"}
+{"count": 1, "confidence": [0.0010985898552462459], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": ",", "tail": "noget"}
+{"count": 1, "confidence": [0.00011052908666897565], "sentence_number": [33], "document_id": ["dr_test_artikel2.txt"], "head": "Vogue", "relation": "st\u00e5r", "tail": "modefotografen"}
+{"count": 1, "confidence": [7.126908894861117e-05], "sentence_number": [34], "document_id": ["dr_test_artikel2.txt"], "head": "de mere formelle billeder", "relation": "at", "tail": "Vogue"}
+{"count": 1, "confidence": [4.878932668361813e-05], "sentence_number": [34], "document_id": ["dr_test_artikel2.txt"], "head": "de mere formelle billeder", "relation": "Kamala Harris", "tail": "magasinets"}
+{"count": 1, "confidence": [7.394948625005782e-05], "sentence_number": [34], "document_id": ["dr_test_artikel2.txt"], "head": "magasinets", "relation": "Kamala Harris", "tail": "de mere formelle billeder"}
+{"count": 1, "confidence": [2.02822448045481e-05], "sentence_number": [35], "document_id": ["dr_test_artikel2.txt"], "head": "balladen", "relation": "Anna Wintour", "tail": "New York Times' podcast"}
+{"count": 1, "confidence": [7.29969033272937e-05], "sentence_number": [35], "document_id": ["dr_test_artikel2.txt"], "head": "balladen", "relation": "oprindeligt", "tail": "Anna Wintour"}
