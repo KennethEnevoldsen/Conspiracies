@@ -1,0 +1,1644 @@
+count,confidence,sentence_number,document_id,head,relation,tail
+6,"[0.0040204948745667934, 0.002250616904348135, 0.0016449344111606479, 0.001120810047723353, 0.001866714097559452, 0.0031370569486171007]","[2, 25, 59, 177, 190, 194]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",Jeg,",",det
+5,"[0.0017067200969904661, 0.003480736166238785, 0.001898842048831284, 0.0017633364768698812, 0.005495692603290081]","[2, 25, 59, 177, 194]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,",",Jeg
+1,[0.012734273448586464],[2],['interview_D2.txt'],det,bliver,arbejde
+2,"[0.000654791365377605, 0.000986624276265502]","[2, 2]","['interview_D2.txt', 'interview_D2.txt']",det,arbejde,det
+1,[0.0004747741622850299],[2],['interview_D2.txt'],arbejde,det,Jeg
+1,[0.016073070466518402],[2],['interview_D2.txt'],arbejde,mere,det
+1,[0.00010262169962516055],[2],['interview_D2.txt'],det,mere,Jeg
+1,[0.0006916195852681994],[5],['interview_D2.txt'],Jeg,har,alle de der børnevacciner
+1,[5.4677477843749024e-05],[5],['interview_D2.txt'],Jeg,fået alle de der børnevacciner,man
+1,[0.0002244145143777132],[5],['interview_D2.txt'],selv,alle de der børnevacciner,man
+1,[0.0014987471513450146],[5],['interview_D2.txt'],alle de der børnevacciner,har,Jeg
+1,[0.0001432808639947325],[5],['interview_D2.txt'],man,alle de der børnevacciner,Jeg
+1,[0.00016314449021592736],[5],['interview_D2.txt'],man,alle de der børnevacciner,selv
+1,[0.0003877366834785789],[5],['interview_D2.txt'],man,for,30 år
+1,[0.0016143328975886106],[5],['interview_D2.txt'],30 år,for,man
+1,[0.0001492072333348915],[5],['interview_D2.txt'],30 år,",",hvad
+1,[0.00021715839102398604],[5],['interview_D2.txt'],hvad,",",30 år
+1,[0.0001984843547688797],[5],['interview_D2.txt'],det,",",30 år
+1,[0.00017093971837311983],[6],['interview_D2.txt'],jeg,lige,hvad
+1,[0.000733790744561702],[7],['interview_D2.txt'],to børn,",",de
+1,[0.0007790796225890517],[7],['interview_D2.txt'],de,og,to børn
+2,"[0.0005257173324935138, 0.000702482822816819]","[7, 42]","['interview_D2.txt', 'interview_D2.txt']",de,har,det
+1,[0.0002756078029051423],[7],['interview_D2.txt'],det,de,so far
+1,[9.992891864385456e-05],[7],['interview_D2.txt'],det,have,de
+1,[0.00022576375340577215],[7],['interview_D2.txt'],de,alt,de
+1,[0.000483612617244944],[7],['interview_D2.txt'],de,",",so far
+1,[4.0869250369723886e-05],[7],['interview_D2.txt'],de,",",de
+1,[0.00038729264633730054],[7],['interview_D2.txt'],so far,have,det
+1,[0.0004940346116200089],[7],['interview_D2.txt'],so far,have,de
+1,[0.001633748528547585],[8],['interview_D2.txt'],jeg,har,børn
+1,[0.0012572065461426973],[8],['interview_D2.txt'],børn,har,jeg
+1,[0.006434095557779074],[8],['interview_D2.txt'],børn,med,lægen
+1,[0.0010385885834693909],[8],['interview_D2.txt'],lægen,har,jeg
+1,[0.017286233603954315],[8],['interview_D2.txt'],lægen,med,børn
+2,"[0.0007447885000146925, 0.0019117692718282342]","[10, 154]","['interview_D2.txt', 'interview_D2.txt']",andet,et,jeg
+1,[0.00018027251644525677],[10],['interview_D2.txt'],andet,nåle,jeg
+1,[0.0007448695250786841],[10],['interview_D2.txt'],nåle,",",jeg
+1,[0.00020572067296598107],[10],['interview_D2.txt'],jeg,nåle,andet
+1,[0.0013269708724692464],[10],['interview_D2.txt'],jeg,bedre,det
+1,[0.00036349950823932886],[10],['interview_D2.txt'],jeg,bedre,min kone
+1,[0.0010100696235895157],[10],['interview_D2.txt'],det,bedre,jeg
+1,[0.000504627707414329],[10],['interview_D2.txt'],det,min kone,eksempel
+1,[0.00038459236384369433],[10],['interview_D2.txt'],min kone,det,jeg
+1,[0.00039700258639641106],[10],['interview_D2.txt'],eksempel,min kone,det
+9,"[0.0018509379588067532, 0.001154060591943562, 0.00031742051942273974, 0.0013380073942244053, 0.0009671399602666497, 0.004462732933461666, 0.004193673375993967, 0.001705598901025951, 0.003991231322288513]","[11, 26, 112, 120, 159, 206, 208, 352, 365]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,",",der
+1,[0.0003397950786165893],[11],['interview_D2.txt'],det,",",vores børn
+1,[0.0009556054137647152],[11],['interview_D2.txt'],mig,",",vores børn
+3,"[0.0018768282607197762, 0.002676938660442829, 0.0031848864164203405]","[11, 113, 352]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",der,er,det
+2,"[0.00013982687960378826, 0.00023658620193600655]","[11, 28]","['interview_D2.txt', 'interview_D2.txt']",der,",",de
+1,[0.0014040246605873108],[11],['interview_D2.txt'],vores børn,der,mig
+1,[0.00028347354964353144],[11],['interview_D2.txt'],vores børn,",",de
+1,[0.00021216552704572678],[11],['interview_D2.txt'],de,vores børn,der
+1,[0.00046273821499198675],[11],['interview_D2.txt'],de,",",vores børn
+1,[0.0004352233372628689],[11],['interview_D2.txt'],de,skal,de nåle
+1,[0.013162384741008282],[13],['interview_D2.txt'],Det,sådan,man
+1,[0.0035960173700004816],[13],['interview_D2.txt'],man,sådan,Det
+1,[0.0006244158139452338],[15],['interview_D2.txt'],Det,jeg,det
+13,"[0.003862173529341817, 0.00017005989502649754, 0.001094214036129415, 0.0004216115630697459, 0.0003606191312428564, 0.0007077096379362047, 0.00044079351937398314, 6.236264016479254e-05, 0.0005810606526210904, 0.00016649159078951925, 0.0002876689250115305, 0.0017720503965392709, 0.0010498985648155212]","[15, 56, 102, 135, 169, 183, 209, 210, 236, 240, 244, 302, 312]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",jeg,",",det
+1,[0.00046190229477360845],[15],['interview_D2.txt'],det,jeg,Det
+4,"[0.002197770867496729, 0.00029562844429165125, 0.0006696333875879645, 0.003067469224333763]","[15, 175, 183, 277]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,ikke,jeg
+1,[0.00020579152624122798],[16],['interview_D2.txt'],det,",",man
+3,"[0.0002030385221587494, 0.0006158644682727754, 0.0003096112923230976]","[16, 343, 363]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",man,",",det
+1,[0.0054815784096717834],[16],['interview_D2.txt'],man,kunne,mange ting
+1,[0.005518057383596897],[16],['interview_D2.txt'],mange ting,kunne,man
+1,[0.0007965964614413679],[16],['interview_D2.txt'],der,",",man
+1,[0.005134161561727524],[17],['interview_D2.txt'],det,mig,noget
+1,[0.004820562433451414],[17],['interview_D2.txt'],noget,mig,det
+1,[0.008994581177830696],[18],['interview_D2.txt'],Det,mig,noget
+1,[0.0006935564451850951],[18],['interview_D2.txt'],Det,ikke,de
+1,[0.0005589438951574266],[18],['interview_D2.txt'],mig,ikke,de
+1,[0.0036207425873726606],[18],['interview_D2.txt'],noget,ikke,Det
+1,[0.0008960667764768004],[18],['interview_D2.txt'],noget,at,de
+1,[0.0002637625439092517],[18],['interview_D2.txt'],de,ikke,Det
+1,[0.0006324507994577289],[18],['interview_D2.txt'],de,ikke,mig
+1,[0.0027811971958726645],[18],['interview_D2.txt'],de,",",noget
+1,[0.0007309537031687796],[18],['interview_D2.txt'],de,med,de nåle
+1,[0.001327758887782693],[18],['interview_D2.txt'],de nåle,stikkes,de
+1,[0.0014346293173730373],[20],['interview_D2.txt'],Det,ikke,jeg
+1,[0.0014715197030454874],[20],['interview_D2.txt'],jeg,at,Det
+2,"[0.0030363297555595636, 0.0008162971935234964]","[20, 209]","['interview_D2.txt', 'interview_D2.txt']",jeg,kan,det
+2,"[0.0033372691832482815, 0.0015338750090450048]","[20, 209]","['interview_D2.txt', 'interview_D2.txt']",det,kan,jeg
+1,[0.004065862391144037],[20],['interview_D2.txt'],det,i,kroppen
+1,[0.005456371232867241],[20],['interview_D2.txt'],kroppen,i,det
+1,[0.00012617195898201317],[20],['interview_D2.txt'],andet,der,kroppen
+1,[0.00044637455721385777],[20],['interview_D2.txt'],andet,krymper,mig
+1,[0.0006152905989438295],[20],['interview_D2.txt'],andet,krymper,noget
+1,[8.653200347907841e-05],[20],['interview_D2.txt'],andet,i,nej
+1,[0.00029484485276043415],[20],['interview_D2.txt'],mig,krymper,andet
+2,"[0.001404638052918017, 0.00018843499128706753]","[20, 20]","['interview_D2.txt', 'interview_D2.txt']",mig,",",nej
+1,[7.244444714160636e-05],[20],['interview_D2.txt'],mig,nej,det
+1,[0.00017648555513005704],[20],['interview_D2.txt'],noget,krymper,andet
+1,[0.00281314505264163],[20],['interview_D2.txt'],noget,nej,nej
+1,[6.55419789836742e-05],[20],['interview_D2.txt'],noget,nej,det
+1,[0.0018967508804053068],[20],['interview_D2.txt'],nej,noget,mig
+1,[0.0014523377176374197],[20],['interview_D2.txt'],nej,",",det
+1,[0.0003553388814907521],[20],['interview_D2.txt'],nej,",",mig
+1,[0.0024446379393339157],[20],['interview_D2.txt'],nej,nej,noget
+1,[0.00016809177759569138],[20],['interview_D2.txt'],det,nej,mig
+1,[0.00029634544625878334],[20],['interview_D2.txt'],det,nej,noget
+1,[0.005297291558235884],[20],['interview_D2.txt'],det,",",nej
+2,"[0.00044488985440693796, 0.00036071371869184077]","[21, 83]","['interview_D2.txt', 'interview_D2.txt']",Det,",",det
+2,"[0.0005189031944610178, 0.0008880114182829857]","[21, 31]","['interview_D2.txt', 'interview_D2.txt']",det,",",Det
+1,[0.00013460633635986596],[25],['interview_D2.txt'],det,lidt,min kone
+1,[5.925337245571427e-05],[25],['interview_D2.txt'],min kone,lidt,det
+1,[0.0007592395413666964],[25],['interview_D2.txt'],hun,",",hun
+1,[0.0014614341780543327],[25],['interview_D2.txt'],typen,hun,min kone
+1,[0.0025627501308918],[25],['interview_D2.txt'],typen,",",hun
+1,[8.325187081936747e-05],[25],['interview_D2.txt'],typen,",",det
+1,[0.005885408725589514],[25],['interview_D2.txt'],hun,",",typen
+1,[0.0005445807473734021],[25],['interview_D2.txt'],hun,",",det
+2,"[5.1377468480495736e-05, 0.0008856576750986278]","[25, 25]","['interview_D2.txt', 'interview_D2.txt']",det,",",hun
+1,[5.54240687051788e-05],[25],['interview_D2.txt'],det,",",typen
+1,[0.0006674178875982761],[25],['interview_D2.txt'],det,lidt,maven
+1,[0.00019769517530221492],[25],['interview_D2.txt'],det,lidt,hende
+1,[0.0005904395948164165],[25],['interview_D2.txt'],maven,krymper,det
+1,[0.00024190076510421932],[25],['interview_D2.txt'],maven,",",børnene
+1,[7.536023379846786e-06],[25],['interview_D2.txt'],maven,børnene skal,noget
+1,[0.000758696289267391],[25],['interview_D2.txt'],hende,",",børnene
+1,[1.3736839415893579e-05],[25],['interview_D2.txt'],hende,børnene skal,noget
+1,[0.00042741838842630386],[25],['interview_D2.txt'],børnene,",",maven
+1,[0.0013408559607341886],[25],['interview_D2.txt'],børnene,",",hende
+1,[0.0005130123463459313],[25],['interview_D2.txt'],børnene,stikkes,noget
+1,[0.0007052988512441516],[25],['interview_D2.txt'],noget,stikkes,børnene
+1,[1.4746251205603281e-05],[26],['interview_D2.txt'],hun,"mig ,",sted
+1,[0.00016547154518775642],[26],['interview_D2.txt'],det,",",sted
+1,[0.0006127453525550663],[26],['interview_D2.txt'],mig,",",sted
+6,"[0.003188841976225376, 0.00041778769809752703, 0.002110372995957732, 0.0034081884659826756, 0.003258752403780818, 0.0025711259804666042]","[26, 112, 154, 206, 208, 365]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",der,",",det
+1,[0.0027062848675996065],[26],['interview_D2.txt'],der,af,sted
+1,[0.008138211444020271],[26],['interview_D2.txt'],sted,tog,der
+1,[0.0017439875518903136],[28],['interview_D2.txt'],jeg,ud,stedet
+1,[0.001653179875575006],[28],['interview_D2.txt'],stedet,ud,jeg
+1,[0.0018890497740358114],[28],['interview_D2.txt'],stedet,at,de
+1,[5.149914917031613e-06],[28],['interview_D2.txt'],stedet,", og",den
+1,[0.0017762946663424373],[28],['interview_D2.txt'],de,at,stedet
+1,[0.0011049472959712148],[28],['interview_D2.txt'],hun,ikke,den
+1,[0.003212827257812023],[28],['interview_D2.txt'],den,ikke,hun
+1,[0.0017566467868164182],[28],['interview_D2.txt'],den,",",dem
+1,[0.0007450488046742976],[28],['interview_D2.txt'],der,ikke,hun
+1,[0.002078586257994175],[28],['interview_D2.txt'],dem,der,den
+1,[0.0005795799079351127],[28],['interview_D2.txt'],dem,",",de
+1,[0.0002541215217206627],[28],['interview_D2.txt'],de,",",der
+1,[0.0010468880645930767],[28],['interview_D2.txt'],de,",",dem
+1,[0.00040592392906546593],[32],['interview_D2.txt'],arbejde,godt,Hun
+1,[0.0004081571532879025],[32],['interview_D2.txt'],arbejde,",",det
+1,[0.0005425509880296886],[32],['interview_D2.txt'],det,men,arbejde
+2,"[0.001276920665986836, 0.0016466601518914104]","[32, 32]","['interview_D2.txt', 'interview_D2.txt']",det,bare,det
+1,[0.0019160789670422673],[33],['interview_D2.txt'],dem,vist,lidt feber
+1,[0.0002336277102585882],[33],['interview_D2.txt'],dem,vist,en
+1,[0.00012401959975250065],[33],['interview_D2.txt'],dem,lidt feber,dagene
+1,[0.0008725294610485435],[33],['interview_D2.txt'],lidt feber,vist,en
+1,[0.002046191832050681],[33],['interview_D2.txt'],lidt feber,vist,dem
+1,[0.0014333894941955805],[33],['interview_D2.txt'],lidt feber,af,dagene
+1,[0.00019684153085108846],[33],['interview_D2.txt'],en,vist,en
+1,[0.0004616182704921812],[33],['interview_D2.txt'],en,vist,dem
+1,[0.0019553501624614],[33],['interview_D2.txt'],dagene,af,lidt feber
+1,[0.001596685964614153],[33],['interview_D2.txt'],dagene,eller,noget
+1,[0.00025717218522913754],[33],['interview_D2.txt'],noget,af,lidt feber
+1,[0.0017144345911219716],[33],['interview_D2.txt'],noget,",",en
+1,[0.002676202217116952],[33],['interview_D2.txt'],noget,eller,dagene
+1,[0.003780800849199295],[36],['interview_D2.txt'],En,af,feber
+1,[0.0007488189148716629],[36],['interview_D2.txt'],En,havde,én
+1,[0.002238035900518298],[36],['interview_D2.txt'],dem,havde,én
+1,[0.002460596850141883],[36],['interview_D2.txt'],feber,af,En
+1,[0.0018600290641188622],[36],['interview_D2.txt'],feber,af,dagene
+1,[7.982999522937462e-05],[36],['interview_D2.txt'],feber,dagene,det
+1,[0.0010250912746414542],[36],['interview_D2.txt'],én,havde,En
+1,[0.0019536111503839493],[36],['interview_D2.txt'],én,havde,dem
+1,[0.00019543695088941604],[36],['interview_D2.txt'],én,dagene,det
+1,[0.00043730236939154565],[36],['interview_D2.txt'],dagene,feber,dem
+1,[0.0022960735950618982],[36],['interview_D2.txt'],dagene,af,feber
+1,[0.0017942164558917284],[36],['interview_D2.txt'],dagene,",",det
+1,[6.691133603453636e-05],[36],['interview_D2.txt'],det,af,dem
+1,[9.232592856278643e-05],[36],['interview_D2.txt'],det,af,feber
+1,[0.000851851305924356],[36],['interview_D2.txt'],det,efter,én
+1,[0.005016855895519257],[36],['interview_D2.txt'],det,efter,dagene
+1,[0.00017793387814890593],[36],['interview_D2.txt'],det,at,et stykke
+1,[0.00040945931687019765],[36],['interview_D2.txt'],et stykke,at,det
+1,[0.001613337080925703],[38],['interview_D2.txt'],Vi,har,nogen problemer
+1,[0.003305100603029132],[38],['interview_D2.txt'],nogen problemer,ikke,Vi
+1,[0.0004918143386021256],[38],['interview_D2.txt'],nogen problemer,noget,det
+1,[0.000915694166906178],[38],['interview_D2.txt'],noget,haft,Vi
+1,[0.000905464927200228],[38],['interview_D2.txt'],det,noget,nogen problemer
+1,[0.0004880810738541186],[40],['interview_D2.txt'],vi,har,mødregrupper
+1,[0.000977767864242196],[40],['interview_D2.txt'],mødregrupper,har,vi
+1,[0.0011626295745372772],[42],['interview_D2.txt'],der,sagt,det
+1,[3.3350864517463683e-06],[42],['interview_D2.txt'],der,"os ,",de
+1,[3.1894014682620764e-06],[42],['interview_D2.txt'],der,"os ,",det
+1,[0.001956918044015765],[42],['interview_D2.txt'],det,har,der
+7,"[0.00027480782591737807, 0.0013402813347056508, 0.0008139080600813031, 0.005699254106730223, 0.00014135739183984697, 0.00013142624811735004, 0.00019991463341284543]","[42, 104, 161, 169, 197, 263, 377]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,",",de
+1,[0.0006002835580147803],[42],['interview_D2.txt'],os,sagt,der
+1,[0.0003201084618922323],[42],['interview_D2.txt'],os,",",de
+1,[0.00010008628305513412],[42],['interview_D2.txt'],os,har,det
+1,[0.00011768958938773721],[42],['interview_D2.txt'],de,sagt,der
+1,[0.0020353680010885],[42],['interview_D2.txt'],det,har,de
+1,[0.002758156508207321],[43],['interview_D2.txt'],det,heller,noget
+1,[0.00043002160964533687],[43],['interview_D2.txt'],det,ikke,vi
+1,[0.0014475787756964564],[43],['interview_D2.txt'],noget,ikke,det
+2,"[0.00013430372928269207, 0.0005868899170309305]","[43, 78]","['interview_D2.txt', 'interview_D2.txt']",vi,ikke,det
+1,[0.00044370285468176007],[44],['interview_D2.txt'],folk,have,os
+1,[0.000327849033055827],[44],['interview_D2.txt'],folk,have,det
+1,[0.0007723089656792581],[44],['interview_D2.txt'],os,have,Jeg
+1,[0.0009793011704459786],[44],['interview_D2.txt'],os,have,folk
+1,[0.0008822082309052348],[44],['interview_D2.txt'],det,have,folk
+1,[0.00010565311822574586],[44],['interview_D2.txt'],det,der,noget newsworthy
+1,[1.3452266405996245e-06],[44],['interview_D2.txt'],det,var noget newsworthy,deres oplevelse
+1,[2.8562806619447656e-05],[44],['interview_D2.txt'],noget newsworthy,:,Yes
+1,[7.077606278471649e-05],[44],['interview_D2.txt'],deres oplevelse,der,det
+1,[0.0001279693387914449],[44],['interview_D2.txt'],deres oplevelse,",",det
+1,[0.0005517586250789464],[44],['interview_D2.txt'],det,",",deres oplevelse
+2,"[0.0034614650066941977, 0.01085540372878313]","[44, 352]","['interview_D2.txt', 'interview_D2.txt']",det,ikke,noget
+1,[0.0006324082496576011],[44],['interview_D2.txt'],det,sådan,vi
+1,[0.00013332735397852957],[44],['interview_D2.txt'],noget,er,deres oplevelse
+5,"[0.0031288450118154287, 0.0011153273517265916, 0.0014266102807596326, 0.002756306668743491, 0.00428083585575223]","[44, 47, 216, 223, 352]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",noget,er,det
+1,[0.000130762520711869],[44],['interview_D2.txt'],noget,:,Yes
+1,[0.00044285564217716455],[44],['interview_D2.txt'],vi,sådan,det
+1,[0.00020776486780960113],[44],['interview_D2.txt'],vi,og,hvad
+1,[0.00013115917681716383],[44],['interview_D2.txt'],hvad,vacciner,dag
+1,[0.00023420117213390768],[44],['interview_D2.txt'],det,",",dag
+1,[0.0027571148239076138],[46],['interview_D2.txt'],vi,nok,jeg
+1,[0.0008618655847385526],[46],['interview_D2.txt'],jeg,nok,vi
+2,"[0.0005875207716599107, 0.0016017600428313017]","[46, 134]","['interview_D2.txt', 'interview_D2.txt']",jeg,",",vi
+1,[0.0007922903751023114],[46],['interview_D2.txt'],vi,",",jeg
+1,[0.0006512872641906142],[46],['interview_D2.txt'],vi,har,gæster
+1,[0.0003290739841759205],[46],['interview_D2.txt'],gæster,har,jeg
+1,[0.0018632103456184268],[46],['interview_D2.txt'],gæster,har,vi
+1,[0.0003728862793650478],[47],['interview_D2.txt'],noget,det,jeg
+1,[0.0040714191272854805],[47],['interview_D2.txt'],det,det,jeg
+1,[0.0020836363546550274],[47],['interview_D2.txt'],det,det,noget
+1,[0.000480187387438491],[47],['interview_D2.txt'],jeg,det,noget
+2,"[0.007782105356454849, 0.005732648074626923]","[47, 189]","['interview_D2.txt', 'interview_D2.txt']",jeg,det,det
+1,[0.0121667655184865],[48],['interview_D2.txt'],Jeg,ikke,nogen
+1,[0.0012986791552975774],[48],['interview_D2.txt'],Jeg,ikke,der
+2,"[0.007082035299390554, 0.0013450451660901308]","[48, 230]","['interview_D2.txt', 'interview_D2.txt']",nogen,ikke,Jeg
+1,[0.00010653143787446122],[48],['interview_D2.txt'],nogen,der har,komplikationer
+1,[7.124862167984247e-05],[48],['interview_D2.txt'],nogen,der har,det
+1,[0.0014801134821027517],[48],['interview_D2.txt'],der,ikke,Jeg
+1,[0.0014056344516575336],[48],['interview_D2.txt'],der,har,komplikationer
+1,[0.0009400937124155462],[48],['interview_D2.txt'],der,har,det
+1,[0.0001593804481672123],[48],['interview_D2.txt'],komplikationer,der,Jeg
+1,[0.0006030733929947019],[48],['interview_D2.txt'],komplikationer,har,nogen
+1,[0.0010294552193954587],[48],['interview_D2.txt'],komplikationer,har,der
+1,[0.002327416557818651],[51],['interview_D2.txt'],Det,jo,hverdagsting
+1,[0.002210200298577547],[51],['interview_D2.txt'],hverdagsting,jo,Det
+1,[0.0006786203011870384],[52],['interview_D2.txt'],de,to,skoldkopper
+1,[0.0009977332083508372],[52],['interview_D2.txt'],begge,haft,skoldkopper
+1,[0.002298676408827305],[52],['interview_D2.txt'],skoldkopper,haft,begge
+1,[0.00020470759773161262],[52],['interview_D2.txt'],skoldkopper,",",hvad
+1,[0.0001436463207937777],[52],['interview_D2.txt'],skoldkopper,",",det
+1,[3.9690639823675156e-05],[52],['interview_D2.txt'],det,skoldkopper,begge
+1,[0.0018738926155492663],[54],['interview_D2.txt'],Vi,har,noget alvorligt noget
+1,[0.0007580923265777528],[54],['interview_D2.txt'],noget alvorligt noget,har,Vi
+1,[0.0005111792706884444],[54],['interview_D2.txt'],du,noget alvorligt noget,Vi
+1,[3.675732235327208e-06],[55],['interview_D2.txt'],de,hvad de,sådan nogen børn
+1,[0.00026162207359448075],[55],['interview_D2.txt'],hvad,de,sådan nogen børn
+1,[0.0008823819807730615],[55],['interview_D2.txt'],de,finde,sådan nogen børn
+1,[0.00032114103669300675],[55],['interview_D2.txt'],sådan nogen børn,finde,hvad
+1,[0.0005082810530439019],[55],['interview_D2.txt'],sådan nogen børn,kan,de
+1,[0.00011508572060847655],[55],['interview_D2.txt'],sådan nogen børn,eller,influenza
+1,[0.0002787256380543113],[55],['interview_D2.txt'],influenza,eller,sådan nogen børn
+1,[0.0012281150557100773],[55],['interview_D2.txt'],influenza,og,alle mulige ting
+1,[0.003097353270277381],[55],['interview_D2.txt'],alle mulige ting,og,influenza
+4,"[0.002638748846948147, 0.0017194106476381421, 0.004173198249191046, 0.0019519119523465633]","[56, 107, 122, 340]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",Jeg,ikke,jeg
+6,"[0.001992159755900502, 0.0006868534837849438, 0.0013155711349099874, 0.0024966320488601923, 0.0014989852206781507, 0.0013323671882972121]","[56, 100, 107, 122, 134, 340]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",jeg,ikke,Jeg
+1,[0.003891497850418091],[56],['interview_D2.txt'],jeg,ikke,vi
+1,[0.0001306008780375123],[56],['interview_D2.txt'],jeg,jeg,det
+1,[0.004008572548627853],[56],['interview_D2.txt'],vi,ikke,jeg
+1,[0.0002034810750046745],[56],['interview_D2.txt'],vi,voldsomt,jeg
+1,[0.001039951341226697],[56],['interview_D2.txt'],det,helt,almindelig børnehave-feber
+1,[0.0002021985565079376],[56],['interview_D2.txt'],det,helt,hvad
+8,"[0.0003610434359870851, 0.00015048922796268016, 0.0011754920706152916, 0.0006864592432975769, 0.0017671941313892603, 0.004878276959061623, 8.080845145741478e-05, 0.00016176194185391068]","[56, 80, 104, 113, 183, 183, 319, 362]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,",",det
+1,[0.00014714636199641973],[56],['interview_D2.txt'],almindelig børnehave-feber,er,jeg
+1,[0.0012074282858520746],[56],['interview_D2.txt'],almindelig børnehave-feber,helt,det
+1,[0.00046354299411177635],[56],['interview_D2.txt'],almindelig børnehave-feber,",",det
+2,"[0.001227881875820458, 0.004392243456095457]","[56, 169]","['interview_D2.txt', 'interview_D2.txt']",hvad,det,de
+1,[0.0013318703277036548],[56],['interview_D2.txt'],det,hvad,almindelig børnehave-feber
+1,[0.004470529966056347],[56],['interview_D2.txt'],det,nu,de
+1,[0.00015725403500255197],[56],['interview_D2.txt'],de,det,almindelig børnehave-feber
+1,[0.0027494714595377445],[56],['interview_D2.txt'],de,nu,hvad
+1,[0.0027636673767119646],[56],['interview_D2.txt'],de,nu,det
+1,[0.001801042933948338],[58],['interview_D2.txt'],.Det,ikke,en særlig voldsom omgang
+1,[1.7165114816937905e-06],[58],['interview_D2.txt'],.Det,en særlig voldsom omgang skoldkopper,nogen
+1,[2.5414889629852646e-06],[58],['interview_D2.txt'],.Det,en særlig voldsom omgang skoldkopper,dem
+1,[0.0032755588181316853],[58],['interview_D2.txt'],en særlig voldsom omgang,ikke,.Det
+1,[0.00010929400013992563],[58],['interview_D2.txt'],en særlig voldsom omgang,skoldkopper,nogen
+2,"[0.0006671476876363158, 0.00024271485744975507]","[59, 59]","['interview_D2.txt', 'interview_D2.txt']",det,meget-,det
+2,"[0.0005770387942902744, 0.0005202909233048558]","[59, 59]","['interview_D2.txt', 'interview_D2.txt']",det,være,det
+1,[0.0017541866982355714],[62],['interview_D2.txt'],Jeg,i,en verden
+1,[0.009671938605606556],[62],['interview_D2.txt'],en verden,lever,Jeg
+1,[0.0022266004234552383],[62],['interview_D2.txt'],en verden,hvor,vi
+1,[0.00151005107909441],[62],['interview_D2.txt'],vi,",",en verden
+1,[0.000608155329246074],[62],['interview_D2.txt'],vi,og,vacciner
+1,[0.00022062040807213634],[62],['interview_D2.txt'],vi,og,hele tiden
+1,[0.000626171997282654],[62],['interview_D2.txt'],vacciner,og,vi
+1,[0.0004939702921546996],[62],['interview_D2.txt'],hele tiden,og,vi
+1,[0.0035442765802145004],[64],['interview_D2.txt'],jeg,ikke,nogen negative oplevelser
+1,[0.001076866639778018],[64],['interview_D2.txt'],jeg,ikke,der
+1,[0.0030807775910943747],[64],['interview_D2.txt'],nogen negative oplevelser,ikke,jeg
+1,[0.00121505674906075],[64],['interview_D2.txt'],der,nogen negative oplevelser,jeg
+1,[0.0011270946124568582],[64],['interview_D2.txt'],en anden retning,",",man
+1,[0.0017918813973665237],[64],['interview_D2.txt'],man,",",en anden retning
+1,[0.0062937019392848015],[67],['interview_D2.txt'],de,skal,noget
+1,[0.0005567186162807047],[67],['interview_D2.txt'],noget,de,Jeg
+1,[0.006176678463816643],[67],['interview_D2.txt'],noget,skal,de
+1,[0.004058757331222296],[69],['interview_D2.txt'],Det,når,de
+1,[0.003772914642468095],[69],['interview_D2.txt'],de,er,Det
+1,[0.00012742790568154305],[69],['interview_D2.txt'],noget,tolv,Det
+1,[0.0023036086931824684],[69],['interview_D2.txt'],noget,bliver,de
+1,[0.00013180519454181194],[69],['interview_D2.txt'],det,eller,de
+2,"[0.001317915040999651, 0.007439679466187954]","[73, 225]","['interview_D2.txt', 'interview_D2.txt']",Vi,har,det
+1,[0.002140469616279006],[73],['interview_D2.txt'],det,snakket,Vi
+1,[0.0006995406001806259],[74],['interview_D2.txt'],det,fra,de
+1,[0.000763937656302005],[78],['interview_D2.txt'],det,har,noget
+4,"[0.0011449436424300075, 0.0016220714896917343, 0.0005214428529143333, 0.001238181721419096]","[78, 204, 247, 267]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,",",vi
+1,[0.0006123697967268527],[78],['interview_D2.txt'],noget,har,det
+1,[0.0002291784476255998],[78],['interview_D2.txt'],Det,de,fald
+2,"[0.0005675535649061203, 0.000991917448118329]","[78, 82]","['interview_D2.txt', 'interview_D2.txt']",de,i,fald
+1,[0.0013046798994764686],[78],['interview_D2.txt'],fald,de,Det
+2,"[0.0014629918150603771, 0.0033341662492603064]","[78, 82]","['interview_D2.txt', 'interview_D2.txt']",fald,i,de
+1,[0.0005976759130135179],[79],['interview_D2.txt'],et brev,kom,Det
+1,[0.0025041005574166775],[79],['interview_D2.txt'],et brev,ind,døren
+1,[0.004134895745664835],[79],['interview_D2.txt'],døren,ind,et brev
+1,[9.345648140879348e-05],[80],['interview_D2.txt'],vi,og,vi
+1,[6.347242015181109e-05],[80],['interview_D2.txt'],vaccinationsprogrammet,og,vi
+1,[0.0003660315996967256],[80],['interview_D2.txt'],vaccinationsprogrammet,jo,sig
+1,[0.00012197779869893566],[80],['interview_D2.txt'],vaccinationsprogrammet,bare,selv
+1,[0.00021965816267766058],[80],['interview_D2.txt'],sig,bare,vaccinationsprogrammet
+1,[0.00019408599473536015],[80],['interview_D2.txt'],selv,bare,vaccinationsprogrammet
+1,[0.000270767486654222],[80],['interview_D2.txt'],vi,og,selv
+3,"[0.00012340396642684937, 0.0003595837624743581, 0.00021572565310634673]","[80, 334, 349]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",vi,",",de
+1,[0.00042596872663125396],[80],['interview_D2.txt'],en tid,",",de
+1,[1.3999187103763688e-05],[80],['interview_D2.txt'],en tid,3,Jeg
+2,"[9.259257785743102e-05, 0.00023715502175036818]","[80, 349]","['interview_D2.txt', 'interview_D2.txt']",de,",",vi
+1,[0.0013065718812868],[80],['interview_D2.txt'],de,",",en tid
+1,[8.413934847339988e-05],[80],['interview_D2.txt'],de,3,Jeg
+1,[8.7711050582584e-05],[80],['interview_D2.txt'],Jeg,og,de
+2,"[0.00044177364907227457, 0.00540634011849761]","[80, 265]","['interview_D2.txt', 'interview_D2.txt']",Jeg,ikke,det
+1,[6.901630937742691e-05],[80],['interview_D2.txt'],Jeg,men hvornår,det
+3,"[0.0003145343507640064, 0.001683174748905003, 0.004196863621473312]","[80, 125, 265]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,ikke,Jeg
+1,[0.0003213121381122619],[80],['interview_D2.txt'],det,hvornår,det
+3,"[0.0010854244465008378, 0.0008790327701717615, 0.00045609057997353375]","[80, 80, 319]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,nu,det
+1,[0.001727597787976265],[81],['interview_D2.txt'],Det,bare,sig
+1,[0.0011154921958222985],[81],['interview_D2.txt'],Det,bare,selv
+1,[0.0005761738284491003],[81],['interview_D2.txt'],sig,bare,Det
+1,[0.0005040140240453184],[81],['interview_D2.txt'],selv,af,Det
+4,"[0.00043887848732993007, 0.0008480287506245077, 0.0006136954762041569, 0.0010991746094077826]","[82, 90, 216, 220]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",Jeg,",",vi
+3,"[0.00036009284667670727, 0.0015887139597907662, 0.0006780309486202896]","[82, 90, 220]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",vi,",",Jeg
+1,[0.0014610572252422571],[82],['interview_D2.txt'],vi,har,en aktiv beslutning
+1,[0.0021099504083395004],[82],['interview_D2.txt'],en aktiv beslutning,har,vi
+1,[0.00032914301846176386],[82],['interview_D2.txt'],en aktiv beslutning,",",det
+1,[8.211031551278817e-06],[82],['interview_D2.txt'],en aktiv beslutning,de i,fald
+1,[0.0012785717844963074],[82],['interview_D2.txt'],det,",",en aktiv beslutning
+1,[0.0004308080824557692],[82],['interview_D2.txt'],det,de,fald
+1,[0.0013384897029027343],[82],['interview_D2.txt'],fald,skal,det
+1,[0.001969924196600914],[83],['interview_D2.txt'],Det,har,en passiv aktiv beslutning
+1,[0.0009006426553241909],[83],['interview_D2.txt'],en passiv aktiv beslutning,været,Det
+1,[0.0004960012738592923],[83],['interview_D2.txt'],en passiv aktiv beslutning,",",det
+1,[0.0001464958283274124],[83],['interview_D2.txt'],en passiv aktiv beslutning,at det,man
+1,[0.00010533861495787278],[83],['interview_D2.txt'],det,en passiv aktiv beslutning,Det
+1,[0.0016711109783500433],[83],['interview_D2.txt'],det,",",en passiv aktiv beslutning
+1,[0.0020840971264988184],[84],['interview_D2.txt'],min kone,min hustru,hun
+1,[0.0002242081827716902],[84],['interview_D2.txt'],min hustru,er,Portugal
+1,[0.0010109524009749293],[84],['interview_D2.txt'],hun,min hustru,min kone
+1,[0.0021486463956534863],[84],['interview_D2.txt'],hun,er,Portugal
+1,[0.00020142534049227834],[84],['interview_D2.txt'],Portugal,er,min kone
+1,[0.0003927776124328375],[84],['interview_D2.txt'],Portugal,er,min hustru
+1,[0.00448231678456068],[84],['interview_D2.txt'],Portugal,er,hun
+4,"[0.0023049809969961643, 0.0015288955764845014, 0.0013918939512223005, 0.0043701534159481525]","[85, 163, 208, 276]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",Jeg,",",hvad
+1,[0.0027229180559515953],[85],['interview_D2.txt'],hvad,",",Jeg
+2,"[0.0014984357403591275, 0.0008141366415657103]","[85, 85]","['interview_D2.txt', 'interview_D2.txt']",hvad,hun,hvad
+1,[0.00029611066565848887],[85],['interview_D2.txt'],hvad,hun,børnevaccineprogrammet
+1,[0.0007285287138074636],[85],['interview_D2.txt'],hun,",",Jeg
+1,[0.006226128898561001],[85],['interview_D2.txt'],hun,",",hvad
+1,[0.0002251634286949411],[85],['interview_D2.txt'],hun,",",børnevaccineprogrammet
+1,[0.009417260996997356],[85],['interview_D2.txt'],hvad,",",hun
+1,[0.0002268894895678386],[85],['interview_D2.txt'],børnevaccineprogrammet,",",hvad
+1,[0.00032703150645829737],[85],['interview_D2.txt'],børnevaccineprogrammet,hvad,hun
+1,[0.0004994987975805998],[86],['interview_D2.txt'],Jeg,og,min mor
+1,[0.0005282475030981004],[86],['interview_D2.txt'],min mor,og,Jeg
+1,[0.003643107833340764],[88],['interview_D2.txt'],Jeg,bare,alle børnevacciner
+1,[0.0026339353062212467],[88],['interview_D2.txt'],alle børnevacciner,bare,Jeg
+1,[0.00020153331570327282],[90],['interview_D2.txt'],Jeg,at,et videnskabsdrevet sundhedssystem
+1,[0.00015475669351872057],[90],['interview_D2.txt'],vi,et videnskabsdrevet sundhedssystem,Danmark
+1,[0.00033581326715648174],[90],['interview_D2.txt'],et videnskabsdrevet sundhedssystem,vi,Jeg
+1,[7.034458394628018e-05],[90],['interview_D2.txt'],et videnskabsdrevet sundhedssystem,Danmark,de
+1,[0.0002130434731952846],[90],['interview_D2.txt'],Danmark,et videnskabsdrevet sundhedssystem,vi
+1,[0.0012259769719094038],[90],['interview_D2.txt'],Danmark,",",de
+1,[0.00023506589059252292],[90],['interview_D2.txt'],Danmark,de,vacciner
+1,[0.0017155616078525782],[90],['interview_D2.txt'],de,",",Danmark
+1,[0.00034495178260840476],[90],['interview_D2.txt'],vacciner,hvor,Danmark
+1,[0.00021642009960487485],[90],['interview_D2.txt'],vacciner,bliver,nogen
+1,[9.844695159699768e-05],[90],['interview_D2.txt'],vacciner,bliver,der
+1,[0.00011357659968780354],[90],['interview_D2.txt'],nogen,bliver,de
+1,[0.00042942981235682964],[90],['interview_D2.txt'],nogen,bliver,vacciner
+1,[0.00025531300343573093],[90],['interview_D2.txt'],der,meget,det
+1,[0.0003007968480233103],[90],['interview_D2.txt'],det,meget,nogen
+1,[0.0002872157783713192],[90],['interview_D2.txt'],det,meget,der
+1,[0.0002515651867724955],[90],['interview_D2.txt'],det,og,de
+1,[0.00034244998823851347],[90],['interview_D2.txt'],de,og,det
+1,[0.00012838984548579901],[90],['interview_D2.txt'],de,ud,de tests
+1,[0.00018817614181898534],[90],['interview_D2.txt'],de tests,ud,de
+1,[0.0001606182340765372],[91],['interview_D2.txt'],Vaccinestyrelsen,Sundhedsstyrelsen,hvad
+1,[0.0005838763900101185],[91],['interview_D2.txt'],Sundhedsstyrelsen,hvad,det
+1,[0.0002701157645788044],[91],['interview_D2.txt'],hvad,Sundhedsstyrelsen,Vaccinestyrelsen
+1,[0.00031625255360268056],[91],['interview_D2.txt'],det,hvad,Vaccinestyrelsen
+1,[0.0006211790605448186],[91],['interview_D2.txt'],det,hvad,Sundhedsstyrelsen
+1,[0.0004321517772041261],[92],['interview_D2.txt'],jeg,på,de
+1,[0.0013256826205179095],[92],['interview_D2.txt'],de,the,best option
+1,[0.0002602455788291991],[92],['interview_D2.txt'],best option,bare,de
+1,[0.0029423825908452272],[93],['interview_D2.txt'],de,ikke,alle mulige dårlige ting
+1,[0.0018170332768931985],[93],['interview_D2.txt'],alle mulige dårlige ting,gør,de
+1,[0.0008151174406521022],[93],['interview_D2.txt'],alle mulige dårlige ting,",",det
+1,[0.00017520866822451353],[93],['interview_D2.txt'],alle mulige dårlige ting,",",vi
+1,[8.785185491433367e-05],[93],['interview_D2.txt'],alle mulige dårlige ting,og,nogle dygtige mennesker
+1,[0.00014134134107735008],[93],['interview_D2.txt'],det,alle mulige dårlige ting,de
+1,[0.001125498441979289],[93],['interview_D2.txt'],det,",",alle mulige dårlige ting
+1,[0.0017904380802065134],[93],['interview_D2.txt'],det,har,nogle dygtige mennesker
+1,[0.0006973870913498104],[93],['interview_D2.txt'],det,vi,der
+3,"[0.0009398452821187675, 0.0003199141938239336, 0.00022500008344650269]","[93, 108, 113]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",vi,",",der
+1,[0.0036262995563447475],[93],['interview_D2.txt'],nogle dygtige mennesker,har,det
+1,[0.0004776347486767918],[93],['interview_D2.txt'],der,nogle dygtige mennesker,det
+1,[0.0009524064953438938],[93],['interview_D2.txt'],der,nogle dygtige mennesker,vi
+1,[0.0005976746906526387],[93],['interview_D2.txt'],der,og,styr
+1,[0.0003921332536265254],[93],['interview_D2.txt'],styr,og,der
+1,[0.002371598966419697],[95],['interview_D2.txt'],Det,jeg,noget belæg
+1,[3.032754223871355e-05],[95],['interview_D2.txt'],jeg,noget belæg for,mig
+1,[0.0018893975066021085],[95],['interview_D2.txt'],noget belæg,har,Det
+1,[0.0007100203074514866],[95],['interview_D2.txt'],noget belæg,at,mig
+1,[0.001310669002123177],[95],['interview_D2.txt'],mig,at,noget belæg
+1,[0.005987633019685745],[96],['interview_D2.txt'],Det,har,ingen idé
+1,[0.00186472840141505],[96],['interview_D2.txt'],ingen idé,har,Det
+1,[0.0011769614648073912],[98],['interview_D2.txt'],Jeg,i,fald
+1,[0.0003923146869055927],[98],['interview_D2.txt'],Jeg,fald,det system
+2,"[0.0034924268256872892, 0.004296094179153442]","[98, 335]","['interview_D2.txt', 'interview_D2.txt']",fald,i,Jeg
+1,[0.0004240707494318485],[98],['interview_D2.txt'],fald,på,vi
+1,[0.00016744922322686762],[98],['interview_D2.txt'],vi,på,fald
+8,"[0.0015861904248595238, 0.0007776588900014758, 0.0007677889661863446, 0.002577067818492651, 0.0015046719927340746, 0.0015581822954118252, 0.0001929140998981893, 0.0015644762897863984]","[100, 158, 193, 196, 197, 323, 341, 342]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",Jeg,",",jeg
+1,[0.0012010933132842183],[100],['interview_D2.txt'],jeg,sådan,en holdning
+1,[0.0002514622756280005],[100],['interview_D2.txt'],jeg,en holdning,børnevacciner
+1,[0.000985848717391491],[100],['interview_D2.txt'],en holdning,sådan,jeg
+1,[0.00014619616558775306],[100],['interview_D2.txt'],en holdning,",",jeg
+1,[0.000188147954759188],[100],['interview_D2.txt'],børnevacciner,",",jeg
+2,"[0.000322228908771649, 0.00036562501918524504]","[100, 117]","['interview_D2.txt', 'interview_D2.txt']",jeg,til,vores sundhedssystem
+1,[0.00044539396185427904],[100],['interview_D2.txt'],vores sundhedssystem,til,jeg
+1,[0.0004578564839903265],[101],['interview_D2.txt'],børnevaccinationer,jo,en del
+1,[0.0002484747383277863],[101],['interview_D2.txt'],børnevaccinationer,en del,det
+1,[0.0005798914935439825],[101],['interview_D2.txt'],en del,jo,børnevaccinationer
+1,[0.00033249560510739684],[101],['interview_D2.txt'],det,jo,børnevaccinationer
+9,"[0.0011351201683282852, 0.00016895320732146502, 0.0002249826939078048, 0.0004073801974300295, 0.0002984111779369414, 0.0009395576780661941, 0.001738569000735879, 0.004420554265379906, 0.00042846641736105084]","[102, 177, 209, 236, 240, 244, 244, 302, 312]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,",",jeg
+1,[0.0005726356175728142],[102],['interview_D2.txt'],det,har,sig
+1,[0.0020777012687176466],[102],['interview_D2.txt'],sig,har,det
+1,[0.0005971861537545919],[102],['interview_D2.txt'],sig,",",jeg
+1,[3.6168648875900544e-06],[104],['interview_D2.txt'],højere grad,de har,vacciner
+3,"[0.0008879805100150406, 0.0021246573887765408, 0.0010035720188170671]","[104, 159, 159]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,er,det
+1,[0.00010690199269447476],[104],['interview_D2.txt'],det,",",højere grad
+7,"[0.004464092664420605, 0.0005495715886354446, 0.0018624038202688098, 0.00054330745479092, 0.00013929650594945997, 9.595554001862183e-05, 0.0008445453131571412]","[104, 161, 169, 194, 197, 250, 252]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",de,",",det
+1,[0.0006160615012049675],[104],['interview_D2.txt'],de,har,vacciner
+1,[8.655238343635574e-05],[104],['interview_D2.txt'],vacciner,har,det
+1,[0.0011642106110230088],[104],['interview_D2.txt'],vacciner,har,de
+1,[0.00022062653442844748],[104],['interview_D2.txt'],en del,",",jeg
+1,[0.0008038727100938559],[104],['interview_D2.txt'],den pakke,",",jeg
+1,[0.003217693418264389],[104],['interview_D2.txt'],jeg,",",den pakke
+3,"[0.0010457346215844154, 0.0017163805896416306, 0.0001746962807374075]","[104, 272, 346]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",jeg,på,det system
+1,[0.00034945973311550915],[104],['interview_D2.txt'],det system,på,den pakke
+2,"[0.0014410163275897503, 0.0010167419677600265]","[104, 272]","['interview_D2.txt', 'interview_D2.txt']",det system,på,jeg
+1,[0.0009745751740410924],[104],['interview_D2.txt'],vi,op,Danmark
+1,[0.0007342058815993369],[104],['interview_D2.txt'],Danmark,op,vi
+1,[0.0007199665997177362],[104],['interview_D2.txt'],Danmark,både,vacciner
+1,[0.001346414559520781],[104],['interview_D2.txt'],vacciner,omkring,Danmark
+1,[0.00015430677740368992],[104],['interview_D2.txt'],vacciner,også,alt det andet medicin
+1,[3.2701231248211116e-05],[104],['interview_D2.txt'],alt det andet medicin,vacciner,Danmark
+1,[0.0003959610767196864],[104],['interview_D2.txt'],alt det andet medicin,men,vacciner
+1,[0.00019400632785012326],[104],['interview_D2.txt'],jeg,får at,jeg
+3,"[0.0003357566019985825, 0.0010613560443744063, 0.0011786103714257479]","[104, 187, 187]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",jeg,at,jeg
+1,[6.803190141605835e-05],[105],['interview_D2.txt'],jeg,"vide ,",jeg
+1,[2.4479598020358633e-05],[105],['interview_D2.txt'],jeg,"vide ,",medicin
+1,[0.003444414120167494],[105],['interview_D2.txt'],jeg,skal,medicin
+1,[0.006177152972668409],[105],['interview_D2.txt'],medicin,tage,jeg
+1,[0.000389638269552961],[107],['interview_D2.txt'],Jeg,har,nogen som helst tillid
+1,[6.535572902066633e-05],[107],['interview_D2.txt'],jeg,til,medicinalindustrien
+1,[0.0010416388977319002],[107],['interview_D2.txt'],nogen som helst tillid,ikke,Jeg
+1,[0.0002711059933062643],[107],['interview_D2.txt'],medicinalindustrien,nogen som helst tillid,jeg
+1,[0.0016896151937544346],[108],['interview_D2.txt'],det,heller,dem
+1,[0.0003252320845300953],[108],['interview_D2.txt'],det,"dem ,",der
+1,[0.001363597228191793],[108],['interview_D2.txt'],dem,heller,det
+2,"[0.0014071265468373895, 0.001207989756949246]","[108, 206]","['interview_D2.txt', 'interview_D2.txt']",der,",",hvad
+1,[0.0003256630152463913],[108],['interview_D2.txt'],der,hvad,vi
+3,"[0.0011512398486956954, 0.0009487268980592489, 0.003333350410684943]","[108, 113, 208]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",hvad,",",der
+2,"[9.413540101377293e-05, 8.465528662782162e-05]","[108, 113]","['interview_D2.txt', 'interview_D2.txt']",hvad,skal,vacciner
+2,"[0.0009697222267277539, 0.0007642243290320039]","[108, 113]","['interview_D2.txt', 'interview_D2.txt']",vi,skal,vacciner
+2,"[0.00024349875457119197, 0.00019239808898419142]","[108, 113]","['interview_D2.txt', 'interview_D2.txt']",vacciner,skal,hvad
+2,"[0.00237577548250556, 0.0021432070061564445]","[108, 113]","['interview_D2.txt', 'interview_D2.txt']",vacciner,skal,vi
+1,[0.0006091700051911175],[109],['interview_D2.txt'],Sundhedsstyrelsen,",",hvem
+1,[0.000664449471514672],[109],['interview_D2.txt'],hvem,",",Sundhedsstyrelsen
+1,[0.0004699047713074833],[110],['interview_D2.txt'],noget,til,de
+1,[0.0014499587705358863],[110],['interview_D2.txt'],noget,",",nogle effekter
+1,[0.0011803932720795274],[110],['interview_D2.txt'],nogle effekter,der,noget
+1,[0.0003886110498569906],[110],['interview_D2.txt'],nogle effekter,en,anden
+1,[0.0004065352550242096],[110],['interview_D2.txt'],anden,af,nogle effekter
+1,[0.000207859804504551],[111],['interview_D2.txt'],den profit,"styret , den der medicinalindustri",de
+1,[8.924332360038534e-05],[111],['interview_D2.txt'],"styret , den der medicinalindustri",skal,penge
+1,[0.00019471437553875148],[111],['interview_D2.txt'],de,"styret , den der medicinalindustri",den profit
+1,[0.001141826156526804],[111],['interview_D2.txt'],de,bare,penge
+1,[6.575736188096926e-05],[111],['interview_D2.txt'],de,penge,det
+1,[5.951399725745432e-05],[111],['interview_D2.txt'],penge,skal,"styret , den der medicinalindustri"
+1,[0.000629559566732496],[111],['interview_D2.txt'],penge,bare,de
+1,[0.000998225761577487],[111],['interview_D2.txt'],penge,",",det
+1,[0.0001715171238174662],[111],['interview_D2.txt'],det,penge,de
+1,[0.0019921751227229834],[111],['interview_D2.txt'],det,og,penge
+1,[0.0018195041920989752],[112],['interview_D2.txt'],de,så,nogle penge
+1,[0.00117545947432518],[112],['interview_D2.txt'],nogle penge,så,de
+1,[0.0065857646986842155],[113],['interview_D2.txt'],det,er,dem
+1,[0.0034957490861415863],[113],['interview_D2.txt'],dem,er,det
+1,[0.0010832232655957341],[113],['interview_D2.txt'],der,skal,hvad
+1,[0.005552262999117374],[115],['interview_D2.txt'],Det,har,en fornemmelse
+1,[0.00015477293345611542],[115],['interview_D2.txt'],jeg,af,det
+1,[0.0025353003293275833],[115],['interview_D2.txt'],en fornemmelse,har,Det
+1,[0.0005762062501162291],[115],['interview_D2.txt'],en fornemmelse,af,det
+1,[0.0014841072261333466],[115],['interview_D2.txt'],det,",",en fornemmelse
+1,[0.00043270192691124976],[115],['interview_D2.txt'],det,ret,Danmark
+1,[0.001094991690479219],[115],['interview_D2.txt'],Danmark,ret,det
+1,[0.0010248229373246431],[116],['interview_D2.txt'],Jeg,heller,selv
+1,[0.00020444646361283958],[116],['interview_D2.txt'],Jeg,ikke,hvilken
+1,[0.0014343501534312963],[116],['interview_D2.txt'],selv,ikke,Jeg
+1,[0.0014592016814276576],[116],['interview_D2.txt'],selv,",",hvilken
+1,[0.00011505170550663024],[116],['interview_D2.txt'],hvilken,ikke,Jeg
+1,[0.001523685292340815],[116],['interview_D2.txt'],hvilken,",",selv
+1,[0.00032086356077343225],[116],['interview_D2.txt'],hvilken,jeg,der
+1,[0.0002256190200569108],[116],['interview_D2.txt'],astmamedicin,",",selv
+1,[0.000254204060183838],[116],['interview_D2.txt'],astmamedicin,skal,der
+1,[8.838675421429798e-05],[116],['interview_D2.txt'],jeg,hvilken,selv
+2,"[0.0013389508239924908, 0.0007431510020978749]","[116, 234]","['interview_D2.txt', 'interview_D2.txt']",jeg,",",der
+1,[3.950940542078266e-05],[116],['interview_D2.txt'],jeg,der får,jeg
+1,[0.00011665794590953737],[116],['interview_D2.txt'],der,skal,hvilken
+1,[0.0002581754233688116],[116],['interview_D2.txt'],der,skal,astmamedicin
+2,"[0.0010727184126153588, 6.97789218975231e-05]","[116, 234]","['interview_D2.txt', 'interview_D2.txt']",der,",",jeg
+1,[0.0002987890620715916],[116],['interview_D2.txt'],der,bare,det
+1,[0.0001319407601840794],[116],['interview_D2.txt'],jeg,",",astmamedicin
+7,"[0.00013715744717046618, 0.00014331135025713593, 0.0016648151213303208, 0.0012126935180276632, 0.0019962582737207413, 0.005096671171486378, 0.00012315402273088694]","[116, 187, 210, 210, 311, 311, 312]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",jeg,",",jeg
+2,"[0.000157882459461689, 0.0005712567362934351]","[116, 207]","['interview_D2.txt', 'interview_D2.txt']",jeg,at,det
+1,[0.0005628401995636523],[116],['interview_D2.txt'],dig,er,den
+1,[0.0019457173766568303],[116],['interview_D2.txt'],dig,",",det
+1,[0.005646425299346447],[116],['interview_D2.txt'],det,og,dig
+1,[0.0004337755381129682],[116],['interview_D2.txt'],jeg,er,dig
+1,[0.0010636418592184782],[117],['interview_D2.txt'],jeg,jo,tillid
+1,[0.001203139079734683],[117],['interview_D2.txt'],tillid,jo,jeg
+1,[0.001406515366397798],[118],['interview_D2.txt'],andet,",",jeg
+1,[0.0014383376110345125],[118],['interview_D2.txt'],jeg,",",andet
+1,[0.000577678089030087],[118],['interview_D2.txt'],den,blinde,jeg
+1,[0.0005554023664444685],[118],['interview_D2.txt'],jeg,til,det danske sundhedssystem
+1,[0.001736785052344203],[118],['interview_D2.txt'],det danske sundhedssystem,har,jeg
+1,[0.0012389706680551171],[119],['interview_D2.txt'],virkeligheden,så,det mikrochips
+1,[7.999846275197342e-06],[119],['interview_D2.txt'],virkeligheden,og hjernestyrende,de
+1,[0.0010518368799239397],[119],['interview_D2.txt'],det mikrochips,",",virkeligheden
+1,[0.00048203696496784687],[119],['interview_D2.txt'],det mikrochips,hjernestyrende,kemikalier
+1,[0.0001201963605126366],[119],['interview_D2.txt'],det mikrochips,hjernestyrende,de
+1,[6.0372560255927965e-05],[119],['interview_D2.txt'],kemikalier,det mikrochips,virkeligheden
+1,[0.001202263287268579],[119],['interview_D2.txt'],kemikalier,hjernestyrende,det mikrochips
+1,[0.00039212784031406045],[119],['interview_D2.txt'],kemikalier,ind,os
+1,[0.00014559664123225957],[119],['interview_D2.txt'],de,hjernestyrende,det mikrochips
+1,[0.0006462096353061497],[119],['interview_D2.txt'],de,ind,os
+1,[0.0002516483364161104],[119],['interview_D2.txt'],os,ind,kemikalier
+1,[0.0006869733333587646],[119],['interview_D2.txt'],os,ind,de
+1,[0.0002242869813926518],[120],['interview_D2.txt'],jeg,ud,alle læger
+1,[0.000114167902211193],[120],['interview_D2.txt'],alle læger,af,jeg
+1,[0.00046074544661678374],[120],['interview_D2.txt'],anden,en,alle læger
+1,[0.0003785935405176133],[120],['interview_D2.txt'],anden,og,virkeligheden
+1,[6.987015513004735e-05],[120],['interview_D2.txt'],anden,bare,penge
+1,[0.00044762741890735924],[120],['interview_D2.txt'],stor organisation,en,alle læger
+1,[0.0008062916458584368],[120],['interview_D2.txt'],stor organisation,og,virkeligheden
+1,[5.158908243174665e-05],[120],['interview_D2.txt'],stor organisation,bare,penge
+1,[0.0004358311998657882],[120],['interview_D2.txt'],virkeligheden,og,anden
+1,[0.0006863315938971937],[120],['interview_D2.txt'],virkeligheden,og,stor organisation
+1,[0.0007472729776054621],[120],['interview_D2.txt'],virkeligheden,bare,penge
+1,[3.156971555047979e-05],[120],['interview_D2.txt'],virkeligheden,eller hvad,det
+1,[0.0016284518642351031],[120],['interview_D2.txt'],penge,vil,virkeligheden
+1,[0.0005781580694019794],[120],['interview_D2.txt'],penge,",",hvad
+1,[0.000273088866379112],[120],['interview_D2.txt'],penge,hvad,det
+1,[0.002032626187428832],[120],['interview_D2.txt'],hvad,",",penge
+2,"[0.0011072959750890732, 0.0028492372948676348]","[120, 206]","['interview_D2.txt', 'interview_D2.txt']",hvad,det,der
+1,[0.00030428607715293765],[120],['interview_D2.txt'],det,hvad,penge
+1,[0.00011014196206815541],[120],['interview_D2.txt'],der,hvad,penge
+2,"[0.0015297437785193324, 0.0012974442215636373]","[120, 208]","['interview_D2.txt', 'interview_D2.txt']",der,det,hvad
+1,[0.003064520424231887],[120],['interview_D2.txt'],der,nu,det
+1,[0.0007537942146882415],[120],['interview_D2.txt'],der,gøre,jeg
+1,[0.0009007456828840077],[120],['interview_D2.txt'],jeg,gøre,der
+1,[0.00048219921882264316],[120],['interview_D2.txt'],jeg,til,dem
+1,[0.0003122598573099822],[120],['interview_D2.txt'],tillid,gøre,der
+1,[0.002534219529479742],[120],['interview_D2.txt'],dem,til,jeg
+1,[0.0003345209697727114],[123],['interview_D2.txt'],den,der,Jeg
+2,"[0.013241291046142578, 0.005751082208007574]","[124, 131]","['interview_D2.txt', 'interview_D2.txt']",Det,ikke,noget
+2,"[0.00240344344638288, 0.0019840202294290066]","[124, 131]","['interview_D2.txt', 'interview_D2.txt']",Det,",",der
+2,"[0.005651010200381279, 0.006989078596234322]","[124, 131]","['interview_D2.txt', 'interview_D2.txt']",noget,var,Det
+3,"[0.0014814233873039484, 0.002011709613725543, 0.0016295361565425992]","[124, 131, 352]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",noget,",",mig
+2,"[0.003128212643787265, 0.0033032966312021017]","[124, 131]","['interview_D2.txt', 'interview_D2.txt']",der,",",Det
+1,[0.0005534634692594409],[124],['interview_D2.txt'],mig,at,spørgsmål
+1,[7.32200060156174e-05],[124],['interview_D2.txt'],spørgsmål,til,der
+1,[0.0003350848564878106],[124],['interview_D2.txt'],spørgsmål,at,mig
+1,[0.002897085854783654],[124],['interview_D2.txt'],spørgsmål,",",den
+1,[9.680982475401834e-05],[124],['interview_D2.txt'],spørgsmål,ud,den der dokumentar
+1,[0.002046806737780571],[124],['interview_D2.txt'],den,",",spørgsmål
+1,[0.0006726852152496576],[124],['interview_D2.txt'],den,ud,den der dokumentar
+1,[0.001407272880896926],[124],['interview_D2.txt'],den der dokumentar,ud,den
+1,[0.0010777389397844672],[126],['interview_D2.txt'],den,ret,dårligt den undersøgelse
+1,[0.00425219489261508],[126],['interview_D2.txt'],dårligt den undersøgelse,ret,den
+1,[0.0001778607547748834],[127],['interview_D2.txt'],hvad,",",den
+1,[0.005270275287330151],[129],['interview_D2.txt'],Det,bare,nogle enkelte tilfælde
+1,[0.004412640351802111],[129],['interview_D2.txt'],nogle enkelte tilfælde,var,Det
+1,[0.0014471200993284583],[129],['interview_D2.txt'],som,bare,Det
+1,[0.0013620960526168346],[129],['interview_D2.txt'],som,troede,andet
+1,[0.001068080891855061],[129],['interview_D2.txt'],andet,et,som
+1,[0.0003963806084357202],[129],['interview_D2.txt'],maven,efter,andet
+1,[0.00394674576818943],[129],['interview_D2.txt'],maven,sådan,noget
+1,[0.006099771708250046],[129],['interview_D2.txt'],noget,sådan,maven
+1,[0.0014471020549535751],[130],['interview_D2.txt'],Man,meget,enkelte tilfælde
+1,[0.0007800528546795249],[130],['interview_D2.txt'],enkelte tilfælde,meget,Man
+1,[0.00033888506004586816],[130],['interview_D2.txt'],enkelte tilfælde,",",man
+1,[0.0010974803008139133],[130],['interview_D2.txt'],man,",",enkelte tilfælde
+1,[0.0003518175217323005],[131],['interview_D2.txt'],noget,skræmte,jeg
+1,[0.0007299857097677886],[131],['interview_D2.txt'],der,skræmte,jeg
+1,[1.596755222029363e-05],[131],['interview_D2.txt'],der,at der,nogen
+4,"[0.0034772674553096294, 0.0006113576237112284, 0.00027558227884583175, 0.00010919055057456717]","[131, 278, 302, 336]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",mig,",",jeg
+1,[0.000358966295607388],[131],['interview_D2.txt'],jeg,mig,der
+1,[0.006451459601521492],[131],['interview_D2.txt'],jeg,",",mig
+1,[5.8232840577450894e-05],[131],['interview_D2.txt'],jeg,at der,nogen
+1,[9.087171444358924e-06],[131],['interview_D2.txt'],jeg,at der,de
+1,[0.00011492898920550942],[131],['interview_D2.txt'],nogen,"synes ,",de
+1,[0.00020058639347553253],[131],['interview_D2.txt'],de,at,nogen
+1,[0.005226006265729666],[133],['interview_D2.txt'],jeg,har,nogen forbehold
+1,[0.006181416567414999],[133],['interview_D2.txt'],nogen forbehold,ikke,jeg
+1,[0.0031453147530555725],[134],['interview_D2.txt'],Jeg,om,jeg
+1,[0.0038628787733614445],[134],['interview_D2.txt'],vi,synes,jeg
+2,"[0.0004197153903078288, 0.000277316925348714]","[134, 272]","['interview_D2.txt', 'interview_D2.txt']",jeg,på,det
+2,"[0.00018013245426118374, 0.00019149607396684587]","[134, 207]","['interview_D2.txt', 'interview_D2.txt']",jeg,at,vi
+1,[0.0002821915550157428],[134],['interview_D2.txt'],det,på,jeg
+1,[0.00013490642595570534],[134],['interview_D2.txt'],det,vaccinerer,en god idé
+1,[0.000211676859180443],[134],['interview_D2.txt'],vi,for,en god idé
+1,[0.0019903008360415697],[135],['interview_D2.txt'],du,spørger,en dag
+1,[9.067152859643102e-05],[135],['interview_D2.txt'],du,""" Synes",du
+1,[6.314813314626615e-05],[135],['interview_D2.txt'],du,""" Synes",vi
+1,[0.0011388518614694476],[135],['interview_D2.txt'],en dag,mig,du
+1,[0.000308128452161327],[135],['interview_D2.txt'],du,"""",en dag
+1,[3.7679794331779703e-05],[135],['interview_D2.txt'],du,vaccinere,jeg
+1,[0.00012623755901586264],[135],['interview_D2.txt'],vi,"""",en dag
+1,[0.0001478041522204876],[135],['interview_D2.txt'],vi,mod,jeg
+1,[4.057590255494385e-06],[135],['interview_D2.txt'],vi,", hvad",grå hår
+1,[0.001867885934188962],[135],['interview_D2.txt'],jeg,",",hvad
+1,[0.002614443888887763],[135],['interview_D2.txt'],hvad,ikke,jeg
+1,[0.0003495147393550724],[135],['interview_D2.txt'],hvad,skulle,grå hår
+1,[0.0008650115341879427],[135],['interview_D2.txt'],det,skulle,grå hår
+1,[0.0002693728019949049],[135],['interview_D2.txt'],grå hår,skulle,hvad
+1,[0.0006712052854709327],[135],['interview_D2.txt'],grå hår,være,det
+1,[0.0005216005374677479],[137],['interview_D2.txt'],folk,imod,de
+1,[0.00042922142893075943],[137],['interview_D2.txt'],de,imod,folk
+1,[8.980758138932288e-05],[137],['interview_D2.txt'],farver,at,de
+1,[0.00021802473929710686],[139],['interview_D2.txt'],vi,lige,jeg
+1,[0.001625283621251583],[141],['interview_D2.txt'],et tidspunkt,ud,Jeg
+1,[0.0003425254544708878],[141],['interview_D2.txt'],et tidspunkt,:,Du
+1,[0.0009274529875256121],[141],['interview_D2.txt'],Du,:,et tidspunkt
+1,[0.003326060948893428],[141],['interview_D2.txt'],Du,er,dem
+1,[0.0002136735274689272],[141],['interview_D2.txt'],en,er,et tidspunkt
+1,[0.0009018793934956193],[141],['interview_D2.txt'],en,",",der
+1,[6.738367665093392e-05],[141],['interview_D2.txt'],dem,Du,et tidspunkt
+1,[0.0032996046356856823],[141],['interview_D2.txt'],dem,er,Du
+1,[0.00036068656481802464],[141],['interview_D2.txt'],dem,der,influenza-vaccinen
+1,[0.0007828546222299337],[141],['interview_D2.txt'],der,dem,Du
+1,[0.004792550578713417],[141],['interview_D2.txt'],der,af,en
+1,[0.000816041196230799],[141],['interview_D2.txt'],der,kan,influenza-vaccinen
+1,[0.001363284420222044],[141],['interview_D2.txt'],influenza-vaccinen,kan,der
+3,"[0.0004376970755401999, 0.0017380964709445834, 0.00056169752497226]","[143, 250, 256]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",de,",",jeg
+2,"[0.000615015160292387, 0.0003429454518482089]","[143, 256]","['interview_D2.txt', 'interview_D2.txt']",jeg,",",de
+1,[0.010784856975078583],[144],['interview_D2.txt'],Det,fordi,de
+1,[0.005183347035199404],[144],['interview_D2.txt'],de,fordi,Det
+1,[0.010888774879276752],[144],['interview_D2.txt'],det,jo,pointen
+1,[0.016683371737599373],[144],['interview_D2.txt'],pointen,jo,det
+1,[6.388628874750187e-05],[146],['interview_D2.txt'],jeg,"rask ,",jeg
+1,[1.6823635329880442e-05],[146],['interview_D2.txt'],jeg,"den ,",jeg
+1,[1.523866982703718e-05],[146],['interview_D2.txt'],jeg,"den ,",selv
+1,[0.0007391091785393655],[146],['interview_D2.txt'],den,",",jeg
+1,[0.00066947698360309],[146],['interview_D2.txt'],den,",",selv
+1,[0.0022412023972719908],[146],['interview_D2.txt'],jeg,hvis,den
+1,[0.0008875499479472637],[146],['interview_D2.txt'],selv,hvis,den
+1,[0.0007602042751386762],[147],['interview_D2.txt'],jeg,alligevel,lægen
+1,[0.0006542192422784865],[147],['interview_D2.txt'],lægen,alligevel,jeg
+1,[0.0002437931252643466],[147],['interview_D2.txt'],lægen,og,jeg
+1,[0.0004823744820896536],[147],['interview_D2.txt'],jeg,og,lægen
+1,[0.00023837493790779263],[147],['interview_D2.txt'],jeg,at,du
+1,[0.0019468978280201554],[147],['interview_D2.txt'],du,lige,den
+1,[0.0017866836860775948],[147],['interview_D2.txt'],den,lige,du
+1,[0.0009608938125893474],[147],['interview_D2.txt'],den,",",du
+1,[0.00044165615690872073],[147],['interview_D2.txt'],du,den,du
+1,[0.003048898419365287],[147],['interview_D2.txt'],du,",",den
+1,[0.002544232876971364],[150],['interview_D2.txt'],Jeg,ikke,vi
+1,[9.204702413020035e-06],[150],['interview_D2.txt'],Jeg,skal vaccinere,influenza
+2,"[0.002785763004794717, 0.00027489825151860714]","[150, 216]","['interview_D2.txt', 'interview_D2.txt']",vi,ikke,Jeg
+1,[0.0004367222621416052],[154],['interview_D2.txt'],jeg,sad et,andet
+1,[0.00018634317287554344],[154],['interview_D2.txt'],jeg,sad et,sted
+1,[5.8593992434907705e-05],[154],['interview_D2.txt'],andet,",",det
+1,[0.0008001989917829633],[154],['interview_D2.txt'],sted,andet,jeg
+1,[0.00023958718520589173],[154],['interview_D2.txt'],sted,",",det
+1,[0.002588158706203103],[154],['interview_D2.txt'],det,nu,mig
+1,[0.005002012476325035],[154],['interview_D2.txt'],mig,var,det
+1,[0.0010692835785448551],[154],['interview_D2.txt'],mig,der,det
+1,[0.0023405023384839296],[154],['interview_D2.txt'],der,skulle,det
+3,"[0.0021871752105653286, 0.00022326999169308692, 0.00011674064444378018]","[154, 335, 335]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,",",mig
+1,[0.00514549994841218],[154],['interview_D2.txt'],det,skulle,der
+1,[0.0006038439460098743],[155],['interview_D2.txt'],Jeg,ud,det
+2,"[0.0003294541093055159, 0.00021864897280465811]","[155, 190]","['interview_D2.txt', 'interview_D2.txt']",det,ud,Jeg
+1,[0.006839738227427006],[156],['interview_D2.txt'],Det,sådan,noget
+1,[0.013248929753899574],[156],['interview_D2.txt'],noget,er,Det
+1,[9.40735699259676e-05],[156],['interview_D2.txt'],det,hvor,noget
+1,[2.53244237076918e-06],[157],['interview_D2.txt'],hver,folk rent,det
+1,[2.202508312620921e-06],[157],['interview_D2.txt'],enkelt vaccine,folk rent,det
+1,[0.00030174540006555617],[157],['interview_D2.txt'],folk,rent,det
+1,[1.961560337804258e-05],[157],['interview_D2.txt'],folk,"her ,",andre følgevirkninger
+1,[0.0007676860550418496],[157],['interview_D2.txt'],det,rent,folk
+1,[0.00020367270917631686],[157],['interview_D2.txt'],det,",",hvilke
+1,[0.00014487860607914627],[157],['interview_D2.txt'],det,",",andre følgevirkninger
+1,[0.000254838407272473],[157],['interview_D2.txt'],hvilke,",",det
+1,[0.0013915476156398654],[157],['interview_D2.txt'],hvilke,andre følgevirkninger,de
+1,[0.00010801615280797705],[157],['interview_D2.txt'],andre følgevirkninger,",",det
+1,[0.0012005321914330125],[157],['interview_D2.txt'],de,andre følgevirkninger,hvilke
+5,"[0.00042847992153838277, 0.001892835134640336, 0.0010803805198520422, 0.0013103709788993, 0.0012563604395836592]","[158, 196, 197, 280, 342]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",jeg,",",Jeg
+1,[0.0016509182751178741],[158],['interview_D2.txt'],jeg,kunne,dig
+1,[0.003347686491906643],[158],['interview_D2.txt'],dig,kunne,jeg
+1,[0.00010268043843097985],[158],['interview_D2.txt'],dig,at hvis,man
+1,[7.003195908813116e-06],[158],['interview_D2.txt'],dig,at hvis,den
+1,[0.0006448639323934913],[158],['interview_D2.txt'],man,og,den
+1,[0.00020557671086862683],[158],['interview_D2.txt'],man,og,100 procent
+1,[0.0022473065182566643],[158],['interview_D2.txt'],den,3,man
+1,[0.00024977404973469675],[158],['interview_D2.txt'],100 procent,og,man
+1,[0.0003049068327527493],[158],['interview_D2.txt'],100 procent,så,vi
+1,[0.001186191919259727],[158],['interview_D2.txt'],vi,så,100 procent
+1,[0.00043384215678088367],[158],['interview_D2.txt'],vi,helt,det
+1,[0.000798706547357142],[158],['interview_D2.txt'],det,helt,vi
+1,[0.0001257572730537504],[159],['interview_D2.txt'],de ting,det,det
+1,[0.0014241451863199472],[159],['interview_D2.txt'],der,de ting,det
+1,[0.0012579759350046515],[159],['interview_D2.txt'],der,skal,betragtning
+1,[0.00010525707330089062],[159],['interview_D2.txt'],der,i,man
+1,[0.001269314088858664],[159],['interview_D2.txt'],betragtning,i,der
+1,[0.001030688057653606],[159],['interview_D2.txt'],betragtning,",",man
+1,[0.0026889811269938946],[159],['interview_D2.txt'],man,",",betragtning
+1,[0.0004986030980944633],[159],['interview_D2.txt'],man,ud,hvad
+1,[2.760177267191466e-05],[159],['interview_D2.txt'],hvad,skal,betragtning
+1,[0.0009873330127447844],[159],['interview_D2.txt'],hvad,skal,pengene
+1,[0.00035479164216667414],[159],['interview_D2.txt'],vi,pengene,hvad
+1,[0.00207794108428061],[159],['interview_D2.txt'],pengene,skal,hvad
+1,[0.0013353239046409726],[159],['interview_D2.txt'],pengene,på,hvad
+1,[6.914279462459187e-05],[159],['interview_D2.txt'],pengene,ikke bruge,ressourcerne
+1,[0.004500371403992176],[159],['interview_D2.txt'],hvad,og,pengene
+1,[0.0007598331430926919],[159],['interview_D2.txt'],hvad,vi,ressourcerne
+1,[0.0008204750483855605],[159],['interview_D2.txt'],vi,og,pengene
+1,[0.0011816739570349455],[159],['interview_D2.txt'],vi,ikke,ressourcerne
+1,[0.00039014287176541984],[159],['interview_D2.txt'],ressourcerne,skal,hvad
+1,[0.0019253712380304933],[159],['interview_D2.txt'],ressourcerne,bruge,vi
+1,[0.000293428311124444],[159],['interview_D2.txt'],ressourcerne,på,samfund
+1,[0.0003470644005574286],[160],['interview_D2.txt'],Hvad,vaccinere,hvad
+1,[0.0006298301159404218],[160],['interview_D2.txt'],vi,vaccinere,hvad
+1,[0.00011249515955569223],[160],['interview_D2.txt'],hvad,vaccinere,Hvad
+1,[0.000459195434814319],[160],['interview_D2.txt'],hvad,vaccinere,vi
+1,[3.0293517435590427e-05],[161],['interview_D2.txt'],Jeg,hvordan det,de
+1,[3.3023182671361916e-05],[161],['interview_D2.txt'],Jeg,de sorterer,dem
+1,[0.0024796968791633844],[161],['interview_D2.txt'],det,kan,Jeg
+2,"[0.0002160469302907586, 0.00034401071025058627]","[161, 236]","['interview_D2.txt', 'interview_D2.txt']",dem,at,det
+1,[0.0005381176015362144],[162],['interview_D2.txt'],de,",",Jeg
+2,"[0.0015694150933995843, 0.0026917827781289816]","[163, 276]","['interview_D2.txt', 'interview_D2.txt']",hvad,ved,Jeg
+1,[0.0022119819186627865],[163],['interview_D2.txt'],hvad,det,en virkelighed
+1,[0.002053746022284031],[163],['interview_D2.txt'],hvad,er,de
+1,[0.0006279448280110955],[163],['interview_D2.txt'],det,godt,Jeg
+1,[0.002328511094674468],[163],['interview_D2.txt'],det,for,en virkelighed
+1,[0.0011071197222918272],[163],['interview_D2.txt'],det,for,de
+1,[0.0017495647771283984],[163],['interview_D2.txt'],en virkelighed,det,hvad
+1,[0.006054629106074572],[163],['interview_D2.txt'],en virkelighed,for,det
+1,[0.0008108694455586374],[163],['interview_D2.txt'],de,en virkelighed,hvad
+1,[0.0016700912965461612],[163],['interview_D2.txt'],de,for,det
+2,"[0.0005763391964137554, 0.00028659848612733185]","[164, 209]","['interview_D2.txt', 'interview_D2.txt']",jeg,også,jeg
+1,[1.1067363326825822e-05],[164],['interview_D2.txt'],jeg,jeg har,argumenterne
+1,[0.0006122126942500472],[164],['interview_D2.txt'],jeg,er,jeg
+1,[0.00043487772927619517],[164],['interview_D2.txt'],jeg,har,argumenterne
+1,[0.0007275532116182148],[166],['interview_D2.txt'],jeg,forstående,argumenterne
+1,[0.0010611758334562182],[166],['interview_D2.txt'],argumenterne,forstående,jeg
+1,[0.0035008504055440426],[167],['interview_D2.txt'],Jeg,ikke,de
+1,[0.00505612650886178],[167],['interview_D2.txt'],de,ikke,Jeg
+1,[0.0009741157409735024],[168],['interview_D2.txt'],den måde,der,en sandheden
+1,[0.00016522224177606404],[168],['interview_D2.txt'],den måde,en sandheden,som
+1,[0.0004904289380647242],[168],['interview_D2.txt'],en sandheden,der,den måde
+1,[0.00013745718752034009],[168],['interview_D2.txt'],en sandheden,som,det
+1,[0.0019685307051986456],[168],['interview_D2.txt'],som,",",det
+1,[0.00020053914340678602],[168],['interview_D2.txt'],som,",",jeg
+1,[0.0003447264898568392],[168],['interview_D2.txt'],det,som,en sandheden
+1,[0.004279003012925386],[168],['interview_D2.txt'],det,",",som
+1,[0.00012831420463044196],[168],['interview_D2.txt'],jeg,sådan,en sandheden
+1,[0.00037641002563759685],[168],['interview_D2.txt'],jeg,er,som
+1,[0.0010505035752430558],[169],['interview_D2.txt'],forskellig holdninger,",",hvad
+1,[0.00027193615096621215],[169],['interview_D2.txt'],forskellig holdninger,hvad,det
+1,[0.0005594697431661189],[169],['interview_D2.txt'],hvad,forskellig holdninger,vi
+1,[0.002058053622022271],[169],['interview_D2.txt'],hvad,",",forskellig holdninger
+1,[0.00022359046852216125],[169],['interview_D2.txt'],hvad,det,et godt sandhedsvidne
+1,[0.00047217911924235523],[169],['interview_D2.txt'],det,til,forskellig holdninger
+1,[0.0006385345477610826],[169],['interview_D2.txt'],det,",",et godt sandhedsvidne
+1,[4.275133505871054e-06],[169],['interview_D2.txt'],et godt sandhedsvidne,"forstå ,",det
+1,[0.0002780328504741192],[169],['interview_D2.txt'],jeg,",",et godt sandhedsvidne
+1,[0.0005903692217543721],[169],['interview_D2.txt'],jeg,godt,hvad
+1,[0.00042846400174312294],[169],['interview_D2.txt'],hvad,godt,jeg
+3,"[0.001747563830576837, 0.0007116435444913805, 0.0008606581250205636]","[169, 191, 197]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",de,",",hvad
+1,[0.00012064906331943348],[170],['interview_D2.txt'],jeg,arbejdet,alle mulige typer
+1,[4.466081009013578e-05],[170],['interview_D2.txt'],jeg,alle mulige typer,konspirationsteorier
+1,[0.00011525046284077689],[170],['interview_D2.txt'],alle mulige typer,arbejdet,jeg
+1,[2.088251494569704e-05],[171],['interview_D2.txt'],det,det er,mikrochips
+1,[0.00022294103109743446],[171],['interview_D2.txt'],det,mikrochips,der
+1,[0.0001623839052626863],[171],['interview_D2.txt'],der,mikrochips,det
+1,[0.0022511405404657125],[171],['interview_D2.txt'],der,skal,befolkningen
+1,[0.00010275488602928817],[171],['interview_D2.txt'],befolkningen,skal,mikrochips
+1,[0.0018253178568556905],[171],['interview_D2.txt'],befolkningen,skal,der
+1,[0.00018298100621905178],[171],['interview_D2.txt'],det,over,befolkningen
+1,[0.008561331778764725],[172],['interview_D2.txt'],Jeg,har,dem
+1,[0.0036382656544446945],[172],['interview_D2.txt'],dem,har,Jeg
+1,[1.5558762243017554e-06],[174],['interview_D2.txt'],Jeg,så vil,mit barn
+1,[0.0002929489128291607],[174],['interview_D2.txt'],det,at,Jeg
+1,[0.0002565005561336875],[174],['interview_D2.txt'],jeg,så,autisme
+1,[0.00029887142591178417],[174],['interview_D2.txt'],jeg,ikke,mit barn
+1,[0.00021124105842318386],[174],['interview_D2.txt'],jeg,have,den
+1,[0.0006003539310768247],[174],['interview_D2.txt'],mit barn,ikke,jeg
+1,[0.0006001003785058856],[175],['interview_D2.txt'],chance,",",mit barn
+1,[0.00013746347394771874],[175],['interview_D2.txt'],chance,",",en drone
+1,[0.0010536058107391],[175],['interview_D2.txt'],mit barn,",",chance
+1,[0.00023966911248862743],[175],['interview_D2.txt'],mit barn,en drone,en robot-hær
+1,[0.00017947690503206104],[175],['interview_D2.txt'],en robot-hær,en drone,mit barn
+1,[3.283695696154609e-05],[175],['interview_D2.txt'],mikrochips,", så",jeg
+1,[0.00010783171455841511],[175],['interview_D2.txt'],jeg,så,mikrochips
+2,"[0.0004445664817467332, 0.00046821474097669125]","[175, 279]","['interview_D2.txt', 'interview_D2.txt']",jeg,ikke,det
+1,[0.0006700914236716926],[177],['interview_D2.txt'],jeg,har,noget bevis
+1,[0.0006435022223740816],[177],['interview_D2.txt'],noget bevis,ikke,jeg
+1,[0.0003367044555488974],[178],['interview_D2.txt'],Det,",",nogle mødre
+1,[0.00042540018330328166],[178],['interview_D2.txt'],deres maver,og,nogle mødre
+1,[0.0005085450829938054],[178],['interview_D2.txt'],deres maver,at,deres barn
+1,[9.286574641009793e-05],[178],['interview_D2.txt'],deres maver,har,autisme
+1,[0.0013537160120904446],[178],['interview_D2.txt'],deres barn,",",deres maver
+1,[0.0006032321252860129],[178],['interview_D2.txt'],deres barn,har,autisme
+1,[0.0006491949898190796],[178],['interview_D2.txt'],autisme,har,deres barn
+1,[0.0028560629580169916],[179],['interview_D2.txt'],forskningen,noget,andet
+1,[0.006270555313676596],[179],['interview_D2.txt'],andet,noget,forskningen
+1,[0.0009706108248792589],[180],['interview_D2.txt'],jeg,godt,argumentet
+1,[0.0018040642607957125],[180],['interview_D2.txt'],argumentet,godt,jeg
+1,[0.0005992051446810365],[183],['interview_D2.txt'],Det,om,det
+1,[0.0011598027776926756],[183],['interview_D2.txt'],det,ikke,Det
+3,"[0.00031656393548473716, 0.00013287710316944867, 0.00018122151959687471]","[183, 183, 204]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,om,det
+1,[2.3086128445963066e-05],[183],['interview_D2.txt'],det,"her interview ,",det
+1,[2.7064859750680625e-05],[183],['interview_D2.txt'],det,selvfølgelig,det
+1,[0.0016410119133070111],[185],['interview_D2.txt'],folk,rundt,verden
+1,[2.039091244417553e-05],[185],['interview_D2.txt'],folk,ved noget andet,det
+1,[0.0014303997159004211],[185],['interview_D2.txt'],verden,rundt,folk
+1,[0.0012594134313985705],[185],['interview_D2.txt'],verden,ved,noget andet
+1,[0.00011242705659242347],[185],['interview_D2.txt'],verden,noget andet,det
+1,[0.001347597106359899],[185],['interview_D2.txt'],noget andet,og,verden
+1,[0.000609269889537245],[185],['interview_D2.txt'],noget andet,",",jeg
+1,[0.0002720762277022004],[185],['interview_D2.txt'],det,noget andet,verden
+1,[0.00010812066466314718],[185],['interview_D2.txt'],jeg,noget andet,verden
+1,[0.0014363651862367988],[185],['interview_D2.txt'],jeg,det,noget andet
+1,[0.0012219715863466263],[186],['interview_D2.txt'],Jeg,nogle ting,det
+1,[0.0010434238938614726],[186],['interview_D2.txt'],det,ved,Jeg
+3,"[0.004867175128310919, 0.008177932351827621, 0.0033898605033755302]","[186, 189, 360]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",det,er,jeg
+1,[0.002680115168914199],[186],['interview_D2.txt'],det,er,mig
+1,[0.00017449290317017585],[186],['interview_D2.txt'],jeg,det,nogle ting
+2,"[0.00391677301377058, 0.0024225201923400164]","[186, 360]","['interview_D2.txt', 'interview_D2.txt']",jeg,er,det
+1,[0.005739089101552963],[186],['interview_D2.txt'],jeg,er,mig
+1,[0.0033532283268868923],[186],['interview_D2.txt'],mig,er,jeg
+1,[0.0003143911308143288],[187],['interview_D2.txt'],jeg,oplyst,jeg
+1,[0.005053207278251648],[188],['interview_D2.txt'],De,jo,de
+1,[0.002951755654066801],[188],['interview_D2.txt'],de,også,De
+1,[0.0003450598451308906],[189],['interview_D2.txt'],Jeg,ud,nogen
+1,[0.000907501729670912],[189],['interview_D2.txt'],nogen,dem,"onde , dårlige mennesker"
+1,[0.00018803367856889963],[189],['interview_D2.txt'],nogen,"onde , dårlige mennesker",det
+1,[0.00017639737052377313],[189],['interview_D2.txt'],dem,"onde , dårlige mennesker",det
+1,[0.0006852684891782701],[189],['interview_D2.txt'],"onde , dårlige mennesker",dem,nogen
+2,"[9.198589395964518e-05, 4.604805144481361e-05]","[189, 189]","['interview_D2.txt', 'interview_D2.txt']",det,"onde , dårlige mennesker",dem
+1,[0.0005035441135987639],[189],['interview_D2.txt'],det,det,"onde , dårlige mennesker"
+1,[0.00012842989235650748],[189],['interview_D2.txt'],jeg,det,"onde , dårlige mennesker"
+2,"[0.0002852642792277038, 0.00029621305293403566]","[189, 282]","['interview_D2.txt', 'interview_D2.txt']",jeg,at,som
+1,[0.0015444876626133919],[190],['interview_D2.txt'],maven,",",de
+1,[0.0006841554422862828],[190],['interview_D2.txt'],de,efter,hvilke
+1,[5.566954496316612e-05],[190],['interview_D2.txt'],hvilke,også,maven
+2,"[0.001847121980972588, 0.001682034693658352]","[190, 190]","['interview_D2.txt', 'interview_D2.txt']",hvilke,stoler,de
+2,"[0.0033235230948776007, 0.0023414466995745897]","[190, 190]","['interview_D2.txt', 'interview_D2.txt']",de,stoler,hvilke
+1,[0.00047389816609211266],[190],['interview_D2.txt'],de,",",hvilke
+1,[0.00020515797950793058],[190],['interview_D2.txt'],de,",",mennesker
+1,[0.00036808292497880757],[191],['interview_D2.txt'],systemet,bare,de
+1,[0.0009794870857149363],[191],['interview_D2.txt'],systemet,eller,de
+1,[0.0015622585779055953],[191],['interview_D2.txt'],de,",",systemet
+1,[0.00017920204845722765],[191],['interview_D2.txt'],de,på,det
+1,[0.0004966260748915374],[191],['interview_D2.txt'],hvad,ikke,de
+1,[0.00013118570495862514],[191],['interview_D2.txt'],det,på,de
+1,[0.0007853761781007051],[192],['interview_D2.txt'],de,",",hende
+1,[0.00017435333575122058],[192],['interview_D2.txt'],hende,mere,de
+1,[0.0003739307285286486],[192],['interview_D2.txt'],hende,og,hun
+1,[0.0009290827438235283],[192],['interview_D2.txt'],hun,og,hende
+1,[0.00027817022055387497],[192],['interview_D2.txt'],hun,",",hendes barn
+1,[0.0004527057462837547],[192],['interview_D2.txt'],hendes barn,har,autisme
+1,[0.0006382904830388725],[192],['interview_D2.txt'],autisme,har,hendes barn
+1,[0.00018428849580232054],[192],['interview_D2.txt'],autisme,det,vaccinen
+1,[9.678794594947249e-05],[192],['interview_D2.txt'],det,autisme,hendes barn
+1,[0.0005621985765174031],[192],['interview_D2.txt'],vaccinen,det,autisme
+1,[0.0003666410921141505],[193],['interview_D2.txt'],jeg,pointere,Jeg
+1,[0.0003335255023557693],[193],['interview_D2.txt'],de,virkelig,jeg
+1,[0.0005706197116523981],[194],['interview_D2.txt'],det,at,de
+1,[0.00013307594053912908],[194],['interview_D2.txt'],de,med,den samme leg
+1,[0.00042228857637383044],[194],['interview_D2.txt'],den samme leg,med,de
+1,[0.001223700470291078],[194],['interview_D2.txt'],den samme leg,",",jeg
+1,[0.001818654127418995],[194],['interview_D2.txt'],jeg,",",den samme leg
+1,[0.0020092660561203957],[195],['interview_D2.txt'],hvem,er,gode venner
+1,[6.322472472675145e-05],[195],['interview_D2.txt'],hvem,"med ,",hvem
+1,[1.6983776731649414e-05],[195],['interview_D2.txt'],hvem,"med ,",vi
+2,"[0.0033448413014411926, 0.0011380151845514774]","[195, 195]","['interview_D2.txt', 'interview_D2.txt']",gode venner,er,hvem
+1,[0.0003253461036365479],[195],['interview_D2.txt'],gode venner,",",hvem
+1,[8.739626355236396e-05],[195],['interview_D2.txt'],gode venner,",",vi
+1,[0.0002474705979693681],[195],['interview_D2.txt'],hvem,",",gode venner
+1,[0.0011962036369368434],[195],['interview_D2.txt'],hvem,så,gode venner
+1,[9.621174103813246e-05],[195],['interview_D2.txt'],hvem,så,hvem
+2,"[0.00014350404671858996, 0.0016593061154708266]","[195, 195]","['interview_D2.txt', 'interview_D2.txt']",vi,",",gode venner
+1,[0.0009109184611588717],[195],['interview_D2.txt'],vi,ikke,gode venner
+1,[0.00016464073269162327],[195],['interview_D2.txt'],vi,så,hvem
+1,[0.00217042351141572],[195],['interview_D2.txt'],gode venner,ikke,vi
+1,[0.0006977569622298082],[195],['interview_D2.txt'],gode venner,", hvem",vi
+1,[6.458249117713422e-05],[195],['interview_D2.txt'],gode venner,vi,hvem
+1,[0.00028644330450333655],[195],['interview_D2.txt'],hvem,",",hvem
+2,"[7.934736762157021e-06, 1.970201265066862e-05]","[195, 195]","['interview_D2.txt', 'interview_D2.txt']",hvem,"på ,",hvem
+1,[0.0002470856125000864],[195],['interview_D2.txt'],hvem,",",vi
+1,[1.4571003703167662e-05],[195],['interview_D2.txt'],vi,"på ,",hvem
+1,[0.00015717906353529543],[196],['interview_D2.txt'],Jeg,",",et sted
+1,[0.0033057844266295433],[196],['interview_D2.txt'],jeg,ligge,et sted
+1,[0.00404635164886713],[196],['interview_D2.txt'],et sted,ligge,jeg
+1,[0.00019013736164197326],[197],['interview_D2.txt'],jeg,godt,vi
+1,[0.0022884136997163296],[197],['interview_D2.txt'],vi,de,der vacciner
+1,[0.00267042126506567],[197],['interview_D2.txt'],der vacciner,de,vi
+1,[0.00029171290225349367],[197],['interview_D2.txt'],der vacciner,",",det
+1,[0.000529098033439368],[197],['interview_D2.txt'],hvad,",",de
+1,[0.0007606560247950256],[197],['interview_D2.txt'],hvad,lige,der
+1,[4.4603264541365206e-05],[197],['interview_D2.txt'],hvad,der skulle,den dag
+2,"[0.0007772351382300258, 0.0004829374374821782]","[197, 263]","['interview_D2.txt', 'interview_D2.txt']",det,",",der vacciner
+1,[0.0009340663091279566],[197],['interview_D2.txt'],det,lige,der
+1,[0.0007440863992087543],[197],['interview_D2.txt'],der,lige,hvad
+1,[0.0006230779690667987],[197],['interview_D2.txt'],der,lige,det
+1,[0.0008041694527491927],[197],['interview_D2.txt'],der,skulle,den dag
+1,[0.00229678419418633],[197],['interview_D2.txt'],den dag,vaccineres,der
+1,[0.002340224338695407],[200],['interview_D2.txt'],hver,af,de der kemikalier
+1,[0.011064230464398861],[200],['interview_D2.txt'],de der kemikalier,enkelt,hver
+1,[0.0013984469696879387],[202],['interview_D2.txt'],en mikrochip,deri,det
+1,[0.00019350077491253614],[202],['interview_D2.txt'],en mikrochip,deri,jeg
+1,[0.0014645580668002367],[202],['interview_D2.txt'],det,deri,en mikrochip
+1,[0.0008249169331975281],[203],['interview_D2.txt'],det,fundet,Jeg
+1,[0.002163706813007593],[204],['interview_D2.txt'],det,bare,tillid
+1,[0.001588601735420525],[204],['interview_D2.txt'],tillid,bare,det
+1,[0.000521000474691391],[204],['interview_D2.txt'],tillid,det,system
+1,[0.0011882130056619644],[204],['interview_D2.txt'],system,det,tillid
+1,[0.0006252220482565463],[204],['interview_D2.txt'],vi,det,tillid
+1,[0.0017017240170389414],[204],['interview_D2.txt'],vi,system,det
+1,[0.0011187928030267358],[206],['interview_D2.txt'],det,jo,vores indkaldelse
+1,[0.00022381340386345983],[206],['interview_D2.txt'],det,vores indkaldelse,hvad
+1,[0.00012224214151501656],[206],['interview_D2.txt'],det,", hvad",det
+1,[0.0020894804038107395],[206],['interview_D2.txt'],vores indkaldelse,i,det
+1,[0.0004978457000106573],[206],['interview_D2.txt'],vores indkaldelse,",",det
+1,[0.0012779987882822752],[206],['interview_D2.txt'],det,hvad,vores indkaldelse
+1,[6.912433794544388e-05],[207],['interview_D2.txt'],vi,det at,jeg
+1,[0.0010320838773623109],[207],['interview_D2.txt'],det,at,jeg
+1,[0.0007479595951735973],[207],['interview_D2.txt'],jeg,sku,det
+1,[0.0012781359255313873],[207],['interview_D2.txt'],det,sku,jeg
+1,[0.002380728954449296],[208],['interview_D2.txt'],hvad,godt,Jeg
+1,[0.0006972188712097704],[208],['interview_D2.txt'],det,hvad,Jeg
+1,[0.0006260958034545183],[209],['interview_D2.txt'],jeg,godt,jeg
+1,[0.001854131231084466],[209],['interview_D2.txt'],jeg,også,hvad
+1,[0.0006281702662818134],[209],['interview_D2.txt'],hvad,også,jeg
+1,[0.0001343581679975614],[209],['interview_D2.txt'],hvad,vaccineret,hele børnevaccineprogrammet
+1,[0.00011359935160726309],[209],['interview_D2.txt'],hele børnevaccineprogrammet,vaccineret,hvad
+1,[0.00012040147703373805],[214],['interview_D2.txt'],vi,børnelæger,kones
+1,[0.00018322590040042996],[214],['interview_D2.txt'],vi,ringer,regel
+1,[0.0002338956983294338],[214],['interview_D2.txt'],vi,ringer,en børnelæge
+1,[0.00027815671637654305],[214],['interview_D2.txt'],regel,ringer,vi
+1,[0.0003717223880812526],[215],['interview_D2.txt'],vi,til,jeg
+1,[0.0012631722493097186],[215],['interview_D2.txt'],egen læge,",",jeg
+1,[0.002310198964551091],[215],['interview_D2.txt'],jeg,tror,egen læge
+1,[0.0006403998122550547],[216],['interview_D2.txt'],vi,googlet,det
+2,"[0.004001285415142775, 0.00274259177967906]","[216, 223]","['interview_D2.txt', 'interview_D2.txt']",det,er,noget
+1,[0.0010140533559024334],[216],['interview_D2.txt'],det,sådan,du
+1,[0.0006539569585584104],[217],['interview_D2.txt'],Vi,lige,en børnesygdom
+1,[0.0009325318969786167],[217],['interview_D2.txt'],en børnesygdom,lige,Vi
+1,[0.00834762305021286],[219],['interview_D2.txt'],Man,bare,pas
+1,[0.0027953311800956726],[219],['interview_D2.txt'],pas,bare,Man
+1,[0.004832405596971512],[219],['interview_D2.txt'],pas,med,det
+1,[0.005787743255496025],[219],['interview_D2.txt'],det,på,pas
+1,[0.0005403211107477546],[220],['interview_D2.txt'],vi,har,kones
+1,[0.00043707681470550597],[222],['interview_D2.txt'],det,",",fald
+1,[0.001481190207414329],[223],['interview_D2.txt'],det,noget,vi
+1,[0.000995915150269866],[223],['interview_D2.txt'],vi,noget,det
+1,[0.0006992665003053844],[224],['interview_D2.txt'],Min kone,ikke,mig
+1,[0.0004978022770956159],[224],['interview_D2.txt'],mig,ikke,Min kone
+1,[0.00032837034086696804],[224],['interview_D2.txt'],mig,så,børn
+1,[0.0033643324859440327],[224],['interview_D2.txt'],vi,så,børn
+1,[0.00011982736032223329],[224],['interview_D2.txt'],vi,:,vi
+1,[0.00035851093707606196],[224],['interview_D2.txt'],børn,da,mig
+1,[0.007818175479769707],[224],['interview_D2.txt'],børn,så,vi
+1,[0.0007492449367418885],[224],['interview_D2.txt'],børn,"""",vi
+1,[0.00028102865326218307],[224],['interview_D2.txt'],vi,"""",børn
+1,[0.00036215074942447245],[224],['interview_D2.txt'],vi,egentlig,de der børn
+1,[0.0006429197383113205],[224],['interview_D2.txt'],de der børn,egentlig,vi
+1,[0.004449970088899136],[225],['interview_D2.txt'],det,har,Vi
+1,[0.0054700844921171665],[226],['interview_D2.txt'],Det,været,en selvfølge
+1,[0.0011223643086850643],[226],['interview_D2.txt'],en selvfølge,været,Det
+3,"[0.00020133209181949496, 0.0004553940671030432, 0.0003393315419089049]","[228, 306, 335]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",Jeg,ikke,mig
+1,[0.0005432100733742118],[228],['interview_D2.txt'],Jeg,ikke,noget
+3,"[0.000862285727635026, 0.002785520860925317, 0.0017888901056721807]","[228, 306, 336]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",mig,ikke,Jeg
+1,[0.001006508944556117],[228],['interview_D2.txt'],mig,i,sociale medier
+1,[0.0006062680040486157],[228],['interview_D2.txt'],noget,ikke,Jeg
+1,[0.0008453665068373084],[228],['interview_D2.txt'],sociale medier,i,mig
+1,[0.0026423195376992226],[229],['interview_D2.txt'],Det,det,dårligste sted
+1,[0.00046610544086433947],[229],['interview_D2.txt'],Det,det,man
+1,[0.0017949702451005578],[229],['interview_D2.txt'],dårligste sted,er,Det
+1,[0.0005504882428795099],[229],['interview_D2.txt'],dårligste sted,kan,en diskusion
+1,[0.0003609506820794195],[229],['interview_D2.txt'],man,det,Det
+1,[0.0030852938070893288],[229],['interview_D2.txt'],man,kan,en diskusion
+1,[0.0007932490552775562],[229],['interview_D2.txt'],en diskusion,kan,dårligste sted
+1,[0.003979397937655449],[229],['interview_D2.txt'],en diskusion,have,man
+1,[0.001301106414757669],[230],['interview_D2.txt'],Jeg,snakke,nogen
+1,[0.00027713002054952085],[230],['interview_D2.txt'],sociale medier,",",de
+1,[0.0005350694409571588],[230],['interview_D2.txt'],de,",",sociale medier
+1,[0.001066950848326087],[230],['interview_D2.txt'],de,ikke,vacciner
+1,[0.0021916506811976433],[230],['interview_D2.txt'],vacciner,ikke,de
+1,[0.0002825511619448662],[232],['interview_D2.txt'],Jeg,lige,min søster
+1,[0.000405386759666726],[232],['interview_D2.txt'],Jeg,for,jeg
+1,[0.0005126316682435572],[232],['interview_D2.txt'],min søster,lige,Jeg
+1,[0.00014860171359032393],[232],['interview_D2.txt'],jeg,min søster,Jeg
+1,[0.0032189625781029463],[232],['interview_D2.txt'],jeg,med,dig
+1,[0.0004318438295740634],[232],['interview_D2.txt'],jeg,med,dag
+1,[0.0027035775128751993],[232],['interview_D2.txt'],dig,med,jeg
+1,[0.0033882027491927147],[232],['interview_D2.txt'],dig,i,dag
+1,[7.620308315381408e-05],[232],['interview_D2.txt'],dig,dag,vi
+1,[0.003845819039270282],[232],['interview_D2.txt'],dag,i,dig
+1,[0.0002357259945711121],[232],['interview_D2.txt'],dag,",",vi
+1,[0.0007366810459643602],[232],['interview_D2.txt'],vi,så,dag
+1,[0.00028761872090399265],[232],['interview_D2.txt'],vi,faktisk,vacciner
+1,[0.001271536573767662],[232],['interview_D2.txt'],vacciner,i,weekenden
+1,[0.0041854423470795155],[232],['interview_D2.txt'],weekenden,i,vacciner
+1,[0.00030704104574397206],[233],['interview_D2.txt'],alle sine børn,fået,min søster
+4,"[0.005626021884381771, 0.0013447059318423271, 0.0005419196095317602, 0.00021126787760294974]","[234, 234, 234, 234]","['interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt', 'interview_D2.txt']",jeg,ikke,jeg
+1,[0.0008664220222271979],[234],['interview_D2.txt'],jeg,jeg,nogen
+1,[0.0006439872086048126],[234],['interview_D2.txt'],nogen,ikke,jeg
+1,[0.00021041248692199588],[234],['interview_D2.txt'],der,ikke,jeg
+1,[0.0044302125461399555],[234],['interview_D2.txt'],der,nogen,jeg
+1,[0.00037753841024823487],[234],['interview_D2.txt'],der,"""",mine børn
+1,[0.0003642028896138072],[234],['interview_D2.txt'],mine børn,"""",der
+1,[0.0002104652812704444],[234],['interview_D2.txt'],jeg,for,den samtale
+1,[0.00020435522310435772],[234],['interview_D2.txt'],muligheden,ikke,jeg
+1,[0.00040107889799401164],[234],['interview_D2.txt'],muligheden,at,den samtale
+1,[0.0021849339827895164],[235],['interview_D2.txt'],Jeg,tror,lejligheden
+1,[0.005071144551038742],[235],['interview_D2.txt'],lejligheden,tror,Jeg
+1,[0.0013250088086351752],[235],['interview_D2.txt'],lejligheden,bød,jeg
+1,[0.00025285332230851054],[235],['interview_D2.txt'],lejligheden,og,dem
+1,[0.00032057432690635324],[235],['interview_D2.txt'],sig,lejligheden,Jeg
+1,[0.0006591654964722693],[235],['interview_D2.txt'],sig,kendte,dem
+1,[0.0002762818767223507],[235],['interview_D2.txt'],jeg,sig,lejligheden
+1,[0.00044903691741637886],[235],['interview_D2.txt'],jeg,godt,dem
+1,[0.00025575116160325706],[235],['interview_D2.txt'],dem,jeg,sig
+2,"[0.0013431033585220575, 0.0007230223272927105]","[235, 235]","['interview_D2.txt', 'interview_D2.txt']",dem,godt,dem
+1,[0.00048577357665635645],[235],['interview_D2.txt'],dem,havde,en anden holdning
+1,[0.0002859989181160927],[235],['interview_D2.txt'],en anden holdning,",",dem
+1,[0.0023645618930459023],[235],['interview_D2.txt'],en anden holdning,havde,dem
+1,[0.0005429203156381845],[235],['interview_D2.txt'],mig,en anden holdning,dem
+1,[0.0004505336983129382],[235],['interview_D2.txt'],mig,så,jeg
+2,"[0.0015010731294751167, 0.0014139331178739667]","[235, 235]","['interview_D2.txt', 'interview_D2.txt']",jeg,da,jeg
+1,[0.00048183242324739695],[235],['interview_D2.txt'],jeg,ville,dem
+1,[0.0019092479487881064],[235],['interview_D2.txt'],dem,have,jeg
+1,[0.0002603034081403166],[236],['interview_D2.txt'],det,for,dem
+1,[0.00023424215032719076],[239],['interview_D2.txt'],HPV-vaccinen,",",en god idé
+1,[0.003422041656449437],[239],['interview_D2.txt'],det,altså,en god idé
+1,[0.000247637159191072],[239],['interview_D2.txt'],en god idé,er,HPV-vaccinen
+1,[0.006607018411159515],[239],['interview_D2.txt'],en god idé,er,det
+1,[0.00033541544689796865],[240],['interview_D2.txt'],mindre de der børn,",",jeg
+1,[0.0027172628324478865],[240],['interview_D2.txt'],dårligt helbred,sådan,noget
+1,[0.00017839773499872535],[240],['interview_D2.txt'],noget,dårligt helbred,mindre de der børn
+1,[0.002746075391769409],[240],['interview_D2.txt'],noget,sådan,dårligt helbred
+1,[0.0017384859966114163],[240],['interview_D2.txt'],det,så,noget
+1,[0.001399104599840939],[240],['interview_D2.txt'],det,jo,grund
+1,[6.409218622138724e-05],[240],['interview_D2.txt'],grund,det,noget
+1,[0.001013941247947514],[240],['interview_D2.txt'],grund,jo,det
+1,[0.0015795091167092323],[240],['interview_D2.txt'],grund,af,immuniteten
+1,[0.0001646663440624252],[240],['interview_D2.txt'],grund,immuniteten,vi
+1,[0.00014295602159108967],[240],['interview_D2.txt'],flok,på,det
+1,[0.0008503359276801348],[240],['interview_D2.txt'],flok,",",vi
+1,[1.5695385324458282e-05],[240],['interview_D2.txt'],flok,vi gerne,vi
+1,[0.0014232525136321783],[240],['interview_D2.txt'],immuniteten,af,grund
+1,[0.0013215423095971346],[240],['interview_D2.txt'],vi,",",flok
+1,[0.0013116374611854553],[240],['interview_D2.txt'],vi,gerne,vi
+2,"[8.986550528788939e-05, 0.0005924899596720934]","[240, 240]","['interview_D2.txt', 'interview_D2.txt']",vi,ikke,kopper
+1,[6.787811435060576e-05],[240],['interview_D2.txt'],vi,vil,flok
+1,[6.266334094107151e-05],[240],['interview_D2.txt'],vi,vil,immuniteten
+1,[0.0006767099839635193],[240],['interview_D2.txt'],vi,vil,vi
+1,[0.004230072721838951],[240],['interview_D2.txt'],kopper,ikke,vi
+1,[7.405181531794369e-05],[240],['interview_D2.txt'],kopper,ud,samfundet
+1,[0.0005113516235724092],[240],['interview_D2.txt'],alle mulige ting,kopper,vi
+1,[0.0005494942888617516],[240],['interview_D2.txt'],alle mulige ting,ud,samfundet
+1,[0.0018542710458859801],[240],['interview_D2.txt'],samfundet,i,alle mulige ting
+1,[0.00022901862394064665],[241],['interview_D2.txt'],min søster,at,min niecer
+1,[0.0001412654819432646],[241],['interview_D2.txt'],min niecer,at,min søster
+1,[3.62020728061907e-05],[241],['interview_D2.txt'],min niecer,skulle,HPV-
+1,[0.00017030560411512852],[241],['interview_D2.txt'],HPV-,skulle,min niecer
+1,[0.0003645173565018922],[241],['interview_D2.txt'],HPV-,ville,det
+1,[0.00014698212908115238],[241],['interview_D2.txt'],vaccinen,skulle,min niecer
+1,[0.0003337027446832508],[241],['interview_D2.txt'],vaccinen,ville,det
+1,[0.00018147107039112598],[241],['interview_D2.txt'],det,",",HPV-
+1,[0.0006449678330682218],[241],['interview_D2.txt'],det,",",vaccinen
+1,[0.0005399757064878941],[241],['interview_D2.txt'],det,ud,dem
+1,[0.0006458387360908091],[241],['interview_D2.txt'],dem,ud,det
+1,[0.0007814932032488286],[242],['interview_D2.txt'],det,jo,en vaccine
+1,[7.90572181964914e-05],[242],['interview_D2.txt'],det,"en vaccine ,",der
+1,[0.0009091124520637095],[242],['interview_D2.txt'],en vaccine,jo,det
+1,[8.281847112812102e-05],[242],['interview_D2.txt'],en vaccine,redder den,flokken
+1,[0.0005303728976286948],[242],['interview_D2.txt'],der,mere,det
+1,[0.0008147250046022236],[242],['interview_D2.txt'],der,den,flokken
+1,[0.00033949545468203723],[242],['interview_D2.txt'],flokken,den,der
+1,[0.0015589991817250848],[243],['interview_D2.txt'],det,synes,de
+1,[0.0009318699012510478],[243],['interview_D2.txt'],de,synes,det
+2,"[0.0007881827768869698, 0.005448363721370697]","[244, 284]","['interview_D2.txt', 'interview_D2.txt']",Det,er,jeg
+1,[0.00034361594589427114],[244],['interview_D2.txt'],jeg,også,Det
+1,[0.0009023974416777492],[244],['interview_D2.txt'],jeg,også,det
+1,[0.000729849620256573],[244],['interview_D2.txt'],det,også,jeg
+1,[0.0005208221264183521],[244],['interview_D2.txt'],jeg,godt,det
+1,[0.0017482980620115995],[244],['interview_D2.txt'],jeg,har,dem
+1,[0.002750706858932972],[244],['interview_D2.txt'],dem,har,jeg
+1,[0.00023410904395859689],[247],['interview_D2.txt'],vi,",",det
+1,[0.005985111463814974],[247],['interview_D2.txt'],vi,ikke,den
+1,[0.00012899319699499756],[247],['interview_D2.txt'],vi,løbsk,samfundet
+1,[0.002230517566204071],[247],['interview_D2.txt'],den,ikke,vi
+1,[0.0012822203570976853],[247],['interview_D2.txt'],den,løbsk,samfundet
+1,[0.0004112822934985161],[247],['interview_D2.txt'],samfundet,løbsk,vi
+1,[0.0059282793663442135],[247],['interview_D2.txt'],samfundet,løbsk,den
+1,[0.0005583977908827364],[248],['interview_D2.txt'],nogen rund,der,nogle dårlig immunforsvar
+1,[0.0006492813117802143],[248],['interview_D2.txt'],nogle dårlig immunforsvar,der,nogen rund
+1,[0.0008616272243671119],[250],['interview_D2.txt'],jeg,at,de
+1,[0.00023687677457928658],[250],['interview_D2.txt'],fine immunforsvar,at,jeg
+1,[0.0003213744785171002],[250],['interview_D2.txt'],fine immunforsvar,",",det
+1,[0.001729820854961872],[250],['interview_D2.txt'],det,men,fine immunforsvar
+1,[0.0009821912584205468],[251],['interview_D2.txt'],Det,", om",man
+1,[0.003149315482005477],[251],['interview_D2.txt'],jeg,ikke,man
+1,[0.0002467660524416715],[251],['interview_D2.txt'],man,ved,Det
+1,[0.0008445397834293544],[251],['interview_D2.txt'],man,ikke,jeg
+1,[0.0009013346862047911],[252],['interview_D2.txt'],det,når,de
+1,[0.0005971534410491586],[253],['interview_D2.txt'],det,faktisk,de
+1,[0.0019923211075365543],[253],['interview_D2.txt'],de,faktisk,det
+1,[0.00015039353456813842],[253],['interview_D2.txt'],de,af,de
+1,[0.00036620168248191476],[253],['interview_D2.txt'],de,den første blodprøve,hvad
+1,[0.000254676619078964],[253],['interview_D2.txt'],de,hvad,jeg
+1,[5.954612667361895e-05],[253],['interview_D2.txt'],hvad,hvert fald,det
+1,[0.0004751084197778255],[253],['interview_D2.txt'],jeg,hvad,den første blodprøve
+2,"[0.0002231592807220295, 0.0026175936218351126]","[253, 336]","['interview_D2.txt', 'interview_D2.txt']",fald,i,jeg
+1,[0.00027081347070634365],[253],['interview_D2.txt'],mine børn,at,det
+1,[0.0018025069730356336],[254],['interview_D2.txt'],Det,også,en samfundsopgave
+1,[0.0014565865276381373],[254],['interview_D2.txt'],en samfundsopgave,lidt,Det
+1,[0.0008819697541184723],[254],['interview_D2.txt'],en samfundsopgave,at,dem
+1,[8.997037366498262e-05],[254],['interview_D2.txt'],en samfundsopgave,vaccineret,det
+1,[0.0017072857590392232],[254],['interview_D2.txt'],dem,at,en samfundsopgave
+1,[0.0008347972761839628],[254],['interview_D2.txt'],dem,vaccineret,det
+1,[0.0012462047161534429],[254],['interview_D2.txt'],det,vaccineret,dem
+1,[0.001613492495380342],[255],['interview_D2.txt'],Jeg,er,en god idé
+1,[0.0009097837610170245],[255],['interview_D2.txt'],det,er,samfund
+1,[0.0028940702322870493],[255],['interview_D2.txt'],en god idé,er,Jeg
+1,[0.001061520422808826],[255],['interview_D2.txt'],en god idé,",",vi
+1,[0.0006360239931382239],[255],['interview_D2.txt'],samfund,en god idé,Jeg
+1,[0.0009062428725883365],[255],['interview_D2.txt'],samfund,er,det
+1,[0.0025205593556165695],[255],['interview_D2.txt'],samfund,at,vi
+1,[0.0008193752728402615],[255],['interview_D2.txt'],vi,samfund,en god idé
+1,[0.0030049863271415234],[255],['interview_D2.txt'],vi,",",samfund
+1,[0.0036688908003270626],[256],['interview_D2.txt'],Jeg,",",mine børn
+1,[0.0017195779364556074],[256],['interview_D2.txt'],mine børn,også,Jeg
+1,[0.0025720212142914534],[257],['interview_D2.txt'],det,alt,De
+1,[0.0008059246465563774],[257],['interview_D2.txt'],der børn,det,De
+1,[0.00014691933756694198],[258],['interview_D2.txt'],dit barn,:,lægerne
+1,[8.225362398661673e-05],[258],['interview_D2.txt'],børn,",",vi
+1,[0.0020769366528838873],[260],['interview_D2.txt'],Jeg,ikke,mærke
+1,[0.0012365367729216814],[260],['interview_D2.txt'],mærke,ikke,Jeg
+1,[0.00034026397042907774],[260],['interview_D2.txt'],et udbrud,været,mærke
+1,[0.0028867917135357857],[263],['interview_D2.txt'],De,de,der vacciner
+1,[0.004256469197571278],[263],['interview_D2.txt'],der vacciner,de,De
+1,[9.997181041399017e-05],[263],['interview_D2.txt'],det,",",De
+1,[0.00024402854614891112],[263],['interview_D2.txt'],god borgerpligt,få,dem
+1,[0.0006812243373133242],[263],['interview_D2.txt'],dem,få,god borgerpligt
+1,[0.0009924175683408976],[265],['interview_D2.txt'],Jeg,det,den enkelte læge
+1,[0.0006424628081731498],[265],['interview_D2.txt'],den enkelte læge,det,Jeg
+1,[0.0009331893525086343],[267],['interview_D2.txt'],vi,et helt system,det
+1,[0.0015870133647695184],[267],['interview_D2.txt'],vi,i,værk
+1,[0.0013960630167275667],[267],['interview_D2.txt'],værk,i,vi
+1,[0.001465224428102374],[268],['interview_D2.txt'],Vi,har,"mange , mange år"
+1,[0.0019206672441214323],[268],['interview_D2.txt'],"mange , mange år",brugt,Vi
+1,[0.00011583868035813794],[268],['interview_D2.txt'],"mange , mange år",at,et helt system
+1,[0.00012737844372168183],[268],['interview_D2.txt'],et helt system,bygge,"mange , mange år"
+1,[0.00024948694044724107],[268],['interview_D2.txt'],et helt system,op,alle mulige instanser
+1,[0.000498382723890245],[268],['interview_D2.txt'],alle mulige instanser,op,et helt system
+1,[0.00020586552273016423],[268],['interview_D2.txt'],alle mulige instanser,praksisser,alle mulige ting
+1,[0.00010542846575845033],[268],['interview_D2.txt'],praksisser,af,et helt system
+1,[0.0002957481483463198],[268],['interview_D2.txt'],praksisser,alle mulige ting,som
+1,[0.00040613344754092395],[268],['interview_D2.txt'],alle mulige ting,praksisser,alle mulige instanser
+1,[0.00038265774492174387],[268],['interview_D2.txt'],som,alle mulige ting,praksisser
+1,[0.00014453208132181317],[268],['interview_D2.txt'],som,at,én person
+1,[0.0010553414467722178],[268],['interview_D2.txt'],én person,et,andet
+1,[0.0010426824446767569],[268],['interview_D2.txt'],andet,et,én person
+1,[0.0006659997161477804],[268],['interview_D2.txt'],det,videre,systemet
+1,[0.0003445322217885405],[268],['interview_D2.txt'],det,systemet,en snebold
+1,[0.003749386640265584],[268],['interview_D2.txt'],systemet,videre,det
+1,[0.00034433399559929967],[268],['interview_D2.txt'],systemet,en snebold,der
+1,[3.364346412126906e-05],[268],['interview_D2.txt'],systemet,",",alle mulige ting
+1,[0.00046547240344807506],[268],['interview_D2.txt'],en snebold,systemet,det
+1,[0.00015359600365627557],[268],['interview_D2.txt'],en snebold,",",alle mulige ting
+1,[0.0001376500295009464],[268],['interview_D2.txt'],der,en snebold,systemet
+1,[6.80474768159911e-05],[268],['interview_D2.txt'],alle mulige ting,",",systemet
+1,[0.0001777374855009839],[268],['interview_D2.txt'],alle mulige ting,der,en snebold
+1,[0.00030362975667230785],[269],['interview_D2.txt'],det,at,fald
+1,[0.00046182231744751334],[269],['interview_D2.txt'],det,ikke,én person
+1,[0.0005122270085848868],[269],['interview_D2.txt'],én person,ikke,det
+1,[2.6828233482471358e-05],[269],['interview_D2.txt'],et helt system,"praksisser ,",som
+1,[2.880293322959915e-06],[269],['interview_D2.txt'],et helt system,"praksisser ,",det
+1,[1.629513614413251e-06],[269],['interview_D2.txt'],et helt system,"stoppe ,",sig
+1,[1.3727822079090402e-06],[269],['interview_D2.txt'],et helt system,"stoppe ,",selv
+1,[2.186827714467654e-06],[269],['interview_D2.txt'],praksisser,"stoppe ,",sig
+1,[1.8422909609701794e-06],[269],['interview_D2.txt'],praksisser,"stoppe ,",selv
+1,[0.0007171083707362413],[269],['interview_D2.txt'],som,praksisser,et helt system
+1,[4.6786992849471666e-05],[269],['interview_D2.txt'],som,"stoppe ,",det
+1,[8.75730135400469e-06],[269],['interview_D2.txt'],som,"stoppe ,",sig
+1,[7.377580914180726e-06],[269],['interview_D2.txt'],som,"stoppe ,",selv
+1,[0.014981642365455627],[269],['interview_D2.txt'],det,kører,selv
+1,[0.01503176148980856],[269],['interview_D2.txt'],selv,kører,det
+1,[0.0009966149227693677],[270],['interview_D2.txt'],nogle mennesker,i,der
+1,[0.0008991698268800974],[270],['interview_D2.txt'],nogle mennesker,det,system
+1,[0.0009468360221944749],[270],['interview_D2.txt'],der,i,nogle mennesker
+1,[0.000833383237477392],[270],['interview_D2.txt'],system,i,nogle mennesker
+1,[0.002766979392617941],[271],['interview_D2.txt'],systemet,egentligt,sig
+1,[0.0010148456785827875],[271],['interview_D2.txt'],systemet,egentligt,selv
+1,[0.0011112858774140477],[271],['interview_D2.txt'],sig,egentligt,systemet
+1,[0.0016464577056467533],[271],['interview_D2.txt'],selv,af,systemet
+1,[0.00018096600251737982],[272],['interview_D2.txt'],den måde,godt,jeg
+1,[0.0005919273826293647],[272],['interview_D2.txt'],systemet,",",jeg
+1,[1.636680099181831e-05],[272],['interview_D2.txt'],systemet,stoler på,det
+1,[0.0003839726559817791],[272],['interview_D2.txt'],jeg,godt,systemet
+1,[0.00042656934238038957],[272],['interview_D2.txt'],jeg,det system,jeg
+1,[0.0017931892070919275],[272],['interview_D2.txt'],det system,jeg,det
+1,[7.954531611176208e-05],[272],['interview_D2.txt'],det system,tænker,et godt system
+1,[0.0002802442177198827],[272],['interview_D2.txt'],jeg,er,et godt system
+1,[0.00032243900932371616],[272],['interview_D2.txt'],det,jeg,det system
+1,[0.00037922049523331225],[272],['interview_D2.txt'],det,et godt system,vi
+1,[0.0005342806689441204],[272],['interview_D2.txt'],et godt system,er,jeg
+1,[0.00011839429498650134],[272],['interview_D2.txt'],vi,er,jeg
+1,[0.0021999264135956764],[272],['interview_D2.txt'],vi,er,det
+1,[0.0003614778979681432],[274],['interview_D2.txt'],forældre,været,Det
+1,[0.0003568796964827925],[276],['interview_D2.txt'],min generelle oplevelse,hvad,Jeg
+1,[0.0010666151065379381],[277],['interview_D2.txt'],Det,noget ærgerligt noget,jeg
+1,[0.0001755456905812025],[277],['interview_D2.txt'],noget ærgerligt noget,jeg,det
+1,[0.0005454971105791628],[277],['interview_D2.txt'],jeg,noget ærgerligt noget,Det
+1,[0.0015647388063371181],[277],['interview_D2.txt'],jeg,ved,det
+1,[0.00011545729648787528],[277],['interview_D2.txt'],det,jeg,noget ærgerligt noget
+1,[4.28812054451555e-05],[278],['interview_D2.txt'],du,"mig ,",jeg
+1,[0.00019979607895947993],[278],['interview_D2.txt'],mig,at,du
+1,[0.0005032116896472871],[278],['interview_D2.txt'],jeg,personligt,jeg
+1,[0.00014005685807205737],[278],['interview_D2.txt'],jeg,jeg,mig
+1,[0.000264271890046075],[279],['interview_D2.txt'],det,gå,jeg
+1,[0.0003559919714462012],[279],['interview_D2.txt'],nogen,dø,det
+1,[0.001163259381428361],[279],['interview_D2.txt'],der,dø,det
+1,[0.0013309047790244222],[279],['interview_D2.txt'],det,dø,der
+1,[0.0016604086849838495],[280],['interview_D2.txt'],Jeg,at,jeg
+1,[0.0010659410618245602],[280],['interview_D2.txt'],Jeg,",",selv
+1,[0.0006091612158343196],[280],['interview_D2.txt'],jeg,er,en speciel risikogruppe
+1,[0.0008075217483565211],[280],['interview_D2.txt'],selv,at,Jeg
+1,[0.0011878565419465303],[280],['interview_D2.txt'],selv,i,en speciel risikogruppe
+1,[0.000823527981992811],[280],['interview_D2.txt'],en speciel risikogruppe,er,jeg
+1,[0.002057568868622184],[280],['interview_D2.txt'],en speciel risikogruppe,er,selv
+1,[0.00024280458455905318],[282],['interview_D2.txt'],en undersøgelse,i,som
+1,[0.00047051862929947674],[282],['interview_D2.txt'],som,i,en undersøgelse
+1,[0.0004551498859655112],[282],['interview_D2.txt'],som,at,jeg
+1,[0.0003784352447837591],[282],['interview_D2.txt'],jeg,virkelig,risikogruppen
+1,[0.0006980494945310056],[282],['interview_D2.txt'],risikogruppen,virkelig,jeg
+1,[0.007940021343529224],[283],['interview_D2.txt'],Jeg,har,astma
+1,[0.007370109669864178],[283],['interview_D2.txt'],astma,har,Jeg
+1,[0.0024408011231571436],[284],['interview_D2.txt'],jeg,min far,Det
+1,[0.0007098171627148986],[285],['interview_D2.txt'],Det,være,jeg
+1,[0.0014170819194987416],[285],['interview_D2.txt'],det,ud,ham
+1,[0.00418279692530632],[285],['interview_D2.txt'],ham,med,det
+1,[0.0004321008746046573],[285],['interview_D2.txt'],ham,så,han
+1,[0.0005336466711014509],[285],['interview_D2.txt'],han,så,ham
+1,[0.0006757886148989201],[285],['interview_D2.txt'],andet,kunne,han
+1,[0.003917094320058823],[287],['interview_D2.txt'],Det,ikke,underholdende dem
+1,[1.8231431264818337e-05],[287],['interview_D2.txt'],Det,"underholdende dem ,",det
+1,[0.0021926802583038807],[287],['interview_D2.txt'],underholdende dem,var,Det
+1,[0.000584517081733793],[287],['interview_D2.txt'],underholdende dem,",",det
+1,[3.3001664026717967e-06],[287],['interview_D2.txt'],underholdende dem,underviser og,fuldtidsjob
+1,[0.001222524675540626],[287],['interview_D2.txt'],det,men,underholdende dem
+1,[0.00039362540701404214],[287],['interview_D2.txt'],underviser,og,fuldtidsjob
+1,[0.00042266168748028576],[287],['interview_D2.txt'],fuldtidsjob,så,underviser
+1,[0.00021232463768683374],[288],['interview_D2.txt'],vi,",",man
+1,[0.0002256660518469289],[288],['interview_D2.txt'],man,",",vi
+1,[0.0022044344805181026],[290],['interview_D2.txt'],Vi,sat,noget
+1,[0.0006012311205267906],[290],['interview_D2.txt'],Vi,noget,dørene
+1,[0.0023165163584053516],[290],['interview_D2.txt'],noget,sat,Vi
+1,[0.00016150112787727267],[290],['interview_D2.txt'],noget,",",folk
+1,[0.00025918736355379224],[290],['interview_D2.txt'],dørene,noget,Vi
+1,[0.0009170967387035489],[290],['interview_D2.txt'],dørene,",",folk
+1,[0.00020256981952115893],[290],['interview_D2.txt'],folk,dørene,noget
+1,[0.0013838837621733546],[290],['interview_D2.txt'],folk,så,dørene
+1,[4.4227170292288065e-05],[291],['interview_D2.txt'],vi,været meget,vi
+1,[0.0009758614469319582],[291],['interview_D2.txt'],vi,har,online
+1,[0.0024233891163021326],[291],['interview_D2.txt'],online,mest,vi
+1,[0.0008711285190656781],[293],['interview_D2.txt'],jeg,har,min far
+1,[0.001271819812245667],[293],['interview_D2.txt'],min far,har,jeg
+1,[0.0005985377356410027],[293],['interview_D2.txt'],marts,min far,jeg
+1,[6.835873743208746e-06],[294],['interview_D2.txt'],jeg,ham i,det
+1,[0.0001733777899062261],[294],['interview_D2.txt'],ham,i,det
+1,[2.639060464086166e-06],[294],['interview_D2.txt'],ham,måske en dårlig idé,vi
+1,[0.00019117494230158627],[294],['interview_D2.txt'],det,i,ham
+1,[0.004205502104014158],[294],['interview_D2.txt'],det,er,en dårlig idé
+1,[0.00022822358005214483],[294],['interview_D2.txt'],det,en dårlig idé,vi
+1,[0.00032142476993612945],[294],['interview_D2.txt'],en dårlig idé,er,dag
+1,[0.001846318133175373],[294],['interview_D2.txt'],en dårlig idé,er,det
+1,[0.00037014641566202044],[294],['interview_D2.txt'],en dårlig idé,",",vi
+1,[0.0006399266421794891],[294],['interview_D2.txt'],vi,",",en dårlig idé
+1,[0.00010447671229485422],[295],['interview_D2.txt'],hans altan,",",vi
+1,[0.0004919377388432622],[295],['interview_D2.txt'],huset,",",vi
+1,[0.0001922129449667409],[295],['interview_D2.txt'],vi,",",hans altan
+1,[0.0008074616780504584],[295],['interview_D2.txt'],vi,så,huset
+2,"[0.0011235862039029598, 0.0009673566673882306]","[296, 296]","['interview_D2.txt', 'interview_D2.txt']",han,også,han
+1,[0.00015660273493267596],[296],['interview_D2.txt'],KOL,",",han
+1,[0.0047762091271579266],[300],['interview_D2.txt'],Han,nemlig,max risikogruppe
+1,[0.006238036323338747],[300],['interview_D2.txt'],max risikogruppe,nemlig,Han
+1,[0.0002224703785032034],[302],['interview_D2.txt'],jeg,det,mig
+1,[0.0048829335719347],[302],['interview_D2.txt'],det,ikke,mig
+1,[0.0012827450409531593],[302],['interview_D2.txt'],det,mig,som
+1,[0.005887170787900686],[302],['interview_D2.txt'],mig,ikke,det
+1,[0.0011136564426124096],[302],['interview_D2.txt'],som,mig,det
+1,[0.006046691909432411],[303],['interview_D2.txt'],Det,træls,mig
+1,[0.0012510290835052729],[303],['interview_D2.txt'],mig,er,Det
+1,[0.001093558850698173],[304],['interview_D2.txt'],nogen,",",det
+1,[0.0024822568520903587],[304],['interview_D2.txt'],det,",",nogen
+1,[0.0004122998216189444],[304],['interview_D2.txt'],det,meget,det
+1,[0.00032703790930099785],[304],['interview_D2.txt'],det,dårligere,corona
+2,"[0.0007353312685154378, 0.001990722957998514]","[309, 309]","['interview_D2.txt', 'interview_D2.txt']",det,",",løsningen
+1,[0.000734897272195667],[309],['interview_D2.txt'],løsningen,",",det
+1,[0.003948677331209183],[309],['interview_D2.txt'],løsningen,er,det
+1,[8.675203571328893e-05],[310],['interview_D2.txt'],80års,eller,konfirmationen
+1,[0.00048312859144061804],[310],['interview_D2.txt'],konfirmationen,eller,80års
+1,[0.00034748055622912943],[310],['interview_D2.txt'],konfirmationen,",",hvad
+1,[0.0005856877542100847],[310],['interview_D2.txt'],hvad,",",konfirmationen
+1,[0.0005728087853640318],[310],['interview_D2.txt'],det,eller,konfirmationen
+1,[0.0011395257897675037],[311],['interview_D2.txt'],jeg,selv,corona
+1,[0.0030358650255948305],[311],['interview_D2.txt'],corona,selv,jeg
+1,[0.0025384211912751198],[312],['interview_D2.txt'],jeg,nok,det
+1,[0.0026416026521474123],[312],['interview_D2.txt'],det,nok,jeg
+1,[0.0003779825832073887],[313],['interview_D2.txt'],Det,"være ,",jeg
+1,[0.00028621789533644915],[313],['interview_D2.txt'],jeg,godt,Det
+1,[0.0003227545239496976],[314],['interview_D2.txt'],eksempler,der,det
+1,[0.001987116178497672],[314],['interview_D2.txt'],yngre folk,der,det
+1,[0.00042525798198767006],[314],['interview_D2.txt'],det,yngre folk,eksempler
+1,[0.0023638021666556597],[314],['interview_D2.txt'],det,der,yngre folk
+1,[0.0007059691124595702],[315],['interview_D2.txt'],chancen,nok,jeg
+1,[4.983615629801837e-06],[315],['interview_D2.txt'],chancen,får så,andre folk
+1,[0.0013349363580346107],[315],['interview_D2.txt'],jeg,nok,chancen
+1,[0.00027875578962266445],[315],['interview_D2.txt'],jeg,får så,slemt et forløb
+1,[0.0006952183321118355],[315],['interview_D2.txt'],slemt et forløb,så,jeg
+1,[0.0007281928556039929],[315],['interview_D2.txt'],slemt et forløb,som,andre folk
+1,[0.0010884403018280864],[315],['interview_D2.txt'],andre folk,som,slemt et forløb
+1,[0.00012327176227699965],[316],['interview_D2.txt'],Det,jeg,et tidspunkt
+1,[0.00021299198851920664],[317],['interview_D2.txt'],molekylærbiolog,arbejder,andet
+1,[0.00010679846309358254],[317],['interview_D2.txt'],andet,molekylærbiolog,Min kone
+1,[0.0003614596207626164],[317],['interview_D2.txt'],andet,arbejder,molekylærbiolog
+1,[0.0003726185823325068],[317],['interview_D2.txt'],andet,at,noget COVID-vaccine
+1,[0.00020998531545046717],[317],['interview_D2.txt'],noget COVID-vaccine,på,andet
+1,[0.0014377315528690815],[319],['interview_D2.txt'],Hun,ikke,det
+1,[0.00513775460422039],[319],['interview_D2.txt'],det,ikke,Hun
+1,[0.0026193440426141024],[320],['interview_D2.txt'],vi,er,starten
+1,[0.0014735355507582426],[320],['interview_D2.txt'],starten,er,vi
+1,[0.00018727811402641237],[320],['interview_D2.txt'],starten,",",hun
+1,[0.00021538605506066233],[320],['interview_D2.txt'],det næste år,i,vi
+1,[0.00044530900777317584],[320],['interview_D2.txt'],det næste år,",",hun
+1,[0.0017045403365045786],[320],['interview_D2.txt'],hun,",",det næste år
+1,[0.0013369754888117313],[321],['interview_D2.txt'],Det,jeg,der
+1,[0.0012930072844028473],[321],['interview_D2.txt'],Det,tror,noget vaccine
+1,[0.0014721702318638563],[321],['interview_D2.txt'],jeg,der,noget vaccine
+1,[0.0013457899913191795],[321],['interview_D2.txt'],der,tror,Det
+1,[0.0002802813542075455],[321],['interview_D2.txt'],der,på,et tidspunkt
+1,[0.000866312941070646],[321],['interview_D2.txt'],noget vaccine,tror,Det
+1,[0.0006867395131848752],[321],['interview_D2.txt'],noget vaccine,der,jeg
+1,[0.0022614228073507547],[321],['interview_D2.txt'],et tidspunkt,noget vaccine,der
+1,[0.0025606576818972826],[322],['interview_D2.txt'],Det,stoler,jeg
+2,"[0.0023344634100794792, 0.0008192087989300489]","[322, 322]","['interview_D2.txt', 'interview_D2.txt']",jeg,på,jeg
+1,[0.0015160446055233479],[322],['interview_D2.txt'],jeg,stoler,Det
+1,[0.0015928222564980388],[322],['interview_D2.txt'],jeg,på,hende
+2,"[0.000745475001167506, 0.008539482951164246]","[322, 322]","['interview_D2.txt', 'interview_D2.txt']",hende,på,jeg
+1,[0.002996227238327265],[323],['interview_D2.txt'],forsker,",",jeg
+1,[0.0002847301948349923],[323],['interview_D2.txt'],forsker,arbejder,et engelsk universitet
+1,[0.0008740515331737697],[323],['interview_D2.txt'],jeg,forsker,Jeg
+1,[0.006593957077711821],[323],['interview_D2.txt'],jeg,",",forsker
+1,[0.0008126174798235297],[323],['interview_D2.txt'],jeg,arbejder,et engelsk universitet
+1,[8.905603317543864e-05],[323],['interview_D2.txt'],jeg,et engelsk universitet,jeg
+1,[9.312764450442046e-05],[323],['interview_D2.txt'],jeg,et engelsk universitet,forsker
+1,[0.001531482208520174],[323],['interview_D2.txt'],et engelsk universitet,arbejder,jeg
+1,[0.00048623522161506116],[323],['interview_D2.txt'],et engelsk universitet,",",jeg
+1,[0.00028197767096571624],[323],['interview_D2.txt'],et engelsk universitet,",",forsker
+1,[0.0016427218215540051],[323],['interview_D2.txt'],jeg,",",et engelsk universitet
+1,[0.0037063974887132645],[323],['interview_D2.txt'],jeg,forsker,kommunikation
+1,[0.00040247972356155515],[323],['interview_D2.txt'],jeg,i,sundhedsvæsnet
+1,[0.00011456175707280636],[323],['interview_D2.txt'],forsker,et engelsk universitet,jeg
+1,[0.0006304358830675483],[323],['interview_D2.txt'],forsker,",",et engelsk universitet
+1,[0.0008304502116516232],[323],['interview_D2.txt'],forsker,og,sundhedsvæsnet
+1,[6.308113370323554e-05],[323],['interview_D2.txt'],kommunikation,jeg,et engelsk universitet
+1,[0.002087429165840149],[323],['interview_D2.txt'],kommunikation,forsker,jeg
+1,[0.001777819124981761],[323],['interview_D2.txt'],kommunikation,i,sundhedsvæsnet
+1,[0.00011456043284852058],[323],['interview_D2.txt'],sundhedsvæsnet,kommunikation,jeg
+1,[0.0006081877509132028],[323],['interview_D2.txt'],sundhedsvæsnet,kommunikation,forsker
+1,[0.0012230020947754383],[323],['interview_D2.txt'],sundhedsvæsnet,i,kommunikation
+1,[0.00018702824309002608],[324],['interview_D2.txt'],jeg,",",jordmødre
+1,[2.0635670807678252e-06],[324],['interview_D2.txt'],jeg,hvordan jordmødre,samtykke
+1,[0.0003125503717456013],[324],['interview_D2.txt'],jordmødre,",",jeg
+1,[0.001572802779264748],[324],['interview_D2.txt'],jordmødre,informeret,samtykke
+1,[0.001416400889866054],[324],['interview_D2.txt'],samtykke,opnår,jordmødre
+1,[0.0003861366421915591],[324],['interview_D2.txt'],samtykke,samtaler,kvinder
+1,[9.80906406766735e-05],[324],['interview_D2.txt'],samtaler,informeret,jordmødre
+1,[0.00118485267739743],[324],['interview_D2.txt'],samtaler,",",der
+1,[0.0007537849014624953],[324],['interview_D2.txt'],kvinder,samtaler,samtykke
+1,[0.00022365742188412696],[324],['interview_D2.txt'],der,samtaler,samtykke
+1,[0.0014418907230719924],[324],['interview_D2.txt'],der,kvinder,samtaler
+1,[0.0005641549360007048],[326],['interview_D2.txt'],folk,havde,hjerneskader
+1,[0.002423079451546073],[327],['interview_D2.txt'],jeg,omkring,cancer
+1,[0.001788182184100151],[327],['interview_D2.txt'],cancer,været,jeg
+1,[0.001386602409183979],[328],['interview_D2.txt'],jeg,med,informeret samtykket
+1,[0.00114388985093683],[328],['interview_D2.txt'],informeret samtykket,nu,jeg
+1,[0.000617502664681524],[328],['interview_D2.txt'],der,hvordan,læger
+1,[0.002099273493513465],[328],['interview_D2.txt'],læger,kommunikerer,mennesker
+1,[0.004451937973499298],[328],['interview_D2.txt'],mennesker,kommunikerer,læger
+1,[0.0002785607357509434],[330],['interview_D2.txt'],De to ting,ind,hinanden
+1,[0.0006667975685559213],[330],['interview_D2.txt'],hinanden,ind,De to ting
+1,[0.007749858312308788],[331],['interview_D2.txt'],Det,jeg,du
+1,[0.002979602897539735],[331],['interview_D2.txt'],jeg,har,ret
+1,[0.001879423507489264],[331],['interview_D2.txt'],du,tror,Det
+1,[0.0004114801704417914],[331],['interview_D2.txt'],ret,har,Det
+1,[0.004509233869612217],[331],['interview_D2.txt'],ret,har,jeg
+1,[0.0066236513666808605],[332],['interview_D2.txt'],Det,",",jeg
+1,[0.0044141001999378204],[332],['interview_D2.txt'],jeg,tænker,Det
+1,[0.0001677937834756449],[332],['interview_D2.txt'],jeg,ikke,mit valg
+1,[0.00012460097786970437],[332],['interview_D2.txt'],mit valg,jeg,Det
+1,[0.0003551010449882597],[333],['interview_D2.txt'],lægen,nu,alle folk
+1,[0.0007898980402387679],[333],['interview_D2.txt'],den vaccine,",",vi
+1,[0.00047382357297465205],[333],['interview_D2.txt'],den vaccine,",",det
+1,[0.001283229561522603],[333],['interview_D2.txt'],vi,så,den vaccine
+1,[0.0006792224594391882],[333],['interview_D2.txt'],det,så,den vaccine
+1,[0.00030887546017766],[334],['interview_D2.txt'],de,at,vi
+1,[0.0005557645345106721],[334],['interview_D2.txt'],vi,gøre,influenza-vaccinen
+1,[0.00015969935338944197],[334],['interview_D2.txt'],influenza-vaccinen,ligesom,vi
+1,[0.0008669378003105521],[334],['interview_D2.txt'],influenza-vaccinen,",",vi
+1,[0.00021975515119265765],[334],['interview_D2.txt'],influenza-vaccinen,vi,den
+1,[0.0016206264263018966],[334],['interview_D2.txt'],vi,",",influenza-vaccinen
+1,[0.0008675010176375508],[334],['interview_D2.txt'],den,at,influenza-vaccinen
+1,[1.4470743432563419e-05],[334],['interview_D2.txt'],den,så tilfældigt,andre
+1,[0.0004827551019843668],[334],['interview_D2.txt'],andre,så,vi
+1,[0.00036819351953454316],[334],['interview_D2.txt'],andre,",",det
+1,[0.0019002424087375402],[334],['interview_D2.txt'],vi,gør,andre
+1,[0.0010035429149866104],[334],['interview_D2.txt'],vi,på,den måde
+1,[0.0005160847213119268],[334],['interview_D2.txt'],det,vi,andre
+1,[0.0010836470173671842],[334],['interview_D2.txt'],den måde,på,vi
+1,[0.0018756830831989646],[335],['interview_D2.txt'],Jeg,har,fald
+1,[0.0007127462304197252],[335],['interview_D2.txt'],fald,ikke,mig
+2,"[2.6623908221760453e-06, 2.318626836010177e-06]","[335, 335]","['interview_D2.txt', 'interview_D2.txt']",fald,"den ,",det
+1,[0.001528852037154138],[335],['interview_D2.txt'],mig,ikke,fald
+2,"[0.001546737621538341, 0.0010733908275142312]","[335, 335]","['interview_D2.txt', 'interview_D2.txt']",mig,at,mig
+1,[0.0013052610447630286],[335],['interview_D2.txt'],mig,mig,den
+2,"[0.0001103288886952214, 0.001008816179819405]","[335, 347]","['interview_D2.txt', 'interview_D2.txt']",mig,",",det
+1,[0.00020352359570097178],[335],['interview_D2.txt'],den,",",det
+1,[0.002141437726095319],[335],['interview_D2.txt'],det,",",den
+1,[0.003427870338782668],[335],['interview_D2.txt'],det,",",du
+1,[0.0009981866460293531],[335],['interview_D2.txt'],det,er,den
+1,[0.0019667886663228273],[335],['interview_D2.txt'],du,er,det
+1,[0.001491266186349094],[336],['interview_D2.txt'],Jeg,har,mig
+1,[0.0010724065359681845],[336],['interview_D2.txt'],mig,at,den
+1,[0.00031013877014629543],[336],['interview_D2.txt'],den,tænkt,Jeg
+1,[4.564675812919935e-05],[336],['interview_D2.txt'],den,jeg i,fald
+1,[0.0009808738250285387],[336],['interview_D2.txt'],jeg,i,fald
+1,[0.0015712040476500988],[336],['interview_D2.txt'],fald,skal,den
+1,[0.0074372673407197],[339],['interview_D2.txt'],Det,jeg,jeg
+1,[0.0010875562438741326],[339],['interview_D2.txt'],jeg,jeg,Det
+1,[0.00033257363247685134],[340],['interview_D2.txt'],Jeg,har,den
+1,[0.0011493135243654251],[340],['interview_D2.txt'],jeg,har,den
+1,[0.0007237003883346915],[340],['interview_D2.txt'],den,ikke,Jeg
+1,[0.006694868206977844],[340],['interview_D2.txt'],den,har,jeg
+1,[0.0003816516837105155],[341],['interview_D2.txt'],svineinfluenza,godt,Jeg
+1,[0.00010843126801773906],[341],['interview_D2.txt'],svineinfluenza,",",jeg
+1,[0.00032284687040373683],[341],['interview_D2.txt'],jeg,",",svineinfluenza
+2,"[0.00034018480801023543, 0.0003935070417355746]","[341, 341]","['interview_D2.txt', 'interview_D2.txt']",jeg,ret,jeg
+1,[0.001238316297531128],[341],['interview_D2.txt'],jeg,ikke,vaccinen
+1,[0.003141846042126417],[341],['interview_D2.txt'],vaccinen,ikke,jeg
+1,[0.0002990788489114493],[342],['interview_D2.txt'],jeg,ind,det
+1,[0.0006756748771294951],[342],['interview_D2.txt'],det,ind,jeg
+1,[0.0024647207465022802],[343],['interview_D2.txt'],noget,man,selv
+1,[0.0029160722624510527],[343],['interview_D2.txt'],selv,man,noget
+1,[0.0005221409955993295],[343],['interview_D2.txt'],selv,",",det
+2,"[0.00027700557257048786, 4.9170204874826595e-05]","[343, 343]","['interview_D2.txt', 'interview_D2.txt']",det,",",selv
+1,[0.0013005916262045503],[343],['interview_D2.txt'],det,jeg,det
+1,[0.00013543106615543365],[343],['interview_D2.txt'],jeg,",",selv
+1,[0.0011555207893252373],[343],['interview_D2.txt'],det,tror,det
+1,[0.0007108061690814793],[346],['interview_D2.txt'],det system,vi,maskineriet
+1,[0.0027276405598968267],[346],['interview_D2.txt'],vi,har,maskineriet
+1,[0.0005699756438843906],[346],['interview_D2.txt'],maskineriet,vi,det system
+1,[0.002953043906018138],[346],['interview_D2.txt'],maskineriet,har,vi
+1,[0.00036223314236849546],[347],['interview_D2.txt'],sig,igennem,det
+1,[0.00045330170542001724],[347],['interview_D2.txt'],sig,en vaccine,det
+1,[0.005304503254592419],[347],['interview_D2.txt'],det,hvert,fald
+1,[0.009806756861507893],[347],['interview_D2.txt'],fald,hvert,det
+1,[0.0005481455009430647],[347],['interview_D2.txt'],man,tør,det
+1,[0.0012317394139245152],[347],['interview_D2.txt'],det,godt,man
+1,[0.0013629341265186667],[347],['interview_D2.txt'],det,befolkningen,mig
+1,[0.0005957092507742345],[347],['interview_D2.txt'],befolkningen,godt,man
+1,[0.0072494493797421455],[347],['interview_D2.txt'],befolkningen,",",mig
+1,[0.006597507745027542],[347],['interview_D2.txt'],mig,",",befolkningen
+1,[0.001833215239457786],[348],['interview_D2.txt'],Jeg,at,de
+1,[0.0018206514650955796],[348],['interview_D2.txt'],de,godt,Jeg
+1,[0.0033109874930232763],[349],['interview_D2.txt'],Jeg,lige,de
+1,[0.0014282036572694778],[349],['interview_D2.txt'],de,lige,Jeg
+1,[0.001679496606811881],[349],['interview_D2.txt'],vi,lade,den
+1,[0.005229311529546976],[349],['interview_D2.txt'],den,lade,vi
+1,[0.00011871277820318937],[349],['interview_D2.txt'],den,igennem,den
+1,[0.0001365746429655701],[350],['interview_D2.txt'],Det,på,de folk
+1,[0.00027197595530500013],[350],['interview_D2.txt'],Det,at de folk,der
+1,[0.0001556689676363021],[350],['interview_D2.txt'],jeg,på,de folk
+1,[0.0001218387430223326],[350],['interview_D2.txt'],jeg,""" men",det
+1,[0.0003283622208982706],[350],['interview_D2.txt'],de folk,stole,Det
+1,[0.0007247308385558426],[350],['interview_D2.txt'],de folk,",",noget
+1,[0.0007263032021000981],[350],['interview_D2.txt'],noget,",",de folk
+1,[0.0006835933309048414],[350],['interview_D2.txt'],det,noget,der
+1,[0.00019008605158887804],[350],['interview_D2.txt'],det,hurtigt,det
+1,[0.002749076811596751],[352],['interview_D2.txt'],mig,",",noget
+1,[0.001531822606921196],[353],['interview_D2.txt'],noget,at,nogen
+1,[0.0014686757931485772],[353],['interview_D2.txt'],nogen,at,noget
+1,[0.0003329846076667309],[353],['interview_D2.txt'],halvdelen,at,nogen
+1,[0.0008767948602326214],[353],['interview_D2.txt'],halvdelen,befolkningen,andet
+1,[6.353443313855678e-05],[353],['interview_D2.txt'],befolkningen,at,nogen
+1,[0.0022795440163463354],[353],['interview_D2.txt'],befolkningen,et,andet
+1,[0.0002253931888844818],[353],['interview_D2.txt'],befolkningen,et,der
+1,[0.000744641525670886],[353],['interview_D2.txt'],andet,et,befolkningen
+1,[0.0006678011850453913],[353],['interview_D2.txt'],andet,",",sig
+1,[0.0002464538556523621],[353],['interview_D2.txt'],der,et,befolkningen
+1,[0.0011052250629290938],[353],['interview_D2.txt'],sig,",",andet
+1,[0.0019403519108891487],[353],['interview_D2.txt'],sig,at,dem
+1,[0.00030057757976464927],[353],['interview_D2.txt'],dem,sig,der
+1,[0.0025018660817295313],[353],['interview_D2.txt'],dem,at,sig
+1,[0.015321435406804085],[355],['interview_D2.txt'],Jeg,på,det
+1,[0.003313696011900902],[355],['interview_D2.txt'],det,på,Jeg
+1,[8.216769977783163e-05],[356],['interview_D2.txt'],det,at der,sikkert noget forskning
+1,[0.0004086794797331095],[356],['interview_D2.txt'],sikkert noget forskning,ikke,støtte
+1,[0.001863849232904613],[356],['interview_D2.txt'],der,ikke,støtte
+1,[0.0008712045382708311],[356],['interview_D2.txt'],støtte,ikke,sikkert noget forskning
+1,[0.0018391322810202837],[356],['interview_D2.txt'],støtte,ikke,der
+1,[0.010563761927187443],[358],['interview_D2.txt'],jeg,tror,det
+1,[0.0010500273201614618],[358],['interview_D2.txt'],jeg,",",det argument
+1,[0.0024948804639279842],[358],['interview_D2.txt'],det,tror,jeg
+1,[0.0005891180480830371],[358],['interview_D2.txt'],det argument,",",jeg
+1,[0.00014751870185136795],[358],['interview_D2.txt'],det argument,bruges,det
+1,[0.0007881448836997151],[358],['interview_D2.txt'],man,videoer,YouTube
+1,[0.0006063472828827798],[358],['interview_D2.txt'],YouTube,videoer,man
+1,[0.0006993141723796725],[358],['interview_D2.txt'],YouTube,",",andre
+1,[8.71650263434276e-05],[358],['interview_D2.txt'],YouTube,alle,deres viden
+1,[0.0013529417337849736],[360],['interview_D2.txt'],jeg,på,peer review
+1,[0.00016331448568962514],[360],['interview_D2.txt'],peer review,jeg,det
+1,[0.0014866797719150782],[360],['interview_D2.txt'],peer review,på,jeg
+1,[0.00130480679217726],[360],['interview_D2.txt'],peer review,og,nogen ting
+1,[0.0020582969300448895],[360],['interview_D2.txt'],nogen ting,sådan,peer review
+1,[0.0004528212593868375],[361],['interview_D2.txt'],noget forskning,aldrig,dagens
+1,[0.0015660601202398539],[361],['interview_D2.txt'],der,aldrig,dagens
+1,[0.002071940340101719],[361],['interview_D2.txt'],dagens,aldrig,der
+1,[0.0019056077580899],[362],['interview_D2.txt'],det,aldrig,den funding
+2,"[0.000525599461980164, 0.0012027828488498926]","[362, 362]","['interview_D2.txt', 'interview_D2.txt']",det,den funding,det
+1,[0.004964433144778013],[362],['interview_D2.txt'],den funding,aldrig,det
+1,[0.0009067365899682045],[362],['interview_D2.txt'],det,havde,en god idé
+1,[0.001213961630128324],[362],['interview_D2.txt'],en god idé,været,det
+1,[0.00024327417486347258],[363],['interview_D2.txt'],det,bare,man
+1,[0.0008177702547982335],[363],['interview_D2.txt'],man,ikke,det
+1,[0.0012978087179362774],[363],['interview_D2.txt'],det,ikke,man
+1,[2.3551006355167676e-05],[365],['interview_D2.txt'],Det,at der,YouTube
+1,[7.162110099064496e-06],[365],['interview_D2.txt'],Det,at der,der
+1,[0.0011404706165194511],[367],['interview_D2.txt'],Tak,du,Ida
+1,[0.000897178309969604],[367],['interview_D2.txt'],Ida,du,Tak
+1,[0.0011815273901447654],[367],['interview_D2.txt'],Ida,",",du
+1,[9.447618504054844e-05],[367],['interview_D2.txt'],du,",",du
+1,[0.0007581820245832205],[367],['interview_D2.txt'],du,at,Ida
+1,[0.0011804169043898582],[367],['interview_D2.txt'],du,snakke,mig
+1,[0.0030513808596879244],[367],['interview_D2.txt'],mig,snakke,du
+1,[0.0009392073843628168],[369],['interview_D2.txt'],vi,ikke,hvad
+1,[0.00011245707719353959],[369],['interview_D2.txt'],hvad,ikke,vi
+1,[0.00032384178484790027],[369],['interview_D2.txt'],kopper,jeg,hvad
+1,[0.0008982724975794554],[369],['interview_D2.txt'],andet,jo,den
+1,[0.00011229171650484204],[369],['interview_D2.txt'],vi,venter,dormant
+1,[4.169571911916137e-05],[369],['interview_D2.txt'],vi,...,vi
+1,[0.0007557557546533644],[369],['interview_D2.txt'],vi,kan,den
+1,[0.0009775026701390743],[371],['interview_D2.txt'],hvad,den,jeg
+1,[0.0012387746246531606],[371],['interview_D2.txt'],den,nu,jeg
+1,[0.0009186115930788219],[371],['interview_D2.txt'],jeg,er,hvad
+1,[0.0025179728399962187],[371],['interview_D2.txt'],jeg,er,den
+1,[0.00022126307885628194],[371],['interview_D2.txt'],jeg,kopper,en virus
+1,[0.00010778350406326354],[371],['interview_D2.txt'],kopper,"en virus ,",det
+1,[3.0254251517665882e-05],[371],['interview_D2.txt'],kopper,"en virus ,",jeg
+1,[0.0004041204520035535],[371],['interview_D2.txt'],en virus,kopper,jeg
+1,[0.0006665819673798978],[371],['interview_D2.txt'],en virus,det,jeg
+1,[0.0006298565422184765],[371],['interview_D2.txt'],det,en virus,kopper
+1,[0.0007383711636066437],[371],['interview_D2.txt'],jeg,det,en virus
+1,[0.014689826406538486],[374],['interview_D2.txt'],Det,ikke,mening
+1,[0.012942656874656677],[374],['interview_D2.txt'],Det,giver,andet
+1,[0.003816771786659956],[374],['interview_D2.txt'],mening,ikke,Det
+1,[0.002550690434873104],[374],['interview_D2.txt'],andet,giver,Det
+1,[0.0006540102767758071],[375],['interview_D2.txt'],de,må,noget andet
+1,[0.0006949588423594832],[375],['interview_D2.txt'],noget andet,kunne,de
+1,[0.0030073027592152357],[377],['interview_D2.txt'],det,så,sten
+1,[0.0009739234810695052],[377],['interview_D2.txt'],sten,så,det
+1,[0.0004024261434096843],[377],['interview_D2.txt'],sten,om,de
+1,[0.00013335925177671015],[377],['interview_D2.txt'],sten,om,nogle bakterier
+1,[5.197932478040457e-05],[377],['interview_D2.txt'],sten,bor på,et andet sted
+1,[0.0002084686711896211],[377],['interview_D2.txt'],de,eller,sten
+1,[0.0029866215772926807],[377],['interview_D2.txt'],de,på,nogle bakterier
+1,[0.0002555672253947705],[377],['interview_D2.txt'],de,på,et andet sted
+1,[7.886564708314836e-05],[377],['interview_D2.txt'],nogle bakterier,eller,sten
+1,[0.0017138217808678746],[377],['interview_D2.txt'],nogle bakterier,på,de
+1,[0.00010104024113388732],[377],['interview_D2.txt'],nogle bakterier,",",hvad
+1,[0.0003013655077666044],[377],['interview_D2.txt'],et andet sted,på,de
+1,[0.0002653454430401325],[377],['interview_D2.txt'],et andet sted,",",hvad
+1,[0.00018329800514038652],[377],['interview_D2.txt'],et andet sted,",",de
+1,[0.0002471531624905765],[377],['interview_D2.txt'],hvad,",",nogle bakterier
+1,[0.00033426107256673276],[377],['interview_D2.txt'],hvad,",",et andet sted
+2,"[0.00024007688625715673, 0.0005778207560069859]","[378, 378]","['interview_D2.txt', 'interview_D2.txt']",den,og,den
+2,"[6.246264092624187e-05, 0.0007019253680482507]","[378, 378]","['interview_D2.txt', 'interview_D2.txt']",den,muteret,hvad
+1,[0.00047068941057659686],[378],['interview_D2.txt'],den,muteret,jeg
+1,[5.148395212017931e-05],[378],['interview_D2.txt'],hvad,måske,den
+1,[0.00030668650288134813],[378],['interview_D2.txt'],hvad,muteret,den
+1,[0.0009163222275674343],[380],['interview_D2.txt'],de,stadigvæk,vira
+1,[0.0008113780058920383],[380],['interview_D2.txt'],vira,stadigvæk,de
+1,[0.0007721249712631106],[380],['interview_D2.txt'],vira,",",vi
+1,[0.0002697232994250953],[380],['interview_D2.txt'],som,vira,de
+1,[0.0008679263992235065],[380],['interview_D2.txt'],som,tror,vi
+1,[0.0010777830611914396],[380],['interview_D2.txt'],vi,",",vira
+2,"[0.001129026641137898, 0.0034820407163351774]","[380, 380]","['interview_D2.txt', 'interview_D2.txt']",vi,",",vi
+1,[0.0006305199931375682],[380],['interview_D2.txt'],vi,tror,som
+1,[0.0010692030191421509],[381],['interview_D2.txt'],Jeg,den,dig
+1,[0.0008240999304689467],[381],['interview_D2.txt'],dig,den,Jeg
+1,[0.0008213482797145844],[382],['interview_D2.txt'],jeg,bare,mit navn
+1,[0.0016000204486772418],[382],['interview_D2.txt'],mit navn,bare,jeg
+1,[0.00021699089847970754],[382],['interview_D2.txt'],jeg,",",mit navn
