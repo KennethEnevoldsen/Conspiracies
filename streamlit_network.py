@@ -44,8 +44,9 @@ def app():
 
     store = subset_data(df, heads, threshold)
 
-    config = Config(height=600, width=700, nodeHighlightBehavior=True, highlightColor="#F7A7A6", directed=True,
-                    collapsible=True)
+    config = Config(height=600, width=700, nodeHighlightBehavior=True, 
+                    highlightColor="#F7A7A6", directed=True,
+                    collapsible=True, link = {"renderLabel" : True})
 
 
     st.write("Nodes loaded: " + str(len(store.getNodes())))
