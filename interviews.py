@@ -3,10 +3,12 @@ Interviews
 """
 import os
 import ndjson
+import csv
 
 import torch
 
 import pandas as pd
+import numpy as np
 
 import transformers
 import datasets
@@ -21,6 +23,7 @@ from main import (parse_sentence_wrapper,
                   unwrap_attention_from_batch,
                   relation_count_filter)
 
+from streamlit_network import load_data
 
 def prepare_interviews(data_folder="interviews"):
     """
@@ -42,3 +45,32 @@ def prepare_interviews(data_folder="interviews"):
         with open(fname, "w") as f:
             f.write(sub)
     return None
+
+
+def check_relations(path):
+    df = load_data(path)
+    df["accept"] = np.nan
+    print("Press 'e' to accept, 'w' to reject")
+
+
+    save_path = path[:-4] + "_thresholded.csv"
+    if not os.path.exists(save_path):
+        header = "count,confidence,sentence_number,document_id,head,relation,tail,accept\n"
+        with open(save_path, 'w') as f:
+            f.write(header)
+
+    for idx, row in df.iterrows():
+        proposition = f"h: {row['head']} r: {row['relation']} t: {row['tail']} "
+        answer = input(proposition)
+        row['accept'] = 1 if answer == "e" else 0
+
+        with open(save_path, "a") as f:
+            write = csv.writer(f)
+            write.writerow(row.tolist())
+
+    return None
+
+if __name__ == '__main__':
+    path = "results/2021-02-03-14.14_honest-markhor_threshold0.0.csv" 
+    check_relations(path)
+            
