@@ -36,7 +36,6 @@ def subset_data(df, heads, threshold):
 def app():
     df = load_data(path)
     st.title("Open Knowledge Graph Visualization")
-    st.sidebar.title("Welcome")
 
     heads = st.multiselect('Choose heads', df["head"].unique())
     threshold = age = st.slider('Set confidence threshold', 
