@@ -1,0 +1,7 @@
+spacy>=3
+spacy-transformer
+danlp
+transformer
+datasets
+pydantic
+torch
