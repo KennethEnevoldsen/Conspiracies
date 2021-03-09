@@ -5,3 +5,4 @@ transformer
 datasets
 pydantic
 torch
+lemmy
