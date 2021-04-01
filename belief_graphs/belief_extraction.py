@@ -2,11 +2,48 @@
 This script contains function for extracting/parsing beliefs (a
 proposed knowledge triplet) from a text
 """
+from typing import List
+
+from functools import partial
+
+from numpy import ndarray
+import numpy as np
 
 from transformers import PreTrainedTokenizerBase
 from spacy.tokens import Doc
+from spacy.tokens.span import Span
 
-class BeliefParser():
+from utils import merge_token_attention, attn_to_graph, beam_search
+
+
+def extract_attention(doc, layer=-1):
+    return doc._.trf_data.attention[layer]
+
+
+def extract_wordpieces(doc: Doc, remove_bos: bool = True, remove_eos: bool = True):
+    """"""
+    bos = 1 if remove_bos else 0
+    eos = -1 if remove_bos else None
+    return doc._.trf_data.wordpieces.input_ids[bos:eos]
+
+
+def aggregate_noun_chunks(sent_span: Span) -> List:
+    """
+    return (List) a list spacy tokens and spacy spans where a span corresponds to a noun_chunk
+    """
+    start = sent_span.start
+    i = 0
+    out = []
+    for nc in sent_span.noun_chunks:
+        s = nc.start - start
+        if s != 0:
+            out + [t for t in sent_span[i:s]]
+        out.append(nc)
+        i = nc.end - start
+    return out
+
+
+class BeliefParser:
     """
     A class for extracting belief triplets from a spacy doc
     """
@@ -21,6 +58,7 @@ class BeliefParser():
         num_return_paths: int = 1,
         filter_non_continous: bool = True,
         aggregate_method: str = "mult",
+        attn_layer: int = -1,
     ):
         self.tokenizer = tokenizer
         self.n_beams = n_beams
@@ -30,76 +68,57 @@ class BeliefParser():
         self.num_return_paths = num_return_paths
         self.filter_non_continous = filter_non_continous
         self.aggregate_method = aggregate_method
+        self.attn_layer = attn_layer
 
-    def parse_sentence(
-        self,
-        doc: Doc,
-        attention,
-    ):
+        self.beam_search = partial(
+            beam_search,
+            n_beams=n_beams,
+            alpha=alpha,
+            max_length=max_length,
+            min_length=min_length,
+            num_return_paths=num_return_paths,
+            aggregate_method=aggregate_method,
+        )
+
+    def parse_doc(self, doc: Doc):
         """
-        doc: a SpaCy Doc or equivalent
-        attention: an attention matrix from the forward pass of a transformer
-        
-        Example:
-        >>> from utils import load_example
-        >>> parse_sentence(**load_example(attention=True), threshold=0.005)
+        doc (Doc): A SpaCy Doc
+        """
+        for sent in doc.sents:
+            yield self.parse_sentence(sent)
+
+    def parse_sentence(self, sent_span: Span):
+        """
+        sentence_span (Span): a SpaCy sentence span
+        attention (ndarray): a 4d attention matrix where the shape corresponds to (1, heads, X, X).
+        Where X is the sequence length
         """
 
-        if len(noun_chunks) == 0:
-            return []
+        wordpiece2token_id = sent_span._.wp2tokid
+        attn = sent_span._.attention[0]
 
-        wordpiece2token_id, nc_tokens_id2tokens_id, noun_chunk_w_id = \
-            create_mapping(tokens,
-                           noun_chunks,
-                           noun_chunk_token_span,
-                           tokenizer=self.tokenizer)
-
-        # create converter class for filtering
-        self.nc_converter = NounChunkTokenIDConverter(
-            nc_tokens_id2tokens_id, tokens, lemmas, pos, dependencies, ner)
-        if self.invalid_pos:
-            self.nc_converter.add_invalid(self.invalid_pos, tag="pos")
-        if self.invalid_dep:
-            self.nc_converter.add_invalid(self.invalid_dep, tag="dependencies")
-
-        agg_attn = aggregate_attentions_heads(attention, head_dim=0)
-
-        agg_attn = trim_attention_matrix(agg_attn,
-                                         remove_padding=True,
-                                         remove_eos=True,
-                                         remove_bos=True)
-
-        assert agg_attn.shape[0] == len(wordpiece2token_id), \
-            "attention matrix and wordpiece2token does not have the same \
-                length"
+        agg_attn = np.mean(attn, axis=0)
 
         merged_attn = merge_token_attention(agg_attn, wordpiece2token_id)
+        merged_attn.shape
 
         # make a forward and backward attention graph
-        backward_attn_graph, forward_attn_graph = \
-            attn_to_graph(merged_attn)
+        backward_attn_graph, forward_attn_graph = attn_to_graph(merged_attn)
 
         # create head tail pair
         tail_head_pairs = []
-        for head, h_idx in noun_chunk_w_id:
-            for tail, t_idx in noun_chunk_w_id:
-                if h_idx != t_idx:
-                    tail_head_pairs.append((h_idx, t_idx))
+        for h, nc in enumerate(sent_span.noun_chunks):
+            for t, nc in enumerate(sent_span.noun_chunks):
+                if h != t:
+                    tail_head_pairs.append((h, t))
 
-        # beam search
         def beam_search_(args):
             head, tail = args
             graph = forward_attn_graph if head < tail else backward_attn_graph
-            return beam_search(head, tail,
-                               graph=graph,
-                               n_beams=self.n_beams,
-                               alpha=self.alpha,
-                               max_length=self.max_length,
-                               min_length=self.min_length,
-                               num_return_paths=self.num_return_paths,
-                               aggregate_method=self.aggregate_method)
+            return self.beam_search(head, tail, graph=graph)
 
-        self.relation_pairs = []
+        relation_pairs = []
         for output in map(beam_search_, tail_head_pairs):
             if len(output):
-                self.relation_pairs += output
+                relation_pairs += output
+        return relation_pairs
