@@ -2,8 +2,7 @@
 This script contains function for extracting/parsing beliefs (a
 proposed knowledge triplet) from a text
 """
-from typing import List
-
+from typing import List, Iterable, Union
 from functools import partial
 
 from numpy import ndarray
@@ -12,6 +11,9 @@ import numpy as np
 from transformers import PreTrainedTokenizerBase
 from spacy.tokens import Doc
 from spacy.tokens.span import Span
+from spacy.language import Language
+
+from pydantic import validate_arguments
 
 from utils import merge_token_attention, attn_to_graph, beam_search
 
@@ -50,6 +52,7 @@ class BeliefParser:
 
     def __init__(
         self,
+        nlp: Language,
         n_beams: int = 6,
         max_length=None,
         min_length: int = 3,
@@ -59,6 +62,7 @@ class BeliefParser:
         aggregate_method: str = "mult",
         attn_layer: int = -1,
     ):
+        self.nlp = nlp
         self.n_beams = n_beams
         self.max_length = max_length
         self.min_length = min_length
@@ -78,26 +82,34 @@ class BeliefParser:
             aggregate_method=aggregate_method,
         )
 
-    def parse_text(self, doc: Doc):
+
+    def parse_texts(self, texts: Union[Iterable[str], str]):
         """
-        doc (Doc): A SpaCy Doc
+        text (Union[Iterable[str], str]): An iterable object (e.g. a list) of string or a simply list a string
         """
-        for sent in doc.sents:
-            yield self.parse_sentence(sent)
+        if isinstance(texts, str):
+            texts = [texts]
+
+        docs = self.nlp.pipe(texts)
+        for doc in docs:
+            for parse in self.parse_doc(doc):
+                yield parse
+
 
     def parse_doc(self, doc: Doc):
         """
         doc (Doc): A SpaCy Doc
         """
         for sent in doc.sents:
-            yield self.parse_sentence(sent)
+            for parse in self.parse_sentence(sent):
+                yield parse
 
     def parse_sentence(self, sent_span: Span):
         """
         sentence_span (Span): a SpaCy sentence span
         """
 
-        wordpiece2token_id = sent_span._.wp2tokid
+        wordpiece2token_id = sent_span._.wp2ncid
         attn = sent_span._.attention[0]
 
         agg_attn = np.mean(attn, axis=0)
@@ -122,5 +134,8 @@ class BeliefParser:
         relation_pairs = []
         for output in map(beam_search_, tail_head_pairs):
             if len(output):
+                relation_pairs(BeliefTriplet(triplet: output[0]
+                                             confidence: output[1])
                 relation_pairs += output
+
         return relation_pairs

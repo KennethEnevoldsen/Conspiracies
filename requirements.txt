@@ -1,7 +1,7 @@
 spacy>=3
-spacy-transformer
+spacy-transformers
 danlp
-transformer
+transformers
 datasets
 pydantic
 torch

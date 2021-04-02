@@ -1,12 +1,13 @@
 """
 a series of extension to the spacy doc
 """
+from typing import Iterable, List
 from spacy.tokens import Doc
 from spacy.tokens.span import Span
 from spacy.attrs import IS_SPACE
 
 
-def doc_wp2tokid_getter(doc: Doc, bos=True, eos=True):
+def doc_wp2tokid_getter(doc: Doc, bos=True, eos=True) -> List:
     """
     extract the wordpiece2tokenID mapping from a doc
     create a mapping from wordpieces to tokens id in the form of a list
@@ -31,30 +32,125 @@ def doc_wp2tokid_getter(doc: Doc, bos=True, eos=True):
         wp2tokid.append(None)
     return wp2tokid
 
+def find_prev_val(idx: int, l: List) -> int:
+    """
+    finds previous values which is not None. If there is no previous non-None value it returns l[idx]
+    """
+    i = idx
+    prev  = None
+    while prev is None:
+        i -= 1
+        if i < 0:
+            return l[idx]
+        prev = l[i]
+    return prev
 
-def doc_tokid2wp_getter(doc: Doc):
+def doc_wp2ncid_getter(doc: Doc) -> List:
+    """
+    extract the "wordpiece to noun chunk ID"-mapping from a doc
+    """
+    wp2ncid = doc._.wp2tokid.copy()
+    for nc in doc.noun_chunks:
+        wp_slice = nc._.wp_slice
+        wp2ncid_slice = wp2ncid[wp_slice]
+
+        wp2ncid[wp_slice] = [wp2ncid_slice[0]]*len(wp2ncid_slice)
+    return wp2ncid
+
+
+def doc_nctokens_getter(doc: Doc) -> List:
+    """
+    extract the noun chunk token spans from a doc.
+    this is the token list with the noun chunks collapsed to one "token"
+    """
+    tokid2nc = doc._.tokid2nc
+    nc_slices = {(span.start, span.end) for span in tokid2nc}
+    return [doc[nc[0]: nc[1]] for nc in nc_slices]
+
+
+def doc_tokid2nc_getter(doc: Doc) -> List:
+    """
+    extract the "token ID  to noun chunk tokens spans"-mapping from a doc.
+    """
+    tokid2nc = [doc[i: i+1] for i in range(len(doc))]
+    for nc in doc.noun_chunks:
+        if len(nc) > 1:
+            nc_slice = slice(nc.start, nc.end)
+            tokid2nc[nc_slice] = [doc[nc_slice]]*len(tokid2nc[nc_slice])
+    return tokid2nc
+
+
+def doc_tokid2ncid_getter(doc: Doc) -> List:
+    """
+    extract the "token ID  to noun chunk tokens spans"-mapping from a doc.
+    """
+    tokid2nc = doc._.tokid2nc
+    tokid2ncid = []
+    for i, span in enumerate(tokid2nc):
+        if i != 0 and tokid2nc[i-1] == span:
+            tokid2ncid.append(i-1)
+        else:
+            tokid2ncid.append(i)
+    return tokid2ncid
+
+
+def doc_wp2ncid_getter(doc: Doc) -> List:
+    """
+    extract the "wordpiece ID to noun chunk tokens id"-mapping from a doc.
+    """
+    wp2tokid = doc._.wp2tokid
+    tokid2ncid = doc._.tokid2ncid
+
+    wp2ncid = wp2tokid.copy()
+    for i, tokid in enumerate(wp2ncid):
+        if tokid is None:
+            continue
+        wp2ncid[i] = tokid2ncid[tokid]
+    return wp2ncid
+
+
+def doc_tokid2wp_getter(doc: Doc, bos=True) -> List[slice]:
     """
     extract the tokenID2wordpiece mapping from a doc
 
     example:
     Doc.set_extension("tokid2wp", getter=doc_tokid2wp_getter)
     """
-    return {
-        tok_idx: wp_idx for wp_idx, tok_idx in enumerate(doc._.wp2tokid) if not None
-    }
+    tokid2wp = []
+    n = 0
+    if bos is True:
+        n += 1
+    for t in doc._.trf_data.align.lengths:
+        tokid2wp.append(slice(n, n + t))
+        n += t
+    return tokid2wp
 
 
-def span_wp2tokid_getter(span: Span):
+def span_wp_slice_getter(span: Span) -> slice:
+    """
+    extract span slide for wordpieces
+    """
+    tokid2wp = span.doc._.tokid2wp
+    tokid2wp[span.start]
+    span_slices = tokid2wp[span.start : span.end]
+    s = span_slices[0].start
+    e = span_slices[-1].stop
+    return slice(s, e)
+
+
+def span_wp2tokid_getter(span: Span) -> List:
     """
     extract span specific wp2tokid mapping
     """
-    tokid2wp = span.doc._.tokid2wp
-    s = tokid2wp[span.start]
-    _ = span.end
-    while span.doc[_].check_flag(IS_SPACE):
-        _ -= 1
-    e = tokid2wp[_]
-    return span.doc._.wp2tokid[s:e]
+    wp_slice = span._.wp_slice
+    return span.doc._.wp2tokid[wp_slice]
+
+def span_wp2ncid_getter(span: Span) -> List:
+    """
+    extract the "wordpiece to noun chunk ID"-mapping from a span
+    """
+    wp_slice = span._.wp_slice
+    return span.doc._.wp2ncid[wp_slice]
 
 
 def span_attn_getter(span: Span, layer=-1):
@@ -62,12 +158,23 @@ def span_attn_getter(span: Span, layer=-1):
     extract the attention matrix for the tokens in the sentence
     """
     attn = span.doc._.trf_data.attention[layer]
+    wp_slice = span._.wp_slice
 
-    tokid2wp = span.doc._.tokid2wp
-    s = tokid2wp[span.start]
-    _ = span.end
-    while span.doc[_].check_flag(IS_SPACE):
-        _ -= 1
-    e = tokid2wp[_]
+    return attn[:, :, wp_slice, wp_slice]
 
-    return attn[:, :, s:e, s:e]
+
+def span_wp_getter(span: Span) -> List[str]:
+    """
+    extract the wordpieces for the tokens in the sentence
+    """
+    wp = span.doc._.trf_data.wordpieces.strings[0]
+    wp_slice = span._.wp_slice
+    return wp[wp_slice]
+
+def span_wp2ncid_getter(span: Span) -> List:
+    """
+    extract the "wordpiece ID to noun chunk tokens id"-mapping from a span.
+    """
+    wp_slice = span._.wp_slice
+    wp2ncid = span.doc._.wp2ncid
+    return wp2ncid[wp_slice]

@@ -8,15 +8,14 @@
 ## 🔧 Installation
 The required packages are available in the `requirements.txt`, However, spacy-transformers should be installed from the fork by KennethEnevoldsen which adds the forward pass of attention (for more see [PR](https://github.com/explosion/spacy-transformers/pull/268)).
 
+```
+pip install -r requirements.txt 
+pip install git+https://github.com/KennethEnevoldsen/spacy-transformers
+```
 
 
 ## 🤤 Future improvements
 Currently, the `lemmy` lemmatizer isn't used as it is incompatible with spacy version 3.
-
-
-
-
-
 
 <!-- 
 ### References

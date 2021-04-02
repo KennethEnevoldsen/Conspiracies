@@ -156,7 +156,6 @@ def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
     merge token attention to match spacy words
     """
     new_index = []
-    attention = attention.numpy()
 
     prev = -1
     for idx, row in enumerate(attention):

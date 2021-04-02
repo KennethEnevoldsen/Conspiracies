@@ -5,7 +5,6 @@ from typing import Tuple
 from pydantic import BaseModel
 
 
-
 class BeliefTriplet(BaseModel):
     """
     - contains
