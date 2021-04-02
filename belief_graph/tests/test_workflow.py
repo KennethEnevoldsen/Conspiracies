@@ -13,10 +13,16 @@ EXAMPLE = "Genåbningen sker nemlig på baggrund af et kontakttal for smitten p�
 def test_belief_parser():
     nlp = bg.load_danish()
     belief_parser = bg.BeliefParser(nlp = nlp)
-    relation_pairs = belief_parser.parse_texts(EXAMPLE)
-    assert isinstance(relation_pairs, Iterable)
-    bt = next(relation_pairs)
-    assert isinstance(bt, bg.BeliefTriplet)
+    triplets = belief_parser.parse_texts(EXAMPLE)
+
+    assert isinstance(triplets, Iterable)
+    
+    triplets = list(triplets) 
+    assert isinstance(triplets[0], bg.BeliefTriplet)
+
+    for t in triplets:
+        print(t)
+
 
 # test_belief_parser()
 

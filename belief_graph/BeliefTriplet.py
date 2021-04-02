@@ -8,7 +8,7 @@ from spacy.tokens import Span
 
 class BeliefTriplet(BaseModel):
     """
-    the data class for the belief triplet. Which contains besides 
+    the data class for the belief triplet. Which contains besides
     """
 
     class Config:
@@ -52,7 +52,7 @@ class BeliefTriplet(BaseModel):
     def relation_list(self):
         span = self.span
         return [span._.nctokens[i] for i in self._relation_ids]
-    
+
     @property
     def relation(self):
         return " ".join(t.text for t in self.relation_list)
@@ -65,6 +65,6 @@ class BeliefTriplet(BaseModel):
                 ("relation", self.relation),
                 ("tail", self.tail),
                 ("confidence", round(self.confidence, 2)),
-                ("span", span) 
+                ("span", self.span),
             ]
         )

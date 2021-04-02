@@ -18,6 +18,7 @@ from pydantic import validate_arguments
 from .utils import merge_token_attention, attn_to_graph, beam_search
 from .BeliefTriplet import BeliefTriplet
 
+
 def extract_attention(doc, layer=-1):
     return doc._.trf_data.attention[layer]
 
@@ -82,7 +83,6 @@ class BeliefParser:
             aggregate_method=aggregate_method,
         )
 
-
     def parse_texts(self, texts: Union[Iterable[str], str]):
         """
         text (Union[Iterable[str], str]): An iterable object (e.g. a list) of string or a simply list a string
@@ -94,7 +94,6 @@ class BeliefParser:
         for doc in docs:
             for parse in self.parse_doc(doc):
                 yield parse
-
 
     def parse_doc(self, doc: Doc):
         """
@@ -109,12 +108,12 @@ class BeliefParser:
         sentence_span (Span): a SpaCy sentence span
         """
 
-        wordpiece2token_id = sent_span._.wp2ncid
+        wordpiece2nctoken_id = sent_span._.wp2ncid
         attn = sent_span._.attention[0]
 
         agg_attn = np.mean(attn, axis=0)
 
-        merged_attn = merge_token_attention(agg_attn, wordpiece2token_id)
+        merged_attn = merge_token_attention(agg_attn, wordpiece2nctoken_id)
 
         # make a forward and backward attention graph
         backward_attn_graph, forward_attn_graph = attn_to_graph(merged_attn)
@@ -134,6 +133,5 @@ class BeliefParser:
         relation_pairs = []
         for output in map(beam_search_, tail_head_pairs):
             if len(output):
-                yield BeliefTriplet(path=output[0],
-                                             confidence=output[1],
-                                             span=sent_span)
+                for path, conf in output:
+                    yield BeliefTriplet(path=path, confidence=conf, span=sent_span)
