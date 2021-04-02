@@ -32,18 +32,20 @@ def doc_wp2tokid_getter(doc: Doc, bos=True, eos=True) -> List:
         wp2tokid.append(None)
     return wp2tokid
 
+
 def find_prev_val(idx: int, l: List) -> int:
     """
     finds previous values which is not None. If there is no previous non-None value it returns l[idx]
     """
     i = idx
-    prev  = None
+    prev = None
     while prev is None:
         i -= 1
         if i < 0:
             return l[idx]
         prev = l[i]
     return prev
+
 
 def doc_wp2ncid_getter(doc: Doc) -> List:
     """
@@ -54,7 +56,7 @@ def doc_wp2ncid_getter(doc: Doc) -> List:
         wp_slice = nc._.wp_slice
         wp2ncid_slice = wp2ncid[wp_slice]
 
-        wp2ncid[wp_slice] = [wp2ncid_slice[0]]*len(wp2ncid_slice)
+        wp2ncid[wp_slice] = [wp2ncid_slice[0]] * len(wp2ncid_slice)
     return wp2ncid
 
 
@@ -65,18 +67,18 @@ def doc_nctokens_getter(doc: Doc) -> List:
     """
     tokid2nc = doc._.tokid2nc
     nc_slices = {(span.start, span.end) for span in tokid2nc}
-    return [doc[nc[0]: nc[1]] for nc in nc_slices]
+    return [doc[nc[0] : nc[1]] for nc in nc_slices]
 
 
 def doc_tokid2nc_getter(doc: Doc) -> List:
     """
     extract the "token ID  to noun chunk tokens spans"-mapping from a doc.
     """
-    tokid2nc = [doc[i: i+1] for i in range(len(doc))]
+    tokid2nc = [doc[i : i + 1] for i in range(len(doc))]
     for nc in doc.noun_chunks:
         if len(nc) > 1:
             nc_slice = slice(nc.start, nc.end)
-            tokid2nc[nc_slice] = [doc[nc_slice]]*len(tokid2nc[nc_slice])
+            tokid2nc[nc_slice] = [doc[nc_slice]] * len(tokid2nc[nc_slice])
     return tokid2nc
 
 
@@ -87,8 +89,8 @@ def doc_tokid2ncid_getter(doc: Doc) -> List:
     tokid2nc = doc._.tokid2nc
     tokid2ncid = []
     for i, span in enumerate(tokid2nc):
-        if i != 0 and tokid2nc[i-1] == span:
-            tokid2ncid.append(i-1)
+        if i != 0 and tokid2nc[i - 1] == span:
+            tokid2ncid.append(i - 1)
         else:
             tokid2ncid.append(i)
     return tokid2ncid
@@ -145,6 +147,7 @@ def span_wp2tokid_getter(span: Span) -> List:
     wp_slice = span._.wp_slice
     return span.doc._.wp2tokid[wp_slice]
 
+
 def span_wp2ncid_getter(span: Span) -> List:
     """
     extract the "wordpiece to noun chunk ID"-mapping from a span
@@ -171,10 +174,12 @@ def span_wp_getter(span: Span) -> List[str]:
     wp_slice = span._.wp_slice
     return wp[wp_slice]
 
-def span_wp2ncid_getter(span: Span) -> List:
+
+def span_nctokens_getter(span: Span) -> List[str]:
     """
-    extract the "wordpiece ID to noun chunk tokens id"-mapping from a span.
+    extract the noun chunk tokens from the span
     """
-    wp_slice = span._.wp_slice
-    wp2ncid = span.doc._.wp2ncid
-    return wp2ncid[wp_slice]
+    s, e = span.start, span.end
+    tokid2ncid = span.doc._.tokid2ncid[s: e]
+    s, e = tokid2ncid[0], tokid2ncid[-1]
+    return span.doc._.nctokens[s: e+1]

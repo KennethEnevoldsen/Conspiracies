@@ -15,8 +15,8 @@ from spacy.language import Language
 
 from pydantic import validate_arguments
 
-from utils import merge_token_attention, attn_to_graph, beam_search
-
+from .utils import merge_token_attention, attn_to_graph, beam_search
+from .BeliefTriplet import BeliefTriplet
 
 def extract_attention(doc, layer=-1):
     return doc._.trf_data.attention[layer]
@@ -134,8 +134,6 @@ class BeliefParser:
         relation_pairs = []
         for output in map(beam_search_, tail_head_pairs):
             if len(output):
-                relation_pairs(BeliefTriplet(triplet: output[0]
-                                             confidence: output[1])
-                relation_pairs += output
-
-        return relation_pairs
+                yield BeliefTriplet(path=output[0],
+                                             confidence=output[1],
+                                             span=sent_span)

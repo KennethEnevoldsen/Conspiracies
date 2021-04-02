@@ -19,6 +19,7 @@ from .doc_extensions import (
     doc_tokid2ncid_getter,
     doc_wp2ncid_getter,
     span_wp2ncid_getter,
+    span_nctokens_getter
 )
 
 Doc.set_extension("wp2ncid", getter=doc_wp2ncid_getter)
@@ -33,6 +34,7 @@ Span.set_extension("wp2tokid", getter=span_wp2tokid_getter)
 Span.set_extension("attention", getter=span_attn_getter)
 Span.set_extension("wordpieces", getter=span_wp_getter)
 Span.set_extension("wp2ncid", getter=span_wp2ncid_getter)
+Span.set_extension("nctokens", getter=span_nctokens_getter)
 
 
 def load_danish(
