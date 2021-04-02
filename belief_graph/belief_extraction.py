@@ -50,7 +50,6 @@ class BeliefParser:
 
     def __init__(
         self,
-        tokenizer: PreTrainedTokenizerBase,
         n_beams: int = 6,
         max_length=None,
         min_length: int = 3,
@@ -60,7 +59,6 @@ class BeliefParser:
         aggregate_method: str = "mult",
         attn_layer: int = -1,
     ):
-        self.tokenizer = tokenizer
         self.n_beams = n_beams
         self.max_length = max_length
         self.min_length = min_length
@@ -80,6 +78,13 @@ class BeliefParser:
             aggregate_method=aggregate_method,
         )
 
+    def parse_text(self, doc: Doc):
+        """
+        doc (Doc): A SpaCy Doc
+        """
+        for sent in doc.sents:
+            yield self.parse_sentence(sent)
+
     def parse_doc(self, doc: Doc):
         """
         doc (Doc): A SpaCy Doc
@@ -90,8 +95,6 @@ class BeliefParser:
     def parse_sentence(self, sent_span: Span):
         """
         sentence_span (Span): a SpaCy sentence span
-        attention (ndarray): a 4d attention matrix where the shape corresponds to (1, heads, X, X).
-        Where X is the sequence length
         """
 
         wordpiece2token_id = sent_span._.wp2tokid
@@ -100,7 +103,6 @@ class BeliefParser:
         agg_attn = np.mean(attn, axis=0)
 
         merged_attn = merge_token_attention(agg_attn, wordpiece2token_id)
-        merged_attn.shape
 
         # make a forward and backward attention graph
         backward_attn_graph, forward_attn_graph = attn_to_graph(merged_attn)

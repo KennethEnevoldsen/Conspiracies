@@ -1,8 +1,8 @@
 """
-TODO: fix imports
+test model loaders
 """
 
-from model_loaders import load_danish
+from belief_graph.model_loaders import load_danish
 
 EXAMPLE = """
     Tirsdag kunne regeringen og støttepartierne præsentere en plan for den yderligere genåbning af Danmark.
@@ -16,8 +16,7 @@ EXAMPLE = """
 def test_danish():
     nlp = load_danish()
 
-    doc = nlp(EXAMPLE0)
+    doc = nlp(EXAMPLE)
 
     for sent in doc.sents:
         print(sent)
-        print("---")
