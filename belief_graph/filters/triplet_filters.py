@@ -4,7 +4,7 @@ this contain local filters for belief triplets
 from functools import partial
 from typing import Callable, Generator, Iterable, List, Union
 
-from spacy.tokens import Token
+from spacy.tokens import Span, Token
 
 from ..data_classes import BeliefTriplet
 from ..utils import is_a_range as is_cont
@@ -75,10 +75,83 @@ def filter_relations(
             )
             yield triplet
 
+### --- BeliefTriplet -> None/BeliefTriplet --- ###
 
-### Token -> Bool ###
+def filter_triplet_span(
+    self, triplet: BeliefTriplet, attr: str, func: Callable
+) -> Union[BeliefTriplet, None]:
+    if func(getattr(triplet, attr)):
+        return triplet
+    return None
 
-def valid_attribute(
+def filter_head(
+    self, triplet: BeliefTriplet, attr: str, func: Callable
+) -> Union[BeliefTriplet, None]:
+    return self.filter_span(triplet, attr="head_span", func=func)
+
+def filter_tails(
+    self, triplet: BeliefTriplet, attr: str, func: Callable
+) -> Union[BeliefTriplet, None]:
+    return self.filter_span(triplet, attr="tail_span", func=func)
+
+
+def filter_relations(
+    triplet: BeliefTriplet,
+    func: Callable, 
+    reject_entire: bool = False,
+) -> Union[BeliefTriplet, None]:
+    keep = []
+    for i, span in enumerate(triplet.relation_list):
+        keep.append(func(span))
+        if not keep[-1] and reject_entire:
+                return None
+    
+    triplet._relation_ids = tuple(
+        i for i, k in zip(triplet._relation_ids, keep) if k
+    )
+    if triplet._relation_ids:
+        return triplet
+
+### --- Span -> Bool --- ###
+
+def valid_attribute_span(
+    span: Span,
+    attr: str,
+    allowed: set = set(),
+    disallowed: set = set(),
+):
+    return all(valid_attribute_token(t, attr, allowed, disallowed) for t in span)
+
+
+def valid_entities(
+    span: Span,
+    allowed: set = {"LOC", "PER", "ORG"},
+    disallowed: set = set(),
+):
+    return valid_attribute_span(span, "ent_type_", allowed, disallowed)
+
+
+def valid_pos(
+    span: Span,
+    allowed: set = set(),
+    disallowed: set = {"PUNCT", "SPACE", "NUM"},
+):
+    return valid_attribute_span(span, "pos_", allowed, disallowed)
+
+
+def valid_dependency(
+    span: Span,
+    allowed: set = set(),
+    disallowed: set = set(),
+):
+    return valid_attribute_span(span, "dep_", allowed, disallowed)
+
+
+
+### --- Token -> Bool --- ###
+
+
+def valid_attribute_token(
     token: Token,
     attr: str,
     allowed: set = set(),
@@ -88,25 +161,4 @@ def valid_attribute(
     return (att in allowed) and (att not in disallowed)
 
 
-def valid_entities(
-    token: Token,
-    allowed: set = {"LOC", "PER", "ORG"},
-    disallowed: set = set(),
-):
-    return valid_attribute(token, "ent_type_", allowed, disallowed)
 
-
-def valid_pos(
-    token: Token,
-    allowed: set = set(),
-    disallowed: set = {"PUNCT", "SPACE", "NUM"},
-):
-    return valid_attribute(token, "pos_", allowed, disallowed)
-
-
-def valid_dependency(
-    token: Token,
-    allowed: set = set(),
-    disallowed: set = set(),
-):
-    return valid_attribute(token, "dep_", allowed, disallowed)
