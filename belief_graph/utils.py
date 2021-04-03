@@ -1,7 +1,8 @@
-from typing import Callable
+from typing import Callable, List, Generator
 import numpy as np
 from numpy import ndarray
 from collections import defaultdict
+from .data_classes import BeliefTriplet, TripletGroup
 
 
 def merge_token_attention(attention, tokenid2word, merge_operator=np.mean):
@@ -174,3 +175,19 @@ def attn_to_graph(matrix):
 
     return backward_graph, forward_graph
 
+
+
+
+def merge_triplets(sorted_triplets: List[BeliefTriplet]) -> Generator:
+    """
+    sorted_triplets (List[BeliefTriplet]): Assumed a list of sorted triplets.
+    """
+    queue = sorted_triplets
+
+    while queue:
+        triplet = queue.pop()
+
+        tg = TripletGroup.from_belief_triplet(triplet)
+        while triplet == queue[-1]:
+            tg.add(queue.pop())
+        yield tg

@@ -1,7 +1,7 @@
 
 # 👁‍🗨 Conspiracies
 
-[![python versions](https://img.shields.io/badge/Python-%3E=3.6-blue)](https://github.com/KennethEnevoldsen/Conspiracies)
+[![python versions](https://img.shields.io/badge/Python-%3E=3.7-blue)](https://github.com/KennethEnevoldsen/Conspiracies)
 [![Code style: black](https://img.shields.io/badge/Code%20Style-Black-black)](https://black.readthedocs.io/en/stable/the_black_code_style.html)
 
 

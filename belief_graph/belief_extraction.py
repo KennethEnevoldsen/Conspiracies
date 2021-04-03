@@ -134,4 +134,10 @@ class BeliefParser:
         for output in map(beam_search_, tail_head_pairs):
             if len(output):
                 for path, conf in output:
-                    yield BeliefTriplet(path=path, confidence=conf, span=sent_span)
+                    yield BeliefTriplet(
+                        head_id=path[0],
+                        tail_id=path[-1],
+                        relations_ids=path[1:-1],
+                        confidence=conf,
+                        span=sent_span,
+                    )
