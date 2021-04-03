@@ -2,7 +2,7 @@
 this contain local filters for belief triplets
 """
 from functools import partial
-from typing import Callable, Generator, Iterable, List, Union
+from typing import Callable, Generator, Iterable, List, Optional, Union
 
 from spacy.tokens import Span, Token
 
@@ -10,72 +10,38 @@ from ..data_classes import BeliefTriplet
 from ..utils import is_a_range as is_cont
 
 
-
-### Iterable[BeliefTriplet] -> Generator[BeliefTriplet] filters ###
-
-def filter_heads(
-    triplets: Iterable[BeliefTriplet], funs: Iterable[Callable]
-) -> Generator[BeliefTriplet]:
-    """
-    triplets (Iterable[BeliefTriplet]): a list of triplets which heads should be filtered
-    funs (Iterable[Callable]): a list of functions which should take a spacy token as input and return a boolean.
-    """
-    for triplet in triplets:
-        if all(f(triplet.head_token) for f in funs):
-            yield triplet
-
-
-def filter_tails(
-    triplets: Iterable[BeliefTriplet], funs: Union[Iterable[Callable]]
-) -> Generator[BeliefTriplet]:
-    """
-    triplets (Iterable[BeliefTriplet]): a list of triplets which tails should be filtered
-    funs (Iterable[Callable]): a list of functions which should take a spacy token as input and return a boolean.
-    """
-    for triplet in triplets:
-        if all(f(triplet.tail_token) for f in funs):
-            yield triplet
-
-
-def filter_relations(
-    triplets: Iterable[BeliefTriplet],
-    funs: Iterable[Callable],
+def make_simple_triplet_filters(
+    validators_heads: List[Union[str, Callable]] = [valid_pos, valid_entities],
+    validators_tails: List[Union[str, Callable]] = [valid_pos, valid_entities],
+    validators_relations: List[Union[str, Callable]] = [valid_pos],
     reject_entire: bool = False,
-    continuous: bool = False,
-) -> Generator[BeliefTriplet]:
+    continous: bool = True,
+    confidence_threshold: Optional[float] = None,
+) -> List[Callable]:
     """
-    triplets (Iterable[BeliefTriplet]): a list of triplets which heads should be filtered
-    funs (Iterable[Callable]): a list of functions which should take a spacy token as input and return a boolean.
-    reject_entire (bool): Should the entire triplet be rejected if one token does not pass the filter or should the remainder of the relation tokens constitute a relation.
-    continuous (bool): Should the relation be continuous. if
+    reject_entire (bool): Only applied to relation. Should the entire triplet be rejected if one tokens does not pass the filter or should the
+    remainder of the relation tokens constitute a relation.
+    continuous (bool): Should the relation be continuous.
     """
-    for triplet in triplets:
-        reject_triplet = False
-        keep = []
-        for i, t in enumerate(triplet.relation_list):
-            passed = all(f(t) for f in funs)
-            if not passed:
-                if reject_entire:
-                    reject_triplet = True
-                    break
-                keep.append(False)
-            else:
-                keep.append(True)
+    funcs = []
+    if confidence_threshold is not None:
+        f = partial(filter_confidence, confidence_threshold)
+        funcs.append(f)
+    for func in validators_heads:
+        f = partial(filter_head, func=func)
+        funcs.append(f)
+    for func in validators_tails:
+        f = partial(filter_tail, func=func)
+        funcs.append(f)
+    for func in validators_relations:
+        f = partial(filter_relations, func=func, reject_entire=reject_entire)
+        funcs.append(f)
+    if continous:
+        funcs.append(filter_is_continuous)
 
-        if reject_triplet:
-            continue
-        elif passed:
-            yield triplet
-        else:
-            if continuous is True and not is_cont(triplet._relation_ids):
-                continue
-
-            triplet._relation_ids = tuple(
-                i for i, k in zip(triplet._relation_ids, keep) if k
-            )
-            yield triplet
 
 ### --- BeliefTriplet -> None/BeliefTriplet --- ###
+
 
 def filter_triplet_span(
     self, triplet: BeliefTriplet, attr: str, func: Callable
@@ -84,35 +50,47 @@ def filter_triplet_span(
         return triplet
     return None
 
+
 def filter_head(
-    self, triplet: BeliefTriplet, attr: str, func: Callable
+    self, triplet: BeliefTriplet, func: Callable
 ) -> Union[BeliefTriplet, None]:
     return self.filter_span(triplet, attr="head_span", func=func)
 
-def filter_tails(
-    self, triplet: BeliefTriplet, attr: str, func: Callable
+
+def filter_tail(
+    self, triplet: BeliefTriplet, func: Callable
 ) -> Union[BeliefTriplet, None]:
     return self.filter_span(triplet, attr="tail_span", func=func)
 
 
 def filter_relations(
     triplet: BeliefTriplet,
-    func: Callable, 
+    func: Callable,
     reject_entire: bool = False,
 ) -> Union[BeliefTriplet, None]:
     keep = []
     for i, span in enumerate(triplet.relation_list):
         keep.append(func(span))
         if not keep[-1] and reject_entire:
-                return None
-    
-    triplet._relation_ids = tuple(
-        i for i, k in zip(triplet._relation_ids, keep) if k
-    )
+            return None
+
+    triplet._relation_ids = tuple(i for i, k in zip(triplet._relation_ids, keep) if k)
     if triplet._relation_ids:
         return triplet
 
+
+def filter_is_continuous(triplet: BeliefTriplet) -> Union[BeliefTriplet, None]:
+    if is_cont(triplet._relation_ids):
+        return triplet
+
+
+def filter_confidence(triplet: BeliefTriplet, threshold) -> Union[BeliefTriplet, None]:
+    if triplet.confidence < threshold:
+        return triplet
+
+
 ### --- Span -> Bool --- ###
+
 
 def valid_attribute_span(
     span: Span,
@@ -147,7 +125,6 @@ def valid_dependency(
     return valid_attribute_span(span, "dep_", allowed, disallowed)
 
 
-
 ### --- Token -> Bool --- ###
 
 
@@ -159,6 +136,3 @@ def valid_attribute_token(
 ):
     att = getattr(token, attr)
     return (att in allowed) and (att not in disallowed)
-
-
-
