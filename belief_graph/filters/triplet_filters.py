@@ -7,7 +7,7 @@ from typing import Callable, Generator, Iterable, List, Optional, Union
 from spacy.tokens import Span, Token
 
 from ..data_classes import BeliefTriplet
-from ..utils import is_a_range as is_cont
+from ..utils import is_cont_integer as is_cont
 
 ### --- BeliefTriplet -> None/BeliefTriplet --- ###
 

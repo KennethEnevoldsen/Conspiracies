@@ -112,5 +112,5 @@ def merge_triplets(sorted_triplets: List[BeliefTriplet]) -> Generator:
 
         tg = TripletGroup.from_belief_triplet(triplet)
         while triplet == queue[-1]:
-            tg.add(queue.pop())
+            tg.__add_triplet(queue.pop())
         yield tg

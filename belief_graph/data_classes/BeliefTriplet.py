@@ -26,11 +26,19 @@ class BeliefTriplet(BaseModel):
     span: Optional[Span] = None
     getter: str = "text"
 
+    def set_getter(self, getter=str):
+        if getter in ["text", "lemma"]:
+            self.getter = getter
+        else:
+            raise ValueError("Invalid getter set. Should be 'text' or 'lemma'")
+
     def __getter(self, span: Span) -> str:
-        if self.getter == "text":
+        if self.getter.lower() == "text":
             return span.text
-        if self.getter == "lemma":
-            return " ".join(t.lemma for t in span)
+        elif self.getter.lower() == "lemma":
+            return " ".join(t.lemma_ for t in span)
+        else:
+            raise ValueError("Invalid getter set. Should be 'text' or 'lemma'")
 
     @property
     def tail(self) -> str:
@@ -53,7 +61,7 @@ class BeliefTriplet(BaseModel):
     @property
     def relation_list(self) -> List[Span]:
         span = self.span
-        return [span._.nctokens[i : i + 1] for i in self.relation_ids]
+        return [span._.nctokens[i] for i in self.relation_ids]
 
     @property
     def relation(self) -> str:
@@ -63,7 +71,7 @@ class BeliefTriplet(BaseModel):
         if (
             (self.head == other.head)
             and (self.tail == other.tail)
-            and all(s == o for s, o in zip(self.relation_list, other.tail))
+            and (self.relation == other.relation)
         ):
             return True
         return False

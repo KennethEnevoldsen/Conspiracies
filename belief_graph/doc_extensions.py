@@ -66,9 +66,15 @@ def doc_nctokens_getter(doc: Doc) -> List:
     extract the noun chunk token spans from a doc.
     this is the token list with the noun chunks collapsed to one "token"
     """
-    tokid2nc = doc._.tokid2nc
-    nc_slices = {(span.start, span.end) for span in tokid2nc}
-    return [doc[nc[0] : nc[1]] for nc in nc_slices]
+    slices = set()
+    nctokens = []
+    for s in doc._.tokid2nc:
+        sl = (s.start, s.end)
+        if sl in slices:
+            continue
+        slices.add(sl)
+        nctokens.append(doc[sl[0] : sl[1]])
+    return nctokens
 
 
 def doc_tokid2nc_getter(doc: Doc) -> List:
