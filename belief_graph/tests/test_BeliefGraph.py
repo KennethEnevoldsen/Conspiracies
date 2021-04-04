@@ -1,7 +1,7 @@
 import belief_graph as bg
 
 from .examples import EXAMPLES
-from .test_BeliefTriplet import simple_triplet
+from .test_BeliefTriplet import simple_triplets
 
 
 def simple_graph(EXAMPLES):

@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 from typing import List, Union
-from pydantic.main import UNTOUCHED_TYPES
 
+from pydantic.main import UNTOUCHED_TYPES
 from spacy.tokens import Span
 
 from .BeliefTriplet import BeliefTriplet
@@ -15,11 +15,11 @@ class TripletGroup(BeliefTriplet):
     """
 
     confidence: List[float]
-    span: List[Span]
+    spans: List[Span]
 
     @property
     def count(self):
-        return len(self.span)
+        return len(self.spans)
 
     @staticmethod
     def from_belief_triplet(triplet: BeliefTriplet) -> TripletGroup:
@@ -28,16 +28,17 @@ class TripletGroup(BeliefTriplet):
             tail_id=triplet.tail_id,
             relation_ids=triplet.relation_ids,
             confidence=[triplet.confidence],
-            span=[triplet.span],
-            attr=triplet.attr,
+            span=triplet.span,
+            spans=[triplet.span],
+            getter=triplet.getter,
         )
 
     def __add_triplet(self, triplet: BeliefTriplet):
-        self.span.append(triplet.span)
+        self.spans.append(triplet.span)
 
     def __add_tg(self, triplet: TripletGroup):
-        self.span += triplet.span
-    
+        self.spans += triplet.spans
+
     def __add(self, triplet: Union[BeliefTriplet, TripletGroup]):
         if isinstance(triplet, TripletGroup):
             self.__add_tg(triplet)
@@ -45,12 +46,23 @@ class TripletGroup(BeliefTriplet):
 
     def add(self, triplet: Union[BeliefTriplet, TripletGroup]):
         if self == triplet:
+            self.__add(triplet)
+        else:
             raise ValueError(
                 "Cannot add a triplet if it does not have the same head, tail, relation as the triplet group. Use add_if_valid if you only want to add if valid"
             )
-        self.__add(triplet)
-
 
     def add_if_valid(self, triplet: Union[BeliefTriplet, TripletGroup]):
         if self == triplet:
             self.__add(triplet)
+
+    def __repr_str__(self, join_str: str) -> str:
+        return join_str.join(
+            repr(v) if a is None else f"{a}={v!r}"
+            for a, v in [
+                ("head", self.head),
+                ("relation", self.relation),
+                ("tail", self.tail),
+                ("count", self.count),
+            ]
+        )
