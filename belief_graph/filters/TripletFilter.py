@@ -46,3 +46,17 @@ def TripletFilter():
             if is_none is True:
                 continue
             yield triplet
+
+
+
+def TripletFilter():
+    def __init__(self):
+        """
+        triplet_filters (): functions takes a BeliefTriplet and return the BeliefTriplet (or modifed version thereof) or None if the triplet should be discarded.
+        group_filters (): same as triplet_filters but taking a TripletGroup as argument
+        list_filters (): A filter which takes in a list of TripletGroup. Note that the list is supplied as sorted in BeliefGraph.
+        reject_entire (bool): Should the entire triplet be rejected if one token does not pass the filter or should the remainder of the relation tokens constitute a relation.
+        continuous (bool): Should the relation be continuous. if
+        """
+        self.triplet_filters = triplet_filters
+        self.group_filters = group_filters
