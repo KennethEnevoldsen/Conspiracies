@@ -13,7 +13,7 @@ from spacy.tokens import Doc
 from spacy.tokens.span import Span
 from transformers import PreTrainedTokenizerBase
 
-from .BeliefTriplet import BeliefTriplet
+from .data_classes import BeliefTriplet
 from .utils import attn_to_graph, beam_search, merge_token_attention
 
 
