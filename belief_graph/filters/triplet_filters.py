@@ -64,34 +64,34 @@ def filter_confidence(triplet: BeliefTriplet, threshold) -> Union[BeliefTriplet,
 def valid_attribute_span(
     span: Span,
     attr: str,
-    allowed: set = set(),
-    disallowed: set = set(),
+    valid: Optional[set] = None,
+    invalid: Optional[set] = None,
 ):
-    return all(valid_attribute_token(t, attr, allowed, disallowed) for t in span)
+    return all(valid_attribute_token(t, attr, valid, invalid) for t in span)
 
 
 def valid_entities(
     span: Span,
-    allowed: set = {"LOC", "PER", "ORG"},
-    disallowed: set = set(),
+    valid: Optional[set] = {"LOC", "PER", "ORG"},
+    invalid: Optional[set] = None,
 ):
-    return valid_attribute_span(span, "ent_type_", allowed, disallowed)
+    return valid_attribute_span(span, "ent_type_", valid, invalid)
 
 
 def valid_pos(
     span: Span,
-    allowed: set = set(),
-    disallowed: set = {"PUNCT", "SPACE", "NUM"},
+    valid: Optional[set] = None,
+    invalid: Optional[set] = {"PUNCT", "SPACE", "NUM"},
 ):
-    return valid_attribute_span(span, "pos_", allowed, disallowed)
+    return valid_attribute_span(span, "pos_", valid, invalid)
 
 
 def valid_dependency(
     span: Span,
-    allowed: set = set(),
-    disallowed: set = set(),
+    valid: Optional[set] = None,
+    invalid: Optional[set] = None,
 ):
-    return valid_attribute_span(span, "dep_", allowed, disallowed)
+    return valid_attribute_span(span, "dep_", valid, invalid)
 
 
 ### --- Token -> Bool --- ###
@@ -100,41 +100,10 @@ def valid_dependency(
 def valid_attribute_token(
     token: Token,
     attr: str,
-    allowed: set = set(),
-    disallowed: set = set(),
+    valid: Optional[set] = None,
+    invalid: Optional[set] = None,
 ):
     att = getattr(token, attr)
-    return (att in allowed) and (att not in disallowed)
-
-
-### --- Utility function --- ###
-
-
-def make_simple_triplet_filters(
-    validators_heads: List[Union[str, Callable]] = [valid_pos, valid_entities],
-    validators_tails: List[Union[str, Callable]] = [valid_pos, valid_entities],
-    validators_relations: List[Union[str, Callable]] = [valid_pos],
-    reject_entire: bool = False,
-    continous: bool = True,
-    confidence_threshold: Optional[float] = None,
-) -> List[Callable]:
-    """
-    reject_entire (bool): Only applied to relation. Should the entire triplet be rejected if one tokens does not pass the filter or should the
-    remainder of the relation tokens constitute a relation.
-    continuous (bool): Should the relation be continuous.
-    """
-    funcs = []
-    if confidence_threshold is not None:
-        f = partial(filter_confidence, confidence_threshold)
-        funcs.append(f)
-    for func in validators_heads:
-        f = partial(filter_head, func=func)
-        funcs.append(f)
-    for func in validators_tails:
-        f = partial(filter_tail, func=func)
-        funcs.append(f)
-    for func in validators_relations:
-        f = partial(filter_relations, func=func, reject_entire=reject_entire)
-        funcs.append(f)
-    if continous:
-        funcs.append(filter_is_continuous)
+    return ((valid is not None) and (att in valid)) and (
+        (invalid is not None) and (att not in invalid)
+    )
