@@ -2,9 +2,9 @@
 # sys.path.append("/Users/au561649/Desktop/Github/UCLA-Conspiracies")
 
 import pytest
-from spacy.language import Language
 from belief_graph.model_loaders import load_danish
 from spacy.attrs import IS_SPACE
+from spacy.language import Language
 
 from .examples import EXAMPLES
 
@@ -102,4 +102,3 @@ def test_sent_extention(example, nlp_model):
         assert len(span._.wordpieces) == len(span._.wp2tokid)
         assert len(span._.wordpieces) == span._.attention.shape[-1]
         assert len(span._.wordpieces) == len(span._.wp2ncid)
-

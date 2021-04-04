@@ -8,18 +8,18 @@ from spacy.tokens import Doc
 from spacy.tokens.span import Span
 
 from .doc_extensions import (
-    doc_wp2tokid_getter,
-    doc_tokid2wp_getter,
-    span_wp_slice_getter,
-    span_wp_getter,
-    span_wp2tokid_getter,
-    span_attn_getter,
     doc_nctokens_getter,
     doc_tokid2nc_getter,
     doc_tokid2ncid_getter,
+    doc_tokid2wp_getter,
     doc_wp2ncid_getter,
+    doc_wp2tokid_getter,
+    span_attn_getter,
+    span_nctokens_getter,
     span_wp2ncid_getter,
-    span_nctokens_getter
+    span_wp2tokid_getter,
+    span_wp_getter,
+    span_wp_slice_getter,
 )
 
 Doc.set_extension("wp2ncid", getter=doc_wp2ncid_getter)

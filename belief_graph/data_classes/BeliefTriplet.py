@@ -2,7 +2,9 @@
 This Script contains the Belief Triplet class
 """
 from __future__ import annotations
+
 from typing import Callable, List, Optional, Tuple
+
 from pydantic import BaseModel
 from spacy.tokens import Span
 

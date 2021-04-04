@@ -1,6 +1,6 @@
-
+from .BeliefGraph import BeliefGraph
 from .belief_extraction import BeliefParser
-from .BeliefTriplet import BeliefTriplet
+from .data_classes import BeliefTriplet, TripletGroup
 
 from .model_loaders import load_danish
 

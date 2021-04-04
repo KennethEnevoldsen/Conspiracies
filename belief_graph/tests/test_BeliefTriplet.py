@@ -1,9 +1,8 @@
 """
 """
-import sys
-sys.path.append("/Users/au561649/Desktop/Github/UCLA-Conspiracies")
-from spacy.tokens import Span
+
 from belief_graph import BeliefTriplet, load_danish
+from spacy.tokens import Span
 
 
 def simple_triplet():
@@ -20,6 +19,7 @@ def simple_triplet():
         confidence=1,
     )
     return bt
+
 
 def test_BeliefTriplet():
     nlp = load_danish()

@@ -1,15 +1,11 @@
 """
 test model loaders
 """
-# import sys
-# sys.path.append("/Users/au561649/Desktop/Github/UCLA-Conspiracies")
-
 
 import pytest
-
+from belief_graph.model_loaders import load_danish
 from spacy.attrs import IS_SPACE
 
-from belief_graph.model_loaders import load_danish
 from .examples import EXAMPLES
 
 

@@ -9,37 +9,6 @@ from spacy.tokens import Span, Token
 from ..data_classes import BeliefTriplet
 from ..utils import is_a_range as is_cont
 
-
-def make_simple_triplet_filters(
-    validators_heads: List[Union[str, Callable]] = [valid_pos, valid_entities],
-    validators_tails: List[Union[str, Callable]] = [valid_pos, valid_entities],
-    validators_relations: List[Union[str, Callable]] = [valid_pos],
-    reject_entire: bool = False,
-    continous: bool = True,
-    confidence_threshold: Optional[float] = None,
-) -> List[Callable]:
-    """
-    reject_entire (bool): Only applied to relation. Should the entire triplet be rejected if one tokens does not pass the filter or should the
-    remainder of the relation tokens constitute a relation.
-    continuous (bool): Should the relation be continuous.
-    """
-    funcs = []
-    if confidence_threshold is not None:
-        f = partial(filter_confidence, confidence_threshold)
-        funcs.append(f)
-    for func in validators_heads:
-        f = partial(filter_head, func=func)
-        funcs.append(f)
-    for func in validators_tails:
-        f = partial(filter_tail, func=func)
-        funcs.append(f)
-    for func in validators_relations:
-        f = partial(filter_relations, func=func, reject_entire=reject_entire)
-        funcs.append(f)
-    if continous:
-        funcs.append(filter_is_continuous)
-
-
 ### --- BeliefTriplet -> None/BeliefTriplet --- ###
 
 
@@ -136,3 +105,36 @@ def valid_attribute_token(
 ):
     att = getattr(token, attr)
     return (att in allowed) and (att not in disallowed)
+
+
+### --- Utility function --- ###
+
+
+def make_simple_triplet_filters(
+    validators_heads: List[Union[str, Callable]] = [valid_pos, valid_entities],
+    validators_tails: List[Union[str, Callable]] = [valid_pos, valid_entities],
+    validators_relations: List[Union[str, Callable]] = [valid_pos],
+    reject_entire: bool = False,
+    continous: bool = True,
+    confidence_threshold: Optional[float] = None,
+) -> List[Callable]:
+    """
+    reject_entire (bool): Only applied to relation. Should the entire triplet be rejected if one tokens does not pass the filter or should the
+    remainder of the relation tokens constitute a relation.
+    continuous (bool): Should the relation be continuous.
+    """
+    funcs = []
+    if confidence_threshold is not None:
+        f = partial(filter_confidence, confidence_threshold)
+        funcs.append(f)
+    for func in validators_heads:
+        f = partial(filter_head, func=func)
+        funcs.append(f)
+    for func in validators_tails:
+        f = partial(filter_tail, func=func)
+        funcs.append(f)
+    for func in validators_relations:
+        f = partial(filter_relations, func=func, reject_entire=reject_entire)
+        funcs.append(f)
+    if continous:
+        funcs.append(filter_is_continuous)

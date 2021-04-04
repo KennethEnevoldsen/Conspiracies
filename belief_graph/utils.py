@@ -1,7 +1,9 @@
-from typing import Callable, List, Generator
+from collections import defaultdict
+from typing import Callable, Generator, List
+
 import numpy as np
 from numpy import ndarray
-from collections import defaultdict
+
 from .data_classes import BeliefTriplet, TripletGroup
 
 
@@ -174,8 +176,6 @@ def attn_to_graph(matrix):
             forward_graph[idx].append((col, matrix[idx][col]))
 
     return backward_graph, forward_graph
-
-
 
 
 def merge_triplets(sorted_triplets: List[BeliefTriplet]) -> Generator:

@@ -2,21 +2,19 @@
 This script contains function for extracting/parsing beliefs (a
 proposed knowledge triplet) from a text
 """
-from typing import List, Iterable, Union
 from functools import partial
+from typing import Iterable, List, Union
 
-from numpy import ndarray
 import numpy as np
-
-from transformers import PreTrainedTokenizerBase
+from numpy import ndarray
+from pydantic import validate_arguments
+from spacy.language import Language
 from spacy.tokens import Doc
 from spacy.tokens.span import Span
-from spacy.language import Language
+from transformers import PreTrainedTokenizerBase
 
-from pydantic import validate_arguments
-
-from .utils import merge_token_attention, attn_to_graph, beam_search
 from .BeliefTriplet import BeliefTriplet
+from .utils import attn_to_graph, beam_search, merge_token_attention
 
 
 def extract_attention(doc, layer=-1):

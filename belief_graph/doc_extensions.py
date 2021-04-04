@@ -2,9 +2,10 @@
 a series of extension to the spacy doc
 """
 from typing import Iterable, List
+
+from spacy.attrs import IS_SPACE
 from spacy.tokens import Doc
 from spacy.tokens.span import Span
-from spacy.attrs import IS_SPACE
 
 
 def doc_wp2tokid_getter(doc: Doc, bos=True, eos=True) -> List:
@@ -180,6 +181,6 @@ def span_nctokens_getter(span: Span) -> List[str]:
     extract the noun chunk tokens from the span
     """
     s, e = span.start, span.end
-    tokid2ncid = span.doc._.tokid2ncid[s: e]
+    tokid2ncid = span.doc._.tokid2ncid[s:e]
     s, e = tokid2ncid[0], tokid2ncid[-1]
-    return span.doc._.nctokens[s: e+1]
+    return span.doc._.nctokens[s : e + 1]

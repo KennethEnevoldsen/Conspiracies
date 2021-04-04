@@ -3,6 +3,7 @@ Filters applied to triplet groups
 """
 from functools import partial
 from typing import Callable, List, Union
+
 from ..data_classes import TripletGroup
 
 

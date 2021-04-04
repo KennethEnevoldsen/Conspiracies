@@ -1,7 +1,10 @@
-from spacy.tokens import Span
-from typing import List
-from .BeliefTriplet import BeliefTriplet
 from __future__ import annotations
+
+from typing import List
+
+from spacy.tokens import Span
+
+from .BeliefTriplet import BeliefTriplet
 
 
 class TripletGroup(BeliefTriplet):
