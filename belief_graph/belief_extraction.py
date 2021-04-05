@@ -135,7 +135,7 @@ class BeliefParser:
                     yield BeliefTriplet(
                         head_id=path[0],
                         tail_id=path[-1],
-                        relations_ids=path[1:-1],
+                        relation_ids=path[1:-1],
                         confidence=conf,
                         span=sent_span,
                     )

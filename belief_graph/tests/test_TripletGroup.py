@@ -14,3 +14,6 @@ def test_add(simple_triplets):
         tg = bg.TripletGroup.from_belief_triplet(t1)
         tg.add(t2)
     print(tg)
+
+    tg_ = bg.TripletGroup.from_belief_triplet(t1)
+    assert tg == tg_

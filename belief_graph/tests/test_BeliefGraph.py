@@ -8,9 +8,10 @@ def simple_graph(EXAMPLES):
     nlp = bg.load_danish()
     bp = bg.BeliefParser(nlp=nlp)
 
-    tf = bg.TripletFilter(triplet_filters=["ent", "pos"], group_filter=["count"])
 
-    graph = bg.BeliefGraph(parser=bp, triplet_filter=tf)
+    tf = bg.filters.ContinuousFilter()
+
+    graph = bg.BeliefGraph(parser=bp, triplet_filter=[tf], group_filter=[])
     graph.add(EXAMPLES)
     return graph
 

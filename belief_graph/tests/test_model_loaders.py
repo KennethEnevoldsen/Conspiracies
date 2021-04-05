@@ -11,7 +11,7 @@ from .examples import EXAMPLES
 
 @pytest.mark.parametrize("example", EXAMPLES)
 def test_danish(example):
-    nlp = load_danish()
+    nlp = load_danish(transformer=None)
 
     doc = nlp(example)
 

@@ -15,6 +15,8 @@ def is_a_range(L: Iterable[int]) -> bool:
     >>> is_a_range(L=[3, 2, 1])
     False
     """
+    if len(L) == 1:
+        return True
     L_ = range(L[0], L[-1] + 1)
     if len(L_) != len(L):
         return False
@@ -38,4 +40,4 @@ def is_cont_integer(L: Iterable[int]) -> bool:
     True
 
     """
-    return is_a_range(L) and is_a_range(L[::-1])
+    return is_a_range(L) or is_a_range(L[::-1])

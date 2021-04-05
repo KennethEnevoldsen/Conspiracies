@@ -3,13 +3,14 @@
 from typing import List, OrderedDict
 
 import pytest
+import transformers
 from belief_graph import BeliefTriplet, load_danish
 from spacy.tokens import Span
 
 
 @pytest.fixture
 def simple_triplets() -> List[BeliefTriplet]:
-    nlp = load_danish()
+    nlp = load_danish(transformer=None)
     doc = nlp("Dette består af to sætninger")
     span = next(doc.sents)
 
@@ -37,7 +38,7 @@ def simple_triplets() -> List[BeliefTriplet]:
 
 
 def test_BeliefTriplet():
-    nlp = load_danish()
+    nlp = load_danish(transformer=None)
     doc = nlp("Dette består af to sætninger")
     span = next(doc.sents)
 

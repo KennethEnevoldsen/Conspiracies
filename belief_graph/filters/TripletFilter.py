@@ -1,7 +1,7 @@
 from functools import partial
 from typing import Callable, Generator, Iterable, List, Optional, Union
 
-from pydantic import BaseModel
+from pydantic import BaseModel, validate_arguments
 
 from ..data_classes import BeliefTriplet, TripletGroup
 from .triplet_filters import (
@@ -33,7 +33,7 @@ class TripletFilter(BaseModel):
 
     def is_valid(self, triplet: BeliefTriplet):
         if isinstance(triplet, BeliefTriplet):
-            triplet = self.__filter(triplet)
+            triplet = self.func(triplet)
             if triplet is None:
                 return False
             return True
@@ -42,17 +42,25 @@ class TripletFilter(BaseModel):
         )
 
     @property
-    def __func(self) -> Callable:
+    def func(self) -> Callable:
         if self.filter_func is None:
-            raise UserWarning(
-                "filter_func is None. If you wish to filter functions this should be specified. We suggest using the from_func"
-            )
+            try:
+                self.make_filter_func()
+            except AttributeError as e:
+                raise AttributeError(
+                    f"{e}. This is likely caused as filter_func is left as None. We suggest using the TripletFilter.from_func method"
+                )
         return self.filter_func
 
-    def filter(self, triplets: Iterable[BeliefTriplet]) -> Generator[BeliefTriplet]:
+    def filter(
+        self, triplets: Iterable[BeliefTriplet]
+    ) -> Generator[Union[BeliefTriplet, None], None, None]:
+        if isinstance(triplets, BeliefTriplet):
+            triplets = [triplets]
+
         for triplet in triplets:
             is_none = False
-            triplet = self.__func(triplet)
+            triplet = self.func(triplet)
 
             if triplet is None:
                 is_none = True
@@ -66,18 +74,12 @@ class SetFilter(TripletFilter):
     It is not mean to be used on its own
     """
 
-    valid: set = set()
-    invalid: set = set()
-    reject_entire: False
-    apply_to = {"head", "tail", "relation"}
+    valid: set = None
+    invalid: set = None
+    reject_entire: bool = False
+    apply_to: set = {"head", "tail", "relation"}
 
-    @property
-    def __func(self):
-        if self.filter_func is None:
-            self.__make_filter_func()
-        return self.filter_func
-
-    def __make_func(self, func):
+    def make_func(self, func):
         funcs = []
         if "head" in self.apply_to:
             fh = partial(filter_head, func=func)
@@ -89,7 +91,7 @@ class SetFilter(TripletFilter):
             fr = partial(filter_relations, func=func)
             funcs.append(fr)
 
-        return self._merge_funs(funcs)
+        self.filter_func = self._merge_funcs(funcs)
 
     @staticmethod
     def _merge_funcs(funcs: List[Callable]) -> Callable:
@@ -102,46 +104,35 @@ class SetFilter(TripletFilter):
 
         return wrapper
 
-    def __make_filter_func():
-        raise UserWarning(
-            "SetFilter is not mean to be called independendently. Which is likely why you see this error."
-        )
 
-
-class POSFilter(SetFilter):
-    valid: set = set()
+class PosFilter(SetFilter):
+    valid: set = None
     invalid: set = {"PUNCT", "SPACE", "NUM"}
-    reject_entire: False
-    apply_to = {"head", "tail", "relation"}
+    apply_to: set = {"head", "tail", "relation"}
 
-    @property
-    def __make_filter_func(self):
+    def make_filter_func(self):
         is_valid = partial(valid_pos, valid=self.valid, invalid=self.invalid)
-        self.__make_func(is_valid)
+        self.make_func(is_valid)
 
 
 class EntFilter(SetFilter):
-    valid: set = set()
-    invalid: set = {"LOC", "PER", "ORG"}
-    reject_entire: False
-    apply_to = {"head", "tail"}
+    valid: set = {"LOC", "PER", "ORG"}
+    invalid: set = None
+    apply_to: set = {"head", "tail"}
 
-    @property
-    def __make_filter_func(self):
+    def make_filter_func(self):
         is_valid = partial(valid_entities, valid=self.valid, invalid=self.invalid)
-        self.__make_func(is_valid)
+        self.make_func(is_valid)
 
 
 class DepFilter(SetFilter):
-    valid: set = set()
-    invalid: set = set()
-    reject_entire: False
-    apply_to = {"head", "tail"}
+    valid: set = None
+    invalid: set = None
+    apply_to: set = {"head", "tail"}
 
-    @property
-    def __make_filter_func(self):
+    def make_filter_func(self):
         is_valid = partial(valid_dependency, valid=self.valid, invalid=self.invalid)
-        self.__make_func(is_valid)
+        self.make_func(is_valid)
 
 
 class ContinuousFilter(TripletFilter):
@@ -155,22 +146,18 @@ class ContinuousFilter(TripletFilter):
 class ConfidenceFilter(TripletFilter):
     threshold: float
 
-    def __func(self) -> Callable:
-        if self.filter_func is None:
-            self.filter_func = partial(filter_confidence, threshold=self.threshold)
-        return self.filter_func
+    def make_filter_func(self):
+        self.filter_func = partial(filter_confidence, threshold=self.threshold)
 
 
-class TripletGroupFilter(BaseModel):
+class TripletGroupFilter(TripletFilter):
     """
     filter for triplets
     """
 
-    filter_func: Optional[Callable] = None
-
     def is_valid(self, triplet: TripletGroup):
         if isinstance(triplet, TripletGroup):
-            triplet = self.__filter(triplet)
+            triplet = self.func(triplet)
             if triplet is None:
                 return False
             return True
@@ -178,21 +165,14 @@ class TripletGroupFilter(BaseModel):
             f"Filter takes {TripletGroup}, but you applied it to {type(triplet)}"
         )
 
-    @property
-    def __func(self) -> Callable:
-        if self.filter_func is None:
-            raise UserWarning(
-                "filter_func is None. If you wish to filter functions this should be specified. We suggest using the from_func"
-            )
-
-    def filter(self, triplets: Iterable[TripletGroup]) -> Generator[TripletGroup]:
+    def filter(
+        self, triplets: Iterable[TripletGroup]
+    ) -> Generator[TripletGroup, None, None]:
         return super().filter(triplets)
 
 
-class ConfidenceFilter(TripletGroupFilter):
+class CountFilter(TripletGroupFilter):
     count: float
 
-    def __func(self) -> Callable:
-        if self.filter_func is None:
-            self.filter_func = partial(count_filter, count=self.count)
-        return self.filter_func
+    def make_filter_func(self):
+        self.filter_func = partial(count_filter, count=self.count)
