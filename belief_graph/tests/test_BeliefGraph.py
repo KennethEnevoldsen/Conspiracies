@@ -1,59 +1,46 @@
 import belief_graph as bg
+import pytest
 
 from .examples import EXAMPLES
 from .test_BeliefTriplet import simple_triplets
 
 
-def simple_graph(EXAMPLES):
+@pytest.fixture
+def simple_graph():
     nlp = bg.load_danish()
     bp = bg.BeliefParser(nlp=nlp)
 
-
-    tf = bg.filters.ContinuousFilter()
-
-    graph = bg.BeliefGraph(parser=bp, triplet_filter=[tf], group_filter=[])
-    graph.add(EXAMPLES)
+    graph = bg.BeliefGraph(parser=bp, triplet_filters=[], group_filters=[])
     return graph
 
 
-def test_triplets(simple_graph, EXAMPLES):
+def test_simple_graph(simple_graph):
+    graph = simple_graph
+    graph.add_texts(EXAMPLES)
+
+
+def test_triplets(simple_graph):
     graph = simple_graph
 
     lt = len(graph.triplets)
+    graph.add_texts(EXAMPLES)
 
-    graph.add(EXAMPLES)
     assert lt < len(graph.triplets)
 
 
 def test_grouped_triplets(simple_graph):
     graph = simple_graph
+    graph.add_texts(EXAMPLES)
+    graph.add_texts(EXAMPLES)
 
-    lg = len(graph.grouped_triplets)
-
-    graph.add(EXAMPLES)
-    assert lg == len(graph.grouped_triplets)
+    lg = len(graph.triplets)
+    assert lg >= len(list(graph.triplet_groups))
 
 
 def test_filtered_triplets(simple_graph):
     graph = simple_graph
 
-    lf = len(graph.filtered_triplets)
+    lf = len(list(graph.filtered_triplets))
 
-    graph.add(EXAMPLES)
-    assert lf <= len(graph.filtered_triplets)
-
-
-def test_add_text(EXAMPLES):
-    nlp = bg.load_danish()
-    bp = bg.BeliefParser(nlp=nlp)
-
-    graph = bg.BeliefGraph(parser=bp)
-    graph.add_text(EXAMPLES)
-
-
-def test_add_triplet(simple_triplet):
-    nlp = bg.load_danish()
-    bp = bg.BeliefParser(nlp=nlp)
-
-    graph = bg.BeliefGraph(parser=bp)
-    graph.add_triplet(simple_triplet)
+    graph.add_texts(EXAMPLES)
+    assert lf <= len(list(graph.filtered_triplets))

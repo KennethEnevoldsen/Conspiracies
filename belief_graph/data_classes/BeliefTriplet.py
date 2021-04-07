@@ -9,6 +9,12 @@ from pydantic import BaseModel
 from spacy.tokens import Span
 
 
+
+def text_getter(span: Span):
+    return span.text
+
+
+
 class BeliefTriplet(BaseModel):
     """
     the data class for the belief triplet. Which contains besides
@@ -24,29 +30,15 @@ class BeliefTriplet(BaseModel):
     relation_ids: Tuple[int, ...]
     confidence: float
     span: Optional[Span] = None
-    getter: str = "text"
-
-    def set_getter(self, getter=str):
-        if getter in ["text", "lemma"]:
-            self.getter = getter
-        else:
-            raise ValueError("Invalid getter set. Should be 'text' or 'lemma'")
-
-    def __getter(self, span: Span) -> str:
-        if self.getter.lower() == "text":
-            return span.text
-        elif self.getter.lower() == "lemma":
-            return " ".join(t.lemma_ for t in span)
-        else:
-            raise ValueError("Invalid getter set. Should be 'text' or 'lemma'")
+    getter: Callable = text_getter
 
     @property
     def tail(self) -> str:
-        return self.__getter(self.tail_span)
+        return self.getter(self.tail_span)
 
     @property
     def head(self) -> str:
-        return self.__getter(self.head_span)
+        return self.getter(self.head_span)
 
     @property
     def tail_span(self) -> Span:
@@ -65,7 +57,7 @@ class BeliefTriplet(BaseModel):
 
     @property
     def relation(self) -> str:
-        return " ".join(self.__getter(t) for t in self.relation_list)
+        return " ".join(self.getter(t) for t in self.relation_list)
 
     def __eq__(self, other: BeliefTriplet) -> bool:
         if (
@@ -93,3 +85,6 @@ class BeliefTriplet(BaseModel):
 
     def __gt__(self, other: BeliefTriplet):
         return self.head > other.head
+
+
+

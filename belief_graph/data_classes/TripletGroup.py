@@ -33,16 +33,16 @@ class TripletGroup(BeliefTriplet):
             getter=triplet.getter,
         )
 
-    def __add_triplet(self, triplet: BeliefTriplet):
+    def add_triplet(self, triplet: BeliefTriplet):
         self.spans.append(triplet.span)
 
-    def __add_tg(self, triplet: TripletGroup):
+    def _dd_tg(self, triplet: TripletGroup):
         self.spans += triplet.spans
 
     def __add(self, triplet: Union[BeliefTriplet, TripletGroup]):
         if isinstance(triplet, TripletGroup):
-            self.__add_tg(triplet)
-        self.__add_triplet(triplet)
+            self.add_tg(triplet)
+        self.add_triplet(triplet)
 
     def add(self, triplet: Union[BeliefTriplet, TripletGroup]):
         if self == triplet:

@@ -7,29 +7,32 @@ from warnings import warn
 
 from .belief_extraction import BeliefParser
 from .data_classes import BeliefTriplet, TripletGroup
-from .filters import TripletFilter
+from .filters import TripletFilter, TripletGroupFilter
 
 
 class BeliefGraph:
     """"""
 
-    def __init__(self, parser: BeliefParser, filter: TripletFilter):
-        """
-        filter ():
-        """
+    def __init__(
+        self,
+        parser: BeliefParser,
+        triplet_filters: List[TripletFilter] = [],
+        group_filters: List[TripletGroupFilter] = [],
+    ):
+        """"""
+        if isinstance(triplet_filters, TripletFilter):
+            triplet_filters = [triplet_filters]
+        if isinstance(group_filters, TripletFilter):
+            group_filters = [group_filters]
+
         self.parser = parser
-        self.filter = filter
+        self.triplet_filters = triplet_filters
+        self.group_filters = group_filters
         self._triplet_heap = []
         self._triplet_group_heap = []
 
         self.is_sorted = True
-        self.is_filtered = True
-        self.is_group_filtered = True
-        self.is_merged = True
 
-        self.__filtered_triplets = []
-        self.__triplet_groups = []
-        self.__filtered_triplet_groups = []
 
     def add_belief_triplets(self, triplets: Iterable[BeliefTriplet]):
         self.is_sorted, self.is_filtered, self.is_merged = False, False, False
@@ -38,13 +41,13 @@ class BeliefGraph:
 
     def add_texts(self, texts: Union[Iterable[str], str]):
         triplets = self.parser.parse_texts(texts)
-        self.add_belief_triplet(triplets)
+        self.add_belief_triplets(triplets)
 
     def _sort_triplets(self):
         """
         sorts the triplet heap
         """
-        if self._sorted is True:
+        if self.is_sorted is True:
             return None
         ordered = []
 
@@ -55,15 +58,16 @@ class BeliefGraph:
         self._triplet_heap = ordered
         self.is_sorted = True
 
-    def __merge_triplets(self):
-        if self.is_merged:
-            return None
-        else:
-            self.__triplet_groups = merge_triplets(self.filtered_triplets)
-        self.is_merged = True
 
-    def replace_filter(self, filter: TripletFilter):
-        self.filter = filter
+    def replace_filters(
+        self,
+        triplet_filters: Optional[List[TripletFilter]] = None,
+        group_filters: Optional[List[TripletFilter]] = None,
+    ):
+        if triplet_filters is not None:
+            self.triplet_filters = triplet_filters
+        if group_filters is not None:
+            self.group_filters = group_filters
 
     def plot_node():
         pass
@@ -71,37 +75,40 @@ class BeliefGraph:
     def extract_node_relations():
         pass
 
-    @property
-    def triplet_groups(self):
-        self.__merge_triplets()
-        return self.__triplet_groups
+    @staticmethod
+    def merge_filters(filters: List[TripletFilter]) -> Callable:
+        def wrapper(
+            triplets: Iterable[BeliefTriplet],
+        ) -> Generator[BeliefTriplet, None, None]:
+            for f in filters:
+                triplets = f.filter(triplets)
+            return triplets
+
+        return wrapper
 
     @property
-    def triplets(self):
-        if self.sorted is False:
+    def triplet_groups(self) -> Generator[TripletGroup, None, None]:
+        return merge_triplets(self.filtered_triplets)
+
+    @property
+    def triplets(self) -> List[BeliefTriplet]:
+        if self.is_sorted is False:
             self._sort_triplets()
-        return self.triplets
+        return self._triplet_heap
 
     @property
-    def filtered_triplets(self):
-        if self.is_filtered is True:
-            self.__filtered_triplets
-        else:
-            self.__filtered_triplets = self.filter.filter_triplets(self.triplets)
-            self.is_filtered = True
+    def filtered_triplets(self) -> Generator[BeliefTriplet, None, None]:
+        triplet_filter = self.merge_filters(self.triplet_filters)
+        return triplet_filter(self.triplets)
 
     @property
-    def filtered_triplet_groups(self):
-        if self.is_group_filtered is True:
-            self.__filtered_triplet_groups
-        else:
-            self.__filtered_triplet_groups = self.filter.filter_groups(
-                self.triplet_groups
-            )
-            self.is_group_filtered = True
+    def filtered_triplet_groups(self) -> Generator[TripletGroup, None, None]:
+        triplet_filter = self.merge_filters(self.triplet_groups)
+        return self.triplet_filter(self.triplet_groups)
 
-
-def merge_triplets(sorted_triplets: List[BeliefTriplet]) -> Generator:
+def merge_triplets(
+    sorted_triplets: List[BeliefTriplet],
+) -> Generator[TripletGroup, None, None]:
     """
     sorted_triplets (List[BeliefTriplet]): Assumed a list of sorted triplets.
     """
@@ -111,6 +118,9 @@ def merge_triplets(sorted_triplets: List[BeliefTriplet]) -> Generator:
         triplet = queue.pop()
 
         tg = TripletGroup.from_belief_triplet(triplet)
-        while triplet == queue[-1]:
-            tg.__add_triplet(queue.pop())
+        try:
+            while triplet == queue[-1]:
+                tg.add_triplet(queue.pop())
+        except IndexError:
+            pass            
         yield tg

@@ -2,6 +2,7 @@ from functools import partial
 from typing import Callable, Generator, Iterable, List, Optional, Union
 
 from pydantic import BaseModel, validate_arguments
+from spacy.tokens import Span
 
 from ..data_classes import BeliefTriplet, TripletGroup
 from .triplet_filters import (
@@ -148,6 +149,19 @@ class ConfidenceFilter(TripletFilter):
 
     def make_filter_func(self):
         self.filter_func = partial(filter_confidence, threshold=self.threshold)
+
+
+def lemma_getter(span: Span):
+    return " ".join(t.lemma_ for t in span)
+
+
+class LemmatizationFilter(TripletFilter):
+    @staticmethod
+    def filter_func(triplet: BeliefTriplet) -> BeliefTriplet:
+        triplet.getter = lemma_getter
+
+
+### --- TripletGroupFilters --- ###
 
 
 class TripletGroupFilter(TripletFilter):

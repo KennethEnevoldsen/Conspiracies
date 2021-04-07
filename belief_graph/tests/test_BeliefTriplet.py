@@ -65,6 +65,3 @@ def test_BeliefTriplet():
     )
 
     assert bt < rev_bt, "belief triplets should be sorted according to their heads"
-
-    bt.set_getter("lemma")
-    print(bt)
