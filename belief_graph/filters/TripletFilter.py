@@ -55,7 +55,7 @@ class TripletFilter(BaseModel):
 
     def filter(
         self, triplets: Iterable[BeliefTriplet]
-    ) -> Generator[Union[BeliefTriplet, None], None, None]:
+    ) -> Generator[BeliefTriplet, None, None]:
         if isinstance(triplets, BeliefTriplet):
             triplets = [triplets]
 

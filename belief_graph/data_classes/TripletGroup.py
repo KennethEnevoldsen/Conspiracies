@@ -36,7 +36,7 @@ class TripletGroup(BeliefTriplet):
     def add_triplet(self, triplet: BeliefTriplet):
         self.spans.append(triplet.span)
 
-    def _dd_tg(self, triplet: TripletGroup):
+    def add_tg(self, triplet: TripletGroup):
         self.spans += triplet.spans
 
     def __add(self, triplet: Union[BeliefTriplet, TripletGroup]):

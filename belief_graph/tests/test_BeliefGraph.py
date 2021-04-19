@@ -33,8 +33,8 @@ def test_grouped_triplets(simple_graph):
     graph.add_texts(EXAMPLES)
     graph.add_texts(EXAMPLES)
 
-    lg = len(graph.triplets)
-    assert lg >= len(list(graph.triplet_groups))
+    lt = len(graph.triplets)
+    assert lt >= len(list(graph.triplet_groups))
 
 
 def test_filtered_triplets(simple_graph):

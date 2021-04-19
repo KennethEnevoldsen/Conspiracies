@@ -21,6 +21,8 @@ def doc_wp2tokid_getter(doc: Doc, bos=True, eos=True) -> List:
 
     example:
     Doc.set_extension("wp2tokid", getter=doc_wp2tokid_getter)
+    tokid = doc._.wp2tokid[2]
+    token = doc[tokid]
     """
     wp2tokid = []
     tok = 0
@@ -163,7 +165,7 @@ def span_wp2ncid_getter(span: Span) -> List:
     return span.doc._.wp2ncid[wp_slice]
 
 
-def span_attn_getter(span: Span, layer=-1):
+def span_attn_getter(span: Span, layer: int = -1):
     """
     extract the attention matrix for the tokens in the sentence
     """

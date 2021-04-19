@@ -8,4 +8,5 @@ from .TripletFilter import (
     SetFilter,
     TripletFilter,
     TripletGroupFilter,
+    LemmatizationFilter
 )

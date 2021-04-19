@@ -14,7 +14,6 @@ def text_getter(span: Span):
     return span.text
 
 
-
 class BeliefTriplet(BaseModel):
     """
     the data class for the belief triplet. Which contains besides
