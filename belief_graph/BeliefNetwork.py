@@ -1,4 +1,3 @@
-from .BeliefGraph import BeliefGraph
 #import belief_graph as bg
 #from belief_graph.tests.examples import EXAMPLES
 from typing import Union, List
@@ -11,7 +10,8 @@ import networkx as nx
 
 class BeliefNetwork:
 
-    def __init__(self, graph: BeliefGraph):
+    def __init__(self, graph):
+        # graph: BeliefGraph
         self.graph = graph
         if graph.is_filtered:
             self.triplets = list(graph.filtered_triplets)
