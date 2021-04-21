@@ -8,6 +8,7 @@ from warnings import warn
 from .belief_extraction import BeliefParser
 from .data_classes import BeliefTriplet, TripletGroup
 from .filters import TripletFilter, TripletGroupFilter
+from .BeliefNetwork import BeliefNetwork
 
 
 class BeliefGraph:
@@ -69,8 +70,20 @@ class BeliefGraph:
         if group_filters is not None:
             self.group_filters = group_filters
 
-    def plot_node():
-        pass
+    def plot_node(self, 
+                  type: Union[List, str]="head", # not currently implemented
+                  nodes: Union[List, str]="all",
+                  scale_confidence: bool=True,
+                  save_name="none",
+                  return_graph=False,
+                  **kwargs):
+        
+        bn = BeliefNetwork(self)
+        bn.construct_graph(nodes=nodes, scale_confidence=scale_confidence)
+        bn.plot_graph(save_name=save_name, **kwargs)
+        if return_graph:
+            return bn
+
 
     def extract_node_relations():
         pass
