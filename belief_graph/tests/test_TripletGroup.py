@@ -19,8 +19,13 @@ def test_add(simple_triplets):
     tg_ = bg.TripletGroup.from_belief_triplet(t1)
     assert tg == tg_
 
-    tg_.offload()
-    path = tg_._doc_reference
+def test_add(simple_triplets):
+    t1, t2 = simple_triplets
+    tg = bg.TripletGroup.from_belief_triplet(t1)
+    tg.add(t2)
+
+    tg.offload()
+    path = tg._doc_reference
     assert os.path.exists(path)
-    assert all(s is None for s in tg_.__span)
-    assert all(isinstance(s, Span) for s in tg_.span)
+    assert all(s is None for s in tg.__span)
+    assert all(isinstance(s, Span) for s in tg.span)
