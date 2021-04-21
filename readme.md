@@ -13,9 +13,10 @@ pip install -r requirements.txt
 pip install git+https://github.com/KennethEnevoldsen/spacy-transformers
 ```
 
-
-## 🤤 Future improvements
-Currently, the `lemmy` lemmatizer isn't used as it is incompatible with spacy version 3.
+To run the Danish language pipeline you will also need:
+```
+python -m spacy download da_core_news_sm
+```
 
 <!-- 
 ### References

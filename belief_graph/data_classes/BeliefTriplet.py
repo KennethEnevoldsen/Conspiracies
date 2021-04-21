@@ -8,8 +8,6 @@ from pydantic import BaseModel
 from spacy.tokens import Doc, Span
 from spacy.vocab import Vocab
 
-from .BeliefTriplet import BeliefTriplet
-
 
 class BaseTriplet(BaseModel):
     """
@@ -101,7 +99,6 @@ class BeliefTriplet(BaseTriplet):
 
     @staticmethod
     def from_parse(
-        self,
         head_id: int,
         tail_id: int,
         relation_ids: Tuple[int, ...],
