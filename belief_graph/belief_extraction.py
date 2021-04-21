@@ -132,7 +132,7 @@ class BeliefParser:
         for output in map(beam_search_, tail_head_pairs):
             if len(output):
                 for path, conf in output:
-                    yield BeliefTriplet(
+                    yield BeliefTriplet.from_parse(
                         head_id=path[0],
                         tail_id=path[-1],
                         relation_ids=path[1:-1],
