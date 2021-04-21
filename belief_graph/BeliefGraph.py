@@ -73,14 +73,15 @@ class BeliefGraph:
     def plot_node(self, 
                   type: Union[List, str]="head", # not currently implemented
                   nodes: Union[List, str]="all",
-                  scale_confidence: bool=True,
+                  scale_confidence: bool=False,
+                  k=0.5, 
                   save_name="none",
                   return_graph=False,
                   **kwargs):
         
         bn = BeliefNetwork(self)
         bn.construct_graph(nodes=nodes, scale_confidence=scale_confidence)
-        bn.plot_graph(save_name=save_name, **kwargs)
+        bn.plot_graph(save_name=save_name, k=k **kwargs)
         if return_graph:
             return bn
 

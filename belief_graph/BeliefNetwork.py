@@ -55,27 +55,23 @@ class BeliefNetwork:
                        if t.head in nodes}
 
 
-    def plot_graph(self, save_name="none", **kwargs):
+    def plot_graph(self, save_name: str, k: float, **kwargs):
+        """"
+        k: optimal distance between nodes. Increase to move nodes further apart
+           requires some tuning for different number of nodes
+        """"
+        
         if self.weights is None:
             raise ValueError("No graph has been constructed yet. Run construct_graph() first")
         
         degree = dict(self.G.degree)
-        pos = nx.spring_layout(self.G)
+        pos = nx.spring_layout(self.G, k) 
 
-        nx.draw(self.G, pos, edge_color=self.weights,
-                alpha=0.8, width=self.weights,
-                labels={node:node for node in self.G.nodes()},
-                node_color=list(degree.values()),
-                cmap=plt.cm.jet, verticalalignment="top",
-                **kwargs)
+        nx.draw(self.G, pos, node_size=100, **kwargs)
+        nx.draw_networkx_labels(self.G, pos, verticalalignment="bottom")
+        nx.draw_networkx_edge_labels(self.G,pos,edge_labels=self.labels,
+                        font_color='red')
 
-        nx.draw_networkx(self.G, verticalalignment="bottom")
-       # nx.draw_networkx_edges(self.G, pos)
-       # nx.draw_networkx_edge_labels(self.G,pos,edge_labels=self.labels,
-       #         font_color='red')
-        
-        
-        plt.axis('off')
         if save_name != "none":
             plt.savefig(save_name + ".png", dpi=300)
   
