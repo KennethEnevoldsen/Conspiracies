@@ -20,6 +20,8 @@ bt = BeliefTriplet.from_parse(
     confidence=1,
 )
 
+bt.span_reference
+
 dir(bt)
 bt
 

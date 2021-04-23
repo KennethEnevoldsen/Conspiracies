@@ -69,10 +69,10 @@ class BeliefTriplet(BaseTriplet):
     confidence: float
     getter: Callable = text_getter
     is_offloaded: bool = False
-    _span_slice: Optional[slice] = None
-    _doc_reference: Optional[str] = None
-    __span: Optional[Span] = None
-    __vocab: Optional[Vocab] = None
+    span_slice: Optional[slice] = None
+    doc_path: Optional[str] = None
+    span_reference: Optional[Span] = None
+    vocab: Optional[Vocab] = None
 
     @property
     def tail_span(self) -> Span:
@@ -91,11 +91,11 @@ class BeliefTriplet(BaseTriplet):
 
     @property
     def span(self) -> Span:
-        if self.__span:
-            return self.__span
-        doc = Doc(self.__vocab).from_disk(self.doc_reference)
-        self.__span = doc[self.span_slice]
-        return self.__span
+        if self.span_reference:
+            return self.span_reference
+        doc = Doc(self.vocab).from_disk(self.doc_path)
+        self.span_reference = doc[self.span_slice]
+        return self.span_reference
 
     @staticmethod
     def from_parse(
@@ -111,7 +111,7 @@ class BeliefTriplet(BaseTriplet):
             tail_id=tail_id,
             relation_ids=relation_ids,
             confidence=confidence,
-            span=span,
+            span_reference=span,
         )
         bt.update()
         return bt
@@ -139,7 +139,7 @@ class BeliefTriplet(BaseTriplet):
         self.relation = self.get_relation()
 
     def clean(self):
-        self.__span = None
+        self.span_reference = None
 
     def offload(
         self,
@@ -152,16 +152,14 @@ class BeliefTriplet(BaseTriplet):
 
         if vocab is not None:
             self.vocab = vocab
+        span = self.span_reference
         if self.vocab is None:
-            raise ValueError(
-                "No vocab is specified. Writing a doc without a Vocab will lead to the doc not being properly recoverable"
-            )
+            self.vocab = span.vocab
 
-        span = self.__span
         path = spacy_doc_to_dir(span.doc, id_set=id_set, dir=dir)
 
-        self._span_slice = slice(span.start, span.end)
-        self._doc_reference = path
+        self.span_slice = slice(span.start, span.end)
+        self.doc_path = path
 
         self.clean()
 
@@ -170,10 +168,10 @@ def spacy_doc_to_dir(doc, id_set: Optional[set] = None, dir="triplet_docs") -> s
     Path(dir).mkdir(parents=True, exist_ok=True)
 
     if id_set is None:
-        id_set = set(f[:-4] for f in os.listdir(dir) if f.endswith(".doc"))
+        id_set = set(int(f[:-4]) for f in os.listdir(dir) if f.endswith(".doc"))
 
     id_ = id(doc)
-    path = os.path.join(dir, id_ + ".doc")
+    path = os.path.join(dir, str(id_) + ".doc")
     if id_ not in id_set:
         doc.to_disk(path)
 

@@ -15,7 +15,7 @@ def simple_triplets() -> List[BeliefTriplet]:
     span = next(doc.sents)
 
     path = (0, 1, 2, 3)
-    bt = BeliefTriplet(
+    bt = BeliefTriplet.from_parse(
         head_id=path[0],
         relation_ids=path[1:-1],
         tail_id=path[-1],
@@ -27,7 +27,7 @@ def simple_triplets() -> List[BeliefTriplet]:
     span = next(doc.sents)
 
     path = (0, 1, 2)
-    bt_ = BeliefTriplet(
+    bt_ = BeliefTriplet.from_parse(
         head_id=path[0],
         relation_ids=path[1:-1],
         tail_id=path[-1],
@@ -56,7 +56,7 @@ def test_BeliefTriplet():
     assert isinstance(bt.head_span, Span)
 
     path = (3, 1, 2, 0)
-    rev_bt = BeliefTriplet(
+    rev_bt = BeliefTriplet.from_parse(
         head_id=path[0],
         relation_ids=path[1:-1],
         tail_id=path[-1],
@@ -69,8 +69,8 @@ def test_BeliefTriplet():
 def test_offload(simple_triplets):
     for triplet in simple_triplets:
         triplet.offload()
-        path = triplet._doc_reference
+        path = triplet.doc_path
         assert os.path.exists(path)
 
-        assert triplet.__span is None
+        assert triplet.span_reference is None
         assert isinstance(triplet.span, Span)
