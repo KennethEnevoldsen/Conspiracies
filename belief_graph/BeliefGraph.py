@@ -19,8 +19,11 @@ class BeliefGraph:
         parser: BeliefParser,
         triplet_filters: List[TripletFilter] = [],
         group_filters: List[TripletGroupFilter] = [],
+        offload_dir: Optional[str] = None
     ):
-        """"""
+        """
+        offload_dir: directory to write triplets span into. This will save on memory and allow you to save the graph
+        """
         if isinstance(triplet_filters, TripletFilter):
             triplet_filters = [triplet_filters]
         if isinstance(group_filters, TripletFilter):
@@ -31,6 +34,7 @@ class BeliefGraph:
         self.group_filters = group_filters
         self._triplet_heap = []
         self._triplet_group_heap = []
+        self.offload_dir = offload_dir
 
         self.is_sorted = True
 
@@ -38,6 +42,8 @@ class BeliefGraph:
     def add_belief_triplets(self, triplets: Iterable[BeliefTriplet]):
         self.is_sorted, self.is_filtered, self.is_merged = False, False, False
         for triplet in triplets:
+            if self.offload_dir:
+                triplet.offload()
             heappush(self._triplet_heap, triplet)
 
     def add_texts(self, texts: Union[Iterable[str], str]):
@@ -119,6 +125,7 @@ class BeliefGraph:
     def filtered_triplet_groups(self) -> Generator[TripletGroup, None, None]:
         triplet_filter = self.merge_filters(self.triplet_groups)
         return self.triplet_filter(self.triplet_groups)
+
 
 def merge_triplets(
     sorted_triplets: List[BeliefTriplet],
