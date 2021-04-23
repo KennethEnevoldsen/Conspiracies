@@ -56,10 +56,10 @@ class BeliefNetwork:
 
 
     def plot_graph(self, save_name: str, k: float, **kwargs):
-        """"
+        """
         k: optimal distance between nodes. Increase to move nodes further apart
            requires some tuning for different number of nodes
-        """"
+        """
         
         if self.weights is None:
             raise ValueError("No graph has been constructed yet. Run construct_graph() first")

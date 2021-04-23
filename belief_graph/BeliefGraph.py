@@ -74,7 +74,7 @@ class BeliefGraph:
                   type: Union[List, str]="head", # not currently implemented
                   nodes: Union[List, str]="all",
                   scale_confidence: bool=False,
-                  k=0.5, 
+                  k=0.5, # tweak for spacing
                   save_name="none",
                   return_graph=False,
                   **kwargs):
