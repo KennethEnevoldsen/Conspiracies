@@ -42,7 +42,7 @@ class BeliefGraph:
         self.is_sorted, self.is_filtered, self.is_merged = False, False, False
         for triplet in triplets:
             if self.offload_dir:
-                triplet.offload()
+                triplet.offload(dir = offload_dir)
             heappush(self._triplet_heap, triplet)
 
     def add_texts(self, texts: Union[Iterable[str], str]):
