@@ -81,7 +81,7 @@ class BeliefGraph:
         
         bn = BeliefNetwork(self)
         bn.construct_graph(nodes=nodes, scale_confidence=scale_confidence)
-        bn.plot_graph(save_name=save_name, k=k **kwargs)
+        bn.plot_graph(save_name=save_name, k=k, **kwargs)
         if return_graph:
             return bn
 

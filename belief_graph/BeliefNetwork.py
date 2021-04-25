@@ -13,10 +13,7 @@ class BeliefNetwork:
     def __init__(self, graph):
         # graph: BeliefGraph
         self.graph = graph
-        if graph.is_filtered:
-            self.triplets = list(graph.filtered_triplets)
-        else:
-            self.triplets = list(graph.triplets)
+        self.triplets = list(graph.filtered_triplets)
 
         self.labels = None
         self.weights = None
