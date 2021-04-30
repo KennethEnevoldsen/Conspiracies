@@ -55,6 +55,7 @@ def test_BeliefTriplet():
     assert isinstance(bt.confidence, float)
     assert isinstance(bt.head_span, Span)
     assert isinstance(bt.head, str)
+    assert bt.isin({"Dette"})
 
     path = (3, 1, 2, 0)
     rev_bt = BeliefTriplet.from_parse(
@@ -75,3 +76,5 @@ def test_offload(simple_triplets):
 
         assert triplet.span_reference is None
         assert isinstance(triplet.span, Span)
+
+
