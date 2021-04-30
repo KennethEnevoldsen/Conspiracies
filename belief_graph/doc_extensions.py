@@ -97,11 +97,13 @@ def doc_tokid2ncid_getter(doc: Doc) -> List:
     """
     tokid2nc = doc._.tokid2nc
     tokid2ncid = []
-    for i, span in enumerate(tokid2nc):
-        if i != 0 and tokid2nc[i - 1] == span:
-            tokid2ncid.append(i - 1)
+    i = 0
+    for idx, span in enumerate(tokid2nc):
+        if i != 0 and tokid2nc[idx - 1] == span:
+            tokid2ncid.append(tokid2ncid[-1])
         else:
             tokid2ncid.append(i)
+            i += 1
     return tokid2ncid
 
 
