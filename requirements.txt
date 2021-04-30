@@ -3,5 +3,6 @@ spacy-transformers
 danlp
 transformers
 datasets
-pydantic
+pydantic>=1.8.1
 torch
+networkx

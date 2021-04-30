@@ -44,3 +44,14 @@ def test_filtered_triplets(simple_graph):
 
     graph.add_texts(EXAMPLES)
     assert lf <= len(list(graph.filtered_triplets))
+
+
+def test_plot_all_nodes(simple_graph):
+    graph = simple_graph
+    graph.add_texts(EXAMPLES)
+    graph.plot_node()
+
+def test_plot_specific_nodes(simple_graph):
+    graph = simple_graph
+    graph.add_texts(EXAMPLES)
+    graph.plot_node(nodes=["betyder", "og"])
