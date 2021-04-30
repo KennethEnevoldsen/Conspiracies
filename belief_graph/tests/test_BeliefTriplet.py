@@ -54,6 +54,7 @@ def test_BeliefTriplet():
     assert len(bt.relation_list) == 2
     assert isinstance(bt.confidence, float)
     assert isinstance(bt.head_span, Span)
+    assert isinstance(bt.head, str)
 
     path = (3, 1, 2, 0)
     rev_bt = BeliefTriplet.from_parse(
