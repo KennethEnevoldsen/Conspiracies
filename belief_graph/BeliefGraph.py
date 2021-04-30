@@ -1,9 +1,12 @@
 """
 The script containing the main belief graph class
 """
+from __future__ import annotations
+
 from heapq import heappop, heappush
 from typing import Callable, Generator, Iterable, List, Optional, Tuple, Union
 from warnings import warn
+import dill
 
 from .belief_extraction import BeliefParser
 from .data_classes import BeliefTriplet, TripletGroup
@@ -12,14 +15,14 @@ from .BeliefNetwork import BeliefNetwork
 
 
 class BeliefGraph:
-    """"""
+    """ """
 
     def __init__(
         self,
         parser: BeliefParser,
         triplet_filters: List[TripletFilter] = [],
         group_filters: List[TripletGroupFilter] = [],
-        offload_dir: Optional[str] = None
+        offload_dir: Optional[str] = None,
     ):
         """
         offload_dir: directory to write triplets span into. This will save on memory and allow you to save the graph
@@ -38,12 +41,11 @@ class BeliefGraph:
 
         self.is_sorted = True
 
-
     def add_belief_triplets(self, triplets: Iterable[BeliefTriplet]):
         self.is_sorted, self.is_filtered, self.is_merged = False, False, False
         for triplet in triplets:
             if self.offload_dir:
-                triplet.offload(dir = offload_dir)
+                triplet.offload(dir=self.offload_dir)
             heappush(self._triplet_heap, triplet)
 
     def add_texts(self, texts: Union[Iterable[str], str]):
@@ -65,7 +67,6 @@ class BeliefGraph:
         self._triplet_heap = ordered
         self.is_sorted = True
 
-
     def replace_filters(
         self,
         triplet_filters: Optional[List[TripletFilter]] = None,
@@ -76,21 +77,24 @@ class BeliefGraph:
         if group_filters is not None:
             self.group_filters = group_filters
 
-    def plot_node(self, 
-                  type: Union[List, str]="head", # not currently implemented
-                  nodes: Union[List, str]="all",
-                  scale_confidence: bool=False,
-                  k=0.5, # tweak for spacing
-                  save_name="none",
-                  return_graph=False,
-                  **kwargs):
-        
+    def plot_node(
+        self,
+        nodes: Union[List, str] = "all",
+        type: Union[List, str] = "head",  # not currently implemented
+        scale_confidence: bool = False,
+        k=0.5,  # tweak for spacing
+        save_name="none",
+        **kwargs
+    ):
+
         bn = BeliefNetwork(self)
         bn.construct_graph(nodes=nodes, scale_confidence=scale_confidence)
         bn.plot_graph(save_name=save_name, k=k, **kwargs)
-        if return_graph:
-            return bn
 
+    def get_graph(self, nodes="all"):
+        bn = BeliefNetwork(self)
+        bn.construct_graph(nodes=nodes)
+        return bn
 
     def extract_node_relations():
         pass
@@ -105,6 +109,21 @@ class BeliefGraph:
             return triplets
 
         return wrapper
+
+    @staticmethod
+    def from_disk(path) -> BeliefGraph:
+        with open(path, "rb") as dill_file:
+            graph = dill.load(dill_file)
+        return graph
+
+    def to_disk(self, path):
+        if self.offload_dir is None:
+            raise ValueError(
+                "No offload dir specified. Init BeliefGraph with offload_dir to enable saving"
+            )
+        else:
+            with open(path, "wb") as dill_file:
+                dill.dump(self, dill_file)
 
     @property
     def triplet_groups(self) -> Generator[TripletGroup, None, None]:
@@ -143,5 +162,5 @@ def merge_triplets(
             while triplet == queue[-1]:
                 tg.add_triplet(queue.pop())
         except IndexError:
-            pass            
+            pass
         yield tg

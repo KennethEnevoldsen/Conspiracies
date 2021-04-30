@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from typing import List, Optional, Union
 
 from spacy.tokens import Doc, Span
@@ -74,7 +75,11 @@ class TripletGroup(BaseTriplet):
         for i, s in enumerate(self.span_reference):
             if s is None:
                 continue
-            path = spacy_doc_to_dir(s.doc, id_set=id_set, dir=dir)
+
+            id_ = None 
+            if self.doc_path[i] is not None:
+                id_ = os.path.split(self.doc_path[i])[-1][:-4]
+            path = spacy_doc_to_dir(s.doc, id_ = id_, id_set=id_set, dir=dir)
             self.span_slice[i] = slice(s.start, s.end)
             self.doc_path[i] = path
         self.clean()

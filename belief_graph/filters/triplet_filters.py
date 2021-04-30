@@ -50,7 +50,7 @@ def filter_is_continuous(triplet: BeliefTriplet) -> Union[BeliefTriplet, None]:
 
 
 def filter_confidence(triplet: BeliefTriplet, threshold) -> Union[BeliefTriplet, None]:
-    if triplet.confidence < threshold:
+    if triplet.confidence >= threshold:
         return triplet
 
 

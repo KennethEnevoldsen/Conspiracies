@@ -156,7 +156,11 @@ class BeliefTriplet(BaseTriplet):
         if self.vocab is None:
             self.vocab = span.vocab
 
-        path = spacy_doc_to_dir(span.doc, id_set=id_set, dir=dir)
+        id_ = None 
+        if self.doc_path is not None:
+            id_ = os.path.split(self.doc_path)[-1][:-4]
+
+        path = spacy_doc_to_dir(span.doc, id_ = id_, id_set=id_set, dir=dir)
 
         self.span_slice = slice(span.start, span.end)
         self.doc_path = path
@@ -164,14 +168,16 @@ class BeliefTriplet(BaseTriplet):
         self.clean()
 
 
-def spacy_doc_to_dir(doc, id_set: Optional[set] = None, dir="triplet_docs") -> str:
+def spacy_doc_to_dir(doc, id_: Optional[str] = None,  id_set: Optional[set] = None, dir="triplet_docs") -> str:
     Path(dir).mkdir(parents=True, exist_ok=True)
+
 
     if id_set is None:
         id_set = set(int(f[:-4]) for f in os.listdir(dir) if f.endswith(".doc"))
 
-    id_ = id(doc)
-    path = os.path.join(dir, str(id_) + ".doc")
+    if id_ is None:
+        id_ = str(id(doc))
+    path = os.path.join(dir, id_ + ".doc")
     if id_ not in id_set:
         doc.to_disk(path)
 
