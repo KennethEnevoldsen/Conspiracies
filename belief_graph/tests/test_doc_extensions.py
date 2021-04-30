@@ -102,4 +102,5 @@ def test_sent_extention(example, nlp_model):
         assert len(span._.wordpieces) == len(span._.wp2tokid)
         assert len(span._.wordpieces) == span._.attention.shape[-1]
         assert len(span._.wordpieces) == len(span._.wp2ncid)
-        assert len(span._.nctokens) == len(set(span._.nctokens))
+        assert len(span._.nctokens) == len(set(span._.tokid2ncid))
+

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Callable, List, Optional, Tuple
+from typing import Callable, Iterable, List, Optional, Tuple, Union
 
 from pydantic import BaseModel
 from spacy.tokens import Doc, Span
@@ -23,6 +23,35 @@ class BaseTriplet(BaseModel):
     confidence: Optional[float] = None
     sentence: str
 
+    def isin(
+        self,
+        values: Union[set, Iterable],
+        apply_to: List[str] = ["head", "tail", "relation"],
+    ) -> bool:
+        """
+        Tests if triplet attributes is in values.
+
+        apply_to a list of strings. Valid strings include "head", "tail", "relation", "sentence"
+        """
+        return (
+            ("head" in apply_to and self.head in values)
+            or ("tail" in apply_to and self.tail in values)
+            or ("relation" in apply_to and self.relation in values)
+            or ("sentence" in apply_to and self.sentence in values)
+        )
+
+    def head_isin(self, values: Union[set, Iterable]) -> bool:
+        return self.head in values
+
+    def tail_isin(self, values: Union[set, Iterable]) -> bool:
+        return self.tail in values
+
+    def relation_isin(self, values: Union[set, Iterable]) -> bool:
+        return self.tail in values
+
+    def sentence_isin(self, values: Union[set, Iterable]) -> bool:
+        return self.sentence in values
+
     def __eq__(self, other: BaseTriplet) -> bool:
         if (
             (self.head == other.head)
@@ -40,7 +69,7 @@ class BaseTriplet(BaseModel):
                 ("relation", self.relation),
                 ("tail", self.tail),
                 ("confidence", round(self.confidence, 2)),
-                ("span", self.sentence),
+                ("sentence", self.sentence),
             ]
         )
 

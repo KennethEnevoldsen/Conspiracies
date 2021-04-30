@@ -11,6 +11,7 @@ LONG_EXAMPLES = [
 SHORT_EXAMPLES = [
     "\nTirsdag kunne regeringen præsentere en plan for genåbning af Danmark",
     "Dette består af to sætninger. Kan dette være problematisk?",
+    'RT @RasmusAndresen: Vores dansk tyske region har en chance for at få en stemme i europaparlamentet. Grænsekontrol, vildsvinehegn og mure sk…'
 ]
 
 EXAMPLES = LONG_EXAMPLES + SHORT_EXAMPLES
