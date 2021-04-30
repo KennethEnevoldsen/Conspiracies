@@ -25,6 +25,7 @@ def test_simple_graph(simple_graph):
 s_g = test_simple_graph(simple_graph())
 
 
+
 class BeliefNetwork:
 
     def __init__(self, graph: BeliefGraph):
@@ -78,20 +79,11 @@ class BeliefNetwork:
         degree = dict(self.G.degree)
         pos = nx.spring_layout(self.G)
 
-        nx.draw(self.G, pos, edge_color=self.weights,
-                alpha=0.8, width=self.weights,
-                labels={node:node for node in self.G.nodes()},
-                node_color=list(degree.values()),
-                cmap=plt.cm.jet, verticalalignment="top",
-                **kwargs)
-
-        nx.draw_networkx(self.G, verticalalignment="bottom")
-       # nx.draw_networkx_edges(self.G, pos)
-       # nx.draw_networkx_edge_labels(self.G,pos,edge_labels=self.labels,
-       #         font_color='red')
+        nx.draw(self.G, pos, node_size=100, **kwargs)
+        nx.draw_networkx_labels(self.G, pos, verticalalignment="bottom")
+        nx.draw_networkx_edge_labels(self.G,pos,edge_labels=self.labels,
+                        font_color='red')
         
-        
-        plt.axis('off')
         if save_name != "none":
             plt.savefig(save_name + ".png", dpi=300)
   
@@ -131,20 +123,37 @@ class BeliefNetwork:
 
 bn = BeliefNetwork(s_g)
 
-bn.construct_graph(nodes = ["betyder", "og"], scale_confidence=False)
+bn.construct_graph(nodes = ["betyder", "og", "præsentere"], scale_confidence=False)
 
 degree = dict(bn.G.degree)
-pos = nx.spring_layout(bn.G)
+pos = nx.spring_layout(bn.G, 0.5)
+
+nx.draw(bn.G, pos, node_size=100)
+nx.draw_networkx_labels(bn.G, pos, verticalalignment="bottom")
+nx.draw_networkx_edge_labels(bn.G,pos,edge_labels=bn.labels,
+                font_color='red')
+
 
 nx.draw(bn.G, pos, edge_color=bn.weights,
-        alpha=0.8, width=bn.weights,
+        alpha=0.5, width=bn.weights,
         node_size=100,
         labels={node:node for node in bn.G.nodes()},
-        node_color=list(degree.values()),
         cmap=plt.cm.jet, verticalalignment="bottom")
 nx.draw_networkx_edge_labels(bn.G,pos,edge_labels=bn.labels,
                 font_color='red')
-nx.draw(bn.G, pos, node_size=100)
-nx.draw_networkx_labels(bn.G, pos, verticalalignment="bottom")
+plt.tight_layout()
+
+
 bn.plot_graph(save_name="test_network")
 # node measures (degree, centrality)
+nodes = ["betyder", "og"]
+
+n_type = ["head"]
+rels = ["triplet" + "." + t for t in n_type]
+rels
+
+edges = [
+    (triplet.head, triplet.tail, triplet.confidence) 
+    for triplet in bn.triplets
+    if triplet.head in nodes
+        ]
