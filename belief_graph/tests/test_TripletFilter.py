@@ -48,8 +48,8 @@ def test_CountFilter(simple_triplets):
     c_filter = bg.filters.CountFilter(count=3)
     print(c_filter)
 
-    filtered = list(c_filter.filter(tg))
+    filtered = list(c_filter.filter([tg]))
     tg.add(triplet)
     assert len(filtered) == 0
     filtered = next(c_filter.filter([tg]))
-    assert isinstance(filtered, bg.BeliefTriplet)
+    assert isinstance(filtered, bg.TripletGroup)

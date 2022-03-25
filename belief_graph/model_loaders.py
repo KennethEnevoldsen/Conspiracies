@@ -38,7 +38,6 @@ Span.set_extension("wp2ncid", getter=span_wp2ncid_getter)
 Span.set_extension("nctokens", getter=span_nctokens_getter)
 
 
-
 def load_danish(
     spacy_model: str = "da_core_news_sm", transformer: str = "Maltehb/danish-bert-botxo"
 ):

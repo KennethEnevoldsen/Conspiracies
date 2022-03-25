@@ -6,7 +6,7 @@ import pytest
 import transformers
 from belief_graph import BeliefTriplet, load_danish
 from spacy.tokens import Span
-
+import os
 
 @pytest.fixture
 def simple_triplets() -> List[BeliefTriplet]:
@@ -15,7 +15,7 @@ def simple_triplets() -> List[BeliefTriplet]:
     span = next(doc.sents)
 
     path = (0, 1, 2, 3)
-    bt = BeliefTriplet(
+    bt = BeliefTriplet.from_parse(
         head_id=path[0],
         relation_ids=path[1:-1],
         tail_id=path[-1],
@@ -27,7 +27,7 @@ def simple_triplets() -> List[BeliefTriplet]:
     span = next(doc.sents)
 
     path = (0, 1, 2)
-    bt_ = BeliefTriplet(
+    bt_ = BeliefTriplet.from_parse(
         head_id=path[0],
         relation_ids=path[1:-1],
         tail_id=path[-1],
@@ -43,7 +43,7 @@ def test_BeliefTriplet():
     span = next(doc.sents)
 
     path = (0, 1, 2, 3)
-    bt = BeliefTriplet(
+    bt = BeliefTriplet.from_parse(
         head_id=path[0],
         relation_ids=path[1:-1],
         tail_id=path[-1],
@@ -55,9 +55,10 @@ def test_BeliefTriplet():
     assert isinstance(bt.confidence, float)
     assert isinstance(bt.head_span, Span)
     assert isinstance(bt.head, str)
+    assert bt.isin({"Dette"})
 
     path = (3, 1, 2, 0)
-    rev_bt = BeliefTriplet(
+    rev_bt = BeliefTriplet.from_parse(
         head_id=path[0],
         relation_ids=path[1:-1],
         tail_id=path[-1],
@@ -66,3 +67,14 @@ def test_BeliefTriplet():
     )
 
     assert bt < rev_bt, "belief triplets should be sorted according to their heads"
+
+def test_offload(simple_triplets):
+    for triplet in simple_triplets:
+        triplet.offload()
+        path = triplet.doc_path
+        assert os.path.exists(path)
+
+        assert triplet.span_reference is None
+        assert isinstance(triplet.span, Span)
+
+

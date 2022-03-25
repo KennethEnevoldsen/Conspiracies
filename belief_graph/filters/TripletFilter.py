@@ -72,7 +72,6 @@ class TripletFilter(BaseModel):
 class SetFilter(TripletFilter):
     """
     this is a utility class for the PosFilter, DepFilter and EntFilter.
-    It is not mean to be used on its own
     """
 
     valid: set = None
@@ -104,6 +103,10 @@ class SetFilter(TripletFilter):
             return triplet
 
         return wrapper
+
+    def make_filter_func(self):
+        is_valid = partial(OTHER_FUN, valid=self.valid, invalid=self.invalid)
+        self.make_func(is_valid)
 
 
 class PosFilter(SetFilter):
@@ -149,6 +152,7 @@ class ConfidenceFilter(TripletFilter):
 
     def make_filter_func(self):
         self.filter_func = partial(filter_confidence, threshold=self.threshold)
+
 
 
 def lemma_getter(span: Span):
